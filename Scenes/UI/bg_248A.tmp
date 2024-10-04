@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdrfw3w0vknif"]
+
+[ext_resource type="Script" path="res://Scripts/UI/bg_image.gd" id="1_chcew"]
+[ext_resource type="Texture2D" uid="uid://d3qgiifj3epgl" path="res://Graphics/BG/Title_BG_1x.png" id="1_euhlv"]
+[ext_resource type="Texture2D" uid="uid://dlbew3fx6wfmf" path="res://Graphics/BG/Tartarus_BG_1x.png" id="3_30cq8"]
+[ext_resource type="Texture2D" uid="uid://c8ko4mxgrpk46" path="res://Graphics/BG/tran_img1.png" id="4_pd44u"]
+
+[node name="TR_BG_Image" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_chcew")
+lr_speed = null
+lr_acceleration = null
+up_speed = null
+up_acceleration = null
+
+[node name="HB_LR_SCROLL" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 2564.0
+offset_bottom = 720.0
+
+[node name="LR_BG1" type="TextureRect" parent="HB_LR_SCROLL"]
+layout_mode = 2
+texture = ExtResource("3_30cq8")
+
+[node name="LR_BG2" type="TextureRect" parent="HB_LR_SCROLL"]
+layout_mode = 2
+texture = ExtResource("3_30cq8")
+flip_h = true
+
+[node name="VB_UP_SWIPE" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -2440.0
+offset_right = 1280.0
+grow_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="BG2" type="TextureRect" parent="VB_UP_SWIPE"]
+layout_mode = 2
+texture = ExtResource("3_30cq8")
+
+[node name="Tran_BG" type="TextureRect" parent="VB_UP_SWIPE"]
+layout_mode = 2
+texture = ExtResource("4_pd44u")
+
+[node name="BG1" type="TextureRect" parent="VB_UP_SWIPE"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_euhlv")
