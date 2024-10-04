@@ -18,7 +18,8 @@ var RNG : RandomNumberGenerator = RandomNumberGenerator.new()
 
 
 # Game States
-var is_paused = false
-var is_just_resumed = false
+var is_paused : bool = false
+var is_just_resumed : bool = false
+var is_level_finished : bool = false
 
 var curr_screen = SCREEN.TITLE

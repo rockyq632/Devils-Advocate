@@ -15,6 +15,7 @@ var PAUSE_MENU = load("res://Scenes/UI/Menues/PauseMenu.tscn")
 func _ready() -> void:
 	print("Screen Size: %sx%s" % [SCREEN_WIDTH,SCREEN_HEIGHT])
 	$Control/TR_BG_Image.set_animation( ENUMS.BG_ANIM_TYPE.LR_SCROLL )
+	$A2D_Next_Level_Trans.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,9 +30,19 @@ func _process(delta: float) -> void:
 		global.is_paused = false
 		global.is_just_resumed = true
 		
+	if ($Control/Enemy_Scene.enemy_hp <= 0):
+		$A2D_Next_Level_Trans.visible = true
+		$Control/Enemy_Scene.visible = false
+		$Control/Damage.visible = false
+		
 
 
 func _on_timer_timeout() -> void:
 	SECONDS += 1
 	if( SECONDS >= 60):
 		SECONDS = 0
+
+
+func _on_next_level_trans_entered(body: Node2D) -> void:
+	if(body.has_method("take_damage")):
+		global.is_level_finished = true

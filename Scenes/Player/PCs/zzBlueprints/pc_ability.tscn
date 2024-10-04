@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://dw6dtpridoeml"]
-
-[node name="PC_Ability" type="Node2D"]
-
-[node name="T_Cooldown" type="Timer" parent="."]
-one_shot = true

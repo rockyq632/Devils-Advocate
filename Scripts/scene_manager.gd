@@ -31,3 +31,10 @@ func _process(_delta: float) -> void:
 			add_child(battle_test_instance)
 			remove_child(char_select_instance)
 			global.curr_screen = global.SCREEN.DEBUG
+			
+	if(global.curr_screen == global.SCREEN.DEBUG):
+		if(global.is_level_finished):
+			global.is_level_finished = false
+			remove_child(battle_test_instance)
+			battle_test_instance = BATTLE_TEST_SCENE.instantiate()
+			add_child(battle_test_instance)
