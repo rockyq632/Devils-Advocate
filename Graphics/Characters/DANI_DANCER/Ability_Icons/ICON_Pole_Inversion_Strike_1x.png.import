@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://du07g1qula55v"
-path="res://.godot/imported/ICON_Pole_Spin_Kick_1x.png-1769893d2b22ad39e2dd6bf5844d5214.ctex"
+uid="uid://w2baf4vi6h8h"
+path="res://.godot/imported/ICON_Pole_Inversion_Strike_1x.png-db2569f99044f80d050303c022e86fab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Spin_Kick_1x.png"
-dest_files=["res://.godot/imported/ICON_Pole_Spin_Kick_1x.png-1769893d2b22ad39e2dd6bf5844d5214.ctex"]
+source_file="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Inversion_Strike_1x.png"
+dest_files=["res://.godot/imported/ICON_Pole_Inversion_Strike_1x.png-db2569f99044f80d050303c022e86fab.ctex"]
 
 [params]
 

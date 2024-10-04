@@ -12,6 +12,13 @@ func _ready() -> void:
 	# Instantiate a character instance
 	char_instance = CharacterScene.instantiate()
 	add_child(char_instance)
+	
+	# Change Ability Icons
+	var ab_icons : Array[Texture2D] = char_instance.get_ability_icons()
+	%TR_ab1_icon.texture = ab_icons[0]
+	%TR_ab2_icon.texture = ab_icons[1]
+	%TR_ab3_icon.texture = ab_icons[2]
+	%TR_ab4_icon.texture = ab_icons[3]
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,4 +41,11 @@ func change_character(new_pc : PackedScene):
 	CharacterScene = new_pc
 	char_instance = CharacterScene.instantiate()
 	add_child(char_instance)
+	
+	# Change Ability Icons
+	var ab_icons : Array[Texture2D] = char_instance.get_ability_icons()
+	%TR_ab1_icon.texture = ab_icons[0]
+	%TR_ab2_icon.texture = ab_icons[1]
+	%TR_ab3_icon.texture = ab_icons[2]
+	%TR_ab4_icon.texture = ab_icons[3]
 	

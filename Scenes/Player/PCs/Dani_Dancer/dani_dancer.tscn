@@ -1,16 +1,19 @@
-[gd_scene load_steps=26 format=3 uid="uid://biq85g3kcoxjb"]
+[gd_scene load_steps=29 format=3 uid="uid://biq85g3kcoxjb"]
 
 [ext_resource type="Script" path="res://Scripts/Player/DaniDancer.gd" id="1_7y228"]
 [ext_resource type="Texture2D" uid="uid://covgsbrphr6g8" path="res://Graphics/Characters/DANI_DANCER/Fly_Idle_4x.png" id="2_kst7n"]
 [ext_resource type="Texture2D" uid="uid://5svps1iv6snu" path="res://Graphics/Characters/DANI_DANCER/Fly_East_4x.png" id="3_bjjmf"]
 [ext_resource type="Texture2D" uid="uid://c4ln5pimjmpqr" path="res://Graphics/Characters/DANI_DANCER/Fly_West_4x.png" id="4_j0jn4"]
 [ext_resource type="Texture2D" uid="uid://b5tw8whw875ma" path="res://Graphics/Characters/DANI_DANCER/Pole_Inversion_Dive_4x.png" id="5_m6qix"]
+[ext_resource type="Texture2D" uid="uid://w2baf4vi6h8h" path="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Inversion_Strike_1x.png" id="5_yow2q"]
+[ext_resource type="Texture2D" uid="uid://dyf5s4t0sisab" path="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Inversion_Dive_1x.png" id="6_5p6qg"]
 [ext_resource type="Texture2D" uid="uid://ckr34n81h06vp" path="res://Graphics/Characters/DANI_DANCER/Pole_Inversion_Strike_4x.png" id="6_yorpl"]
+[ext_resource type="Texture2D" uid="uid://dui2bw50swvh" path="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Pirouette_1x.png" id="7_grixf"]
 [ext_resource type="Texture2D" uid="uid://whgymehrbmrh" path="res://Graphics/Characters/DANI_DANCER/Pole_Pirouette_4x.png" id="7_mg7sa"]
 [ext_resource type="Texture2D" uid="uid://cxheqs3t4k2w2" path="res://Graphics/Characters/DANI_DANCER/Pole_Spin_Kick_4x.png" id="8_jopmr"]
 [ext_resource type="Theme" uid="uid://dpiuxmj0j36hm" path="res://Themes/HUD Theme.tres" id="9_k11id"]
 [ext_resource type="PackedScene" uid="uid://cl0csgu5m07wo" path="res://Scenes/UI/HUD/Character_HUD/CD_Overlay_SM.tscn" id="10_wl1dx"]
-[ext_resource type="Texture2D" uid="uid://ch5dtf37ywlpw" path="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Spin_Kick_1x.png" id="11_i6qrt"]
+[ext_resource type="Texture2D" uid="uid://du07g1qula55v" path="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Spin_Kick_1x.png" id="11_i6qrt"]
 
 [sub_resource type="Animation" id="Animation_5kp4g"]
 resource_name = "FLY_EAST"
@@ -1346,9 +1349,9 @@ layout_mode = 2
 size_flags_horizontal = 1
 size_flags_vertical = 1
 ab_icon1 = ExtResource("11_i6qrt")
-ab_icon2 = ExtResource("11_i6qrt")
-ab_icon3 = ExtResource("11_i6qrt")
-ab_icon4 = ExtResource("11_i6qrt")
+ab_icon2 = ExtResource("5_yow2q")
+ab_icon3 = ExtResource("6_5p6qg")
+ab_icon4 = ExtResource("7_grixf")
 
 [node name="S2D_DaniDancer" type="Sprite2D" parent="."]
 texture_filter = 1

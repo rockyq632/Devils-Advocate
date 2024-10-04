@@ -207,6 +207,15 @@ func _on_animation_finished(anim_name: String) -> void:
 	action_current = ACTIONS.NONE
 
 
+func get_ability_icons() -> Array[Texture2D]:
+	var images : Array[Texture2D] = [
+		%N_CD_Overlay.ab_icon1,
+		%N_CD_Overlay.ab_icon2,
+		%N_CD_Overlay.ab_icon3,
+		%N_CD_Overlay.ab_icon4
+	]
+	return images
+
 
 func take_damage(amount=1):
 	if( curr_HEALTH <= 0 ):

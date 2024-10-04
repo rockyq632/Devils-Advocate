@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://dix7l5bqh0jmq"]
+[gd_scene load_steps=13 format=3 uid="uid://dix7l5bqh0jmq"]
 
 [ext_resource type="Script" path="res://Scripts/Menues/Character_Selection/character_select_menu.gd" id="1_eyfin"]
 [ext_resource type="Texture2D" uid="uid://dnonfh7kaxspj" path="res://Graphics/BG/Char_Select_BG_1x.png" id="1_gp0cp"]
 [ext_resource type="PackedScene" uid="uid://cdrfw3w0vknif" path="res://Scenes/UI/bg_image.tscn" id="2_jhxp6"]
 [ext_resource type="Texture2D" uid="uid://d58ahpf6h811" path="res://Graphics/Characters/DANI_DANCER/Single_1x.png" id="4_8ef2g"]
-[ext_resource type="Texture2D" uid="uid://384uvi5ypumk" path="res://Graphics/BG/BLANK.png" id="4_f0j5e"]
 [ext_resource type="Texture2D" uid="uid://b6dxewwkiapn1" path="res://Graphics/Characters/ASTA_ASTROLOGIAN/Single_1x.png" id="5_eo6ch"]
 [ext_resource type="Texture2D" uid="uid://ogpf7vucv8qj" path="res://Graphics/Characters/Locked_Character_1x.png" id="6_5rdbn"]
 [ext_resource type="PackedScene" uid="uid://chw0euwlvm8g8" path="res://Scenes/CharacterSelectScreen/character_selected_card.tscn" id="7_n2fes"]
@@ -193,7 +192,6 @@ texture = ExtResource("1_gp0cp")
 visible = false
 layout_mode = 1
 bg_texture = ExtResource("1_gp0cp")
-sky_texture = ExtResource("4_f0j5e")
 
 [node name="MC_Screen_Edge" type="MarginContainer" parent="."]
 visible = false

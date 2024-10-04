@@ -68,6 +68,7 @@ size_flags_vertical = 3
 theme_override_constants/separation = 10
 
 [node name="TR_ab1_icon" type="TextureRect" parent="MC_Moveset_Tabs/TC_Abilities/Moveset 1/MC/VB/HB1"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -86,7 +87,8 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 10
 
-[node name="TR_ab1_icon" type="TextureRect" parent="MC_Moveset_Tabs/TC_Abilities/Moveset 1/MC/VB/HB2"]
+[node name="TR_ab2_icon" type="TextureRect" parent="MC_Moveset_Tabs/TC_Abilities/Moveset 1/MC/VB/HB2"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -105,7 +107,8 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 10
 
-[node name="TR_ab1_icon" type="TextureRect" parent="MC_Moveset_Tabs/TC_Abilities/Moveset 1/MC/VB/HB3"]
+[node name="TR_ab3_icon" type="TextureRect" parent="MC_Moveset_Tabs/TC_Abilities/Moveset 1/MC/VB/HB3"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -124,7 +127,8 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 10
 
-[node name="TR_ab1_icon" type="TextureRect" parent="MC_Moveset_Tabs/TC_Abilities/Moveset 1/MC/VB/HB4"]
+[node name="TR_ab4_icon" type="TextureRect" parent="MC_Moveset_Tabs/TC_Abilities/Moveset 1/MC/VB/HB4"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_horizontal = 0
