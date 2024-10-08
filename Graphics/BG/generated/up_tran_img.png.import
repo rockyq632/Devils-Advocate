@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1t2mhkjudv47"
-path="res://.godot/imported/Tartarus_BG_Top_1x.png-b1f0cb61b1928b6c54bef1eab296ed37.ctex"
+uid="uid://m7a64n2o5r53"
+path="res://.godot/imported/up_tran_img.png-6074ca146bd05b9954127f77e340eea9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/BG/Tartarus_BG_Top_1x.png"
-dest_files=["res://.godot/imported/Tartarus_BG_Top_1x.png-b1f0cb61b1928b6c54bef1eab296ed37.ctex"]
+source_file="res://Graphics/BG/generated/up_tran_img.png"
+dest_files=["res://.godot/imported/up_tran_img.png-6074ca146bd05b9954127f77e340eea9.ctex"]
 
 [params]
 

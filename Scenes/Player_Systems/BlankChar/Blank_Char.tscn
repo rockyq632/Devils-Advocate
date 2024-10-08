@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dc8xryvgdq0op"]
+
+[ext_resource type="Texture2D" uid="uid://ogpf7vucv8qj" path="res://Graphics/Characters/Locked_Character_1x.png" id="1_coofb"]
+[ext_resource type="Script" path="res://Scenes/Player_Systems/BlankChar/blank_char.gd" id="1_f0fb0"]
+[ext_resource type="Texture2D" uid="uid://cnaj47nhyvldr" path="res://Graphics/Characters/ASTA_ASTROLOGIAN/Ability_Icons/ICON_Card_Draw_1x.png" id="3_qxb5u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5c0wq"]
+
+[node name="BlankChar" type="CharacterBody2D"]
+script = ExtResource("1_f0fb0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_coofb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5c0wq")
+
+[node name="Ability_Icons" type="Node" parent="."]
+
+[node name="TR_Placeholder_Icon" type="TextureRect" parent="Ability_Icons"]
+unique_name_in_owner = true
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_qxb5u")

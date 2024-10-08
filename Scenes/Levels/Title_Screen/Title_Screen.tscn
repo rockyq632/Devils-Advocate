@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://cwetyn87y72u5"]
 
-[ext_resource type="Script" path="res://Scenes/Levels/Title_Menu/title_menu.gd" id="1_1fybu"]
-[ext_resource type="Texture2D" uid="uid://d3qgiifj3epgl" path="res://Graphics/BG/Title_BG_1x.png" id="2_7mlj6"]
-[ext_resource type="FontFile" uid="uid://do5flpj1sl71a" path="res://Themes/FONTS/Deicide Remain.otf" id="3_hxqpa"]
-[ext_resource type="FontFile" uid="uid://jr71c7sixvd4" path="res://Themes/FONTS/Test_pixel_font.ttf" id="4_7mlqu"]
+[ext_resource type="Script" path="res://Scenes/Levels/Title_Screen/title_screen.gd" id="1_g76w1"]
+[ext_resource type="Texture2D" uid="uid://d3qgiifj3epgl" path="res://Graphics/BG/Title_BG_1x.png" id="2_nmov8"]
+[ext_resource type="FontFile" uid="uid://do5flpj1sl71a" path="res://Themes/FONTS/Deicide Remain.otf" id="3_dnyfj"]
+[ext_resource type="FontFile" uid="uid://jr71c7sixvd4" path="res://Themes/FONTS/Test_pixel_font.ttf" id="4_t1hne"]
 
 [node name="TitleMenu" type="Control"]
 layout_mode = 3
@@ -14,7 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-script = ExtResource("1_1fybu")
+script = ExtResource("1_g76w1")
 
 [node name="TR_BG" type="TextureRect" parent="."]
 layout_mode = 1
@@ -23,7 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_7mlj6")
+texture = ExtResource("2_nmov8")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -43,7 +43,7 @@ layout_mode = 2
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VB_TitleItems"]
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("3_hxqpa")
+theme_override_fonts/normal_font = ExtResource("3_dnyfj")
 theme_override_font_sizes/normal_font_size = 100
 bbcode_enabled = true
 text = "[center]Devil's Advovate[/center]"
@@ -57,7 +57,7 @@ theme_override_constants/margin_right = 500
 
 [node name="BTN_Play" type="Button" parent="MarginContainer/VB_TitleItems/MarginContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_7mlqu")
+theme_override_fonts/font = ExtResource("4_t1hne")
 theme_override_font_sizes/font_size = 50
 text = "Play"
 

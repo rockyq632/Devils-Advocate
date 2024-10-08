@@ -42,12 +42,15 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	# Process Movement Inputs
-	char_instance.MOVE_DIR = Input.get_vector("left", "right", "up", "down")
-	char_instance.velocity = char_instance.MOVE_SPEED * char_instance.MOVE_DIR
-	char_instance.move_and_slide()
-	# Move UI to match the character sprite
-	%MC_Character_UI.position = char_instance.position - UI_OFFSET
+	if( GSM.is_pc_movement_locked ):
+		pass
+	else:
+		# Process Movement Inputs
+		char_instance.MOVE_DIR = Input.get_vector("left", "right", "up", "down")
+		char_instance.velocity = char_instance.MOVE_SPEED * char_instance.MOVE_DIR
+		char_instance.move_and_slide()
+		# Move UI to match the character sprite
+		%MC_Character_UI.position = char_instance.position - UI_OFFSET
 	
 	# Process Attack Inputs
 	# If an attack is already going, skip until finished

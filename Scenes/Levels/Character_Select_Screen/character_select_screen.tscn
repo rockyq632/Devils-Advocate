@@ -1,4 +1,12 @@
-[gd_scene format=3 uid="uid://cekhruau50dl8"]
+[gd_scene load_steps=8 format=3 uid="uid://cekhruau50dl8"]
+
+[ext_resource type="Script" path="res://Scenes/Levels/Character_Select_Screen/character_select_screen.gd" id="1_13toc"]
+[ext_resource type="Texture2D" uid="uid://dnonfh7kaxspj" path="res://Graphics/BG/Char_Select_BG_1x.png" id="1_kgfmb"]
+[ext_resource type="Texture2D" uid="uid://d58ahpf6h811" path="res://Graphics/Characters/DANI_DANCER/Single_1x.png" id="2_cwa57"]
+[ext_resource type="Theme" uid="uid://6yidb12fyc8i" path="res://Themes/UI_TEXT_BUTTON_THEME.tres" id="3_2rlyx"]
+[ext_resource type="Texture2D" uid="uid://b6dxewwkiapn1" path="res://Graphics/Characters/ASTA_ASTROLOGIAN/Single_1x.png" id="3_umix2"]
+[ext_resource type="PackedScene" uid="uid://bky3hgsc8hy2u" path="res://Scenes/Player_Systems/BP_player.tscn" id="3_xfm65"]
+[ext_resource type="Texture2D" uid="uid://ogpf7vucv8qj" path="res://Graphics/Characters/Locked_Character_1x.png" id="4_80qt6"]
 
 [node name="Character_Select_Screen" type="Control"]
 layout_mode = 3
@@ -7,3 +15,94 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_13toc")
+
+[node name="TR_BG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_kgfmb")
+
+[node name="Player" parent="." instance=ExtResource("3_xfm65")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = 40.0
+offset_right = 60.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HB_Container" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VB_Character_Buttons" type="VBoxContainer" parent="HB_Container"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ARC1" type="AspectRatioContainer" parent="HB_Container/VB_Character_Buttons"]
+layout_mode = 2
+
+[node name="BTN_Dani" type="TextureButton" parent="HB_Container/VB_Character_Buttons/ARC1"]
+layout_mode = 2
+texture_normal = ExtResource("2_cwa57")
+
+[node name="ARC2" type="AspectRatioContainer" parent="HB_Container/VB_Character_Buttons"]
+layout_mode = 2
+
+[node name="BTN_Asta" type="TextureButton" parent="HB_Container/VB_Character_Buttons/ARC2"]
+layout_mode = 2
+texture_normal = ExtResource("3_umix2")
+
+[node name="ARC3" type="AspectRatioContainer" parent="HB_Container/VB_Character_Buttons"]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="HB_Container/VB_Character_Buttons/ARC3"]
+layout_mode = 2
+texture_normal = ExtResource("4_80qt6")
+
+[node name="ARC4" type="AspectRatioContainer" parent="HB_Container/VB_Character_Buttons"]
+layout_mode = 2
+
+[node name="TextureButton2" type="TextureButton" parent="HB_Container/VB_Character_Buttons/ARC4"]
+layout_mode = 2
+texture_normal = ExtResource("4_80qt6")
+
+[node name="ARC5" type="AspectRatioContainer" parent="HB_Container/VB_Character_Buttons"]
+layout_mode = 2
+
+[node name="TextureButton3" type="TextureButton" parent="HB_Container/VB_Character_Buttons/ARC5"]
+layout_mode = 2
+texture_normal = ExtResource("4_80qt6")
+
+[node name="MC_Debug_Btn" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -77.0
+offset_bottom = 45.0
+grow_horizontal = 0
+theme = ExtResource("3_2rlyx")
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="BTN_Debug" type="Button" parent="MC_Debug_Btn"]
+layout_mode = 2
+text = "DEBUG"
+
+[connection signal="pressed" from="MC_Debug_Btn/BTN_Debug" to="." method="_on_btn_debug_pressed"]

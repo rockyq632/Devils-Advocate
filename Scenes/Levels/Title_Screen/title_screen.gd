@@ -8,8 +8,7 @@ func _ready() -> void:
 
 
 func _on_play_btn_pressed() -> void:
-	GSM.debug_scene_instance = GSM.DEBUG_SCENE.instantiate()
-	GSM.GLOBAL_CONTROL_NODE.add_child( GSM.debug_scene_instance )
+	GSM.GLOBAL_CONTROL_NODE.add_child( GSM.CHAR_SELECT_SCENE.instantiate() )
 	get_parent().remove_child(self)
 	
 	# Break spritesheet into seperate images
