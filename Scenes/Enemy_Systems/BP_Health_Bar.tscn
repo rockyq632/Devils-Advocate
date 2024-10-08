@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2m8vytmn4wws"]
+
+[ext_resource type="Script" path="res://Scenes/Enemy_Systems/BP_Scripts/bp_health_bar.gd" id="1_mkfk5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k67cp"]
+bg_color = Color(0.698039, 0.329412, 0.196078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p8li4"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x636r"]
+bg_color = Color(0.698903, 0.0997856, 0.19628, 1)
+
+[node name="BP_Health_Bar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_mkfk5")
+
+[node name="MC_Bar_Placement" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 670
+
+[node name="PB_Bot_Bar" type="ProgressBar" parent="MC_Bar_Placement"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/fill = SubResource("StyleBoxFlat_k67cp")
+value = 60.0
+show_percentage = false
+
+[node name="PB_Top_Bar" type="ProgressBar" parent="MC_Bar_Placement"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_p8li4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_x636r")
+value = 50.0
+show_percentage = false

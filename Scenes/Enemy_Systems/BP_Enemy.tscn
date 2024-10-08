@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://1i7vyrm075md"]
+
+[ext_resource type="Script" path="res://Scenes/Enemy_Systems/BP_Scripts/bp_enemy.gd" id="1_hnl8i"]
+[ext_resource type="PackedScene" uid="uid://c2m8vytmn4wws" path="res://Scenes/Enemy_Systems/BP_Health_Bar.tscn" id="1_s215b"]
+[ext_resource type="PackedScene" uid="uid://2vyfvewnbbnm" path="res://Scenes/Enemy_Systems/Enemies/Test/Test_Dummy.tscn" id="3_wycco"]
+
+[node name="BP_Enemy" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hnl8i")
+
+[node name="BP_Health_Bar" parent="." instance=ExtResource("1_s215b")]
+layout_mode = 1
+
+[node name="CB2D_Test_Dummy" parent="." instance=ExtResource("3_wycco")]
+position = Vector2(1000, 360)

@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://m6heyk4adbkm"]
+
+[ext_resource type="Texture2D" uid="uid://djnhjuf23frn" path="res://Graphics/BG/Tartarus_BG_Bot_1x.png" id="1_8vjbe"]
+[ext_resource type="Script" path="res://Scenes/Levels/DEBUG_BATTLE/debug_battle.gd" id="1_ew5ia"]
+[ext_resource type="PackedScene" uid="uid://bky3hgsc8hy2u" path="res://Scenes/Player_Systems/BP_player.tscn" id="3_w5g8t"]
+[ext_resource type="PackedScene" uid="uid://bc36tsophgxfn" path="res://Scenes/Player_Systems/Dani_Dancer/dani_dancer.tscn" id="4_rbg6n"]
+[ext_resource type="PackedScene" uid="uid://1i7vyrm075md" path="res://Scenes/Enemy_Systems/BP_Enemy.tscn" id="5_05l17"]
+[ext_resource type="PackedScene" uid="uid://bg8sq66oyqmc1" path="res://Scenes/Player_Systems/HUD/Health_Heart.tscn" id="5_hqrkv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ecfno"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_lnfty"]
+
+[node name="DebugBattle" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ew5ia")
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_8vjbe")
+
+[node name="BP_Enemy" parent="." instance=ExtResource("5_05l17")]
+layout_mode = 1
+
+[node name="StaticBody2D" type="Area2D" parent="."]
+collision_layer = 9
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(980, 210)
+shape = SubResource("RectangleShape2D_ecfno")
+
+[node name="TextureRect" type="TextureRect" parent="StaticBody2D"]
+offset_left = 970.0
+offset_top = 200.0
+offset_right = 990.0
+offset_bottom = 220.0
+texture = SubResource("CanvasTexture_lnfty")
+
+[node name="Player" parent="." instance=ExtResource("3_w5g8t")]
+offset_left = 222.0
+offset_top = 362.0
+offset_right = 342.0
+offset_bottom = 482.0
+selected_character = ExtResource("4_rbg6n")
+health_heart_scn = ExtResource("5_hqrkv")
+
+[connection signal="body_entered" from="StaticBody2D" to="." method="_on_body_entered_dmg_square"]

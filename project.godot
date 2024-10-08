@@ -11,14 +11,15 @@ config_version=5
 [application]
 
 config/name="Devils Advocate"
-run/main_scene="res://Scenes/scene_manager.tscn"
+run/main_scene="res://Scenes/GLOBAL_SCENE_MANAGER/global_scene_manager.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://Graphics/Icons/Taskbar_Icon_1x.png"
 
 [autoload]
 
-global="*res://Scripts/Global/global.gd"
-Enums="*res://Scripts/Global/enums.gd"
+GSM="*res://Global_Scripts/GSM.gd"
+ENM="*res://Global_Scripts/ENM.gd"
+AB_REF="*res://Global_Scripts/AB_REF.gd"
 
 [display]
 

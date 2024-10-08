@@ -1,6 +1,0 @@
-class_name ENUMS
-extends Node
-
-enum BG_ANIM_TYPE {NONE, LR_SCROLL, UP_SWIPE, DOWN_SWIPE}
-
-#enum PLAYER_ACTIONS {NONE, ATK1, ATK2, ATK3, DEF}
