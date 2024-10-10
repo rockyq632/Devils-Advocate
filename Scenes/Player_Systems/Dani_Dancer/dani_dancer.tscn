@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://bc36tsophgxfn"]
+[gd_scene load_steps=25 format=3 uid="uid://bc36tsophgxfn"]
 
 [ext_resource type="Texture2D" uid="uid://covgsbrphr6g8" path="res://Graphics/Characters/DANI_DANCER/Fly_Idle_4x.png" id="1_fkyqw"]
 [ext_resource type="Script" path="res://Scenes/Player_Systems/Dani_Dancer/dani_dancer.gd" id="1_hqnb5"]
 [ext_resource type="Texture2D" uid="uid://dyf5s4t0sisab" path="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Inversion_Dive_1x.png" id="2_4q8bs"]
+[ext_resource type="Shader" path="res://Shaders/Border_Glow_Shader.gdshader" id="2_ipxhq"]
 [ext_resource type="Texture2D" uid="uid://w2baf4vi6h8h" path="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Inversion_Strike_1x.png" id="3_lh4ux"]
 [ext_resource type="Texture2D" uid="uid://dui2bw50swvh" path="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Pirouette_1x.png" id="4_62uf3"]
 [ext_resource type="Texture2D" uid="uid://du07g1qula55v" path="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Spin_Kick_1x.png" id="5_mt3k1"]
@@ -12,6 +13,12 @@
 [ext_resource type="Texture2D" uid="uid://5svps1iv6snu" path="res://Graphics/Characters/DANI_DANCER/Fly_East_4x.png" id="10_dik15"]
 [ext_resource type="Texture2D" uid="uid://c4ln5pimjmpqr" path="res://Graphics/Characters/DANI_DANCER/Fly_West_4x.png" id="10_u0blb"]
 [ext_resource type="Texture2D" uid="uid://whgymehrbmrh" path="res://Graphics/Characters/DANI_DANCER/Pole_Pirouette_4x.png" id="12_cxa15"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_633mc"]
+shader = ExtResource("2_ipxhq")
+shader_parameter/line_color = Color(1, 1, 1, 0.235294)
+shader_parameter/line_thickness = 6.0
+shader_parameter/line_fade = 0.2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wt1d0"]
 radius = 5.0
@@ -735,6 +742,7 @@ motion_mode = 1
 script = ExtResource("1_hqnb5")
 
 [node name="S2D_Dani" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_633mc")
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_fkyqw")
 hframes = 4

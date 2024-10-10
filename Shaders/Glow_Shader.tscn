@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5dpnnx8rfgri"]
+
+[ext_resource type="Shader" path="res://Shaders/Border_Glow_Shader.gdshader" id="1_foft6"]
+[ext_resource type="Texture2D" uid="uid://d58ahpf6h811" path="res://Graphics/Characters/DANI_DANCER/Single_1x.png" id="2_xhaoh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f7kea"]
+shader = ExtResource("1_foft6")
+shader_parameter/line_color = Color(1, 1, 1, 0.235294)
+shader_parameter/line_thickness = 1.5
+shader_parameter/line_fade = 0.2
+
+[node name="GlowShader" type="Node2D"]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+
+[node name="Glow" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_f7kea")
+texture = ExtResource("2_xhaoh")
