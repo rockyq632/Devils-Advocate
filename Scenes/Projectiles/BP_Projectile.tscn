@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://d17q3do42v4ox"]
+
+[ext_resource type="Script" path="res://Scenes/Projectiles/bp_projectile.gd" id="1_myhwh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7sh3i"]
+radius = 0.01
+
+[sub_resource type="Animation" id="Animation_0yrf2"]
+resource_name = "END"
+length = 0.1
+
+[sub_resource type="Animation" id="Animation_ofhsf"]
+resource_name = "START"
+length = 0.1
+
+[sub_resource type="Animation" id="Animation_8lk0u"]
+resource_name = "TRAVEL"
+length = 0.1
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bwqq5"]
+_data = {
+"END": SubResource("Animation_0yrf2"),
+"START": SubResource("Animation_ofhsf"),
+"TRAVEL": SubResource("Animation_8lk0u")
+}
+
+[node name="BP_Projectile" type="CharacterBody2D"]
+collision_layer = 32
+collision_mask = 213
+script = ExtResource("1_myhwh")
+
+[node name="S2D_Projectile" type="Sprite2D" parent="."]
+
+[node name="CS_Collision" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_7sh3i")
+disabled = true
+
+[node name="AP_Projectile" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bwqq5")
+}
+
+[connection signal="animation_finished" from="AP_Projectile" to="." method="_on_ap_projectile_animation_finished"]

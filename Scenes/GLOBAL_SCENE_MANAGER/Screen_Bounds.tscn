@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=3 uid="uid://c6uwyusdwgn51"]
+
+[ext_resource type="Script" path="res://Scenes/GLOBAL_SCENE_MANAGER/screen_bounds.gd" id="1_hjls1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q1qi1"]
+size = Vector2(1320, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7t7c"]
+size = Vector2(1320, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trjmf"]
+size = Vector2(100, 780)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cqemc"]
+size = Vector2(100, 780)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lxbx1"]
+size = Vector2(4, 780)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6alie"]
+size = Vector2(4, 780)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_stf4k"]
+size = Vector2(1320, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o7hhu"]
+size = Vector2(1320, 4)
+
+[node name="ScreenBounds" type="Node2D"]
+script = ExtResource("1_hjls1")
+
+[node name="TB_Bounds" type="StaticBody2D" parent="."]
+collision_layer = 16
+
+[node name="Top_Bound" type="CollisionShape2D" parent="TB_Bounds"]
+position = Vector2(640, -50)
+shape = SubResource("RectangleShape2D_q1qi1")
+
+[node name="Bottom_Bound" type="CollisionShape2D" parent="TB_Bounds"]
+position = Vector2(640, 770)
+shape = SubResource("RectangleShape2D_w7t7c")
+
+[node name="LR_Bounds" type="StaticBody2D" parent="."]
+collision_layer = 16
+
+[node name="Left_Bound" type="CollisionShape2D" parent="LR_Bounds"]
+position = Vector2(-50, 360)
+shape = SubResource("RectangleShape2D_trjmf")
+
+[node name="Right_Bound" type="CollisionShape2D" parent="LR_Bounds"]
+position = Vector2(1330, 360)
+shape = SubResource("RectangleShape2D_cqemc")
+
+[node name="Wall_Warning" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 32
+
+[node name="Left_Bounce" type="CollisionShape2D" parent="Wall_Warning"]
+position = Vector2(2, 360)
+shape = SubResource("RectangleShape2D_lxbx1")
+
+[node name="Right_Bounce" type="CollisionShape2D" parent="Wall_Warning"]
+position = Vector2(1278, 360)
+shape = SubResource("RectangleShape2D_6alie")
+
+[node name="Floor_Warning" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 32
+
+[node name="Ceiling_Bounce" type="CollisionShape2D" parent="Floor_Warning"]
+position = Vector2(640, 2)
+shape = SubResource("RectangleShape2D_stf4k")
+
+[node name="Floor_Bounce" type="CollisionShape2D" parent="Floor_Warning"]
+position = Vector2(640, 718)
+shape = SubResource("RectangleShape2D_o7hhu")
+
+[connection signal="body_entered" from="Wall_Warning" to="." method="_on_wall_warning_body_entered"]
+[connection signal="body_entered" from="Floor_Warning" to="." method="_on_floor_warning_body_entered"]

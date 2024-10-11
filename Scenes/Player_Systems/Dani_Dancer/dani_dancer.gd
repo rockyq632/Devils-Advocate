@@ -98,10 +98,13 @@ func def_triggered():
 	moveset[3].is_ready = false
 	
 
+# Called if hit by damage
 func take_damage(amt:int) -> void:
 	curr_health = clamp( curr_health-amt, -1, MAX_HEALTH)
 	if( get_parent().has_method("take_damage") ):
 		get_parent().take_damage(amt)
+
+
 
 
 # Connected Signals

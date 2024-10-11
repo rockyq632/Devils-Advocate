@@ -66,8 +66,8 @@ _data = {
 }
 
 [node name="CB2D_Test_Dummy" type="CharacterBody2D"]
-collision_layer = 6
-collision_mask = 6
+collision_layer = 4
+collision_mask = 34
 script = ExtResource("1_bv1n7")
 
 [node name="S2D_Test_Dummy" type="Sprite2D" parent="."]

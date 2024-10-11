@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ba6xnfstclqbv"]
+[gd_scene load_steps=3 format=3 uid="uid://ba6xnfstclqbv"]
 
 [ext_resource type="Script" path="res://Scenes/GLOBAL_SCENE_MANAGER/global_scene_manager.gd" id="1_6gix0"]
+[ext_resource type="PackedScene" uid="uid://c6uwyusdwgn51" path="res://Scenes/GLOBAL_SCENE_MANAGER/Screen_Bounds.tscn" id="2_h2cpf"]
 
 [node name="Global_Scene_Manager" type="Node"]
 script = ExtResource("1_6gix0")
@@ -17,3 +18,5 @@ size_flags_vertical = 3
 
 [node name="Global_2D_Node" type="Node2D" parent="."]
 unique_name_in_owner = true
+
+[node name="ScreenBounds" parent="." instance=ExtResource("2_h2cpf")]

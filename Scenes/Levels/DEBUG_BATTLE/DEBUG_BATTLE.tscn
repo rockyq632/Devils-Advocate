@@ -1,14 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://m6heyk4adbkm"]
+[gd_scene load_steps=11 format=3 uid="uid://m6heyk4adbkm"]
 
 [ext_resource type="Texture2D" uid="uid://djnhjuf23frn" path="res://Graphics/BG/Tartarus_BG_Bot_1x.png" id="1_8vjbe"]
 [ext_resource type="Script" path="res://Scenes/Levels/DEBUG_BATTLE/debug_battle.gd" id="1_ew5ia"]
 [ext_resource type="PackedScene" uid="uid://bky3hgsc8hy2u" path="res://Scenes/Player_Systems/BP_player.tscn" id="3_w5g8t"]
 [ext_resource type="PackedScene" uid="uid://bc36tsophgxfn" path="res://Scenes/Player_Systems/Dani_Dancer/dani_dancer.tscn" id="4_rbg6n"]
 [ext_resource type="PackedScene" uid="uid://1i7vyrm075md" path="res://Scenes/Enemy_Systems/BP_Enemy.tscn" id="5_05l17"]
+[ext_resource type="PackedScene" uid="uid://d17q3do42v4ox" path="res://Scenes/Projectiles/BP_Projectile.tscn" id="6_3w4yo"]
+[ext_resource type="Texture2D" uid="uid://cddmax33h3714" path="res://Graphics/Projectiles/PE_Ice_Explosion.png" id="7_cjkgs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ecfno"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_lnfty"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bteux"]
+radius = 6.0
 
 [node name="DebugBattle" type="Control"]
 layout_mode = 3
@@ -52,5 +57,21 @@ offset_top = 362.0
 offset_right = 342.0
 offset_bottom = 482.0
 selected_character = ExtResource("4_rbg6n")
+
+[node name="Test_Projectile" type="Node2D" parent="."]
+position = Vector2(600, 420)
+
+[node name="BP_Projectile" parent="Test_Projectile" node_paths=PackedStringArray("cs_projectile") instance=ExtResource("6_3w4yo")]
+cs_projectile = NodePath("CollisionShape2D")
+sprite_scale = Vector2(4, 4)
+spritesheet = ExtResource("7_cjkgs")
+hframes = 4
+vframes = 2
+stop_on_end = null
+bounce_off_walls = true
+bounce_force_ratio = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Test_Projectile/BP_Projectile"]
+shape = SubResource("CircleShape2D_bteux")
 
 [connection signal="body_entered" from="StaticBody2D" to="." method="_on_body_entered_dmg_square"]

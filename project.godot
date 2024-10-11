@@ -127,6 +127,9 @@ right_arrow={
 2d_physics/layer_3="Enemy"
 2d_physics/layer_4="Enemy Attacks"
 2d_physics/layer_5="Borders"
+2d_physics/layer_6="Projectiles"
+2d_physics/layer_7="Walls"
+2d_physics/layer_8="Floor_Ceiling"
 
 [rendering]
 
