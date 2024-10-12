@@ -43,6 +43,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	
 	if( GSM.is_pc_movement_locked ):
 		pass
 	else:

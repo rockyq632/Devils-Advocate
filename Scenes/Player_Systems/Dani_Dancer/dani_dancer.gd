@@ -25,6 +25,9 @@ func _ready() -> void:
 	
 	
 func _process(_delta: float) -> void:
+	# Update Player position
+	GSM.player_position = global_position
+	
 	# If an animation has finished, continue other animations
 	if( is_anim_playing == false ):
 		curr_anim = "RESET"

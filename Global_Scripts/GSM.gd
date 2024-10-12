@@ -10,6 +10,7 @@ var GLOBAL_2D_NODE : Node2D
 
 var debug_scene_instance : DEBUG_BATTLE_SCENE
 
+var player_position : Vector2 = Vector2(0,0)
 
 var is_paused : bool = false
 var is_pc_movement_locked : bool = true

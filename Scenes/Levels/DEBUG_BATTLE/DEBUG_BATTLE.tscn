@@ -12,7 +12,7 @@
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_lnfty"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_bteux"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_bttiu"]
 radius = 6.0
 
 [node name="DebugBattle" type="Control"]
@@ -61,17 +61,19 @@ selected_character = ExtResource("4_rbg6n")
 [node name="Test_Projectile" type="Node2D" parent="."]
 position = Vector2(600, 420)
 
-[node name="BP_Projectile" parent="Test_Projectile" node_paths=PackedStringArray("cs_projectile") instance=ExtResource("6_3w4yo")]
-cs_projectile = NodePath("CollisionShape2D")
+[node name="BP_Projectile" parent="Test_Projectile" instance=ExtResource("6_3w4yo")]
+projectile_shape = SubResource("CircleShape2D_bttiu")
 sprite_scale = Vector2(4, 4)
 spritesheet = ExtResource("7_cjkgs")
 hframes = 4
 vframes = 2
-stop_on_end = null
-bounce_off_walls = true
+h_move_speed = 200.0
+h_acceleration = 2.0
+v_move_speed = 200.0
+v_acceleration = 2.0
+tracking_deadzone = 10.0
+tracks_to_target = true
 bounce_force_ratio = 1.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Test_Projectile/BP_Projectile"]
-shape = SubResource("CircleShape2D_bteux")
+max_bounces = 5
 
 [connection signal="body_entered" from="StaticBody2D" to="." method="_on_body_entered_dmg_square"]
