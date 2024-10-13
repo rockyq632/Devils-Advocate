@@ -12,5 +12,6 @@ enum AB_KEY {
 enum TARGET_TYPE {
 	ENEMY,
 	PLAYER,
+	PROJECTILE,
 	NONE
 }

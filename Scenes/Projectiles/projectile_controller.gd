@@ -1,6 +1,5 @@
-
 class_name ProjectileController
-extends Node
+extends Node2D
 
 signal projectile_stopped
 signal projectile_hit_wall
@@ -49,10 +48,11 @@ signal projectile_spawned
 @export_subgroup("Gravity")
 @export var effected_by_gravity : bool = false
 @export var creates_gravity : bool = false
+@export var remove_windup : bool = true
 @export var gravity_weight : float = 10.0
 @export var gravity_effect_collision : Area2D
 
-
+var type: ENM.TARGET_TYPE = ENM.TARGET_TYPE.PROJECTILE
 # Tracks the body that uses physics
 var prj_body:CharacterBody2D
 
@@ -67,7 +67,8 @@ var curr_speed:Vector2 = Vector2(0,0)
 var bounce_count:int=0
 
 # Gravity vars
-var grav_effected:Array[Node2D] = []
+var grav_effected:Array[Node] = []
+var self_grav_pull:Vector2 = Vector2(0,0)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -127,17 +128,23 @@ func _physics_process(_delta: float) -> void:
 		else:
 			curr_speed.x = clampf(curr_speed.x+h_acceleration, (-1*h_move_speed), h_move_speed)
 			curr_speed.y = clampf(curr_speed.y+v_acceleration, (-1*v_move_speed), v_move_speed)
-			prj_body.velocity = dir*curr_speed
+			prj_body.velocity = dir*curr_speed+self_grav_pull
 		
-		prj_body.move_and_slide()
 		
 		if(creates_gravity):
+			var cnt = 0
+			#print(grav_effected.size())
 			for i in grav_effected:
-				if(i.has_method("update_grav_vec")):
-					var dir_to:Vector2 = i.global_position.direction_to(prj_body.global_position)
-					var grav_vec:Vector2 = gravity_weight*dir_to
-					print(grav_vec)
-					i.update_grav_vec(grav_vec)
+				if( not is_instance_valid(i)):
+					grav_effected.remove_at(cnt)
+				elif(i.has_method("update_grav_vec")):
+					i.update_grav_vec(gravity_weight*i.global_position.direction_to(prj_body.global_position))
+					cnt += 1
+					
+		
+		prj_body.move_and_slide()
+		if( remove_windup ):
+			self_grav_pull = Vector2(0,0)
 	
 	
 
@@ -157,7 +164,7 @@ func track_to(track_pos:Vector2):
 	elif((track_pos.y > (prj_body.global_position.y+tracking_deadzone) )):
 		dir.y = 1
 		curr_speed.y = clampf(curr_speed.y+v_acceleration, (-1*v_move_speed), v_move_speed)
-	prj_body.velocity = curr_speed
+	prj_body.velocity = curr_speed+self_grav_pull
 
 
 # Called when boundary wall is hit
@@ -193,6 +200,15 @@ func floor_hit() -> void:
 		bounce_count += 1
 
 
+func update_grav_vec(grav_vec:Vector2):
+	if(effected_by_gravity):
+		if(grav_vec == Vector2(0,0)):
+			self_grav_pull = grav_vec
+		self_grav_pull += grav_vec
+	pass
+
+
+
 
 
 
@@ -211,6 +227,8 @@ func end_projectile():
 	anim_player.play("END")
 	if(stop_on_end):
 		stop_movement()
+
+
 
 
 
@@ -250,6 +268,12 @@ func _gravity_entered(body:Node2D) -> void:
 	if("type" in body):
 		if(body.type == target):
 			grav_effected.append(body)
+			
+	elif( "type" in body.get_child(0) ):
+		if(body.get_child(0) == self):
+				return
+		elif(body.get_child(0).type == target):
+			grav_effected.append(body.get_child(0))
 
 # When a body leaves the gravity field
 func _gravity_exited(body:Node2D) -> void:
@@ -259,6 +283,18 @@ func _gravity_exited(body:Node2D) -> void:
 			for i in grav_effected:
 				if( i == body  and  body.has_method("update_grav_vec")):
 					body.update_grav_vec(Vector2(0,0))
+					grav_effected.remove_at(cnt)
+					break
+				cnt += 1
+			
+	elif( "type" in body.get_child(0) ):
+		if(body.get_child(0).type == target):
+			if(body.get_child(0) == self):
+				return
+			var cnt = 0
+			for i in grav_effected:
+				if( i == body.get_child(0) and body.get_child(0).has_method("update_grav_vec")):
+					body.get_child(0).update_grav_vec(Vector2(0,0))
 					grav_effected.remove_at(cnt)
 					break
 				cnt += 1

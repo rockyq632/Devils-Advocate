@@ -139,12 +139,17 @@ radius = 200.0
 [node name="PRJ_Ice_Explosion" type="CharacterBody2D"]
 motion_mode = 1
 
-[node name="PROJECTILE_CONTROLLER" type="Node" parent="." node_paths=PackedStringArray("anim_player", "hurt_box_area", "gravity_effect_collision")]
+[node name="PROJECTILE_CONTROLLER" type="Node2D" parent="." node_paths=PackedStringArray("anim_player", "hurt_box_area", "gravity_effect_collision")]
 script = ExtResource("1_o0tjr")
+target = 2
 anim_player = NodePath("../AP_Ice_Explosion")
 hurt_box_area = NodePath("../A2D_Hurt_Box")
+stop_on_timeout = true
+timeout_sec = 10.0
 bounce_off_walls = true
+effected_by_gravity = true
 creates_gravity = true
+remove_windup = false
 gravity_effect_collision = NodePath("../A2D_Gravity")
 
 [node name="S2D_Ice_Explosion" type="Sprite2D" parent="."]
@@ -170,6 +175,7 @@ collision_mask = 197
 shape = SubResource("CircleShape2D_1mpw6")
 
 [node name="A2D_Gravity" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 37
 
