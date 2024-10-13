@@ -20,6 +20,7 @@ config/icon="res://Graphics/Icons/Taskbar_Icon_1x.png"
 GSM="*res://Global_Scripts/GSM.gd"
 ENM="*res://Global_Scripts/ENM.gd"
 AB_REF="*res://Global_Scripts/AB_REF.gd"
+RUN_STATS="*res://Global_Scripts/RUN_STATS.gd"
 ProjLib="*res://Scenes/Projectiles/Projectile_Library/PROJ_LIB.tscn"
 
 [display]

@@ -523,6 +523,30 @@ tracks/4/keys = {
 "update": 1,
 "values": [Vector2(32, -32)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("A2D_Hitbox/CS_Hitbox:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:effected_by_prj_gravity")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
 
 [sub_resource type="Animation" id="Animation_q6nou"]
 resource_name = "POLE_SPIN_KICK"
@@ -722,6 +746,30 @@ tracks/7/keys = {
 "update": 1,
 "values": [Vector2(500, 500)]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("A2D_Hitbox/CS_Hitbox:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath(".:effected_by_prj_gravity")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ggvom"]
 _data = {
@@ -753,6 +801,7 @@ vframes = 2
 shape = SubResource("CircleShape2D_6d2jl")
 
 [node name="A2D_Hitbox" type="Area2D" parent="."]
+collision_mask = 40
 
 [node name="CS_Hitbox" type="CollisionShape2D" parent="A2D_Hitbox"]
 shape = SubResource("CircleShape2D_6d2jl")
@@ -811,6 +860,11 @@ unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_ggvom")
 }
+
+[node name="Armor_Frames" type="Timer" parent="."]
+editor_description = "Armor Timer for just after taking damage"
+wait_time = 0.5
+one_shot = true
 
 [connection signal="body_entered" from="A2D_Attack_Collision_1" to="." method="_on_attack_1_body_entered"]
 [connection signal="animation_finished" from="AP_Dani" to="." method="_on_ap_dani_animation_finished"]

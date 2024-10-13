@@ -30,6 +30,7 @@ radius = 1.0
 script = ExtResource("1_s73xv")
 
 [node name="000_EXAMPLE" type="CharacterBody2D" parent="."]
+visible = false
 
 [node name="PROJECTILE_CONTROLLER" type="Node2D" parent="000_EXAMPLE" node_paths=PackedStringArray("anim_player", "hurt_box_area")]
 script = ExtResource("3_apn5j")
@@ -54,4 +55,3 @@ disabled = true
 shape = SubResource("CircleShape2D_2mi5y")
 
 [node name="PRJ_Ice_Explosion" parent="." instance=ExtResource("2_gnowd")]
-visible = false

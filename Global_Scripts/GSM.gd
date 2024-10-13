@@ -1,5 +1,7 @@
 extends Node
 
+@onready var GLOBAL_SAVE: SaveLoad = SaveLoad.new()
+
 var GLOBAL_SCENE_MANAGER : Node 
 var GLOBAL_CONTROL_NODE : Control
 var GLOBAL_2D_NODE : Node2D
@@ -16,6 +18,8 @@ var enemy_position : Vector2 = Vector2(0,0)
 
 var is_paused : bool = false
 var is_pc_movement_locked : bool = true
+
+
 
 
 

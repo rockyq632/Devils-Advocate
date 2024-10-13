@@ -9,6 +9,7 @@ func _ready() -> void:
 			pass
 		else:
 			dict[i.name] = load(i.scene_file_path)
+		i.queue_free()
 		
 	
 func get_prj(nam:String) -> CharacterBody2D:

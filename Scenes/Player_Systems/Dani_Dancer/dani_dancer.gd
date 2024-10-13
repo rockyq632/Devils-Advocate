@@ -1,6 +1,9 @@
 extends CharacterBody2D
 
 
+@export var effected_by_prj_gravity : bool = true
+@export var effected_by_world_gravity : bool = false
+
 var moveset : Array[PC_Ability] = [
 	AB_REF.dict[ENM.AB_KEY.POLE_SPIN_KICK],
 	AB_REF.dict[ENM.AB_KEY.POLE_INVERSION_STRIKE],
@@ -26,8 +29,9 @@ func _ready() -> void:
 	pass
 	
 	
-func _physics_process(_delta: float) -> void:	
-	velocity+=gravity_pull
+func _physics_process(_delta: float) -> void:
+	if(effected_by_prj_gravity):
+		velocity+=gravity_pull
 	move_and_slide()
 	
 	# If an animation has finished, continue other animations
@@ -105,15 +109,18 @@ func def_triggered():
 
 # Called if hit by damage
 func take_damage(amt:int) -> void:
-	curr_health = clamp( curr_health-amt, -1, MAX_HEALTH)
-	if( get_parent().has_method("take_damage") ):
-		get_parent().take_damage(amt)
+	if($Armor_Frames.is_stopped()):
+		curr_health = clamp( curr_health-amt, -1, MAX_HEALTH)
+		if( get_parent().has_method("take_damage") ):
+			get_parent().take_damage(amt)
+			$Armor_Frames.start()
 
 # Called if gravity field entered
 func update_grav_vec(src:Vector2):
-	if(src == Vector2(0,0)):
-		gravity_pull = src
-	gravity_pull += src
+	if(effected_by_prj_gravity):
+		if(src == Vector2(0,0)):
+			gravity_pull = src
+		gravity_pull += src
 
 
 # Connected Signals

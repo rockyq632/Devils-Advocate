@@ -12,6 +12,7 @@ signal projectile_spawned
 @export var target : ENM.TARGET_TYPE = ENM.TARGET_TYPE.PLAYER
 @export var anim_player:AnimationPlayer
 @export var hurt_box_area:Area2D
+@export var damage:float = 1.0
 
 @export_group("Projectile Motion")
 @export var h_move_speed:float = 200.0
@@ -248,12 +249,16 @@ func _on_ap_projectile_animation_finished(anim_name: StringName) -> void:
 func _on_hurtbox_entered(body: Node2D) -> void:
 	if("type" in body.get_parent()):
 		if(body.get_parent().type == target):
+			if(body.has_method("take_damage")):
+				body.take_damage(damage)
 			projectile_hit_target.emit()
 			end_projectile()
 # If an area enters projectile hurtbox
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if("type" in area.get_parent() ):
 		if( area.get_parent().type == target): 
+			if(area.get_parent().has_method("take_damage")):
+				area.get_parent().take_damage(damage)
 			projectile_hit_target.emit()
 			end_projectile()
 
