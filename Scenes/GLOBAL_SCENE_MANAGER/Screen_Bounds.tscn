@@ -75,5 +75,7 @@ shape = SubResource("RectangleShape2D_stf4k")
 position = Vector2(640, 718)
 shape = SubResource("RectangleShape2D_o7hhu")
 
+[connection signal="area_entered" from="Wall_Warning" to="." method="_on_wall_warning_area_entered"]
 [connection signal="body_entered" from="Wall_Warning" to="." method="_on_wall_warning_body_entered"]
+[connection signal="area_entered" from="Floor_Warning" to="." method="_on_floor_warning_area_entered"]
 [connection signal="body_entered" from="Floor_Warning" to="." method="_on_floor_warning_body_entered"]

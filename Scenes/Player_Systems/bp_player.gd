@@ -5,6 +5,7 @@ extends Control
 @export var health_heart_scn : PackedScene
 var char_instance : CharacterBody2D
 var UI_OFFSET : Vector2
+var type : ENM.TARGET_TYPE = ENM.TARGET_TYPE.PLAYER
 
 var heart_containers : Array[HealthHeart] = []
 
@@ -26,11 +27,11 @@ func _ready() -> void:
 	char_instance.position.y = $CB2D_Character_Placeholder.position.y
 	
 	# Remove Character placeholder
-	remove_child($CB2D_Character_Placeholder)
+	$CB2D_Character_Placeholder.queue_free()
 	
 	# Remove all heart placeholders
 	for i in %VF_Hearts.get_children():
-		%VF_Hearts.remove_child(i)
+		i.queue_free()
 	
 	# Add selected character hearts
 	for i in range(0, char_instance.MAX_HEALTH):
@@ -43,6 +44,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	# Update Player position in the global scene manager
+	GSM.player_position = char_instance.global_position
 	
 	if( GSM.is_pc_movement_locked ):
 		pass
@@ -102,6 +105,12 @@ func take_damage(_amt:float) -> void:
 	if( %VF_Hearts.get_child(char_instance.curr_health).has_method("damaged") ):
 		%VF_Hearts.get_child(char_instance.curr_health).damaged()
 
+
+func reset_cooldowns():
+	_on_cd_atk_1_timeout()
+	_on_cd_atk_2_timeout()
+	_on_cd_atk_3_timeout()
+	_on_cd_def_timeout()
 
 #Signals
 func _on_cd_atk_1_timeout() -> void:

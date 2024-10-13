@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=3 uid="uid://le8bjn04kvro"]
+
+[ext_resource type="Script" path="res://Scenes/Projectiles/Projectile_Library/proj_lib.gd" id="1_s73xv"]
+[ext_resource type="PackedScene" uid="uid://bcqncneucahp5" path="res://Scenes/Projectiles/Projectile_Library/proj_scenes/prj_ice_explosion.tscn" id="2_gnowd"]
+[ext_resource type="Script" path="res://Scenes/Projectiles/projectile_controller.gd" id="3_apn5j"]
+
+[sub_resource type="Animation" id="Animation_y07my"]
+resource_name = "START"
+
+[sub_resource type="Animation" id="Animation_r27d5"]
+resource_name = "END"
+
+[sub_resource type="Animation" id="Animation_grevv"]
+resource_name = "TRAVEL"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ykdiq"]
+_data = {
+"END": SubResource("Animation_r27d5"),
+"START": SubResource("Animation_y07my"),
+"TRAVEL": SubResource("Animation_grevv")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bs2km"]
+radius = 0.1
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mwkbi"]
+
+[node name="PROJ_LIB" type="Node"]
+script = ExtResource("1_s73xv")
+
+[node name="000_EXAMPLE" type="CharacterBody2D" parent="."]
+
+[node name="PROJECTILE_CONTROLLER" type="Node" parent="000_EXAMPLE" node_paths=PackedStringArray("anim_player", "hurt_box_area")]
+script = ExtResource("3_apn5j")
+anim_player = NodePath("../AP_EXAMPLE")
+hurt_box_area = NodePath("../Hurtbox")
+
+[node name="S2D_EXAMPLE" type="Sprite2D" parent="000_EXAMPLE"]
+
+[node name="AP_EXAMPLE" type="AnimationPlayer" parent="000_EXAMPLE"]
+libraries = {
+"": SubResource("AnimationLibrary_ykdiq")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="000_EXAMPLE"]
+visible = false
+shape = SubResource("CircleShape2D_bs2km")
+disabled = true
+
+[node name="Hurtbox" type="Area2D" parent="000_EXAMPLE"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="000_EXAMPLE/Hurtbox"]
+shape = SubResource("CapsuleShape2D_mwkbi")
+
+[node name="PRJ_Ice_Explosion" parent="." instance=ExtResource("2_gnowd")]

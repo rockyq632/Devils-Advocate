@@ -8,6 +8,7 @@ var moveset : Array[PC_Ability] = [
 	AB_REF.dict[ENM.AB_KEY.POLE_PIROUETTE]
 ]
 
+var type : ENM.TARGET_TYPE = ENM.TARGET_TYPE.PLAYER
 var MOVE_SPEED : float = 350.0
 var MOVE_DIR : Vector2 = Vector2(0,0)
 var MAX_HEALTH : float = 3.0
@@ -24,10 +25,7 @@ func _ready() -> void:
 	pass
 	
 	
-func _process(_delta: float) -> void:
-	# Update Player position
-	GSM.player_position = global_position
-	
+func _physics_process(_delta: float) -> void:
 	# If an animation has finished, continue other animations
 	if( is_anim_playing == false ):
 		curr_anim = "RESET"

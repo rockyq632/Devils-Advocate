@@ -74,7 +74,6 @@ script = ExtResource("1_bv1n7")
 texture = ExtResource("1_1tfy6")
 
 [node name="CP_Hitbox" type="CollisionPolygon2D" parent="."]
-visible = false
 polygon = PackedVector2Array(-4, 127, -5, 56, -16, 52, -21, 47, -52, -17, -68, -27, -74, -37, -68, -45, -26, -129, 25, -130, 32, -60, 75, -30, 73, -14, 33, 33, 17, 116, 10, 130)
 
 [node name="AP_Test_Dummy" type="AnimationPlayer" parent="."]

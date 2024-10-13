@@ -736,7 +736,7 @@ _data = {
 }
 
 [node name="DaniDancer" type="CharacterBody2D"]
-collision_mask = 56
+collision_mask = 16
 motion_mode = 1
 platform_floor_layers = 4294901888
 platform_wall_layers = 64
@@ -749,7 +749,12 @@ texture = ExtResource("1_fkyqw")
 hframes = 4
 vframes = 2
 
-[node name="CS_Hitbox" type="CollisionShape2D" parent="."]
+[node name="CS_Boundbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6d2jl")
+
+[node name="A2D_Hitbox" type="Area2D" parent="."]
+
+[node name="CS_Hitbox" type="CollisionShape2D" parent="A2D_Hitbox"]
 shape = SubResource("CircleShape2D_6d2jl")
 
 [node name="A2D_Attack_Collision_1" type="Area2D" parent="."]
