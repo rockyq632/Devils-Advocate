@@ -53,7 +53,7 @@ func _process(_delta: float) -> void:
 		# Process Movement Inputs
 		char_instance.MOVE_DIR = Input.get_vector("left", "right", "up", "down")
 		char_instance.velocity = char_instance.MOVE_SPEED * char_instance.MOVE_DIR
-		char_instance.move_and_slide()
+		#char_instance.move_and_slide()
 		# Move UI to match the character sprite
 		%MC_Character_UI.position = char_instance.position - UI_OFFSET
 	

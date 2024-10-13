@@ -19,6 +19,7 @@ signal projectile_spawned
 @export var h_acceleration:float = 10.0
 @export var v_move_speed:float = 200.0
 @export var v_acceleration:float = 10.0
+#@export var initial_angle_degs:float = 0.0
 
 
 
@@ -31,6 +32,8 @@ signal projectile_spawned
 @export_subgroup("Stop")
 @export var stop_on_end : bool = true
 @export var stop_on_walls : bool = false
+@export var stop_on_timeout : bool = false
+@export var timeout_sec : float = 1.0
 
 @export_subgroup("Bounce")
 @export var bounce_off_walls : bool = false
@@ -42,15 +45,19 @@ signal projectile_spawned
 @export var orbits_target:bool = false
 @export var orbit_radius:float = 60.0
 @export var orbit_CW:bool = false
-'''
+
 @export_subgroup("Gravity")
 @export var effected_by_gravity : bool = false
 @export var creates_gravity : bool = false
-@export var gravity_weight : float = 980.0
-@export var gravity_effect_distance : float = 500.0
-'''
+@export var gravity_weight : float = 10.0
+@export var gravity_effect_collision : Area2D
 
+
+# Tracks the body that uses physics
 var prj_body:CharacterBody2D
+
+# For timeou use
+var despawn_timer:Timer
 
 # Speed vars
 var dir:Vector2 = Vector2(1,1)
@@ -59,6 +66,8 @@ var curr_speed:Vector2 = Vector2(0,0)
 # bounce vars
 var bounce_count:int=0
 
+# Gravity vars
+var grav_effected:Array[Node2D] = []
 
 
 # Called when the node enters the scene tree for the first time.
@@ -70,9 +79,23 @@ func _ready() -> void:
 		prj_body = get_parent()
 		# Connect Animation Finished signal
 		anim_player.animation_finished.connect(_on_ap_projectile_animation_finished)
-		# Connect Area2D for collisions
+		# Connect HurtBox Area2D for collisions
 		hurt_box_area.body_entered.connect(_on_hurtbox_entered)
 		hurt_box_area.area_entered.connect(_on_hurtbox_area_entered)
+		
+		# Connect Gravity creation collision if it exists
+		if(creates_gravity):
+			gravity_effect_collision.body_entered.connect(_gravity_entered)
+			gravity_effect_collision.body_exited.connect(_gravity_exited)
+		
+		# Initiate Timer
+		despawn_timer = Timer.new()
+		despawn_timer.timeout.connect(_despawn_timout)
+		despawn_timer.wait_time = timeout_sec
+		despawn_timer.one_shot = true
+		add_child(despawn_timer)
+		if(stop_on_timeout):
+			despawn_timer.start()
 		
 		# Play spawning animation
 		anim_player.play("START")
@@ -107,6 +130,14 @@ func _physics_process(_delta: float) -> void:
 			prj_body.velocity = dir*curr_speed
 		
 		prj_body.move_and_slide()
+		
+		if(creates_gravity):
+			for i in grav_effected:
+				if(i.has_method("update_grav_vec")):
+					var dir_to:Vector2 = i.global_position.direction_to(prj_body.global_position)
+					var grav_vec:Vector2 = gravity_weight*dir_to
+					print(grav_vec)
+					i.update_grav_vec(grav_vec)
 	
 	
 
@@ -207,3 +238,27 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		if( area.get_parent().type == target): 
 			projectile_hit_target.emit()
 			end_projectile()
+
+# Despawn timer finished, ends projectile
+func _despawn_timout() -> void:
+	if(stop_on_timeout):
+		stop_movement()
+		end_projectile()
+	
+# When a body enters the gravity field
+func _gravity_entered(body:Node2D) -> void:
+	if("type" in body):
+		if(body.type == target):
+			grav_effected.append(body)
+
+# When a body leaves the gravity field
+func _gravity_exited(body:Node2D) -> void:
+	if("type" in body):
+		if(body.type == target):
+			var cnt = 0
+			for i in grav_effected:
+				if( i == body  and  body.has_method("update_grav_vec")):
+					body.update_grav_vec(Vector2(0,0))
+					grav_effected.remove_at(cnt)
+					break
+				cnt += 1

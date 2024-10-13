@@ -23,7 +23,8 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_bs2km"]
 radius = 0.1
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mwkbi"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_2mi5y"]
+radius = 1.0
 
 [node name="PROJ_LIB" type="Node"]
 script = ExtResource("1_s73xv")
@@ -50,6 +51,7 @@ disabled = true
 [node name="Hurtbox" type="Area2D" parent="000_EXAMPLE"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="000_EXAMPLE/Hurtbox"]
-shape = SubResource("CapsuleShape2D_mwkbi")
+shape = SubResource("CircleShape2D_2mi5y")
 
 [node name="PRJ_Ice_Explosion" parent="." instance=ExtResource("2_gnowd")]
+visible = false

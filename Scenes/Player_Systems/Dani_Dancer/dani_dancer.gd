@@ -14,6 +14,7 @@ var MOVE_DIR : Vector2 = Vector2(0,0)
 var MAX_HEALTH : float = 3.0
 
 var curr_health : float = 3.0
+var gravity_pull:Vector2 = Vector2(0,0)
 
 var is_anim_playing : bool = false
 var curr_anim : String = "RESET"
@@ -25,7 +26,10 @@ func _ready() -> void:
 	pass
 	
 	
-func _physics_process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:	
+	velocity+=gravity_pull
+	move_and_slide()
+	
 	# If an animation has finished, continue other animations
 	if( is_anim_playing == false ):
 		curr_anim = "RESET"
@@ -105,7 +109,11 @@ func take_damage(amt:int) -> void:
 	if( get_parent().has_method("take_damage") ):
 		get_parent().take_damage(amt)
 
-
+# Called if gravity field entered
+func update_grav_vec(src:Vector2):
+	if(src == Vector2(0,0)):
+		gravity_pull = src
+	gravity_pull += src
 
 
 # Connected Signals
