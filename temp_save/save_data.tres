@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="SaveLoad" load_steps=2 format=3 uid="uid://dwrefh33e56x3"]
+[gd_resource type="Resource" script_class="SaveLoad" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://Global_Scripts/SAVE_LOAD.gd" id="1_5uvi7"]
+[ext_resource type="Script" path="res://Global_Scripts/Resources/SAVE_LOAD.gd" id="1_5uvi7"]
 
 [resource]
 script = ExtResource("1_5uvi7")
-save_num = 3
+save_num = 34

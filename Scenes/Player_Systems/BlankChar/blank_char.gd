@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@export var pstats:PStats
 
 var moveset : Array[PC_Ability] = [
 	AB_REF.dict[ENM.AB_KEY.RESET],

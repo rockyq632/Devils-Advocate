@@ -3,6 +3,10 @@ extends CharacterBody2D
 
 @export var effected_by_prj_gravity : bool = true
 @export var effected_by_world_gravity : bool = false
+@export var pstats : PStats
+
+#Exports used exclusively in animation player
+@export var ap_move_speed_scale : float = 1.0
 
 var moveset : Array[PC_Ability] = [
 	AB_REF.dict[ENM.AB_KEY.POLE_SPIN_KICK],
@@ -12,11 +16,8 @@ var moveset : Array[PC_Ability] = [
 ]
 
 var type : ENM.TARGET_TYPE = ENM.TARGET_TYPE.PLAYER
-var MOVE_SPEED : float = 350.0
 var MOVE_DIR : Vector2 = Vector2(0,0)
-var MAX_HEALTH : float = 3.0
 
-var curr_health : float = 3.0
 var gravity_pull:Vector2 = Vector2(0,0)
 
 var is_anim_playing : bool = false
@@ -32,6 +33,8 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if(effected_by_prj_gravity):
 		velocity+=gravity_pull
+		
+	velocity *= ap_move_speed_scale
 	move_and_slide()
 	
 	# If an animation has finished, continue other animations
@@ -110,7 +113,7 @@ func def_triggered():
 # Called if hit by damage
 func take_damage(amt:int) -> void:
 	if($Armor_Frames.is_stopped()):
-		curr_health = clamp( curr_health-amt, -1, MAX_HEALTH)
+		pstats.health = clamp( pstats.health-amt, -1, pstats.max_health)
 		if( get_parent().has_method("take_damage") ):
 			get_parent().take_damage(amt)
 			$Armor_Frames.start()

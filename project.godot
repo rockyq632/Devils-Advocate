@@ -132,6 +132,7 @@ right_arrow={
 2d_physics/layer_6="Projectiles"
 2d_physics/layer_7="Walls"
 2d_physics/layer_8="Floor_Ceiling"
+2d_physics/layer_9="Player_Shape_Boundary"
 
 [rendering]
 

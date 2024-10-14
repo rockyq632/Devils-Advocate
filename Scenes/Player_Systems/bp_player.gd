@@ -3,6 +3,7 @@ extends Control
 
 @export var selected_character : PackedScene
 @export var health_heart_scn : PackedScene
+
 var char_instance : CharacterBody2D
 var UI_OFFSET : Vector2
 var type : ENM.TARGET_TYPE = ENM.TARGET_TYPE.PLAYER
@@ -14,6 +15,17 @@ func _ready() -> void:
 	# Load selected Character
 	char_instance = selected_character.instantiate()
 	
+	#If P1 stats exist already, maintain stats
+	if(GSM.GLOBAL_P1_STATS):
+		char_instance.pstats = GSM.GLOBAL_P1_STATS
+	else:
+		GSM.GLOBAL_P1_STATS = char_instance.pstats
+		
+	
+	# Setup positions to match placeholders in Godot
+	UI_OFFSET = $CB2D_Character_Placeholder.position
+	char_instance.position = $CB2D_Character_Placeholder.position
+		
 	# Load selected ability icons
 	var temp:Array[CompressedTexture2D] = char_instance.get_ability_icons()
 	%S2D_AB1_ICON.texture = temp[0]
@@ -21,25 +33,24 @@ func _ready() -> void:
 	%S2D_AB3_ICON.texture = temp[2]
 	%S2D_AB4_ICON.texture = temp[3]
 	
-	# Setup positions to match placeholders in Godot
-	UI_OFFSET = $CB2D_Character_Placeholder.position
-	char_instance.position.x = $CB2D_Character_Placeholder.position.x
-	char_instance.position.y = $CB2D_Character_Placeholder.position.y
-	
-	# Remove Character placeholder
-	$CB2D_Character_Placeholder.queue_free()
-	
 	# Remove all heart placeholders
 	for i in %VF_Hearts.get_children():
 		i.queue_free()
 	
 	# Add selected character hearts
-	for i in range(0, char_instance.MAX_HEALTH):
+	for i in range(0, char_instance.pstats.max_health):
 		heart_containers.append(health_heart_scn.instantiate())
 		%VF_Hearts.add_child(heart_containers[i])
+		if( i > char_instance.pstats.health-1 ):
+			heart_containers[i].empty_heart()
+	
+	# Remove Character placeholder
+	$CB2D_Character_Placeholder.queue_free()
 	
 	# Add selected character items
 	add_child(char_instance)
+	
+		
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -52,8 +63,8 @@ func _process(_delta: float) -> void:
 	else:
 		# Process Movement Inputs
 		char_instance.MOVE_DIR = Input.get_vector("left", "right", "up", "down")
-		char_instance.velocity = char_instance.MOVE_SPEED * char_instance.MOVE_DIR
-		#char_instance.move_and_slide()
+		char_instance.velocity = char_instance.pstats.move_speed * char_instance.MOVE_DIR
+		
 		# Move UI to match the character sprite
 		%MC_Character_UI.position = char_instance.position - UI_OFFSET
 	
@@ -99,11 +110,11 @@ func _process(_delta: float) -> void:
 	
 func take_damage(_amt:float) -> void:
 	#RQ TODO Currently ignores amt variable
-	if( char_instance.curr_health == -1 ):
+	if( char_instance.pstats.health == -1 ):
 		return
 	
-	if( %VF_Hearts.get_child(char_instance.curr_health).has_method("damaged") ):
-		%VF_Hearts.get_child(char_instance.curr_health).damaged()
+	if( %VF_Hearts.get_child(char_instance.pstats.health).has_method("damaged") ):
+		%VF_Hearts.get_child(char_instance.pstats.health).damaged()
 
 
 func reset_cooldowns():

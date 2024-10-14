@@ -1,12 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://cekhruau50dl8"]
+[gd_scene load_steps=13 format=3 uid="uid://cekhruau50dl8"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/Character_Select_Screen/character_select_screen.gd" id="1_13toc"]
 [ext_resource type="Texture2D" uid="uid://dnonfh7kaxspj" path="res://Graphics/BG/Char_Select_BG_1x.png" id="1_kgfmb"]
-[ext_resource type="Texture2D" uid="uid://d58ahpf6h811" path="res://Graphics/Characters/DANI_DANCER/Single_1x.png" id="2_cwa57"]
 [ext_resource type="Theme" uid="uid://6yidb12fyc8i" path="res://Themes/UI_TEXT_BUTTON_THEME.tres" id="3_2rlyx"]
-[ext_resource type="Texture2D" uid="uid://b6dxewwkiapn1" path="res://Graphics/Characters/ASTA_ASTROLOGIAN/Single_1x.png" id="3_umix2"]
 [ext_resource type="PackedScene" uid="uid://bky3hgsc8hy2u" path="res://Scenes/Player_Systems/BP_player.tscn" id="3_xfm65"]
 [ext_resource type="Texture2D" uid="uid://ogpf7vucv8qj" path="res://Graphics/Characters/Locked_Character_1x.png" id="4_80qt6"]
+[ext_resource type="PackedScene" uid="uid://bc36tsophgxfn" path="res://Scenes/Player_Systems/Dani_Dancer/dani_dancer.tscn" id="4_jewx0"]
+[ext_resource type="Texture2D" uid="uid://bbffpbjwawei" path="res://Graphics/Characters/DANI_DANCER/Character_Select/Dani_Select_30p_1x.png" id="5_5l7q0"]
+[ext_resource type="Texture2D" uid="uid://bm2a2wwt2q6ub" path="res://Graphics/Characters/DANI_DANCER/Character_Select/Dani_Select_90p_1x.png" id="6_xah7f"]
+[ext_resource type="Texture2D" uid="uid://cm3vh07ehyy6i" path="res://Graphics/Characters/ASTA_ASTROLOGIAN/Character_Select/Asta_Select_30p_1x.png" id="7_jckck"]
+[ext_resource type="Texture2D" uid="uid://b61f7t680gvk7" path="res://Graphics/Characters/DANI_DANCER/Character_Select/Dani_Select_60p_1x.png" id="7_xjinc"]
+[ext_resource type="Texture2D" uid="uid://c6fb0gfhs0scs" path="res://Graphics/Characters/ASTA_ASTROLOGIAN/Character_Select/Asta_Select_90p_1x.png" id="8_fmwsm"]
+[ext_resource type="Texture2D" uid="uid://chcm502wq0vd6" path="res://Graphics/Characters/ASTA_ASTROLOGIAN/Character_Select/Asta_Select_60p_1x.png" id="9_qv5fv"]
 
 [node name="Character_Select_Screen" type="Control"]
 layout_mode = 3
@@ -40,6 +45,7 @@ offset_bottom = 160.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+selected_character = ExtResource("4_jewx0")
 
 [node name="HB_Container" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -59,14 +65,20 @@ layout_mode = 2
 
 [node name="BTN_Dani" type="TextureButton" parent="HB_Container/VB_Character_Buttons/ARC1"]
 layout_mode = 2
-texture_normal = ExtResource("2_cwa57")
+texture_normal = ExtResource("5_5l7q0")
+texture_pressed = ExtResource("6_xah7f")
+texture_hover = ExtResource("7_xjinc")
+texture_focused = ExtResource("6_xah7f")
 
 [node name="ARC2" type="AspectRatioContainer" parent="HB_Container/VB_Character_Buttons"]
 layout_mode = 2
 
 [node name="BTN_Asta" type="TextureButton" parent="HB_Container/VB_Character_Buttons/ARC2"]
 layout_mode = 2
-texture_normal = ExtResource("3_umix2")
+texture_normal = ExtResource("7_jckck")
+texture_pressed = ExtResource("8_fmwsm")
+texture_hover = ExtResource("9_qv5fv")
+texture_focused = ExtResource("8_fmwsm")
 
 [node name="ARC3" type="AspectRatioContainer" parent="HB_Container/VB_Character_Buttons"]
 layout_mode = 2
@@ -105,4 +117,6 @@ theme_override_constants/margin_right = 10
 layout_mode = 2
 text = "DEBUG"
 
+[connection signal="pressed" from="HB_Container/VB_Character_Buttons/ARC1/BTN_Dani" to="." method="_on_btn_dani_pressed"]
+[connection signal="pressed" from="HB_Container/VB_Character_Buttons/ARC2/BTN_Asta" to="." method="_on_btn_asta_pressed"]
 [connection signal="pressed" from="MC_Debug_Btn/BTN_Debug" to="." method="_on_btn_debug_pressed"]

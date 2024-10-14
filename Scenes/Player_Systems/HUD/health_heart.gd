@@ -6,3 +6,6 @@ func damaged() -> void:
 	
 func healed() -> void:
 	$AP_Heart.play("HEALED")
+	
+func empty_heart() -> void:
+	$AP_Heart.play("EMPTY")

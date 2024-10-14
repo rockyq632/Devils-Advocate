@@ -15,6 +15,7 @@ offset_right = 1280.0
 offset_bottom = 720.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 1
 
 [node name="Global_2D_Node" type="Node2D" parent="."]
 unique_name_in_owner = true

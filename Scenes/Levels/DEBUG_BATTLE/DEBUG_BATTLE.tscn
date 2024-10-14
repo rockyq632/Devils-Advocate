@@ -61,6 +61,8 @@ selected_character = ExtResource("4_rbg6n")
 [node name="Next_Area_Zone" type="Node2D" parent="."]
 
 [node name="A2D_Waiting_Room" type="Area2D" parent="Next_Area_Zone"]
+collision_layer = 0
+collision_mask = 256
 
 [node name="CS_Waiting_Room" type="CollisionShape2D" parent="Next_Area_Zone/A2D_Waiting_Room"]
 position = Vector2(1180, 360)
