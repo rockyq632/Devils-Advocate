@@ -13,6 +13,7 @@ config_version=5
 config/name="Devils Advocate"
 run/main_scene="res://Scenes/GLOBAL_SCENE_MANAGER/global_scene_manager.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+run/max_fps=75
 config/icon="res://Graphics/Icons/Taskbar_Icon_1x.png"
 
 [autoload]

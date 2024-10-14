@@ -19,4 +19,5 @@ func _notification(what: int) -> void:
 	if(what == NOTIFICATION_WM_CLOSE_REQUEST):
 		print("closing...")
 		GSM.GLOBAL_SAVE.game_save()
+		GSM.clear_screen_on_close()
 		get_tree().quit()

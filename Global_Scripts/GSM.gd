@@ -35,3 +35,8 @@ func clear_screen():
 		i.queue_free()
 	for i in GLOBAL_ENEMY_PROJECTILES.get_children():
 		i.queue_free()
+		
+		
+func clear_screen_on_close():
+	for i in GLOBAL_SCENE_MANAGER.get_children():
+		i.queue_free()

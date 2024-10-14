@@ -7,6 +7,7 @@ signal enemy_dead
 @export_group("Debug")
 @export var is_debug : bool = false
 @export var spawn_projectile_on_click:bool=false
+@export var debug_ai:bool = false
 
 var enemy_instance
 var type : ENM.TARGET_TYPE = ENM.TARGET_TYPE.ENEMY
@@ -16,6 +17,8 @@ func _ready() -> void:
 	enemy_instance = enemy_scene.instantiate()
 	enemy_instance.global_position = $CB2D_Test_Dummy.global_position
 	$CB2D_Test_Dummy.queue_free()
+	if("debug_ai" in enemy_instance):
+		enemy_instance.debug_ai = debug_ai
 	add_child(enemy_instance)
 	
 

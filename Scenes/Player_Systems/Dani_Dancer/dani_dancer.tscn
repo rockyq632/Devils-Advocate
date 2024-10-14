@@ -825,6 +825,7 @@ script = ExtResource("1_hqnb5")
 pstats = SubResource("Resource_gf4ga")
 
 [node name="S2D_Dani" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 material = SubResource("ShaderMaterial_633mc")
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_fkyqw")
@@ -902,3 +903,4 @@ one_shot = true
 
 [connection signal="body_entered" from="A2D_Attack_Collision_1" to="." method="_on_attack_1_body_entered"]
 [connection signal="animation_finished" from="AP_Dani" to="." method="_on_ap_dani_animation_finished"]
+[connection signal="timeout" from="Armor_Frames" to="." method="_on_armor_frames_timeout"]

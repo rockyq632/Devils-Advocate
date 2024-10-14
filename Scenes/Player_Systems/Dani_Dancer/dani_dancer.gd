@@ -31,6 +31,17 @@ func _ready() -> void:
 	
 	
 func _physics_process(_delta: float) -> void:
+	# Handle armor frames display
+	if($Armor_Frames.time_left>0.0):
+		if(%S2D_Dani.visible):
+			%S2D_Dani.visible = false
+		else:
+			%S2D_Dani.visible = true
+	else:
+		if(not %S2D_Dani.visible):
+			%S2D_Dani.visible = true
+	
+	# If gravity via projectile is being applied to character
 	if(effected_by_prj_gravity):
 		velocity+=gravity_pull
 		
@@ -135,3 +146,7 @@ func _on_ap_dani_animation_finished(anim_name: StringName) -> void:
 func _on_attack_1_body_entered(body: Node2D) -> void:
 	if(body.has_method("take_damage")):
 		body.take_damage( AB_REF.dict[curr_anim_key].ab_base_dmg )
+		
+# When Armor frames wear off
+func _on_armor_frames_timeout() -> void:
+	pass # Replace with function body.
