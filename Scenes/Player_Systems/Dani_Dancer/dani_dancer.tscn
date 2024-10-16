@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scenes/Player_Systems/Dani_Dancer/dani_dancer.gd" id="1_hqnb5"]
 [ext_resource type="Texture2D" uid="uid://dyf5s4t0sisab" path="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Inversion_Dive_1x.png" id="2_4q8bs"]
 [ext_resource type="Shader" path="res://Shaders/Border_Glow_Shader.gdshader" id="2_ipxhq"]
-[ext_resource type="Script" path="res://Global_Scripts/Resources/PLAYER_STATS.gd" id="2_mvxxh"]
+[ext_resource type="Script" path="res://Global_Scripts/Resources/Player_Stats/PLAYER_STATS.gd" id="2_w5ss3"]
 [ext_resource type="Texture2D" uid="uid://w2baf4vi6h8h" path="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Inversion_Strike_1x.png" id="3_lh4ux"]
 [ext_resource type="Texture2D" uid="uid://dui2bw50swvh" path="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Pirouette_1x.png" id="4_62uf3"]
 [ext_resource type="Texture2D" uid="uid://du07g1qula55v" path="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Spin_Kick_1x.png" id="5_mt3k1"]
@@ -15,8 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://c4ln5pimjmpqr" path="res://Graphics/Characters/DANI_DANCER/Fly_West_4x.png" id="10_u0blb"]
 [ext_resource type="Texture2D" uid="uid://whgymehrbmrh" path="res://Graphics/Characters/DANI_DANCER/Pole_Pirouette_4x.png" id="12_cxa15"]
 
-[sub_resource type="Resource" id="Resource_gf4ga"]
-script = ExtResource("2_mvxxh")
+[sub_resource type="Resource" id="Resource_jotc4"]
+script = ExtResource("2_w5ss3")
 max_health = 3.0
 health = 3.0
 armor = 0.0
@@ -822,7 +822,7 @@ motion_mode = 1
 platform_floor_layers = 4294901888
 platform_wall_layers = 64
 script = ExtResource("1_hqnb5")
-pstats = SubResource("Resource_gf4ga")
+pstats = SubResource("Resource_jotc4")
 
 [node name="S2D_Dani" type="Sprite2D" parent="."]
 unique_name_in_owner = true

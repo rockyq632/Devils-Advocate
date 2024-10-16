@@ -1,12 +1,14 @@
 extends CharacterBody2D
 
 
-@export var effected_by_prj_gravity : bool = true
-@export var effected_by_world_gravity : bool = false
-@export var pstats : PStats
 
+@export var pstats : PStats = PStats.new()
 #Exports used exclusively in animation player
 @export var ap_move_speed_scale : float = 1.0
+
+var effected_by_prj_gravity : bool = true
+var effected_by_world_gravity : bool = false
+
 
 var moveset : Array[PC_Ability] = [
 	AB_REF.dict[ENM.AB_KEY.POLE_SPIN_KICK],

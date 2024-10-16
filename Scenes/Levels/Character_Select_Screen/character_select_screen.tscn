@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://cekhruau50dl8"]
+[gd_scene load_steps=12 format=3 uid="uid://cekhruau50dl8"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/Character_Select_Screen/character_select_screen.gd" id="1_13toc"]
 [ext_resource type="Texture2D" uid="uid://dnonfh7kaxspj" path="res://Graphics/BG/Char_Select_BG_1x.png" id="1_kgfmb"]
 [ext_resource type="Theme" uid="uid://6yidb12fyc8i" path="res://Themes/UI_TEXT_BUTTON_THEME.tres" id="3_2rlyx"]
 [ext_resource type="PackedScene" uid="uid://bky3hgsc8hy2u" path="res://Scenes/Player_Systems/BP_player.tscn" id="3_xfm65"]
 [ext_resource type="Texture2D" uid="uid://ogpf7vucv8qj" path="res://Graphics/Characters/Locked_Character_1x.png" id="4_80qt6"]
-[ext_resource type="PackedScene" uid="uid://bc36tsophgxfn" path="res://Scenes/Player_Systems/Dani_Dancer/dani_dancer.tscn" id="4_jewx0"]
 [ext_resource type="Texture2D" uid="uid://bbffpbjwawei" path="res://Graphics/Characters/DANI_DANCER/Character_Select/Dani_Select_30p_1x.png" id="5_5l7q0"]
 [ext_resource type="Texture2D" uid="uid://bm2a2wwt2q6ub" path="res://Graphics/Characters/DANI_DANCER/Character_Select/Dani_Select_90p_1x.png" id="6_xah7f"]
 [ext_resource type="Texture2D" uid="uid://cm3vh07ehyy6i" path="res://Graphics/Characters/ASTA_ASTROLOGIAN/Character_Select/Asta_Select_30p_1x.png" id="7_jckck"]
@@ -45,7 +44,6 @@ offset_bottom = 160.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-selected_character = ExtResource("4_jewx0")
 
 [node name="HB_Container" type="HBoxContainer" parent="."]
 layout_mode = 1

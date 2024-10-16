@@ -58,6 +58,10 @@ offset_top = 362.0
 offset_right = 342.0
 offset_bottom = 482.0
 selected_character = ExtResource("4_rbg6n")
+moveset_select1 = 1
+moveset_select2 = 2
+moveset_select3 = 3
+moveset_select4 = 4
 
 [node name="Next_Area_Zone" type="Node2D" parent="."]
 

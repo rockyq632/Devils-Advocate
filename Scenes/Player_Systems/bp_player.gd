@@ -4,6 +4,15 @@ extends Control
 @export var selected_character : PackedScene
 @export var health_heart_scn : PackedScene
 
+@export_group("Character Specifics")
+@export var moveset_select1:ENM.AB_KEY
+@export var moveset_select2:ENM.AB_KEY 
+@export var moveset_select3:ENM.AB_KEY 
+@export var moveset_select4:ENM.AB_KEY 
+@export_subgroup("Gravity")
+@export var effected_by_prj_gravity:bool
+@export var effected_by_world_gravity:bool
+
 var char_instance : CharacterBody2D
 var UI_OFFSET : Vector2
 var type : ENM.TARGET_TYPE = ENM.TARGET_TYPE.PLAYER
@@ -12,8 +21,15 @@ var heart_containers : Array[HealthHeart] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if(RUN_STATS.selected_char1):
+		selected_character = RUN_STATS.selected_char1
+	
 	# Load selected Character
 	char_instance = selected_character.instantiate()
+	
+	if("effected_by_prj_gravity" in char_instance):
+		char_instance.effected_by_prj_gravity = effected_by_prj_gravity
+		char_instance.effected_by_world_gravity = effected_by_world_gravity
 	
 	#If P1 stats exist already, maintain stats
 	if(GSM.GLOBAL_P1_STATS):
@@ -113,6 +129,9 @@ func take_damage(_amt:float) -> void:
 	if( char_instance.pstats.health == -1 ):
 		return
 	
+	if(char_instance.pstats.health >= %VF_Hearts.get_child_count()):
+		char_instance.pstats.health = clamp(char_instance.pstats.health-1, 0, char_instance.pstats.max_health)
+	
 	if( %VF_Hearts.get_child(char_instance.pstats.health).has_method("damaged") ):
 		%VF_Hearts.get_child(char_instance.pstats.health).damaged()
 
@@ -122,6 +141,44 @@ func reset_cooldowns():
 	_on_cd_atk_2_timeout()
 	_on_cd_atk_3_timeout()
 	_on_cd_def_timeout()
+
+
+
+
+
+
+func refresh_character():
+	var pos:Vector2 = Vector2(0,0)
+	if(char_instance in get_children()):
+		pos = char_instance.position
+		char_instance.queue_free()
+	char_instance = selected_character.instantiate()
+	char_instance.position = pos
+	
+	GSM.GLOBAL_P1_STATS = char_instance.pstats
+	if("effected_by_prj_gravity" in char_instance):
+		char_instance.effected_by_prj_gravity = effected_by_prj_gravity
+		char_instance.effected_by_world_gravity = effected_by_world_gravity
+		
+	# Correct abillity icons
+	var temp:Array[CompressedTexture2D] = char_instance.get_ability_icons()
+	%S2D_AB1_ICON.texture = temp[0]
+	%S2D_AB2_ICON.texture = temp[1]
+	%S2D_AB3_ICON.texture = temp[2]
+	%S2D_AB4_ICON.texture = temp[3]
+	
+	# Remove all heart placeholders
+	for i in %VF_Hearts.get_children():
+		%VF_Hearts.remove_child(i)
+	
+	# Add selected character hearts
+	for i in range(0, char_instance.pstats.max_health):
+		heart_containers.append(health_heart_scn.instantiate())
+		%VF_Hearts.add_child(heart_containers[i])
+		if( i > char_instance.pstats.health-1 ):
+			heart_containers[i].empty_heart()
+
+	add_child(char_instance)
 
 #Signals
 func _on_cd_atk_1_timeout() -> void:

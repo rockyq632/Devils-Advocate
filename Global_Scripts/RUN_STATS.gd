@@ -1,5 +1,7 @@
 extends Node
 
+var selected_char1:PackedScene
+
 var dict:Dictionary = {
 	"total_damage" : 0.0,
 	"dps" : 0.0
