@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://cekhruau50dl8"]
+[gd_scene load_steps=14 format=3 uid="uid://cekhruau50dl8"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/Character_Select_Screen/character_select_screen.gd" id="1_13toc"]
-[ext_resource type="Texture2D" uid="uid://dnonfh7kaxspj" path="res://Graphics/BG/Char_Select_BG_1x.png" id="1_kgfmb"]
+[ext_resource type="Texture2D" uid="uid://ux5u7qhxxkau" path="res://Graphics/BG/Char_Select_BG_no-light_1x.png" id="2_7xld5"]
 [ext_resource type="Theme" uid="uid://6yidb12fyc8i" path="res://Themes/UI_TEXT_BUTTON_THEME.tres" id="3_2rlyx"]
+[ext_resource type="Texture2D" uid="uid://ct1etpd1eytb5" path="res://Graphics/BG/LeftSpotlight.png" id="3_6egn6"]
 [ext_resource type="PackedScene" uid="uid://bky3hgsc8hy2u" path="res://Scenes/Player_Systems/BP_player.tscn" id="3_xfm65"]
 [ext_resource type="Texture2D" uid="uid://ogpf7vucv8qj" path="res://Graphics/Characters/Locked_Character_1x.png" id="4_80qt6"]
+[ext_resource type="Texture2D" uid="uid://bkfxpd6yafhv3" path="res://Graphics/BG/RightSpotlight.png" id="4_jvui0"]
 [ext_resource type="Texture2D" uid="uid://bbffpbjwawei" path="res://Graphics/Characters/DANI_DANCER/Character_Select/Dani_Select_30p_1x.png" id="5_5l7q0"]
 [ext_resource type="Texture2D" uid="uid://bm2a2wwt2q6ub" path="res://Graphics/Characters/DANI_DANCER/Character_Select/Dani_Select_90p_1x.png" id="6_xah7f"]
 [ext_resource type="Texture2D" uid="uid://cm3vh07ehyy6i" path="res://Graphics/Characters/ASTA_ASTROLOGIAN/Character_Select/Asta_Select_30p_1x.png" id="7_jckck"]
@@ -28,7 +30,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_kgfmb")
+texture = ExtResource("2_7xld5")
+
+[node name="PL_Left_Light" type="PointLight2D" parent="TR_BG"]
+energy = 0.8
+texture = ExtResource("3_6egn6")
+offset = Vector2(640, 320)
+
+[node name="PL_Right_Light" type="PointLight2D" parent="TR_BG"]
+energy = 0.8
+texture = ExtResource("4_jvui0")
+offset = Vector2(640, 320)
 
 [node name="Player" parent="." instance=ExtResource("3_xfm65")]
 layout_mode = 1

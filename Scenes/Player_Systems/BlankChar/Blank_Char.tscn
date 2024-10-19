@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dc8xryvgdq0op"]
+[gd_scene load_steps=8 format=3 uid="uid://dc8xryvgdq0op"]
 
 [ext_resource type="Texture2D" uid="uid://ogpf7vucv8qj" path="res://Graphics/Characters/Locked_Character_1x.png" id="1_coofb"]
 [ext_resource type="Script" path="res://Scenes/Player_Systems/BlankChar/blank_char.gd" id="1_f0fb0"]
@@ -13,6 +13,8 @@ armor = 0.0
 move_speed = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5c0wq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3npsl"]
 
 [node name="BlankChar" type="CharacterBody2D"]
 script = ExtResource("1_f0fb0")
@@ -32,3 +34,6 @@ visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("3_qxb5u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3npsl")
