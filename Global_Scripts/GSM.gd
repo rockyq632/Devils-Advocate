@@ -23,7 +23,8 @@ var is_pc_movement_locked : bool = true
 
 
 
-
+func set_bgs(bg_close:Texture2D, bg_far:Texture2D, bg_farthest:Texture2D):
+	pass
 
 func clear_enemy_projectiles():
 	for i in GLOBAL_ENEMY_PROJECTILES.get_children():

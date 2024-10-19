@@ -1,10 +1,58 @@
-[gd_scene load_steps=3 format=3 uid="uid://ba6xnfstclqbv"]
+[gd_scene load_steps=4 format=3 uid="uid://ba6xnfstclqbv"]
 
-[ext_resource type="Script" path="res://Scenes/GLOBAL_SCENE_MANAGER/global_scene_manager.gd" id="1_6gix0"]
+[ext_resource type="Script" path="res://Scenes/GLOBAL_SCENE_MANAGER/scripts/global_scene_manager.gd" id="1_6gix0"]
 [ext_resource type="PackedScene" uid="uid://c6uwyusdwgn51" path="res://Scenes/GLOBAL_SCENE_MANAGER/Screen_Bounds.tscn" id="2_h2cpf"]
+[ext_resource type="Script" path="res://Scenes/GLOBAL_SCENE_MANAGER/scripts/global_bg_viewports.gd" id="2_lj6ur"]
 
 [node name="Global_Scene_Manager" type="Node"]
 script = ExtResource("1_6gix0")
+
+[node name="Global_BG_Viewports_Node" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_lj6ur")
+
+[node name="VP_BG_Close" type="SubViewportContainer" parent="Global_BG_Viewports_Node"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SVP_BG_Close" type="SubViewport" parent="Global_BG_Viewports_Node/VP_BG_Close"]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="TR_BG_Close" type="TextureRect" parent="Global_BG_Viewports_Node/VP_BG_Close/SVP_BG_Close"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VP_BG_Far" type="SubViewportContainer" parent="Global_BG_Viewports_Node"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SVP_BG_Far" type="SubViewport" parent="Global_BG_Viewports_Node/VP_BG_Far"]
+
+[node name="TR_BG_Far" type="TextureRect" parent="Global_BG_Viewports_Node/VP_BG_Far/SVP_BG_Far"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VP_BG_Farthest" type="SubViewportContainer" parent="Global_BG_Viewports_Node"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SVP_BG_Farthest" type="SubViewport" parent="Global_BG_Viewports_Node/VP_BG_Farthest"]
+
+[node name="TR_BG_Farthest" type="TextureRect" parent="Global_BG_Viewports_Node/VP_BG_Farthest/SVP_BG_Farthest"]
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Global_Control_Node" type="Control" parent="."]
 unique_name_in_owner = true
