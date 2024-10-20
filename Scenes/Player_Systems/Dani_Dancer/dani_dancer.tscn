@@ -1,14 +1,16 @@
-[gd_scene load_steps=23 format=3 uid="uid://bc36tsophgxfn"]
+[gd_scene load_steps=25 format=3 uid="uid://bc36tsophgxfn"]
 
 [ext_resource type="Script" path="res://Scenes/Player_Systems/Dani_Dancer/dani_dancer.gd" id="1_hqnb5"]
 [ext_resource type="Texture2D" uid="uid://dyf5s4t0sisab" path="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Inversion_Dive_1x.png" id="2_4q8bs"]
-[ext_resource type="Shader" path="res://Shaders/Border_Glow_Shader.gdshader" id="2_ipxhq"]
 [ext_resource type="Script" path="res://Global_Scripts/Resources/Player_Stats/PLAYER_STATS.gd" id="2_w5ss3"]
+[ext_resource type="Shader" path="res://Shaders/occlussion_cropper.gdshader" id="3_bot7a"]
 [ext_resource type="Texture2D" uid="uid://w2baf4vi6h8h" path="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Inversion_Strike_1x.png" id="3_lh4ux"]
 [ext_resource type="Texture2D" uid="uid://fb68i3mls3tn" path="res://Graphics/Characters/DANI_DANCER/Aseprite/Dani Dancer.png" id="4_4ufoy"]
 [ext_resource type="Texture2D" uid="uid://dui2bw50swvh" path="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Pirouette_1x.png" id="4_62uf3"]
+[ext_resource type="Texture2D" uid="uid://dtukmk4xbmfja" path="res://Graphics/Characters/DANI_DANCER/Aseprite/Dani Dancer_o.png" id="4_w2osi"]
 [ext_resource type="Texture2D" uid="uid://cv43o6wodeqdi" path="res://Graphics/Characters/DANI_DANCER/Aseprite/Dani Dancer_n.png" id="5_mrvog"]
 [ext_resource type="Texture2D" uid="uid://du07g1qula55v" path="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Spin_Kick_1x.png" id="5_mt3k1"]
+[ext_resource type="Script" path="res://Scenes/Player_Systems/Dani_Dancer/s2d_glow.gd" id="5_yv3w7"]
 
 [sub_resource type="Resource" id="Resource_jotc4"]
 script = ExtResource("2_w5ss3")
@@ -17,11 +19,8 @@ health = 3.0
 armor = 0.0
 move_speed = 350.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_633mc"]
-shader = ExtResource("2_ipxhq")
-shader_parameter/line_color = Color(1, 1, 1, 0)
-shader_parameter/line_thickness = 6.0
-shader_parameter/line_fade = 0.2
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ywj65"]
+shader = ExtResource("3_bot7a")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_3isxc"]
 diffuse_texture = ExtResource("4_4ufoy")
@@ -800,9 +799,16 @@ platform_wall_layers = 64
 script = ExtResource("1_hqnb5")
 pstats = SubResource("Resource_jotc4")
 
+[node name="S2D_Glow" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ywj65")
+position = Vector2(32, -32)
+texture = ExtResource("4_w2osi")
+hframes = 16
+vframes = 8
+script = ExtResource("5_yv3w7")
+
 [node name="S2D_Dani" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_633mc")
 position = Vector2(32, -32)
 texture = SubResource("CanvasTexture_3isxc")
 hframes = 16
