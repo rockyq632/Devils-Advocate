@@ -1,31 +1,34 @@
-[gd_scene load_steps=26 format=3 uid="uid://bc36tsophgxfn"]
+[gd_scene load_steps=76 format=3 uid="uid://c7td7c3637cjq"]
 
-[ext_resource type="Script" path="res://Scenes/Player_Systems/Dani_Dancer/dani_dancer.gd" id="1_hqnb5"]
-[ext_resource type="Texture2D" uid="uid://dyf5s4t0sisab" path="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Inversion_Dive_1x.png" id="2_4q8bs"]
-[ext_resource type="Script" path="res://Global_Scripts/Resources/Player_Stats/PLAYER_STATS.gd" id="2_w5ss3"]
-[ext_resource type="Shader" path="res://Shaders/occlussion_cropper.gdshader" id="3_bot7a"]
-[ext_resource type="Texture2D" uid="uid://w2baf4vi6h8h" path="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Inversion_Strike_1x.png" id="3_lh4ux"]
-[ext_resource type="Script" path="res://Scenes/Player_Systems/player_physics_controller.gd" id="3_nlrdx"]
-[ext_resource type="Texture2D" uid="uid://fb68i3mls3tn" path="res://Graphics/Characters/DANI_DANCER/Aseprite/Dani Dancer.png" id="4_4ufoy"]
-[ext_resource type="Texture2D" uid="uid://dui2bw50swvh" path="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Pirouette_1x.png" id="4_62uf3"]
-[ext_resource type="Texture2D" uid="uid://dtukmk4xbmfja" path="res://Graphics/Characters/DANI_DANCER/Aseprite/Dani Dancer_o.png" id="4_w2osi"]
-[ext_resource type="Texture2D" uid="uid://cv43o6wodeqdi" path="res://Graphics/Characters/DANI_DANCER/Aseprite/Dani Dancer_n.png" id="5_mrvog"]
-[ext_resource type="Texture2D" uid="uid://du07g1qula55v" path="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Spin_Kick_1x.png" id="5_mt3k1"]
-[ext_resource type="Script" path="res://Scenes/Player_Systems/Dani_Dancer/s2d_glow.gd" id="5_yv3w7"]
+[ext_resource type="Script" path="res://Scenes/Player_Systems/Dani_Dancer/new/dani_hud.gd" id="1_pyw3t"]
+[ext_resource type="Script" path="res://Scenes/Player_Systems/Dani_Dancer/new/new_dani_dancer.gd" id="1_tcuq5"]
+[ext_resource type="Script" path="res://Global_Scripts/Resources/Player_Stats/PLAYER_STATS.gd" id="2_p0kfy"]
+[ext_resource type="Script" path="res://Scenes/Player_Systems/player_physics_controller.gd" id="3_2yoqt"]
+[ext_resource type="Shader" path="res://Shaders/occlussion_cropper.gdshader" id="4_bmbnw"]
+[ext_resource type="Texture2D" uid="uid://dtukmk4xbmfja" path="res://Graphics/Characters/DANI_DANCER/Aseprite/Dani Dancer_o.png" id="5_daoa2"]
+[ext_resource type="Script" path="res://Scenes/Player_Systems/Dani_Dancer/s2d_glow.gd" id="6_uvj8t"]
+[ext_resource type="Texture2D" uid="uid://fb68i3mls3tn" path="res://Graphics/Characters/DANI_DANCER/Aseprite/Dani Dancer.png" id="7_dahdc"]
+[ext_resource type="Texture2D" uid="uid://cv43o6wodeqdi" path="res://Graphics/Characters/DANI_DANCER/Aseprite/Dani Dancer_n.png" id="8_wq3sx"]
+[ext_resource type="Texture2D" uid="uid://du07g1qula55v" path="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Spin_Kick_1x.png" id="9_j1ene"]
+[ext_resource type="Texture2D" uid="uid://w2baf4vi6h8h" path="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Inversion_Strike_1x.png" id="10_fuyte"]
+[ext_resource type="Texture2D" uid="uid://dyf5s4t0sisab" path="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Inversion_Dive_1x.png" id="11_wfdce"]
+[ext_resource type="Texture2D" uid="uid://dui2bw50swvh" path="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Pirouette_1x.png" id="12_d4aod"]
+[ext_resource type="PackedScene" uid="uid://bg8sq66oyqmc1" path="res://Scenes/Player_Systems/HUD/Health_Heart.tscn" id="13_boqcl"]
+[ext_resource type="Texture2D" uid="uid://t8k3v2qmoxic" path="res://Graphics/UI/CD_Overlay_SM_4x.png" id="14_anesl"]
 
-[sub_resource type="Resource" id="Resource_jotc4"]
-script = ExtResource("2_w5ss3")
+[sub_resource type="Resource" id="Resource_jwu41"]
+script = ExtResource("2_p0kfy")
 max_health = 3.0
 health = 3.0
 armor = 0.0
-move_speed = 350.0
+move_speed = 200.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ywj65"]
-shader = ExtResource("3_bot7a")
+shader = ExtResource("4_bmbnw")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_3isxc"]
-diffuse_texture = ExtResource("4_4ufoy")
-normal_texture = ExtResource("5_mrvog")
+diffuse_texture = ExtResource("7_dahdc")
+normal_texture = ExtResource("8_wq3sx")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6d2jl"]
 radius = 5.0
@@ -791,106 +794,588 @@ _data = {
 "RESET": SubResource("Animation_ve04m")
 }
 
-[node name="DaniDancer" type="CharacterBody2D" node_paths=PackedStringArray("phys_ctrl")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqi1c"]
+atlas = ExtResource("14_anesl")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1lx7"]
+atlas = ExtResource("14_anesl")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_87aq8"]
+atlas = ExtResource("14_anesl")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjxsg"]
+atlas = ExtResource("14_anesl")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2w8q"]
+atlas = ExtResource("14_anesl")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7r3h"]
+atlas = ExtResource("14_anesl")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kumw5"]
+atlas = ExtResource("14_anesl")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ob0as"]
+atlas = ExtResource("14_anesl")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65kdk"]
+atlas = ExtResource("14_anesl")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_estmb"]
+atlas = ExtResource("14_anesl")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2hqt"]
+atlas = ExtResource("14_anesl")
+region = Rect2(192, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6lqb"]
+atlas = ExtResource("14_anesl")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wiy0n"]
+atlas = ExtResource("14_anesl")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ve5hw"]
+atlas = ExtResource("14_anesl")
+region = Rect2(128, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3tns4"]
+atlas = ExtResource("14_anesl")
+region = Rect2(192, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6cwq"]
+atlas = ExtResource("14_anesl")
+region = Rect2(0, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpgs5"]
+atlas = ExtResource("14_anesl")
+region = Rect2(64, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfj5c"]
+atlas = ExtResource("14_anesl")
+region = Rect2(128, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hw0so"]
+atlas = ExtResource("14_anesl")
+region = Rect2(192, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b03op"]
+atlas = ExtResource("14_anesl")
+region = Rect2(0, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5ktc"]
+atlas = ExtResource("14_anesl")
+region = Rect2(64, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kg2jx"]
+atlas = ExtResource("14_anesl")
+region = Rect2(128, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4dgi"]
+atlas = ExtResource("14_anesl")
+region = Rect2(192, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6t7k1"]
+atlas = ExtResource("14_anesl")
+region = Rect2(0, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0um0g"]
+atlas = ExtResource("14_anesl")
+region = Rect2(64, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57x20"]
+atlas = ExtResource("14_anesl")
+region = Rect2(128, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucggp"]
+atlas = ExtResource("14_anesl")
+region = Rect2(192, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxvre"]
+atlas = ExtResource("14_anesl")
+region = Rect2(0, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2t1b"]
+atlas = ExtResource("14_anesl")
+region = Rect2(64, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yscbn"]
+atlas = ExtResource("14_anesl")
+region = Rect2(128, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cso14"]
+atlas = ExtResource("14_anesl")
+region = Rect2(192, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mwcw8"]
+atlas = ExtResource("14_anesl")
+region = Rect2(0, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7igfd"]
+atlas = ExtResource("14_anesl")
+region = Rect2(64, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vf0ju"]
+atlas = ExtResource("14_anesl")
+region = Rect2(128, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5yb5"]
+atlas = ExtResource("14_anesl")
+region = Rect2(192, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_scu0m"]
+atlas = ExtResource("14_anesl")
+region = Rect2(0, 576, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3tlgc"]
+atlas = ExtResource("14_anesl")
+region = Rect2(64, 576, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fl83"]
+atlas = ExtResource("14_anesl")
+region = Rect2(128, 576, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkef4"]
+atlas = ExtResource("14_anesl")
+region = Rect2(192, 576, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xny6"]
+atlas = ExtResource("14_anesl")
+region = Rect2(0, 640, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2uso"]
+atlas = ExtResource("14_anesl")
+region = Rect2(64, 640, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hyu0x"]
+atlas = ExtResource("14_anesl")
+region = Rect2(128, 640, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3ci3"]
+atlas = ExtResource("14_anesl")
+region = Rect2(192, 640, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jcdd"]
+atlas = ExtResource("14_anesl")
+region = Rect2(0, 704, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anq5p"]
+atlas = ExtResource("14_anesl")
+region = Rect2(64, 704, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ookx0"]
+atlas = ExtResource("14_anesl")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0b56a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqi1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1lx7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_87aq8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjxsg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2w8q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7r3h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kumw5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ob0as")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65kdk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_estmb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2hqt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6lqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wiy0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ve5hw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3tns4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6cwq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpgs5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfj5c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hw0so")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b03op")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5ktc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kg2jx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4dgi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6t7k1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0um0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_57x20")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ucggp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxvre")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2t1b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yscbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cso14")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mwcw8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7igfd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vf0ju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5yb5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_scu0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3tlgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fl83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkef4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xny6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2uso")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hyu0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3ci3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jcdd")
+}, {
+"duration": 0.01,
+"texture": SubResource("AtlasTexture_anq5p")
+}],
+"loop": false,
+"name": &"COOLDOWN",
+"speed": 45.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ookx0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Player_Dani" type="Control" node_paths=PackedStringArray("char_instance")]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 100.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("1_pyw3t")
+char_instance = NodePath("DaniDancer")
+health_heart_scn = ExtResource("13_boqcl")
+
+[node name="DaniDancer" type="CharacterBody2D" parent="." node_paths=PackedStringArray("player_hud", "phys_ctrl")]
+position = Vector2(64, 64)
 collision_layer = 256
 collision_mask = 16
 motion_mode = 1
 platform_floor_layers = 4294901888
 platform_wall_layers = 64
-script = ExtResource("1_hqnb5")
+script = ExtResource("1_tcuq5")
+player_hud = NodePath("..")
 phys_ctrl = NodePath("PLAYER_PHYS_CONTROLLER")
-pstats = SubResource("Resource_jotc4")
+pstats = SubResource("Resource_jwu41")
 
-[node name="PLAYER_PHYS_CONTROLLER" type="Node" parent="." node_paths=PackedStringArray("char_body")]
-script = ExtResource("3_nlrdx")
+[node name="PLAYER_PHYS_CONTROLLER" type="Node" parent="DaniDancer" node_paths=PackedStringArray("char_body")]
+script = ExtResource("3_2yoqt")
 char_body = NodePath("..")
 
-[node name="S2D_Glow" type="Sprite2D" parent="."]
+[node name="S2D_Glow" type="Sprite2D" parent="DaniDancer"]
 material = SubResource("ShaderMaterial_ywj65")
 position = Vector2(32, -32)
-texture = ExtResource("4_w2osi")
+texture = ExtResource("5_daoa2")
 hframes = 16
 vframes = 8
-frame = 19
-script = ExtResource("5_yv3w7")
+script = ExtResource("6_uvj8t")
 
-[node name="S2D_Dani" type="Sprite2D" parent="."]
+[node name="S2D_Dani" type="Sprite2D" parent="DaniDancer"]
 unique_name_in_owner = true
 position = Vector2(32, -32)
 texture = SubResource("CanvasTexture_3isxc")
 hframes = 16
 vframes = 8
 
-[node name="CS_Boundbox" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_6d2jl")
+[node name="CP_Boundbox" type="CollisionPolygon2D" parent="DaniDancer"]
+visible = false
+polygon = PackedVector2Array(0, -31, -3, -31, -7, -26, -10, -19, -23, -1, -23, 4, -16, 8, -19, 21, -12, 28, 4, 28, 12, 14, 14, -1, 10, -20, 8, -30, 4, -31)
 
-[node name="A2D_Hitbox" type="Area2D" parent="."]
+[node name="A2D_Hitbox" type="Area2D" parent="DaniDancer"]
 collision_mask = 40
 
-[node name="CS_Hitbox" type="CollisionShape2D" parent="A2D_Hitbox"]
+[node name="CS_Hitbox" type="CollisionShape2D" parent="DaniDancer/A2D_Hitbox"]
 shape = SubResource("CircleShape2D_6d2jl")
 
-[node name="A2D_Attack_Collision_1" type="Area2D" parent="."]
+[node name="A2D_Attack_Collision_1" type="Area2D" parent="DaniDancer"]
 visible = false
 collision_layer = 2
 collision_mask = 36
 
-[node name="CP_Attack1" type="CollisionPolygon2D" parent="A2D_Attack_Collision_1"]
+[node name="CP_Attack1" type="CollisionPolygon2D" parent="DaniDancer/A2D_Attack_Collision_1"]
 position = Vector2(500, 500)
 polygon = PackedVector2Array(4, -2, 19, -15, 23, 1)
 disabled = true
 
-[node name="A2D_Deflect_Collision" type="Area2D" parent="."]
+[node name="A2D_Deflect_Collision" type="Area2D" parent="DaniDancer"]
 visible = false
 collision_layer = 2
 collision_mask = 32
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="A2D_Deflect_Collision"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DaniDancer/A2D_Deflect_Collision"]
 polygon = PackedVector2Array(180, 89, 187, 79, 191, 91)
 disabled = true
 
-[node name="Ability_Icons" type="Node" parent="."]
-
-[node name="TR_Pole_Spin_Kick" type="TextureRect" parent="Ability_Icons"]
-unique_name_in_owner = true
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("5_mt3k1")
-
-[node name="TR_Pole_Inversion_Strike" type="TextureRect" parent="Ability_Icons"]
-unique_name_in_owner = true
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("3_lh4ux")
-
-[node name="TR_Pole_Inversion_Dive" type="TextureRect" parent="Ability_Icons"]
-unique_name_in_owner = true
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("2_4q8bs")
-
-[node name="TR_Pole_Pirouette" type="TextureRect" parent="Ability_Icons"]
-unique_name_in_owner = true
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("4_62uf3")
-
-[node name="AP_Dani" type="AnimationPlayer" parent="."]
+[node name="AP_Dani" type="AnimationPlayer" parent="DaniDancer"]
 unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_ggvom")
 }
 
-[node name="Armor_Frames" type="Timer" parent="."]
+[node name="Armor_Frames" type="Timer" parent="DaniDancer"]
 unique_name_in_owner = true
 editor_description = "Armor Timer for just after taking damage"
 wait_time = 0.5
 one_shot = true
 
-[connection signal="body_entered" from="A2D_Attack_Collision_1" to="." method="_on_attack_1_body_entered"]
-[connection signal="animation_finished" from="AP_Dani" to="." method="_on_ap_dani_animation_finished"]
-[connection signal="timeout" from="Armor_Frames" to="." method="_on_armor_frames_timeout"]
+[node name="MC_Character_UI" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VB_CharacterUI" type="VBoxContainer" parent="MC_Character_UI"]
+layout_mode = 2
+
+[node name="VF_Hearts" type="VFlowContainer" parent="MC_Character_UI/VB_CharacterUI"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme_override_constants/h_separation = -2
+theme_override_constants/v_separation = -2
+alignment = 1
+reverse_fill = true
+
+[node name="TR_Heart" parent="MC_Character_UI/VB_CharacterUI/VF_Hearts" instance=ExtResource("13_boqcl")]
+layout_mode = 2
+
+[node name="TR_Heart2" parent="MC_Character_UI/VB_CharacterUI/VF_Hearts" instance=ExtResource("13_boqcl")]
+layout_mode = 2
+
+[node name="TR_Heart3" parent="MC_Character_UI/VB_CharacterUI/VF_Hearts" instance=ExtResource("13_boqcl")]
+layout_mode = 2
+
+[node name="MC_Cooldowns" type="MarginContainer" parent="MC_Character_UI/VB_CharacterUI"]
+layout_mode = 2
+theme_override_constants/margin_left = 21
+theme_override_constants/margin_right = 21
+
+[node name="HB_Cooldowns" type="HBoxContainer" parent="MC_Character_UI/VB_CharacterUI/MC_Cooldowns"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="PC_CD1" type="PanelContainer" parent="MC_Character_UI/VB_CharacterUI/MC_Cooldowns/HB_Cooldowns"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="CC_CD1" type="CenterContainer" parent="MC_Character_UI/VB_CharacterUI/MC_Cooldowns/HB_Cooldowns/PC_CD1"]
+layout_mode = 2
+
+[node name="S2D_AB1_ICON" type="Sprite2D" parent="MC_Character_UI/VB_CharacterUI/MC_Cooldowns/HB_Cooldowns/PC_CD1/CC_CD1"]
+unique_name_in_owner = true
+
+[node name="S2D_CD1" type="AnimatedSprite2D" parent="MC_Character_UI/VB_CharacterUI/MC_Cooldowns/HB_Cooldowns/PC_CD1/CC_CD1"]
+unique_name_in_owner = true
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_0b56a")
+
+[node name="PC_CD2" type="PanelContainer" parent="MC_Character_UI/VB_CharacterUI/MC_Cooldowns/HB_Cooldowns"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="CC_CD2" type="CenterContainer" parent="MC_Character_UI/VB_CharacterUI/MC_Cooldowns/HB_Cooldowns/PC_CD2"]
+layout_mode = 2
+
+[node name="S2D_AB2_ICON" type="Sprite2D" parent="MC_Character_UI/VB_CharacterUI/MC_Cooldowns/HB_Cooldowns/PC_CD2/CC_CD2"]
+unique_name_in_owner = true
+
+[node name="S2D_CD2" type="AnimatedSprite2D" parent="MC_Character_UI/VB_CharacterUI/MC_Cooldowns/HB_Cooldowns/PC_CD2/CC_CD2"]
+unique_name_in_owner = true
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_0b56a")
+
+[node name="PC_CD3" type="PanelContainer" parent="MC_Character_UI/VB_CharacterUI/MC_Cooldowns/HB_Cooldowns"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="CC_CD3" type="CenterContainer" parent="MC_Character_UI/VB_CharacterUI/MC_Cooldowns/HB_Cooldowns/PC_CD3"]
+layout_mode = 2
+
+[node name="S2D_AB3_ICON" type="Sprite2D" parent="MC_Character_UI/VB_CharacterUI/MC_Cooldowns/HB_Cooldowns/PC_CD3/CC_CD3"]
+unique_name_in_owner = true
+
+[node name="S2D_CD3" type="AnimatedSprite2D" parent="MC_Character_UI/VB_CharacterUI/MC_Cooldowns/HB_Cooldowns/PC_CD3/CC_CD3"]
+unique_name_in_owner = true
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_0b56a")
+
+[node name="PC_CD4" type="PanelContainer" parent="MC_Character_UI/VB_CharacterUI/MC_Cooldowns/HB_Cooldowns"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="CC_CD4" type="CenterContainer" parent="MC_Character_UI/VB_CharacterUI/MC_Cooldowns/HB_Cooldowns/PC_CD4"]
+layout_mode = 2
+
+[node name="S2D_AB4_ICON" type="Sprite2D" parent="MC_Character_UI/VB_CharacterUI/MC_Cooldowns/HB_Cooldowns/PC_CD4/CC_CD4"]
+unique_name_in_owner = true
+
+[node name="S2D_CD4" type="AnimatedSprite2D" parent="MC_Character_UI/VB_CharacterUI/MC_Cooldowns/HB_Cooldowns/PC_CD4/CC_CD4"]
+unique_name_in_owner = true
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_0b56a")
+
+[node name="Ability_Icons" type="Node" parent="MC_Character_UI"]
+
+[node name="TR_Pole_Spin_Kick" type="TextureRect" parent="MC_Character_UI/Ability_Icons"]
+unique_name_in_owner = true
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_j1ene")
+
+[node name="TR_Pole_Inversion_Strike" type="TextureRect" parent="MC_Character_UI/Ability_Icons"]
+unique_name_in_owner = true
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("10_fuyte")
+
+[node name="TR_Pole_Inversion_Dive" type="TextureRect" parent="MC_Character_UI/Ability_Icons"]
+unique_name_in_owner = true
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("11_wfdce")
+
+[node name="TR_Pole_Pirouette" type="TextureRect" parent="MC_Character_UI/Ability_Icons"]
+unique_name_in_owner = true
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("12_d4aod")
+
+[node name="CD_ATK1" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 2.0
+one_shot = true
+
+[node name="CD_ATK2" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 2.0
+one_shot = true
+
+[node name="CD_ATK3" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 2.0
+one_shot = true
+
+[node name="CD_DEF" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 2.0
+one_shot = true
+
+[connection signal="body_entered" from="DaniDancer/A2D_Attack_Collision_1" to="DaniDancer" method="_on_attack_1_body_entered"]
+[connection signal="animation_finished" from="DaniDancer/AP_Dani" to="DaniDancer" method="_on_ap_dani_animation_finished"]
+[connection signal="timeout" from="DaniDancer/Armor_Frames" to="DaniDancer" method="_on_armor_frames_timeout"]
+[connection signal="timeout" from="CD_ATK1" to="." method="_on_cd_atk_1_timeout"]
+[connection signal="timeout" from="CD_ATK2" to="." method="_on_cd_atk_2_timeout"]
+[connection signal="timeout" from="CD_ATK3" to="." method="_on_cd_atk_3_timeout"]
+[connection signal="timeout" from="CD_DEF" to="." method="_on_cd_def_timeout"]

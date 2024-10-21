@@ -5,5 +5,5 @@ void fragment() {
 		COLOR.r = 0.0;
 	}
 	COLOR.a = COLOR.r;
-	
+
 }

@@ -11,14 +11,14 @@ void fragment() {
 	vec2 uv = vec2(UV.x, UV.y+TIME*anim_speed);
 	vec4 noise_color = texture(noise_texture,uv);
 	vec4 final_color = noise_color;
-	
+
 	final_color.rgb += vec3( UV.y-yoffset );
 	final_color.rgb = step( final_color.rgb, vec3(0.5) );
 	final_color.rgb = vec3(1.0-final_color.rgb);
 	final_color.a = final_color.r*flame_color.a;
 	final_color.rgb = flame_color.rgb;
-	
-	
-	
+
+
+
 	COLOR = final_color;
 }
