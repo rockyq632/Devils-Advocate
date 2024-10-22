@@ -4,12 +4,12 @@ extends CharacterBody2D
 
 @export var player_hud : Control
 @export var phys_ctrl : PlayerPhysicsController
-@export var pstats : PStats = PStats.new()
 #Exports used exclusively in animation player
 @export var ap_move_speed_scale : float = 1.0
 
 var effected_by_prj_gravity : bool = true
 var effected_by_world_gravity : bool = false
+var pstats:PStats
 
 
 var moveset : Array[PC_Ability] = [
@@ -30,10 +30,11 @@ var cd1_time : float = 2.0
 func _ready() -> void:
 	pass
 	
-	
 func _physics_process(_delta: float) -> void:
+	pstats = player_hud.pstats
+	
+	
 	# Handle armor frames display
-	'''
 	if(%Armor_Frames.time_left>0.0):
 		if(%S2D_Dani.visible):
 			%S2D_Dani.visible = false
@@ -42,7 +43,6 @@ func _physics_process(_delta: float) -> void:
 	else:
 		if(not %S2D_Dani.visible):
 			%S2D_Dani.visible = true
-	'''
 	
 	
 	# Update Player position in the global scene manager

@@ -1,7 +1,8 @@
 extends Control
 
 @export var char_instance : DaniDancer = DaniDancer.new()
-@export var health_heart_scn : PackedScene
+@export var health_heart_scn : PackedScene = preload("res://Scenes/Player_Systems/HUD/Health_Heart.tscn")
+@export var pstats : PStats = PStats.new()
 
 @export_group("Character Specifics")
 @export var moveset_select1:ENM.AB_KEY
@@ -12,9 +13,11 @@ extends Control
 @export var effected_by_prj_gravity:bool
 @export var effected_by_world_gravity:bool
 
-var UI_OFFSET : Vector2
+var UI_OFFSET : Vector2 = Vector2(64,64)
 var type : ENM.TARGET_TYPE = ENM.TARGET_TYPE.PLAYER
 
+
+var is_heart_container_gen_delayed : bool = false
 var heart_containers : Array[HealthHeart] = []
 
 # Called when the node enters the scene tree for the first time.
@@ -41,11 +44,12 @@ func _ready() -> void:
 		i.queue_free()
 	
 	# Add selected character hearts
-	for i in range(0, char_instance.pstats.max_health):
-		heart_containers.append(health_heart_scn.instantiate())
-		$MC_Character_UI/VB_CharacterUI/VF_Hearts.add_child(heart_containers[i])
-		if( i > char_instance.pstats.health-1 ):
-			heart_containers[i].empty_heart()
+	if(char_instance.pstats.max_health):
+		refresh_heart_containers()
+	else:
+		is_heart_container_gen_delayed = true
+	
+	
 	
 	
 		
@@ -53,9 +57,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	# Sometimes the heart containers need to be generated after ready function
+	if(is_heart_container_gen_delayed):
+		refresh_heart_containers()
 		
 	# Move UI to match the character sprite
-	%MC_Character_UI.position = position - UI_OFFSET
+	%MC_Character_UI.position = char_instance.position - UI_OFFSET
 	
 	
 	
@@ -74,6 +81,19 @@ func take_damage(_amt:float) -> void:
 	else:
 		print("NO HEART CONTAINERS FOUND : dani_hud.gd")
 
+
+
+
+
+
+
+func refresh_heart_containers():
+	is_heart_container_gen_delayed = false
+	for i in range(0, char_instance.pstats.max_health):
+		heart_containers.append(health_heart_scn.instantiate())
+		$MC_Character_UI/VB_CharacterUI/VF_Hearts.add_child(heart_containers[i])
+		if( i > char_instance.pstats.health-1 ):
+			heart_containers[i].empty_heart()
 
 func reset_cooldowns():
 	_on_cd_atk_1_timeout()

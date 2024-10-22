@@ -6,7 +6,7 @@ var load_next_area:bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GSM.clear_enemy_projectiles()
-	$Player.reset_cooldowns()
+	$Player_Dani.reset_cooldowns()
 	$Next_Area_Zone.visible = false
 	GSM.is_pc_movement_locked = false
 	$Next_Area_Zone/A2D_Waiting_Room/CS_Waiting_Room.disabled = true
