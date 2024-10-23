@@ -1144,6 +1144,7 @@ moveset_select1 = 1
 moveset_select2 = 2
 moveset_select3 = 3
 moveset_select4 = 4
+effected_by_prj_gravity = true
 
 [node name="DaniDancer" type="CharacterBody2D" parent="." node_paths=PackedStringArray("player_hud", "phys_ctrl")]
 position = Vector2(64, 64)

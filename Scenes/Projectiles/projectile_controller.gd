@@ -53,6 +53,11 @@ signal projectile_spawned
 @export var gravity_weight : float = 10.0
 @export var gravity_effect_collision : Area2D
 
+@export_subgroup("Keep Out AOE")
+@export var is_keep_out_area : bool = false
+@export var keep_out_detonate_time:float = 2.0
+
+
 var type: ENM.TARGET_TYPE = ENM.TARGET_TYPE.PROJECTILE
 # Tracks the body that uses physics
 var prj_body:CharacterBody2D
@@ -71,6 +76,9 @@ var bounce_count:int=0
 var grav_effected:Array[Node] = []
 var self_grav_pull:Vector2 = Vector2(0,0)
 
+# Keep out AOE vars
+var keep_out_detonate_timer:Timer
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -79,6 +87,7 @@ func _ready() -> void:
 	else:
 		# Get the CharacterBody2D representing the projectile
 		prj_body = get_parent()
+		prj_body.velocity = Vector2(0,0)
 		# Connect Animation Finished signal
 		anim_player.animation_finished.connect(_on_ap_projectile_animation_finished)
 		# Connect HurtBox Area2D for collisions
@@ -89,15 +98,27 @@ func _ready() -> void:
 		if(creates_gravity):
 			gravity_effect_collision.body_entered.connect(_gravity_entered)
 			gravity_effect_collision.body_exited.connect(_gravity_exited)
+			
+		# Initiate keepout area detonation
+		if(is_keep_out_area):
+			keep_out_detonate_timer = Timer.new()
+			keep_out_detonate_timer.timeout.connect(_keep_out_timeout)
+			keep_out_detonate_timer.wait_time = keep_out_detonate_time
+			keep_out_detonate_timer.one_shot = true
+			add_child(keep_out_detonate_timer)
+			keep_out_detonate_timer.start()
+			$"../PB_Timer".max_value = keep_out_detonate_time
+			$"../PB_Timer".value = keep_out_detonate_time
 		
-		# Initiate Timer
-		despawn_timer = Timer.new()
-		despawn_timer.timeout.connect(_despawn_timout)
-		despawn_timer.wait_time = timeout_sec
-		despawn_timer.one_shot = true
-		add_child(despawn_timer)
+		# Initiate timeout despawn Timer
 		if(stop_on_timeout):
-			despawn_timer.start()
+			despawn_timer = Timer.new()
+			despawn_timer.timeout.connect(_despawn_timout)
+			despawn_timer.wait_time = timeout_sec
+			despawn_timer.one_shot = true
+			add_child(despawn_timer)
+			if(stop_on_timeout):
+				despawn_timer.start()
 		
 		# Play spawning animation
 		anim_player.play("START")
@@ -142,10 +163,13 @@ func _physics_process(_delta: float) -> void:
 					i.update_grav_vec(gravity_weight*i.global_position.direction_to(prj_body.global_position))
 					cnt += 1
 					
-		
-		prj_body.move_and_slide()
+		if(prj_body.velocity != Vector2(0,0)):
+			prj_body.move_and_slide()
 		if( remove_windup ):
 			self_grav_pull = Vector2(0,0)
+			
+		if(is_keep_out_area):
+			$"../PB_Timer".value = keep_out_detonate_timer.time_left
 	
 	
 
@@ -247,14 +271,17 @@ func _on_ap_projectile_animation_finished(anim_name: StringName) -> void:
 
 # If a body enters projectile hurtbox
 func _on_hurtbox_entered(body: Node2D) -> void:
+	# If target is in the hurtbox -> hurt target
 	if("type" in body.get_parent()):
 		if(body.get_parent().type == target):
 			if(body.has_method("take_damage")):
 				body.take_damage(damage)
 			projectile_hit_target.emit()
 			end_projectile()
+
 # If an area enters projectile hurtbox
 func _on_hurtbox_area_entered(area: Area2D) -> void:
+	# If target is in the hurtbox -> hurt target
 	if("type" in area.get_parent() ):
 		if( area.get_parent().type == target): 
 			if(area.get_parent().has_method("take_damage")):
@@ -267,7 +294,13 @@ func _despawn_timout() -> void:
 	if(stop_on_timeout):
 		stop_movement()
 		end_projectile()
-	
+
+# Detonation timer finished for keep out area
+func _keep_out_timeout() -> void:
+	if(is_keep_out_area):
+		stop_movement()
+		end_projectile()
+
 # When a body enters the gravity field
 func _gravity_entered(body:Node2D) -> void:
 	if("type" in body):
@@ -279,6 +312,11 @@ func _gravity_entered(body:Node2D) -> void:
 				return
 		elif(body.get_child(0).type == target):
 			grav_effected.append(body.get_child(0))
+			
+	else:
+		#print("%s has no variable 'type'" % body)
+		pass
+			
 
 # When a body leaves the gravity field
 func _gravity_exited(body:Node2D) -> void:

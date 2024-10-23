@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://le8bjn04kvro"]
+[gd_scene load_steps=11 format=3 uid="uid://le8bjn04kvro"]
 
 [ext_resource type="Script" path="res://Scenes/Projectiles/Projectile_Library/proj_lib.gd" id="1_s73xv"]
 [ext_resource type="PackedScene" uid="uid://bcqncneucahp5" path="res://Scenes/Projectiles/Projectile_Library/proj_scenes/prj_ice_explosion.tscn" id="2_gnowd"]
 [ext_resource type="Script" path="res://Scenes/Projectiles/projectile_controller.gd" id="3_apn5j"]
+[ext_resource type="PackedScene" uid="uid://c6eyr2302jgqo" path="res://Scenes/Projectiles/Projectile_Library/proj_scenes/prj_test_keep_out.tscn" id="4_v5qxn"]
 
 [sub_resource type="Animation" id="Animation_r27d5"]
 resource_name = "END"
@@ -55,3 +56,7 @@ disabled = true
 shape = SubResource("CircleShape2D_2mi5y")
 
 [node name="PRJ_Ice_Explosion" parent="." instance=ExtResource("2_gnowd")]
+visible = false
+
+[node name="PRJ_Keep_Out_Test" parent="." instance=ExtResource("4_v5qxn")]
+visible = false

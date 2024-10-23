@@ -7,6 +7,7 @@ extends Node
 
 var grav_pull : Vector2 = Vector2(0,0)
 var move_dir : Vector2 = Vector2(0,0)
+#var type: ENM.TARGET_TYPE = ENM.TARGET_TYPE.PLAYER
 
 
 # Called when the node enters the scene tree for the first time.
@@ -25,7 +26,7 @@ func _physics_process(_delta: float) -> void:
 	
 	# If gravity via projectile is being applied to character
 	if(char_body.effected_by_prj_gravity):
-		char_body.velocity+=char_body.gravity_pull
+		char_body.velocity+=grav_pull
 		
 	# If animation player changes move speed 
 	char_body.velocity *= char_body.ap_move_speed_scale

@@ -178,6 +178,7 @@ func take_damage(amt:int) -> void:
 
 # Called if gravity field entered
 func update_grav_vec(src:Vector2):
+	print("here")
 	if(effected_by_prj_gravity):
 		if(src == Vector2(0,0)):
 			phys_ctrl.grav_pull = src
