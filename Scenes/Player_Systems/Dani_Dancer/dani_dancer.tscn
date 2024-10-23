@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://c7td7c3637cjq"]
+[gd_scene load_steps=77 format=3 uid="uid://c7td7c3637cjq"]
 
 [ext_resource type="Script" path="res://Scenes/Player_Systems/Dani_Dancer/dani_hud.gd" id="1_pyw3t"]
 [ext_resource type="Script" path="res://Scenes/Player_Systems/Dani_Dancer/dani_dancer.gd" id="1_tcuq5"]
@@ -7,7 +7,7 @@
 [ext_resource type="Shader" path="res://Shaders/occlussion_cropper.gdshader" id="4_bmbnw"]
 [ext_resource type="Texture2D" uid="uid://dtukmk4xbmfja" path="res://Graphics/Characters/DANI_DANCER/Aseprite/Dani Dancer_o.png" id="5_daoa2"]
 [ext_resource type="Script" path="res://Scenes/Player_Systems/Dani_Dancer/s2d_glow.gd" id="6_uvj8t"]
-[ext_resource type="Texture2D" uid="uid://fb68i3mls3tn" path="res://Graphics/Characters/DANI_DANCER/Aseprite/Dani Dancer.png" id="7_dahdc"]
+[ext_resource type="Texture2D" uid="uid://btibexyqi2aau" path="res://Graphics/Characters/DANI_DANCER/Aseprite/Dani Dancer_d.png" id="8_m3ns8"]
 [ext_resource type="Texture2D" uid="uid://cv43o6wodeqdi" path="res://Graphics/Characters/DANI_DANCER/Aseprite/Dani Dancer_n.png" id="8_wq3sx"]
 [ext_resource type="Texture2D" uid="uid://du07g1qula55v" path="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Spin_Kick_1x.png" id="9_j1ene"]
 [ext_resource type="Texture2D" uid="uid://w2baf4vi6h8h" path="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Inversion_Strike_1x.png" id="10_fuyte"]
@@ -27,7 +27,7 @@ move_speed = 350.0
 shader = ExtResource("4_bmbnw")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_3isxc"]
-diffuse_texture = ExtResource("7_dahdc")
+diffuse_texture = ExtResource("8_m3ns8")
 normal_texture = ExtResource("8_wq3sx")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6d2jl"]
@@ -110,6 +110,42 @@ tracks/5/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("LO_Shadow:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("LO_Shadow:occluder:polygon")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(57, 5, 56, 5, 56, 3, 58, 3, 58, 1, 59, 1, 59, 0, 54, 0, 54, 1, 53, 1, 53, 3, 52, 3, 52, 4, 51, 4, 51, 5, 50, 5, 50, 6, 49, 6, 49, 7, 46, 7, 46, 5, 47, 5, 47, 3, 48, 3, 46, 3, 45, 2, 48, 2, 48, 1, 50, 1, 50, 0, 51, 0, 51, -1, 52, -1, 52, -2, 54, -2, 54, -3, 58, -3, 63, -3, 63, -2, 64, -2, 64, -1, 63, -1, 63, 1, 62, 1, 62, 4, 61, 4, 61, 5, 60, 5, 60, 6, 57, 6)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("LO_Shadow:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-58, 21)]
+}
 
 [sub_resource type="Animation" id="Animation_timad"]
 resource_name = "FLY_IDLE"
@@ -188,6 +224,42 @@ tracks/5/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("LO_Shadow:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("LO_Shadow:occluder:polygon")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(53, -3, 53, -2, 52, -2, 52, -1, 51, -1, 51, 0, 50, 0, 50, 1, 49, 1, 49, 2, 46, 2, 46, 3, 50, 3, 50, 8, 51, 8, 51, 9, 53, 9, 53, 7, 54, 7, 54, 2, 55, 2, 55, -1, 57, -1, 57, 2, 58, 2, 58, 9, 59, 9, 59, 10, 61, 10, 61, 8, 62, 8, 62, 1, 61, 1, 61, 0, 68, 0, 68, -1, 65, -1, 65, -2, 63, -2, 63, -3, 59, -3, 59, -4, 56, -4, 56, -3)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("LO_Shadow:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-58, 21)]
+}
 
 [sub_resource type="Animation" id="Animation_4biyp"]
 resource_name = "MOVE_WEST"
@@ -265,6 +337,42 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("LO_Shadow:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("LO_Shadow:occluder:polygon")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(44, -4, 45, -4, 45, -5, 47, -5, 47, -6, 49, -6, 49, -7, 50, -7, 50, -8, 55, -8, 55, -7, 53, -7, 54, -7, 54, -6, 55, -6, 55, -3, 54, -3, 54, 0, 51, 0, 51, 2, 48, 2, 48, 0, 47, 0, 47, -2, 46, -2, 46, -3, 45, -3, 44, -2, 43, -2, 42, -3, 44, -3)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("LO_Shadow:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-44, 27)]
 }
 
 [sub_resource type="Animation" id="Animation_jjag5"]
@@ -367,6 +475,18 @@ tracks/7/keys = {
 "update": 0,
 "values": [Vector2(42, 30)]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("LO_Shadow:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_x22rj"]
 resource_name = "POLE_INVERSION_STRIKE"
@@ -468,6 +588,30 @@ tracks/7/keys = {
 "update": 1,
 "values": [Vector2(42, 30), Vector2(54, 25)]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("LO_Shadow:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("S2D_Glow:frame")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75]
+}
 
 [sub_resource type="Animation" id="Animation_7h063"]
 resource_name = "POLE_PIROUETTE"
@@ -556,6 +700,30 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [1.0, 1.2, 1.5, 1.8, 1.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("LO_Shadow:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("S2D_Glow:frame")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [97, 98, 99, 100, 101, 102, 103, 104, 105]
 }
 
 [sub_resource type="Animation" id="Animation_q6nou"]
@@ -656,6 +824,30 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [Vector2(42, 30), Vector2(17, -16)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("LO_Shadow:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("S2D_Glow:frame")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [49, 50, 51, 52, 53, 54, 55, 56, 57, 58]
 }
 
 [sub_resource type="Animation" id="Animation_ve04m"]
@@ -781,6 +973,54 @@ tracks/9/keys = {
 "update": 0,
 "values": [1.0]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("LO_Shadow:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("S2D_Glow:frame")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [49]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("LO_Shadow:occluder:polygon")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(53, -3, 53, -2, 52, -2, 52, -1, 51, -1, 51, 0, 50, 0, 50, 1, 49, 1, 49, 2, 46, 2, 46, 3, 50, 3, 50, 8, 51, 8, 51, 9, 53, 9, 53, 7, 54, 7, 54, 2, 55, 2, 55, -1, 57, -1, 57, 2, 58, 2, 58, 9, 59, 9, 59, 10, 61, 10, 61, 8, 62, 8, 62, 1, 61, 1, 61, 0, 68, 0, 68, -1, 65, -1, 65, -2, 63, -2, 63, -3, 59, -3, 59, -4, 56, -4, 56, -3)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("LO_Shadow:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-58, 21)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ggvom"]
 _data = {
@@ -793,6 +1033,9 @@ _data = {
 "POLE_SPIN_KICK": SubResource("Animation_q6nou"),
 "RESET": SubResource("Animation_ve04m")
 }
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mep4p"]
+polygon = PackedVector2Array(53, -3, 53, -2, 52, -2, 52, -1, 51, -1, 51, 0, 50, 0, 50, 1, 49, 1, 49, 2, 46, 2, 46, 3, 50, 3, 50, 8, 51, 8, 51, 9, 53, 9, 53, 7, 54, 7, 54, 2, 55, 2, 55, -1, 57, -1, 57, 2, 58, 2, 58, 9, 59, 9, 59, 10, 61, 10, 61, 8, 62, 8, 62, 1, 61, 1, 61, 0, 68, 0, 68, -1, 65, -1, 65, -2, 63, -2, 63, -3, 59, -3, 59, -4, 56, -4, 56, -3)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hqi1c"]
 atlas = ExtResource("14_anesl")
@@ -1162,17 +1405,21 @@ script = ExtResource("3_2yoqt")
 char_body = NodePath("..")
 
 [node name="S2D_Glow" type="Sprite2D" parent="DaniDancer"]
+visible = false
 material = SubResource("ShaderMaterial_ywj65")
 position = Vector2(32, -32)
 texture = ExtResource("5_daoa2")
 hframes = 16
 vframes = 8
+frame = 49
 script = ExtResource("6_uvj8t")
 
 [node name="S2D_Dani" type="Sprite2D" parent="DaniDancer"]
 unique_name_in_owner = true
 position = Vector2(32, -32)
 texture = SubResource("CanvasTexture_3isxc")
+centered = false
+offset = Vector2(-64, -64)
 hframes = 16
 vframes = 8
 
@@ -1216,6 +1463,14 @@ unique_name_in_owner = true
 editor_description = "Armor Timer for just after taking damage"
 wait_time = 0.5
 one_shot = true
+
+[node name="LO_Shadow" type="LightOccluder2D" parent="DaniDancer"]
+visible = false
+light_mask = 2
+visibility_layer = 2
+position = Vector2(-58, 21)
+occluder = SubResource("OccluderPolygon2D_mep4p")
+occluder_light_mask = 2
 
 [node name="MC_Character_UI" type="MarginContainer" parent="."]
 unique_name_in_owner = true

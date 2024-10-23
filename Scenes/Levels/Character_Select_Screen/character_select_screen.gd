@@ -4,7 +4,7 @@ var current_selection:Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	GSM.is_pc_movement_locked = true
+	GSM.is_pc_movement_locked = false
 	current_selection = Control.new()
 	current_selection.global_position = $TR_Player_Placeholder.global_position+Vector2(-32,-32)
 
@@ -25,8 +25,9 @@ func _on_btn_debug_pressed() -> void:
 # Dancer Selected
 func _on_btn_dani_pressed() -> void:
 	var temp:Vector2 = current_selection.global_position
-	if( $TR_Player_Placeholder in get_children() ):
-		$TR_Player_Placeholder.queue_free()
+	$TR_Player_Placeholder.visible = false
+	
+	current_selection.queue_free()
 	current_selection = load("res://Scenes/Player_Systems/Dani_Dancer/Dani_Dancer.tscn").instantiate()
 	current_selection.position = temp
 	add_child( current_selection )

@@ -37,13 +37,22 @@ texture = ExtResource("2_7xld5")
 
 [node name="PL_Left_Light" type="PointLight2D" parent="TR_BG"]
 energy = 0.8
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.54902)
+shadow_item_cull_mask = 3
 texture = ExtResource("3_6egn6")
 offset = Vector2(640, 320)
 
-[node name="PL_Right_Light" type="PointLight2D" parent="TR_BG"]
+[node name="PL_Right_Spotlight" type="PointLight2D" parent="TR_BG"]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(1280, 0)
 energy = 0.8
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.54902)
+shadow_item_cull_mask = 3
 texture = ExtResource("4_jvui0")
-offset = Vector2(640, 320)
+offset = Vector2(-640, 320)
 
 [node name="TR_Player_Placeholder" type="TextureRect" parent="."]
 layout_mode = 1
