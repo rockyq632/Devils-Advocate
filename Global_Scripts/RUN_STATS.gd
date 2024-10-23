@@ -1,6 +1,6 @@
 extends Node
 
-var selected_char1:PackedScene
+var selected_char1:String
 
 var dict:Dictionary = {
 	"total_damage" : 0.0,

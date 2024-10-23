@@ -1,15 +1,16 @@
-
+class_name DaniDancer
 extends CharacterBody2D
 
 
+@export var player_hud : Control
 @export var phys_ctrl : PlayerPhysicsController
-@export var pstats : PStats = PStats.new()
 #Exports used exclusively in animation player
 @export var ap_move_speed_scale : float = 1.0
 
 var effected_by_prj_gravity : bool = true
 var effected_by_world_gravity : bool = false
-var MOVE_DIR : Vector2 = Vector2(0,0)
+var pstats:PStats = PStats.new()
+
 
 var moveset : Array[PC_Ability] = [
 	AB_REF.dict[ENM.AB_KEY.POLE_SPIN_KICK],
@@ -29,8 +30,10 @@ var cd1_time : float = 2.0
 func _ready() -> void:
 	pass
 	
-	
 func _physics_process(_delta: float) -> void:
+	pstats = player_hud.pstats
+	
+	
 	# Handle armor frames display
 	if(%Armor_Frames.time_left>0.0):
 		if(%S2D_Dani.visible):
@@ -40,6 +43,53 @@ func _physics_process(_delta: float) -> void:
 	else:
 		if(not %S2D_Dani.visible):
 			%S2D_Dani.visible = true
+	
+	
+	# Update Player position in the global scene manager
+	GSM.player_position = global_position
+	
+	if( GSM.is_pc_movement_locked ):
+		pass
+	else:
+		# Process Movement Inputs
+		phys_ctrl.move_dir = Input.get_vector("left", "right", "up", "down")
+	
+	# Process Attack Inputs
+	# If an attack is already going, skip until finished
+	if(is_anim_playing == true):
+		pass
+		
+	# Triggers defensive ability
+	elif(Input.is_action_pressed("defensive") and moveset[3].is_ready):
+		def_triggered()
+		%S2D_CD4.speed_scale = 1/moveset[3].ab_cd_time
+		%S2D_CD4.play("COOLDOWN")
+		%CD_DEF.wait_time = moveset[3].ab_cd_time
+		%CD_DEF.start()
+		
+	# Triggers attack 1 ability
+	elif(Input.is_action_pressed("attack1") and moveset[0].is_ready):
+		atk1_triggered()
+		%S2D_CD1.speed_scale = 1/moveset[0].ab_cd_time
+		%S2D_CD1.play("COOLDOWN")
+		%CD_ATK1.wait_time = moveset[0].ab_cd_time
+		%CD_ATK1.start()
+		
+	# Triggers attack 2 ability
+	elif(Input.is_action_pressed("attack2") and moveset[1].is_ready):
+		atk2_triggered()
+		%S2D_CD2.speed_scale = 1/moveset[1].ab_cd_time
+		%S2D_CD2.play("COOLDOWN")
+		%CD_ATK2.wait_time = moveset[1].ab_cd_time
+		%CD_ATK2.start()
+		
+	# Triggers attack 3 ability
+	elif(Input.is_action_pressed("attack3") and moveset[2].is_ready):
+		atk3_triggered()
+		%S2D_CD3.speed_scale = 1/moveset[2].ab_cd_time
+		%S2D_CD3.play("COOLDOWN")
+		%CD_ATK3.wait_time = moveset[2].ab_cd_time
+		%CD_ATK3.start()
 	
 		
 	

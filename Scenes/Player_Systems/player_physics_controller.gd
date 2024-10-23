@@ -16,10 +16,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
-	# Calculate initial velocity
+	# Covers case where character body is not ready yet
 	if(not char_body):
 		return
 		
+	# Calculate initial velocity
 	char_body.velocity = char_body.pstats.move_speed*move_dir
 	
 	# If gravity via projectile is being applied to character
@@ -29,6 +30,7 @@ func _physics_process(_delta: float) -> void:
 	# If animation player changes move speed 
 	char_body.velocity *= char_body.ap_move_speed_scale
 	
+	#Move as long as movement isn't locked
 	if( not GSM.is_pc_movement_locked ):
 		char_body.move_and_slide()
 	

@@ -15,6 +15,7 @@ extends Control
 
 var UI_OFFSET : Vector2 = Vector2(64,64)
 var type : ENM.TARGET_TYPE = ENM.TARGET_TYPE.PLAYER
+var char_name : String = "Dani"
 
 
 var is_heart_container_gen_delayed : bool = false
@@ -44,7 +45,7 @@ func _ready() -> void:
 		i.queue_free()
 	
 	# Add selected character hearts
-	if(char_instance.pstats.max_health):
+	if("pstats" in char_instance):
 		refresh_heart_containers()
 	else:
 		is_heart_container_gen_delayed = true

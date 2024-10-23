@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://djnhjuf23frn" path="res://Graphics/BG/Tartarus_BG_Bot_1x.png" id="1_8vjbe"]
 [ext_resource type="Script" path="res://Scenes/Levels/DEBUG_BATTLE/debug_battle.gd" id="1_ew5ia"]
 [ext_resource type="PackedScene" uid="uid://1i7vyrm075md" path="res://Scenes/Enemy_Systems/BP_Enemy.tscn" id="5_05l17"]
-[ext_resource type="PackedScene" uid="uid://c7td7c3637cjq" path="res://Scenes/Player_Systems/Dani_Dancer/new/New_Dani_Dancer.tscn" id="6_fie7h"]
+[ext_resource type="PackedScene" uid="uid://c7td7c3637cjq" path="res://Scenes/Player_Systems/Dani_Dancer/Dani_Dancer.tscn" id="6_fie7h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ecfno"]
 
