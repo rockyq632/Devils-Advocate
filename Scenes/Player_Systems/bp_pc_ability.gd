@@ -12,7 +12,8 @@ var ab_base_dmg : float = 0.0
 var ab_anim_speed_scale : float = 1.0
 
 # Less Important References
-var ab_desc : String
+var ab_short_desc : String = "Ability Short Desc"
+var ab_long_desc : String = "Ability Long Description"
 
 
 func _init( key:ENM.AB_KEY, name_val:String, cd_time:float=2.0, dmg:float=0.0, spd_scl:float=1.0 ) -> void:
