@@ -7,7 +7,7 @@ extends Node
 
 var grav_pull : Vector2 = Vector2(0,0)
 var move_dir : Vector2 = Vector2(0,0)
-#var type: ENM.TARGET_TYPE = ENM.TARGET_TYPE.PLAYER
+var type: ENM.TARGET_TYPE = ENM.TARGET_TYPE.PLAYER
 
 
 # Called when the node enters the scene tree for the first time.

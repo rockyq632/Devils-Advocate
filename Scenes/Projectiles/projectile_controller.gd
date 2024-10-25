@@ -383,7 +383,6 @@ func _keep_out_timeout() -> void:
 func _gravity_entered(body:Node2D) -> void:
 	
 	if("type" in body):
-		print(body)
 		if(body.type == target):
 			grav_effected.append(body)
 			

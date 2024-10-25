@@ -19,7 +19,7 @@ var moveset : Array[PC_Ability] = [
 	AB_REF.dict[ENM.AB_KEY.POLE_PIROUETTE]
 ]
 
-var type : ENM.TARGET_TYPE
+var type : ENM.TARGET_TYPE = ENM.TARGET_TYPE.PLAYER
 
 var is_anim_playing : bool = false
 var curr_anim : String = "RESET"
