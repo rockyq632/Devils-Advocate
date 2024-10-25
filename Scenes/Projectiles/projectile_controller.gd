@@ -28,6 +28,8 @@ signal projectile_spawned
 @export var tracking_deadzone : float = 0.0
 @export var tracks_to_source : bool = false
 @export var tracks_to_target : bool = false
+@export var track_on_spawn_only : bool = false
+@export var use_bad_tracking : bool = false
 
 @export_subgroup("Stop")
 @export var stop_on_end : bool = true
@@ -59,7 +61,8 @@ signal projectile_spawned
 
 
 var type: ENM.TARGET_TYPE = ENM.TARGET_TYPE.PROJECTILE
-# Tracks the body that uses physics
+
+# Ref to body of projectile
 var prj_body:CharacterBody2D
 
 # For timeou use
@@ -68,6 +71,9 @@ var despawn_timer:Timer
 # Speed vars
 var dir:Vector2 = Vector2(1,1)
 var curr_speed:Vector2 = Vector2(0,0)
+
+# tracking vars
+var has_tracked:bool = false
 
 # bounce vars
 var bounce_count:int=0
@@ -123,28 +129,45 @@ func _ready() -> void:
 		# Play spawning animation
 		anim_player.play("START")
 		projectile_spawned.emit()
+			
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
 		
 	if(true):
-		# If target tracking is enabled
-		if(tracks_to_target):
-			var track_pos:Vector2 = Vector2(0,0)
-			if(target == ENM.TARGET_TYPE.PLAYER):
-				track_pos = GSM.player_position
-			elif(target == ENM.TARGET_TYPE.ENEMY):
-				track_pos = GSM.enemy_position
-			track_to(track_pos)
+		if(track_on_spawn_only and has_tracked):
+			tracks_to_target = false
+			tracks_to_source = false
 			
-		elif(tracks_to_source):
-			var track_pos:Vector2 = Vector2(0,0)
+		# If target tracking is enabled
+		if( tracks_to_target ):
+			if(target == ENM.TARGET_TYPE.PLAYER):
+				if( use_bad_tracking ):
+					bad_track_to( GSM.player_position )
+				else:
+					track_to( GSM.player_position )
+				has_tracked = true
+			elif(target == ENM.TARGET_TYPE.ENEMY):
+				if( use_bad_tracking ):
+					bad_track_to( GSM.enemy_position )
+				else:
+					track_to( GSM.enemy_position )
+				has_tracked = true
+			
+		elif( tracks_to_source ):
 			if(source == ENM.TARGET_TYPE.PLAYER):
-				track_pos = GSM.player_position
+				if( use_bad_tracking ):
+					bad_track_to( GSM.player_position )
+				else:
+					track_to( GSM.player_position )
+				has_tracked = true
 			elif(source == ENM.TARGET_TYPE.ENEMY):
-				track_pos = GSM.enemy_position
-			track_to(track_pos)
+				if( use_bad_tracking ):
+					bad_track_to( GSM.enemy_position )
+				else:
+					track_to( GSM.enemy_position )
+				has_tracked = true
 			
 		# If no movement toggle is applied
 		else:
@@ -175,7 +198,15 @@ func _physics_process(_delta: float) -> void:
 
 
 # Called when we want to track to a specific position
-func track_to(track_pos:Vector2):
+func track_to(track_pos:Vector2) -> void:
+	curr_speed.x = clampf(curr_speed.x+h_acceleration, (-1*h_move_speed), h_move_speed)
+	curr_speed.y = clampf(curr_speed.y+v_acceleration, (-1*v_move_speed), v_move_speed)
+	
+	dir = prj_body.global_position.direction_to(track_pos)
+	prj_body.velocity = dir*curr_speed+self_grav_pull
+	
+	
+func bad_track_to(track_pos:Vector2) -> void:
 	if(track_pos.x < (prj_body.global_position.x-tracking_deadzone) ):
 		dir.x = -1
 		curr_speed.x = clampf(curr_speed.x-h_acceleration, (-1*h_move_speed), h_move_speed)
@@ -254,11 +285,6 @@ func end_projectile():
 		stop_movement()
 
 
-
-
-
-
-
 #Signals
 # When an animation finishes, trigger the correct next step
 func _on_ap_projectile_animation_finished(anim_name: StringName) -> void:
@@ -310,7 +336,7 @@ func _gravity_entered(body:Node2D) -> void:
 	elif( "type" in body.get_child(0) ):
 		if(body.get_child(0) == self):
 				return
-		elif(body.get_child(0).type == target):
+		elif(body.get_child(0).type == target  or  body.get_child(0).type == ENM.TARGET_TYPE.PROJECTILE):
 			grav_effected.append(body.get_child(0))
 			
 	else:

@@ -23,7 +23,7 @@ func char_selected() -> void:
 	$"MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/TabContainer/Set 1/P_AB2/RTL_AB2".text = temp[1].ab_long_desc
 	$"MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/TabContainer/Set 1/P_AB3/RTL_AB3".text = temp[2].ab_long_desc
 	$"MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/TabContainer/Set 1/P_AB4/RTL_AB4".text = temp[3].ab_long_desc
-	
+
 
 
 

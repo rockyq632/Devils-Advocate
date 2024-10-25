@@ -4,9 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://cddmax33h3714" path="res://Graphics/Projectiles/PE_Ice_Explosion.png" id="2_mtopr"]
 [ext_resource type="Texture2D" uid="uid://384uvi5ypumk" path="res://Graphics/BG/BLANK.png" id="3_g7qs7"]
 
-[sub_resource type="Animation" id="Animation_m0nju"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_cfjny"]
+radius = 0.1
+
+[sub_resource type="Animation" id="Animation_hp58d"]
 resource_name = "END"
-length = 0.62
+length = 0.51
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -15,10 +18,10 @@ tracks/0/path = NodePath("S2D_Keep_Out_Test:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [2, 3, 4, 5, 6, 7]
+"values": [3, 4, 5, 6, 7]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -27,7 +30,7 @@ tracks/1/path = NodePath("S2D_Keep_Out_Test:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.61),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [ExtResource("2_mtopr"), ExtResource("3_g7qs7")]
@@ -35,29 +38,17 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("S2D_Keep_Out_Test:modulate")
+tracks/2/path = NodePath("A2D_Hurt_Box/CS_Hurt_Box:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("A2D_Hurt_Box/CS_Hurt_Box:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.52),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
 }
 
-[sub_resource type="Animation" id="Animation_no0rf"]
+[sub_resource type="Animation" id="Animation_pqoad"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -86,32 +77,19 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("S2D_Keep_Out_Test:modulate")
+tracks/2/path = NodePath("A2D_Hurt_Box/CS_Hurt_Box:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Color(1, 1, 1, 0.392157)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("A2D_Hurt_Box/CS_Hurt_Box:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_g3ttf"]
+[sub_resource type="Animation" id="Animation_gp5vq"]
 resource_name = "START"
 length = 0.1
-step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -139,33 +117,19 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("S2D_Keep_Out_Test:modulate")
+tracks/2/path = NodePath("A2D_Hurt_Box/CS_Hurt_Box:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Color(1, 1, 1, 0.392157)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("A2D_Hurt_Box/CS_Hurt_Box:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_wxt0i"]
+[sub_resource type="Animation" id="Animation_iiaw4"]
 resource_name = "TRAVEL"
 length = 0.1
-loop_mode = 1
-step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -181,38 +145,35 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("S2D_Keep_Out_Test:texture")
+tracks/1/path = NodePath("A2D_Hurt_Box/CS_Hurt_Box:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_mtopr")]
+"values": [true]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("S2D_Keep_Out_Test:modulate")
+tracks/2/path = NodePath("S2D_Keep_Out_Test:texture")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Color(1, 1, 1, 0.392157)]
+"values": [ExtResource("2_mtopr")]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_0aw41"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4jco5"]
 _data = {
-"END": SubResource("Animation_m0nju"),
-"RESET": SubResource("Animation_no0rf"),
-"START": SubResource("Animation_g3ttf"),
-"TRAVEL": SubResource("Animation_wxt0i")
+"END": SubResource("Animation_hp58d"),
+"RESET": SubResource("Animation_pqoad"),
+"START": SubResource("Animation_gp5vq"),
+"TRAVEL": SubResource("Animation_iiaw4")
 }
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_cfjny"]
-radius = 0.1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1mpw6"]
 radius = 40.0
@@ -234,8 +195,6 @@ v_acceleration = 5.0
 tracks_to_target = true
 stop_on_timeout = true
 timeout_sec = 10.0
-effected_by_gravity = true
-creates_gravity = true
 remove_windup = false
 gravity_effect_collision = NodePath("../A2D_Gravity")
 is_keep_out_area = true
@@ -274,14 +233,14 @@ hframes = 4
 vframes = 2
 frame = 2
 
-[node name="AP_Keep_Out_Test" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_0aw41")
-}
-
 [node name="CS_Ice_Explosion" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_cfjny")
+
+[node name="AP_Keep_Out_Test" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4jco5")
+}
 
 [node name="A2D_Hurt_Box" type="Area2D" parent="."]
 collision_layer = 32
@@ -291,6 +250,7 @@ collision_mask = 197
 shape = SubResource("CircleShape2D_1mpw6")
 
 [node name="A2D_Gravity" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 293
 

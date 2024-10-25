@@ -12,7 +12,7 @@ extends Node
 
 func _ready() -> void:
 	dict[ENM.AB_KEY.RESET].ab_icon_texture = preload("res://Graphics/Characters/ASTA_ASTROLOGIAN/Ability_Icons/ICON_Card_Draw_1x.png")
-	
+	#dict[ENM.AB_KEY.RESET].ab
 	
 	dict[ENM.AB_KEY.POLE_SPIN_KICK].ab_icon_texture = preload("res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Spin_Kick_1x.png")
 	

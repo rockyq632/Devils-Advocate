@@ -1,0 +1,208 @@
+[gd_scene load_steps=12 format=3 uid="uid://km1dq8nd5dd5"]
+
+[ext_resource type="Script" path="res://Scenes/Projectiles/projectile_controller.gd" id="1_6jb0k"]
+[ext_resource type="Texture2D" uid="uid://cddmax33h3714" path="res://Graphics/Projectiles/PE_Ice_Explosion.png" id="2_wojqb"]
+[ext_resource type="Texture2D" uid="uid://384uvi5ypumk" path="res://Graphics/BG/BLANK.png" id="3_5ags1"]
+
+[sub_resource type="Animation" id="Animation_m0nju"]
+resource_name = "END"
+length = 0.62
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("S2D_track_once_test:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 3, 4, 5, 6, 7, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("S2D_track_once_test:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_wojqb"), ExtResource("3_5ags1")]
+}
+
+[sub_resource type="Animation" id="Animation_no0rf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("S2D_track_once_test:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("S2D_track_once_test:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_wojqb")]
+}
+
+[sub_resource type="Animation" id="Animation_g3ttf"]
+resource_name = "START"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("S2D_track_once_test:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("S2D_track_once_test:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_wojqb")]
+}
+
+[sub_resource type="Animation" id="Animation_wxt0i"]
+resource_name = "TRAVEL"
+length = 0.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("S2D_track_once_test:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("S2D_track_once_test:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_wojqb")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0aw41"]
+_data = {
+"END": SubResource("Animation_m0nju"),
+"RESET": SubResource("Animation_no0rf"),
+"START": SubResource("Animation_g3ttf"),
+"TRAVEL": SubResource("Animation_wxt0i")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6vnjw"]
+radius = 0.1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lwsfq"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_udh56"]
+radius = 200.0
+
+[node name="PRJ_Track_Once_Test" type="CharacterBody2D"]
+
+[node name="PROJECTILE_CONTROLLER" type="Node2D" parent="." node_paths=PackedStringArray("anim_player", "hurt_box_area", "gravity_effect_collision")]
+script = ExtResource("1_6jb0k")
+anim_player = NodePath("../AP_track_once_test")
+hurt_box_area = NodePath("../A2D_Hurt_Box")
+tracks_to_target = true
+stop_on_timeout = true
+timeout_sec = 10.0
+bounce_off_walls = true
+remove_windup = false
+gravity_weight = 2.0
+gravity_effect_collision = NodePath("../A2D_Gravity")
+
+[node name="RTL_Explain_Text" type="RichTextLabel" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -60.0
+offset_right = 23.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 12
+text = "Keep Out!"
+
+[node name="PB_Timer" type="ProgressBar" parent="."]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -27.0
+offset_top = -48.0
+offset_right = 27.0
+offset_bottom = -43.0
+grow_horizontal = 2
+show_percentage = false
+
+[node name="S2D_track_once_test" type="Sprite2D" parent="."]
+texture = ExtResource("2_wojqb")
+hframes = 4
+vframes = 2
+
+[node name="AP_track_once_test" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0aw41")
+}
+
+[node name="CS_track_once_test" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_6vnjw")
+
+[node name="A2D_Hurt_Box" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 197
+
+[node name="CS_Hurt_Box" type="CollisionShape2D" parent="A2D_Hurt_Box"]
+shape = SubResource("CircleShape2D_lwsfq")
+
+[node name="A2D_Gravity" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 293
+
+[node name="CS_Gravity" type="CollisionShape2D" parent="A2D_Gravity"]
+shape = SubResource("CircleShape2D_udh56")
+debug_color = Color(0.688566, 0.289675, 1, 0.42)
