@@ -46,6 +46,7 @@ signal projectile_spawned
 @export var orbits_source:bool = false
 @export var orbits_target:bool = false
 @export var orbit_radius:float = 60.0
+@export var orbit_radius_deadzone:float = 10.0
 @export var orbit_CW:bool = false
 
 @export_subgroup("Gravity")
@@ -81,6 +82,21 @@ var bounce_count:int=0
 # Gravity vars
 var grav_effected:Array[Node] = []
 var self_grav_pull:Vector2 = Vector2(0,0)
+
+# Orbit vars
+var orbit_pos:Vector2 = Vector2(0,0)
+var orbit_update_dir:Vector2 = Vector2(0,0)
+var orbit_dirs:Array[Vector2] = [
+	Vector2(1,0),
+	Vector2(0.5,0.5),
+	Vector2(0,1),  
+	Vector2(-0.5,0.5),
+	Vector2(-1,0),
+	Vector2(-0.5,0.5),
+	Vector2(0,1),
+	Vector2(0.5,0.5)
+]
+var orbit_dirs_ind:float = 0
 
 # Keep out AOE vars
 var keep_out_detonate_timer:Timer
@@ -136,12 +152,27 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 		
 	if(true):
+		# If projectile only tracks on spawn
 		if(track_on_spawn_only and has_tracked):
 			tracks_to_target = false
 			tracks_to_source = false
 			
+			
+			
+		# If projectile orbits target
+		if( orbits_target and not tracks_to_target ):
+			if(target == ENM.TARGET_TYPE.PLAYER):
+				calc_orbit(GSM.player_position)
+			elif(target == ENM.TARGET_TYPE.ENEMY):
+				calc_orbit(GSM.enemy_position)
+		# If projectile orbits source
+		elif( orbits_source and not tracks_to_source ):
+			if(source == ENM.TARGET_TYPE.PLAYER):
+				calc_orbit(GSM.player_position)
+			elif(source == ENM.TARGET_TYPE.ENEMY):
+				calc_orbit(GSM.enemy_position)
 		# If target tracking is enabled
-		if( tracks_to_target ):
+		elif( tracks_to_target ):
 			if(target == ENM.TARGET_TYPE.PLAYER):
 				if( use_bad_tracking ):
 					bad_track_to( GSM.player_position )
@@ -154,7 +185,7 @@ func _physics_process(_delta: float) -> void:
 				else:
 					track_to( GSM.enemy_position )
 				has_tracked = true
-			
+		# If source tracking is enabled
 		elif( tracks_to_source ):
 			if(source == ENM.TARGET_TYPE.PLAYER):
 				if( use_bad_tracking ):
@@ -175,7 +206,7 @@ func _physics_process(_delta: float) -> void:
 			curr_speed.y = clampf(curr_speed.y+v_acceleration, (-1*v_move_speed), v_move_speed)
 			prj_body.velocity = dir*curr_speed+self_grav_pull
 		
-		
+		# If projectile creates gravity
 		if(creates_gravity):
 			var cnt = 0
 			#print(grav_effected.size())
@@ -185,17 +216,37 @@ func _physics_process(_delta: float) -> void:
 				elif(i.has_method("update_grav_vec")):
 					i.update_grav_vec(gravity_weight*i.global_position.direction_to(prj_body.global_position))
 					cnt += 1
-					
+		
+		# If projectile has velocity
 		if(prj_body.velocity != Vector2(0,0)):
 			prj_body.move_and_slide()
+		
+		# if windup is removed, it resets gravity pull every frame
 		if( remove_windup ):
 			self_grav_pull = Vector2(0,0)
-			
+		
+		# updates progress bar for keep out area option
 		if(is_keep_out_area):
 			$"../PB_Timer".value = keep_out_detonate_timer.time_left
 	
 	
 
+
+#
+func calc_orbit(track_pos:Vector2) -> void:
+	if(prj_body.global_position.distance_to(track_pos) > orbit_radius+orbit_radius_deadzone):
+		orbit_update_dir = prj_body.global_position.direction_to(track_pos)
+	elif(prj_body.global_position.distance_to(track_pos) < orbit_radius-orbit_radius_deadzone):
+		orbit_update_dir = -1*prj_body.global_position.direction_to(track_pos)
+	elif(orbit_CW):
+		orbit_update_dir = prj_body.global_position.direction_to(track_pos).rotated(deg_to_rad(-90))
+	else:
+		orbit_update_dir = prj_body.global_position.direction_to(track_pos).rotated(deg_to_rad(90))
+	
+	dir = orbit_update_dir
+	curr_speed.x = clampf(curr_speed.x+h_acceleration, (-1*h_move_speed), h_move_speed)
+	curr_speed.y = clampf(curr_speed.y+v_acceleration, (-1*v_move_speed), v_move_speed)
+	prj_body.velocity = dir*curr_speed+self_grav_pull
 
 # Called when we want to track to a specific position
 func track_to(track_pos:Vector2) -> void:
@@ -205,7 +256,7 @@ func track_to(track_pos:Vector2) -> void:
 	dir = prj_body.global_position.direction_to(track_pos)
 	prj_body.velocity = dir*curr_speed+self_grav_pull
 	
-	
+# A much worse version of the track_to function, still fun to play with
 func bad_track_to(track_pos:Vector2) -> void:
 	if(track_pos.x < (prj_body.global_position.x-tracking_deadzone) ):
 		dir.x = -1
@@ -221,6 +272,7 @@ func bad_track_to(track_pos:Vector2) -> void:
 		dir.y = 1
 		curr_speed.y = clampf(curr_speed.y+v_acceleration, (-1*v_move_speed), v_move_speed)
 	prj_body.velocity = curr_speed+self_grav_pull
+
 
 
 # Called when boundary wall is hit
@@ -256,6 +308,7 @@ func floor_hit() -> void:
 		bounce_count += 1
 
 
+
 func update_grav_vec(grav_vec:Vector2):
 	if(effected_by_gravity):
 		if(grav_vec == Vector2(0,0)):
@@ -285,6 +338,7 @@ func end_projectile():
 		stop_movement()
 
 
+
 #Signals
 # When an animation finishes, trigger the correct next step
 func _on_ap_projectile_animation_finished(anim_name: StringName) -> void:
@@ -292,8 +346,6 @@ func _on_ap_projectile_animation_finished(anim_name: StringName) -> void:
 		get_parent().queue_free()
 	elif(anim_name == "START"):
 		anim_player.play("TRAVEL")
-
-
 
 # If a body enters projectile hurtbox
 func _on_hurtbox_entered(body: Node2D) -> void:
