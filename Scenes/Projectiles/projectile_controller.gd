@@ -381,7 +381,9 @@ func _keep_out_timeout() -> void:
 
 # When a body enters the gravity field
 func _gravity_entered(body:Node2D) -> void:
+	
 	if("type" in body):
+		print(body)
 		if(body.type == target):
 			grav_effected.append(body)
 			
