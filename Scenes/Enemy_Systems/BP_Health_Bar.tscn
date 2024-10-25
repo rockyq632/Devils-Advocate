@@ -35,6 +35,8 @@ theme_override_constants/margin_bottom = 670
 
 [node name="PB_Bot_Bar" type="ProgressBar" parent="MC_Bar_Placement"]
 unique_name_in_owner = true
+light_mask = 16
+visibility_layer = 16
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_styles/fill = SubResource("StyleBoxFlat_k67cp")
@@ -43,6 +45,8 @@ show_percentage = false
 
 [node name="PB_Top_Bar" type="ProgressBar" parent="MC_Bar_Placement"]
 unique_name_in_owner = true
+light_mask = 16
+visibility_layer = 16
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_styles/background = SubResource("StyleBoxFlat_p8li4")

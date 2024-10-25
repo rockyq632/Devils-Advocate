@@ -127,6 +127,9 @@ right_arrow={
 
 2d_render/layer_1="Sprites"
 2d_render/layer_2="Occluders"
+2d_render/layer_3="Illuminated BGs"
+2d_render/layer_4="Non-Illuminated BGs"
+2d_render/layer_5="UI"
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Player Attacks"
 2d_physics/layer_3="Enemy"

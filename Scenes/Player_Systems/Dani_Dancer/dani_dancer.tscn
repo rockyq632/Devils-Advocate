@@ -120,7 +120,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -234,7 +234,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -348,7 +348,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -1527,9 +1527,13 @@ layout_mode = 2
 
 [node name="S2D_AB1_ICON" type="Sprite2D" parent="MC_Character_UI/VB_CharacterUI/MC_Cooldowns/HB_Cooldowns/PC_CD1/CC_CD1"]
 unique_name_in_owner = true
+light_mask = 16
+visibility_layer = 16
 
 [node name="S2D_CD1" type="AnimatedSprite2D" parent="MC_Character_UI/VB_CharacterUI/MC_Cooldowns/HB_Cooldowns/PC_CD1/CC_CD1"]
 unique_name_in_owner = true
+light_mask = 16
+visibility_layer = 16
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_0b56a")
 
@@ -1543,9 +1547,13 @@ layout_mode = 2
 
 [node name="S2D_AB2_ICON" type="Sprite2D" parent="MC_Character_UI/VB_CharacterUI/MC_Cooldowns/HB_Cooldowns/PC_CD2/CC_CD2"]
 unique_name_in_owner = true
+light_mask = 16
+visibility_layer = 16
 
 [node name="S2D_CD2" type="AnimatedSprite2D" parent="MC_Character_UI/VB_CharacterUI/MC_Cooldowns/HB_Cooldowns/PC_CD2/CC_CD2"]
 unique_name_in_owner = true
+light_mask = 16
+visibility_layer = 16
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_0b56a")
 
@@ -1559,9 +1567,13 @@ layout_mode = 2
 
 [node name="S2D_AB3_ICON" type="Sprite2D" parent="MC_Character_UI/VB_CharacterUI/MC_Cooldowns/HB_Cooldowns/PC_CD3/CC_CD3"]
 unique_name_in_owner = true
+light_mask = 16
+visibility_layer = 16
 
 [node name="S2D_CD3" type="AnimatedSprite2D" parent="MC_Character_UI/VB_CharacterUI/MC_Cooldowns/HB_Cooldowns/PC_CD3/CC_CD3"]
 unique_name_in_owner = true
+light_mask = 16
+visibility_layer = 16
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_0b56a")
 
@@ -1575,9 +1587,13 @@ layout_mode = 2
 
 [node name="S2D_AB4_ICON" type="Sprite2D" parent="MC_Character_UI/VB_CharacterUI/MC_Cooldowns/HB_Cooldowns/PC_CD4/CC_CD4"]
 unique_name_in_owner = true
+light_mask = 16
+visibility_layer = 16
 
 [node name="S2D_CD4" type="AnimatedSprite2D" parent="MC_Character_UI/VB_CharacterUI/MC_Cooldowns/HB_Cooldowns/PC_CD4/CC_CD4"]
 unique_name_in_owner = true
+light_mask = 16
+visibility_layer = 16
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_0b56a")
 

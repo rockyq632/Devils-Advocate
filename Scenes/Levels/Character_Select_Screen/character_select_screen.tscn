@@ -27,6 +27,8 @@ grow_vertical = 2
 script = ExtResource("1_13toc")
 
 [node name="TR_BG" type="TextureRect" parent="."]
+light_mask = 8
+visibility_layer = 8
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,7 +38,9 @@ grow_vertical = 2
 texture = ExtResource("2_7xld5")
 
 [node name="PL_Left_Light" type="PointLight2D" parent="TR_BG"]
+light_mask = 9
 energy = 0.8
+range_item_cull_mask = 9
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 0.54902)
 shadow_item_cull_mask = 3
@@ -88,6 +92,8 @@ size_flags_vertical = 4
 layout_mode = 2
 
 [node name="BTN_Dani" type="TextureButton" parent="HB_Container/VB_Character_Buttons/ARC1"]
+light_mask = 16
+visibility_layer = 16
 layout_mode = 2
 texture_normal = ExtResource("5_5l7q0")
 texture_pressed = ExtResource("6_xah7f")
@@ -98,6 +104,8 @@ texture_focused = ExtResource("6_xah7f")
 layout_mode = 2
 
 [node name="BTN_Asta" type="TextureButton" parent="HB_Container/VB_Character_Buttons/ARC2"]
+light_mask = 16
+visibility_layer = 16
 layout_mode = 2
 texture_normal = ExtResource("7_jckck")
 texture_pressed = ExtResource("8_fmwsm")
@@ -108,6 +116,8 @@ texture_focused = ExtResource("8_fmwsm")
 layout_mode = 2
 
 [node name="TextureButton" type="TextureButton" parent="HB_Container/VB_Character_Buttons/ARC3"]
+light_mask = 16
+visibility_layer = 16
 layout_mode = 2
 texture_normal = ExtResource("4_80qt6")
 
@@ -115,6 +125,8 @@ texture_normal = ExtResource("4_80qt6")
 layout_mode = 2
 
 [node name="TextureButton2" type="TextureButton" parent="HB_Container/VB_Character_Buttons/ARC4"]
+light_mask = 16
+visibility_layer = 16
 layout_mode = 2
 texture_normal = ExtResource("4_80qt6")
 
@@ -122,6 +134,8 @@ texture_normal = ExtResource("4_80qt6")
 layout_mode = 2
 
 [node name="TextureButton3" type="TextureButton" parent="HB_Container/VB_Character_Buttons/ARC5"]
+light_mask = 16
+visibility_layer = 16
 layout_mode = 2
 texture_normal = ExtResource("4_80qt6")
 
@@ -138,11 +152,12 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 
 [node name="BTN_Debug" type="Button" parent="MC_Debug_Btn"]
+light_mask = 16
+visibility_layer = 16
 layout_mode = 2
 text = "DEBUG"
 
 [node name="MC_PU_Char_Details" type="MarginContainer" parent="."]
-visible = false
 custom_minimum_size = Vector2(600, 400)
 layout_mode = 1
 anchors_preset = 8
@@ -161,82 +176,126 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="Panel" type="Panel" parent="MC_PU_Char_Details"]
+[node name="Total_Panel" type="Panel" parent="MC_PU_Char_Details"]
+light_mask = 16
+visibility_layer = 16
 layout_mode = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_d33lr")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MC_PU_Char_Details/Panel"]
+[node name="MC_Ability_Descriptions" type="MarginContainer" parent="MC_PU_Char_Details/Total_Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 350
+theme_override_constants/margin_bottom = 5
 
-[node name="P_AB1" type="HBoxContainer" parent="MC_PU_Char_Details/Panel/VBoxContainer"]
+[node name="CR_AB_BG" type="ColorRect" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions"]
+light_mask = 16
+visibility_layer = 16
+layout_mode = 2
+color = Color(1, 1, 1, 0.345098)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="P_AB1" type="HBoxContainer" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/VBoxContainer"]
 layout_mode = 2
 
-[node name="TR_AB1" type="TextureRect" parent="MC_PU_Char_Details/Panel/VBoxContainer/P_AB1"]
+[node name="TR_AB1" type="TextureRect" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/VBoxContainer/P_AB1"]
+light_mask = 16
+visibility_layer = 16
 layout_mode = 2
 size_flags_horizontal = 0
-size_flags_vertical = 4
+size_flags_vertical = 0
 texture = ExtResource("13_qtujh")
 stretch_mode = 4
 
-[node name="RTL_AB1" type="RichTextLabel" parent="MC_PU_Char_Details/Panel/VBoxContainer/P_AB1"]
+[node name="RTL_AB1" type="RichTextLabel" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/VBoxContainer/P_AB1"]
+light_mask = 16
+visibility_layer = 16
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Abiliity Long Description"
+text = "Abiliity 
+Long 
+Description"
 fit_content = true
 scroll_active = false
 
-[node name="P_AB2" type="HBoxContainer" parent="MC_PU_Char_Details/Panel/VBoxContainer"]
+[node name="P_AB2" type="HBoxContainer" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="TR_AB2" type="TextureRect" parent="MC_PU_Char_Details/Panel/VBoxContainer/P_AB2"]
+[node name="TR_AB2" type="TextureRect" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/VBoxContainer/P_AB2"]
+light_mask = 16
+visibility_layer = 16
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 texture = ExtResource("13_qtujh")
 stretch_mode = 4
 
-[node name="RTL_AB2" type="RichTextLabel" parent="MC_PU_Char_Details/Panel/VBoxContainer/P_AB2"]
+[node name="RTL_AB2" type="RichTextLabel" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/VBoxContainer/P_AB2"]
+light_mask = 16
+visibility_layer = 16
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Abiliity Long Description"
+text = "Abiliity 
+Long 
+Description"
+fit_content = true
 scroll_active = false
 
-[node name="P_AB3" type="HBoxContainer" parent="MC_PU_Char_Details/Panel/VBoxContainer"]
+[node name="P_AB3" type="HBoxContainer" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/VBoxContainer"]
 layout_mode = 2
 
-[node name="TR_AB3" type="TextureRect" parent="MC_PU_Char_Details/Panel/VBoxContainer/P_AB3"]
+[node name="TR_AB3" type="TextureRect" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/VBoxContainer/P_AB3"]
+light_mask = 16
+visibility_layer = 16
 layout_mode = 2
 size_flags_horizontal = 0
-size_flags_vertical = 4
+size_flags_vertical = 0
 texture = ExtResource("13_qtujh")
 stretch_mode = 4
 
-[node name="RTL_AB3" type="RichTextLabel" parent="MC_PU_Char_Details/Panel/VBoxContainer/P_AB3"]
+[node name="RTL_AB3" type="RichTextLabel" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/VBoxContainer/P_AB3"]
+light_mask = 16
+visibility_layer = 16
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Abiliity Long Description"
+text = "Abiliity 
+Long 
+Description"
+fit_content = true
 scroll_active = false
 
-[node name="P_AB4" type="HBoxContainer" parent="MC_PU_Char_Details/Panel/VBoxContainer"]
+[node name="P_AB4" type="HBoxContainer" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/VBoxContainer"]
 layout_mode = 2
 
-[node name="TR_AB4" type="TextureRect" parent="MC_PU_Char_Details/Panel/VBoxContainer/P_AB4"]
+[node name="TR_AB4" type="TextureRect" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/VBoxContainer/P_AB4"]
+light_mask = 16
+visibility_layer = 16
 layout_mode = 2
 size_flags_horizontal = 0
-size_flags_vertical = 4
+size_flags_vertical = 0
 texture = ExtResource("13_qtujh")
 stretch_mode = 4
 
-[node name="RTL_AB4" type="RichTextLabel" parent="MC_PU_Char_Details/Panel/VBoxContainer/P_AB4"]
+[node name="RTL_AB4" type="RichTextLabel" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/VBoxContainer/P_AB4"]
+light_mask = 16
+visibility_layer = 16
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Abiliity Long Description"
+text = "Abiliity
+Long
+Description"
+fit_content = true
 scroll_active = false
 
 [connection signal="pressed" from="HB_Container/VB_Character_Buttons/ARC1/BTN_Dani" to="." method="_on_btn_dani_pressed"]

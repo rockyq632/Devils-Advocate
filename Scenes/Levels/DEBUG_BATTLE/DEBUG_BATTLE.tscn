@@ -22,6 +22,8 @@ grow_vertical = 2
 script = ExtResource("1_ew5ia")
 
 [node name="BG" type="TextureRect" parent="."]
+light_mask = 8
+visibility_layer = 8
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,6 +33,8 @@ grow_vertical = 2
 texture = ExtResource("1_8vjbe")
 
 [node name="BP_Enemy" parent="." instance=ExtResource("5_05l17")]
+light_mask = 16
+visibility_layer = 16
 layout_mode = 1
 is_debug = true
 spawn_projectile_on_click = true
