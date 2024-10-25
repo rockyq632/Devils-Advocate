@@ -12,6 +12,7 @@ var ab_base_dmg : float = 0.0
 var ab_anim_speed_scale : float = 1.0
 
 # Less Important References
+var ab_icon_texture : Texture2D
 var ab_short_desc : String = "Ability Short Desc"
 var ab_long_desc : String = "Ability Long Description"
 

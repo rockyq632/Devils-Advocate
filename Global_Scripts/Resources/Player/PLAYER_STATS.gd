@@ -26,6 +26,8 @@ const MAX_MOVE_SPEED = 1000.0
 @export_range(MIN_MOVE_SPEED, MAX_MOVE_SPEED) var move_speed:float = 200.0
 
 
+var type : ENM.TARGET_TYPE = ENM.TARGET_TYPE.PLAYER
+
 func get_dani_default_pstats() -> PStats:
 	var base_stats:PStats = PStats.new()
 	return base_stats

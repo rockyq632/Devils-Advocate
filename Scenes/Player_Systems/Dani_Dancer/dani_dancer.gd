@@ -19,7 +19,7 @@ var moveset : Array[PC_Ability] = [
 	AB_REF.dict[ENM.AB_KEY.POLE_PIROUETTE]
 ]
 
-var type : ENM.TARGET_TYPE = ENM.TARGET_TYPE.PLAYER
+var type : ENM.TARGET_TYPE
 
 var is_anim_playing : bool = false
 var curr_anim : String = "RESET"
@@ -28,7 +28,7 @@ var cd1_time : float = 2.0
 
 
 func _ready() -> void:
-	pass
+	type = pstats.type
 	
 func _physics_process(_delta: float) -> void:
 	pstats = player_hud.pstats
@@ -178,11 +178,18 @@ func take_damage(amt:int) -> void:
 
 # Called if gravity field entered
 func update_grav_vec(src:Vector2):
-	print("here")
 	if(effected_by_prj_gravity):
 		if(src == Vector2(0,0)):
 			phys_ctrl.grav_pull = src
 		phys_ctrl.grav_pull += src
+
+
+
+
+
+
+func get_moveset() -> Array[PC_Ability]:
+	return moveset
 
 
 # Connected Signals

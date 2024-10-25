@@ -48,10 +48,10 @@ texture = ExtResource("3_6egn6")
 offset = Vector2(640, 320)
 
 [node name="PL_Right_Spotlight" type="PointLight2D" parent="TR_BG"]
-light_mask = 2
-visibility_layer = 2
+light_mask = 9
 position = Vector2(1280, 0)
 energy = 0.8
+range_item_cull_mask = 9
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 0.54902)
 shadow_item_cull_mask = 3
@@ -195,20 +195,19 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 350
 theme_override_constants/margin_bottom = 5
 
-[node name="CR_AB_BG" type="ColorRect" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions"]
-light_mask = 16
-visibility_layer = 16
+[node name="TabContainer" type="TabContainer" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions"]
 layout_mode = 2
-color = Color(1, 1, 1, 0.345098)
+current_tab = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions"]
+[node name="Set 1" type="VBoxContainer" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/TabContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
+metadata/_tab_index = 0
 
-[node name="P_AB1" type="HBoxContainer" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/VBoxContainer"]
+[node name="P_AB1" type="HBoxContainer" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/TabContainer/Set 1"]
 layout_mode = 2
 
-[node name="TR_AB1" type="TextureRect" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/VBoxContainer/P_AB1"]
+[node name="TR_AB1" type="TextureRect" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/TabContainer/Set 1/P_AB1"]
 light_mask = 16
 visibility_layer = 16
 layout_mode = 2
@@ -217,7 +216,7 @@ size_flags_vertical = 0
 texture = ExtResource("13_qtujh")
 stretch_mode = 4
 
-[node name="RTL_AB1" type="RichTextLabel" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/VBoxContainer/P_AB1"]
+[node name="RTL_AB1" type="RichTextLabel" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/TabContainer/Set 1/P_AB1"]
 light_mask = 16
 visibility_layer = 16
 layout_mode = 2
@@ -228,11 +227,11 @@ Description"
 fit_content = true
 scroll_active = false
 
-[node name="P_AB2" type="HBoxContainer" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/VBoxContainer"]
+[node name="P_AB2" type="HBoxContainer" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/TabContainer/Set 1"]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="TR_AB2" type="TextureRect" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/VBoxContainer/P_AB2"]
+[node name="TR_AB2" type="TextureRect" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/TabContainer/Set 1/P_AB2"]
 light_mask = 16
 visibility_layer = 16
 layout_mode = 2
@@ -241,7 +240,7 @@ size_flags_vertical = 0
 texture = ExtResource("13_qtujh")
 stretch_mode = 4
 
-[node name="RTL_AB2" type="RichTextLabel" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/VBoxContainer/P_AB2"]
+[node name="RTL_AB2" type="RichTextLabel" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/TabContainer/Set 1/P_AB2"]
 light_mask = 16
 visibility_layer = 16
 layout_mode = 2
@@ -252,10 +251,10 @@ Description"
 fit_content = true
 scroll_active = false
 
-[node name="P_AB3" type="HBoxContainer" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/VBoxContainer"]
+[node name="P_AB3" type="HBoxContainer" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/TabContainer/Set 1"]
 layout_mode = 2
 
-[node name="TR_AB3" type="TextureRect" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/VBoxContainer/P_AB3"]
+[node name="TR_AB3" type="TextureRect" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/TabContainer/Set 1/P_AB3"]
 light_mask = 16
 visibility_layer = 16
 layout_mode = 2
@@ -264,7 +263,7 @@ size_flags_vertical = 0
 texture = ExtResource("13_qtujh")
 stretch_mode = 4
 
-[node name="RTL_AB3" type="RichTextLabel" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/VBoxContainer/P_AB3"]
+[node name="RTL_AB3" type="RichTextLabel" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/TabContainer/Set 1/P_AB3"]
 light_mask = 16
 visibility_layer = 16
 layout_mode = 2
@@ -275,10 +274,10 @@ Description"
 fit_content = true
 scroll_active = false
 
-[node name="P_AB4" type="HBoxContainer" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/VBoxContainer"]
+[node name="P_AB4" type="HBoxContainer" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/TabContainer/Set 1"]
 layout_mode = 2
 
-[node name="TR_AB4" type="TextureRect" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/VBoxContainer/P_AB4"]
+[node name="TR_AB4" type="TextureRect" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/TabContainer/Set 1/P_AB4"]
 light_mask = 16
 visibility_layer = 16
 layout_mode = 2
@@ -287,7 +286,7 @@ size_flags_vertical = 0
 texture = ExtResource("13_qtujh")
 stretch_mode = 4
 
-[node name="RTL_AB4" type="RichTextLabel" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/VBoxContainer/P_AB4"]
+[node name="RTL_AB4" type="RichTextLabel" parent="MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/TabContainer/Set 1/P_AB4"]
 light_mask = 16
 visibility_layer = 16
 layout_mode = 2
@@ -297,6 +296,29 @@ Long
 Description"
 fit_content = true
 scroll_active = false
+
+[node name="MC_Stat_Block" type="MarginContainer" parent="MC_PU_Char_Details/Total_Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 350
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 150
+
+[node name="TabContainer" type="TabContainer" parent="MC_PU_Char_Details/Total_Panel/MC_Stat_Block"]
+layout_mode = 2
+current_tab = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MC_PU_Char_Details/Total_Panel/MC_Stat_Block/TabContainer"]
+light_mask = 16
+visibility_layer = 16
+layout_mode = 2
+text = "Stat Block"
+metadata/_tab_index = 0
 
 [connection signal="pressed" from="HB_Container/VB_Character_Buttons/ARC1/BTN_Dani" to="." method="_on_btn_dani_pressed"]
 [connection signal="pressed" from="HB_Container/VB_Character_Buttons/ARC2/BTN_Asta" to="." method="_on_btn_asta_pressed"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ogpf7vucv8qj" path="res://Graphics/Characters/Locked_Character_1x.png" id="1_coofb"]
 [ext_resource type="Script" path="res://Scenes/Player_Systems/BlankChar/blank_char.gd" id="1_f0fb0"]
-[ext_resource type="Script" path="res://Global_Scripts/Resources/Player_Stats/PLAYER_STATS.gd" id="2_148h8"]
+[ext_resource type="Script" path="res://Global_Scripts/Resources/Player/PLAYER_STATS.gd" id="2_148h8"]
 [ext_resource type="Texture2D" uid="uid://cnaj47nhyvldr" path="res://Graphics/Characters/ASTA_ASTROLOGIAN/Ability_Icons/ICON_Card_Draw_1x.png" id="3_qxb5u"]
 
 [sub_resource type="Resource" id="Resource_pd0w5"]

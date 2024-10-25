@@ -4,9 +4,31 @@ var current_selection:Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	GSM.is_pc_movement_locked = false
+	GSM.is_pc_movement_locked = true
 	current_selection = Control.new()
 	current_selection.global_position = $TR_Player_Placeholder.global_position+Vector2(-32,-32)
+
+
+
+func char_selected() -> void:
+	$MC_PU_Char_Details.visible = true
+	
+	var temp: Array[PC_Ability] = current_selection.char_instance.get_moveset()
+	$"MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/TabContainer/Set 1/P_AB1/TR_AB1".texture = temp[0].ab_icon_texture
+	$"MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/TabContainer/Set 1/P_AB2/TR_AB2".texture = temp[1].ab_icon_texture
+	$"MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/TabContainer/Set 1/P_AB3/TR_AB3".texture = temp[2].ab_icon_texture
+	$"MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/TabContainer/Set 1/P_AB4/TR_AB4".texture = temp[3].ab_icon_texture
+	
+	$"MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/TabContainer/Set 1/P_AB1/RTL_AB1".text = temp[0].ab_long_desc
+	$"MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/TabContainer/Set 1/P_AB2/RTL_AB2".text = temp[1].ab_long_desc
+	$"MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/TabContainer/Set 1/P_AB3/RTL_AB3".text = temp[2].ab_long_desc
+	$"MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/TabContainer/Set 1/P_AB4/RTL_AB4".text = temp[3].ab_long_desc
+	
+
+
+
+
+
 
 
 func _on_btn_debug_pressed() -> void:
@@ -31,6 +53,8 @@ func _on_btn_dani_pressed() -> void:
 	current_selection = load("res://Scenes/Player_Systems/Dani_Dancer/Dani_Dancer.tscn").instantiate()
 	current_selection.position = temp
 	add_child( current_selection )
+	
+	char_selected()
 	
 
 # Astrologian Selected
