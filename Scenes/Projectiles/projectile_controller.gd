@@ -48,6 +48,8 @@ signal projectile_spawned
 @export var orbit_radius:float = 60.0
 @export var orbit_radius_deadzone:float = 10.0
 @export var orbit_CW:bool = false
+@export var orbit_spiral:bool = false
+@export var orbit_spiral_angle = 90.0
 
 @export_subgroup("Gravity")
 @export var effected_by_gravity : bool = false
@@ -160,13 +162,13 @@ func _physics_process(_delta: float) -> void:
 			
 			
 		# If projectile orbits target
-		if( orbits_target and not tracks_to_target ):
+		if( orbits_target ):
 			if(target == ENM.TARGET_TYPE.PLAYER):
 				calc_orbit(GSM.player_position)
 			elif(target == ENM.TARGET_TYPE.ENEMY):
 				calc_orbit(GSM.enemy_position)
 		# If projectile orbits source
-		elif( orbits_source and not tracks_to_source ):
+		elif( orbits_source ):
 			if(source == ENM.TARGET_TYPE.PLAYER):
 				calc_orbit(GSM.player_position)
 			elif(source == ENM.TARGET_TYPE.ENEMY):
@@ -234,14 +236,21 @@ func _physics_process(_delta: float) -> void:
 
 #
 func calc_orbit(track_pos:Vector2) -> void:
-	if(prj_body.global_position.distance_to(track_pos) > orbit_radius+orbit_radius_deadzone):
+	# If projectile has gotten too far from track position
+	if( (not orbit_spiral) and (tracks_to_source or tracks_to_target)  and  prj_body.global_position.distance_to(track_pos) > orbit_radius+orbit_radius_deadzone):
 		orbit_update_dir = prj_body.global_position.direction_to(track_pos)
-	elif(prj_body.global_position.distance_to(track_pos) < orbit_radius-orbit_radius_deadzone):
-		orbit_update_dir = -1*prj_body.global_position.direction_to(track_pos)
+	# If orbiting CW direction
 	elif(orbit_CW):
-		orbit_update_dir = prj_body.global_position.direction_to(track_pos).rotated(deg_to_rad(-90))
+		if( orbit_spiral ):
+			orbit_update_dir = prj_body.global_position.direction_to(track_pos).rotated(deg_to_rad(-1*orbit_spiral_angle))
+		else:
+			orbit_update_dir = prj_body.global_position.direction_to(track_pos).rotated(deg_to_rad(-90))
+	# If orbiting CCW direction
 	else:
-		orbit_update_dir = prj_body.global_position.direction_to(track_pos).rotated(deg_to_rad(90))
+		if( orbit_spiral ):
+			orbit_update_dir = prj_body.global_position.direction_to(track_pos).rotated(deg_to_rad(orbit_spiral_angle))
+		else:
+			orbit_update_dir = prj_body.global_position.direction_to(track_pos).rotated(deg_to_rad(90))
 	
 	dir = orbit_update_dir
 	curr_speed.x = clampf(curr_speed.x+h_acceleration, (-1*h_move_speed), h_move_speed)
@@ -381,7 +390,6 @@ func _keep_out_timeout() -> void:
 
 # When a body enters the gravity field
 func _gravity_entered(body:Node2D) -> void:
-	
 	if("type" in body):
 		if(body.type == target):
 			grav_effected.append(body)
