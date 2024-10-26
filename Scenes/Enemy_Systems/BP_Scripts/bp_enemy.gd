@@ -30,7 +30,7 @@ func _process(_delta: float) -> void:
 
 func _input(event):
 	if(event is InputEventMouseButton and is_debug and spawn_projectile_on_click):
-		spawn_projectile("PRJ_Orbit_Test", event.global_position)
+		spawn_projectile("PRJ_Shockwave_Test", event.global_position)
 
 
 

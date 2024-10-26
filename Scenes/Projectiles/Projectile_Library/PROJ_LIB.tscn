@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://le8bjn04kvro"]
+[gd_scene load_steps=14 format=3 uid="uid://le8bjn04kvro"]
 
 [ext_resource type="Script" path="res://Scenes/Projectiles/Projectile_Library/proj_lib.gd" id="1_s73xv"]
 [ext_resource type="PackedScene" uid="uid://bcqncneucahp5" path="res://Scenes/Projectiles/Projectile_Library/proj_scenes/prj_ice_explosion.tscn" id="2_gnowd"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c6eyr2302jgqo" path="res://Scenes/Projectiles/Projectile_Library/proj_scenes/prj_test_keep_out.tscn" id="4_v5qxn"]
 [ext_resource type="PackedScene" uid="uid://km1dq8nd5dd5" path="res://Scenes/Projectiles/Projectile_Library/proj_scenes/prj_track_once_test.tscn" id="5_as3gm"]
 [ext_resource type="PackedScene" uid="uid://cu4xkr4daqfy8" path="res://Scenes/Projectiles/Projectile_Library/proj_scenes/prj_orbit_test.tscn" id="6_6f28y"]
+[ext_resource type="PackedScene" uid="uid://c1qrcv707i488" path="res://Scenes/Projectiles/Projectile_Library/proj_scenes/prj_test_shockwave.tscn" id="7_uxdau"]
 
 [sub_resource type="Animation" id="Animation_r27d5"]
 resource_name = "END"
@@ -64,5 +65,9 @@ visible = false
 visible = false
 
 [node name="PRJ_Track_Once_Test" parent="." instance=ExtResource("5_as3gm")]
+visible = false
 
 [node name="PRJ_Orbit_Test" parent="." instance=ExtResource("6_6f28y")]
+visible = false
+
+[node name="PRJ_Shockwave_Test" parent="." instance=ExtResource("7_uxdau")]

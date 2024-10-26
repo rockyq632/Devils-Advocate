@@ -24,6 +24,10 @@ signal projectile_spawned
 
 
 @export_group("Projectile Options")
+@export_subgroup("Shockwave")
+@export var is_shockwave : bool = false
+@export var rotates_toward_facing: bool = false
+
 @export_subgroup("Tracking")
 @export var tracking_deadzone : float = 0.0
 @export var tracks_to_source : bool = false
@@ -160,7 +164,6 @@ func _physics_process(_delta: float) -> void:
 			tracks_to_source = false
 			
 			
-			
 		# If projectile orbits target
 		if( orbits_target ):
 			if(target == ENM.TARGET_TYPE.PLAYER):
@@ -202,6 +205,7 @@ func _physics_process(_delta: float) -> void:
 					track_to( GSM.enemy_position )
 				has_tracked = true
 			
+			
 		# If no movement toggle is applied
 		else:
 			curr_speed.x = clampf(curr_speed.x+h_acceleration, (-1*h_move_speed), h_move_speed)
@@ -226,6 +230,10 @@ func _physics_process(_delta: float) -> void:
 		# if windup is removed, it resets gravity pull every frame
 		if( remove_windup ):
 			self_grav_pull = Vector2(0,0)
+		
+		if( is_shockwave and rotates_toward_facing ):
+			var targ_ang:float = prj_body.velocity.angle()
+			prj_body.rotation = targ_ang
 		
 		# updates progress bar for keep out area option
 		if(is_keep_out_area):
