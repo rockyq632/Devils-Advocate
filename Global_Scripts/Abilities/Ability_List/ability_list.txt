@@ -1,0 +1,5 @@
+ID,Name,Short Description,Long Description,Moveset,Character,Type,Combos into,Cooldown time,Speed Scale,Base DMG 1,Base DMG 2,Base DMG 3,Buff Type,Buff Amount,Buff Mod
+500,Pole Spin Kick,,Pole Spin Kick - long description,Pole,Dancer,Offensive,,2,2,2.5,0,0,NONE,0,0
+501,Pole Inversion Strike,,Pole Inversion Strike - long description,Pole,Dancer,Offensive,,4,1.5,7.5,0,0,NONE,0,0
+502,Pole Inversion Dive,,Pole Inversion Dive - long description,Pole,Dancer,Offensive,,6,1.5,100,100,100,NONE,0,0
+503,Pole Pirouette,,Pole Pirouette - long description,Pole,Dancer,Defensive,,8,1,0,0,0,NONE,0,0

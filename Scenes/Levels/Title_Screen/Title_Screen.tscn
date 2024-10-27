@@ -17,6 +17,8 @@ size_flags_vertical = 4
 script = ExtResource("1_g76w1")
 
 [node name="TR_BG" type="TextureRect" parent="."]
+light_mask = 8
+visibility_layer = 8
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,6 +58,8 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 500
 
 [node name="BTN_Play" type="Button" parent="MarginContainer/VB_TitleItems/MarginContainer"]
+light_mask = 16
+visibility_layer = 16
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_t1hne")
 theme_override_font_sizes/font_size = 50

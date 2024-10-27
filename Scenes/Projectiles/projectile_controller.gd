@@ -231,7 +231,7 @@ func _physics_process(_delta: float) -> void:
 		if( remove_windup ):
 			self_grav_pull = Vector2(0,0)
 		
-		if( is_shockwave and rotates_toward_facing ):
+		if( is_shockwave and rotates_toward_facing  and  anim_player.current_animation != "END" ):
 			var targ_ang:float = prj_body.velocity.angle()
 			prj_body.rotation = targ_ang
 		
