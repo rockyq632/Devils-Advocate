@@ -4,8 +4,11 @@ var current_selection:Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$MC_PU_Char_Details.visible = false
 	GSM.is_pc_movement_locked = true
 	current_selection = Control.new()
+	
+	
 	current_selection.global_position = $TR_Player_Placeholder.global_position+Vector2(-32,-32)
 
 

@@ -1,38 +1,38 @@
-ID,name,short_desc,long_desc,moveset,character,type,combos_into,cooldown,speed_scale,dmg1,dmg2,dmg3,buff_type,buff_amt,buff_mod
-999,Reset,,RESET ISN'T USED,NONE,,,,0,0,0,0,0,NONE,0,0
-,,,,,,,,,,,,,,,
-500,POLE_SPIN_KICK,,Light attack. Combos into Inversion moves,Pole,Dancer,Offensive,501 502,2,2,2.5,0,0,NONE,0,0
-501,POLE_INVERSION_STRIKE,,Heavy attack. Does more damage if combo,Pole,Dancer,Offensive,,4,1.5,7.5,0,0,NONE,0,0
-502,POLE_INVERSION_DIVE,,Heavy triple attack. Does more damage if combo,Pole,Dancer,Offensive,,6,1.5,100,100,100,NONE,0,0
-503,POLE_PIROUETTE,,Graceful dodge with a smooth speed increase ,Pole,Dancer,Defensive,,8,1,0,0,0,NONE,0,0
-,,,,,,,,,,,,,NONE,,
-504,CARD_DRAW_AND_STORE,,Draws a card and stores it in your hand,Gambler,Astrologian,Offensive,505 506,1.5,1,0,0,0,NONE,0,0
-505,CARD_REVEAL,,Reveals your hand and discards your cards,Gambler,Astrologian,Offensive,506,5,1,10,0,0,NONE,0,0
-506,CARD_JACKPOT,,Becomes available when on a hot streak. Does a bunch of damage,Gambler,Astrologian,Offensive,,6,1,100,0,0,NONE,0,0
-507,CARD_CHEAT,,"Dodges attacks, discards cards, and stacks the deck with good cards for some duration",Gambler,Astrologian,Defensive,504,8,1,10,0,0,SPECIAL,0,0
-,,,,,,,,,,,,,NONE,,
-508,,,,,,,,,,,,,NONE,,
-509,,,,,,,,,,,,,NONE,,
-510,,,,,,,,,,,,,NONE,,
-511,,,,,,,,,,,,,NONE,,
-,,,,,,,,,,,,,NONE,,
-,,,,,,,,,,,,,NONE,,
-,,,,,,,,,,,,,NONE,,
-,,,,,,,,,,,,,NONE,,
-,,,,,,,,,,,,,NONE,,
-,,,,,,,,,,,,,NONE,,
-,,,,,,,,,,,,,NONE,,
-,,,,,,,,,,,,,NONE,,
-,,,,,,,,,,,,,NONE,,
-,,,,,,,,,,,,,NONE,,
-,,,,,,,,,,,,,NONE,,
-,,,,,,,,,,,,,NONE,,
-,,,,,,,,,,,,,NONE,,
-,,,,,,,,,,,,,NONE,,
-,,,,,,,,,,,,,NONE,,
-,,,,,,,,,,,,,NONE,,
-,,,,,,,,,,,,,NONE,,
-,,,,,,,,,,,,,NONE,,
-,,,,,,,,,,,,,NONE,,
-,,,,,,,,,,,,,NONE,,
-,,,,,,,,,,,,,NONE,,
+ID,name,short_desc,long_desc,moveset,character,type,combos_into,icon_location,cooldown,speed_scale,dmg1,dmg2,dmg3,buff_type,buff_amt,buff_mod
+999,Reset,,RESET ISN'T USED,NONE,,,,res://Graphics/Characters/ASTA_ASTROLOGIAN/Ability_Icons/ICON_Card_Draw_1x.png,0,0,0,0,0,NONE,0,0
+,,,,,,,,,,,,,,,,
+500,POLE_SPIN_KICK,,Light attack. Combos into Inversion moves,Pole,Dancer,Offensive,501 502,res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Spin_Kick_1x.png,2,2,2.5,0,0,NONE,0,0
+501,POLE_INVERSION_STRIKE,,Heavy attack. Does more damage if combo,Pole,Dancer,Offensive,,res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Inversion_Strike_1x.png,4,1.5,7.5,0,0,NONE,0,0
+502,POLE_INVERSION_DIVE,,Heavy triple attack. Does more damage if combo,Pole,Dancer,Offensive,,res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Inversion_Dive_1x.png,6,1.5,100,100,100,NONE,0,0
+503,POLE_PIROUETTE,,Graceful dodge with a smooth speed increase ,Pole,Dancer,Defensive,,res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Pirouette_1x.png,8,1,0,0,0,NONE,0,0
+,,,,,,,,,,,,,,NONE,,
+504,CARD_DRAW_AND_STORE,,Draws a card and stores it in your hand,Gambler,Astrologian,Offensive,505 506,res://Graphics/Characters/ASTA_ASTROLOGIAN/Ability_Icons/ICON_Card_Draw_1x.png,1.5,1,0,0,0,NONE,0,0
+505,CARD_REVEAL,,Reveals your hand and discards your cards,Gambler,Astrologian,Offensive,506,res://Graphics/Characters/ASTA_ASTROLOGIAN/Ability_Icons/ICON_Card_Draw_1x.png,5,1,10,0,0,NONE,0,0
+506,CARD_JACKPOT,,Becomes available when on a hot streak. Does a bunch of damage,Gambler,Astrologian,Offensive,,res://Graphics/Characters/ASTA_ASTROLOGIAN/Ability_Icons/ICON_Card_Draw_1x.png,6,1,100,0,0,NONE,0,0
+507,CARD_CHEAT,,"Dodges attacks, discards cards, and stacks the deck with good cards for some duration",Gambler,Astrologian,Defensive,504,res://Graphics/Characters/ASTA_ASTROLOGIAN/Ability_Icons/ICON_Card_Draw_1x.png,8,1,10,0,0,SPECIAL,0,0
+,,,,,,,,,,,,,,NONE,,
+508,,,,,,,,,,,,,,NONE,,
+509,,,,,,,,,,,,,,NONE,,
+510,,,,,,,,,,,,,,NONE,,
+511,,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,,NONE,,

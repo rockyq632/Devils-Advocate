@@ -313,11 +313,11 @@ theme_override_constants/margin_bottom = 150
 layout_mode = 2
 current_tab = 0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MC_PU_Char_Details/Total_Panel/MC_Stat_Block/TabContainer"]
+[node name="Stat Block" type="RichTextLabel" parent="MC_PU_Char_Details/Total_Panel/MC_Stat_Block/TabContainer"]
 light_mask = 16
 visibility_layer = 16
 layout_mode = 2
-text = "Stat Block"
+text = "Stats and stuff"
 metadata/_tab_index = 0
 
 [connection signal="pressed" from="HB_Container/VB_Character_Buttons/ARC1/BTN_Dani" to="." method="_on_btn_dani_pressed"]

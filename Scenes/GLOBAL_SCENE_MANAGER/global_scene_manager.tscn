@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://ba6xnfstclqbv"]
+[gd_scene load_steps=7 format=3 uid="uid://ba6xnfstclqbv"]
 
 [ext_resource type="Script" path="res://Scenes/GLOBAL_SCENE_MANAGER/scripts/global_scene_manager.gd" id="1_6gix0"]
 [ext_resource type="PackedScene" uid="uid://c6uwyusdwgn51" path="res://Scenes/GLOBAL_SCENE_MANAGER/Screen_Bounds.tscn" id="2_h2cpf"]
 [ext_resource type="Script" path="res://Scenes/GLOBAL_SCENE_MANAGER/scripts/global_bg_viewports.gd" id="2_lj6ur"]
 [ext_resource type="Texture2D" uid="uid://bb6uy1ebpp7cr" path="res://Graphics/BG/generated/down_tran_img.png" id="3_qppog"]
+[ext_resource type="Script" path="res://Scenes/GLOBAL_SCENE_MANAGER/debug_stuff.gd" id="5_jnqj1"]
+[ext_resource type="PackedScene" uid="uid://cdve04xju573h" path="res://Scenes/Menues/Pause/Pause.tscn" id="6_neh6m"]
 
 [node name="Global_Scene_Manager" type="Node"]
 script = ExtResource("1_6gix0")
@@ -86,3 +88,129 @@ offset = Vector2(640, 360)
 [node name="ScreenBounds" parent="." instance=ExtResource("2_h2cpf")]
 
 [node name="Global_Enemy_Projectiles" type="Node" parent="."]
+
+[node name="Debug_Stuff" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 250.0
+offset_bottom = 100.0
+mouse_filter = 2
+script = ExtResource("5_jnqj1")
+
+[node name="Panel" type="Panel" parent="Debug_Stuff"]
+modulate = Color(1, 1, 1, 0.54902)
+light_mask = 16
+visibility_layer = 16
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Debug_Stuff"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VB" type="VBoxContainer" parent="Debug_Stuff/MarginContainer"]
+layout_mode = 2
+
+[node name="HB1" type="HBoxContainer" parent="Debug_Stuff/MarginContainer/VB"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="dbg_lbl1" type="RichTextLabel" parent="Debug_Stuff/MarginContainer/VB/HB1"]
+custom_minimum_size = Vector2(100, 10)
+layout_mode = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[right]debug1:"
+fit_content = true
+scroll_active = false
+
+[node name="dbg_var1" type="RichTextLabel" parent="Debug_Stuff/MarginContainer/VB/HB1"]
+custom_minimum_size = Vector2(100, 10)
+layout_mode = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[left]var1"
+fit_content = true
+scroll_active = false
+
+[node name="HB2" type="HBoxContainer" parent="Debug_Stuff/MarginContainer/VB"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="dbg_lbl2" type="RichTextLabel" parent="Debug_Stuff/MarginContainer/VB/HB2"]
+custom_minimum_size = Vector2(100, 10)
+layout_mode = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[right]debug2:"
+fit_content = true
+scroll_active = false
+
+[node name="dbg_var2" type="RichTextLabel" parent="Debug_Stuff/MarginContainer/VB/HB2"]
+custom_minimum_size = Vector2(100, 10)
+layout_mode = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[left]var1"
+fit_content = true
+scroll_active = false
+
+[node name="HB3" type="HBoxContainer" parent="Debug_Stuff/MarginContainer/VB"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="dbg_lbl3" type="RichTextLabel" parent="Debug_Stuff/MarginContainer/VB/HB3"]
+custom_minimum_size = Vector2(100, 10)
+layout_mode = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[right]debug3:"
+fit_content = true
+scroll_active = false
+
+[node name="dbg_var3" type="RichTextLabel" parent="Debug_Stuff/MarginContainer/VB/HB3"]
+custom_minimum_size = Vector2(100, 10)
+layout_mode = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[left]var1"
+fit_content = true
+scroll_active = false
+
+[node name="HB4" type="HBoxContainer" parent="Debug_Stuff/MarginContainer/VB"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="dbg_lbl4" type="RichTextLabel" parent="Debug_Stuff/MarginContainer/VB/HB4"]
+custom_minimum_size = Vector2(100, 10)
+layout_mode = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[right]debug4:"
+fit_content = true
+scroll_active = false
+
+[node name="dbg_var4" type="RichTextLabel" parent="Debug_Stuff/MarginContainer/VB/HB4"]
+custom_minimum_size = Vector2(100, 10)
+layout_mode = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[left]var1"
+fit_content = true
+scroll_active = false
+
+[node name="Pause_Menu" parent="." instance=ExtResource("6_neh6m")]
+process_mode = 2

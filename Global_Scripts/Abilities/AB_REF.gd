@@ -28,16 +28,20 @@ func _ready() -> void:
 				dict[i].ab_name = ab_line[1]
 				dict[i].ab_short_desc = ab_line[2]
 				dict[i].ab_long_desc = ab_line[3]
-				dict[i].ab_cd_time = float( ab_line[8] )
-				dict[i].ab_anim_speed_scale = float( ab_line[9] )
-				dict[i].ab_base_dmg = float( ab_line[10] )
-				dict[i].ab_base_dmg2 = float( ab_line[11] )
-				dict[i].ab_base_dmg3 = float( ab_line[12] )
+				
+				dict[i].ab_icon_texture = load(ab_line[8])
+				
+				dict[i].ab_cd_time = float( ab_line[9] )
+				dict[i].ab_anim_speed_scale = float( ab_line[10] )
+				dict[i].ab_base_dmg = float( ab_line[11] )
+				dict[i].ab_base_dmg2 = float( ab_line[12] )
+				dict[i].ab_base_dmg3 = float( ab_line[13] )
 				#print(ab_line)
 				break
 	file.close()
 	
 	# Pre-load all of the ability icon textures
+	'''
 	dict[ENM.AB_KEY.RESET].ab_icon_texture = preload("res://Graphics/Characters/ASTA_ASTROLOGIAN/Ability_Icons/ICON_Card_Draw_1x.png")
 
 	dict[ENM.AB_KEY.POLE_SPIN_KICK].ab_icon_texture = preload("res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Spin_Kick_1x.png")
@@ -49,4 +53,4 @@ func _ready() -> void:
 	dict[ENM.AB_KEY.CARD_REVEAL].ab_icon_texture = preload("res://Graphics/Characters/ASTA_ASTROLOGIAN/Ability_Icons/ICON_Card_Draw_1x.png")
 	dict[ENM.AB_KEY.CARD_JACKPOT].ab_icon_texture = preload("res://Graphics/Characters/ASTA_ASTROLOGIAN/Ability_Icons/ICON_Card_Draw_1x.png")
 	dict[ENM.AB_KEY.CARD_CHEAT].ab_icon_texture = preload("res://Graphics/Characters/ASTA_ASTROLOGIAN/Ability_Icons/ICON_Card_Draw_1x.png")
-	
+	'''

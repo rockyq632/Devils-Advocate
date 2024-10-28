@@ -6,6 +6,9 @@ var GLOBAL_SCENE_MANAGER : Node
 var GLOBAL_CONTROL_NODE : Control
 var GLOBAL_2D_NODE : Node2D
 var GLOBAL_ENEMY_PROJECTILES:Node
+var DEBUG:DebugConsole
+var PAUSE_MENU:PauseMenu
+
 
 var GLOBAL_P1_STATS:PStats
 
@@ -20,6 +23,8 @@ var enemy_position : Vector2 = Vector2(0,0)
 
 var is_paused : bool = false
 var is_pc_movement_locked : bool = true
+var is_pause_disabled : bool = true
+var is_inventory_disabled : bool = true
 
 
 

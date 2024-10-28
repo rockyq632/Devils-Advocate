@@ -48,10 +48,6 @@ func _ready() -> void:
 	else:
 		is_heart_container_gen_delayed = true
 	
-	
-	
-	
-		
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -62,10 +58,8 @@ func _process(_delta: float) -> void:
 		
 	# Move UI to match the character sprite
 	%MC_Character_UI.position = char_instance.position - UI_OFFSET
-	
-	
-	
-	
+
+
 func take_damage(_amt:float) -> void:
 	#RQ TODO Currently ignores amt variable
 	if( char_instance.pstats.health == -1 ):
@@ -79,11 +73,6 @@ func take_damage(_amt:float) -> void:
 			$MC_Character_UI/VB_CharacterUI/VF_Hearts.get_child(int(char_instance.pstats.health)).damaged()
 	else:
 		print("NO HEART CONTAINERS FOUND : dani_hud.gd")
-
-
-
-
-
 
 
 func refresh_heart_containers():
@@ -101,21 +90,15 @@ func reset_cooldowns():
 	_on_cd_def_timeout()
 
 
-
-
-
 #Signals
 func _on_cd_atk_1_timeout() -> void:
 	char_instance.moveset[0].is_ready = true
 
-
 func _on_cd_atk_2_timeout() -> void:
 	char_instance.moveset[1].is_ready = true
 
-
 func _on_cd_atk_3_timeout() -> void:
 	char_instance.moveset[2].is_ready = true
-
 
 func _on_cd_def_timeout() -> void:
 	char_instance.moveset[3].is_ready = true
