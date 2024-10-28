@@ -15,6 +15,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if($Next_Area_Zone.visible):
 		$Next_Area_Zone/A2D_Waiting_Room/CS_Waiting_Room.disabled = false
+		$Next_Area_Zone/PB_Waiting_Room.value = $Next_Area_Zone/T_Waiting_Room.wait_time - $Next_Area_Zone/T_Waiting_Room.time_left
 	
 	if(load_next_area):
 		GSM.clear_screen()
@@ -38,4 +39,15 @@ func _on_enemy_dead() -> void:
 func _on_waiting_room_body_entered(body: Node2D) -> void:
 	if( "type" in body ):
 		if( body.type == ENM.TARGET_TYPE.PLAYER ):
-			load_next_area = true
+			$Next_Area_Zone/PB_Waiting_Room.max_value = $Next_Area_Zone/T_Waiting_Room.wait_time
+			$Next_Area_Zone/T_Waiting_Room.start()
+
+func _on_waiting_room_body_exited(body: Node2D) -> void:
+	if( "type" in body ):
+		if( body.type == ENM.TARGET_TYPE.PLAYER ):
+			$Next_Area_Zone/T_Waiting_Room.stop()
+			
+
+
+func _on_t_waiting_room_timeout() -> void:
+	load_next_area = true

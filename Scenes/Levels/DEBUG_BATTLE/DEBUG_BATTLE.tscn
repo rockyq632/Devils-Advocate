@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://m6heyk4adbkm"]
+[gd_scene load_steps=10 format=3 uid="uid://m6heyk4adbkm"]
 
 [ext_resource type="Texture2D" uid="uid://djnhjuf23frn" path="res://Graphics/BG/Tartarus_BG_Bot_1x.png" id="1_8vjbe"]
 [ext_resource type="Script" path="res://Scenes/Levels/DEBUG_BATTLE/debug_battle.gd" id="1_ew5ia"]
 [ext_resource type="PackedScene" uid="uid://1i7vyrm075md" path="res://Scenes/Enemy_Systems/BP_Enemy.tscn" id="5_05l17"]
+[ext_resource type="Script" path="res://Global_Scripts/Resources/Player/PLAYER_STATS.gd" id="5_cx0fl"]
 [ext_resource type="PackedScene" uid="uid://c7td7c3637cjq" path="res://Scenes/Player_Systems/Dani_Dancer/Dani_Dancer.tscn" id="6_fie7h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ecfno"]
@@ -11,6 +12,13 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0gewc"]
 size = Vector2(200, 730)
+
+[sub_resource type="Resource" id="Resource_kgts2"]
+script = ExtResource("5_cx0fl")
+max_health = 3.0
+health = 3.0
+armor = 0.0
+move_speed = 350.0
 
 [node name="DebugBattle" type="Control"]
 layout_mode = 3
@@ -65,12 +73,33 @@ collision_mask = 256
 position = Vector2(1180, 360)
 shape = SubResource("RectangleShape2D_0gewc")
 
+[node name="CR_Waiting_Room" type="ColorRect" parent="Next_Area_Zone"]
+offset_left = 1080.0
+offset_top = -5.0
+offset_right = 1280.0
+offset_bottom = 725.0
+color = Color(0.352941, 0.352941, 1, 0.392157)
+
+[node name="T_Waiting_Room" type="Timer" parent="Next_Area_Zone"]
+wait_time = 3.0
+one_shot = true
+
+[node name="PB_Waiting_Room" type="ProgressBar" parent="Next_Area_Zone"]
+offset_left = 1100.0
+offset_top = 650.0
+offset_right = 1260.0
+offset_bottom = 670.0
+show_percentage = false
+
 [node name="Player_Dani" parent="." instance=ExtResource("6_fie7h")]
 offset_left = 191.0
 offset_top = 189.0
 offset_right = 311.0
 offset_bottom = 309.0
+pstats = SubResource("Resource_kgts2")
 
 [connection signal="enemy_dead" from="BP_Enemy" to="." method="_on_enemy_dead"]
 [connection signal="body_entered" from="StaticBody2D" to="." method="_on_body_entered_dmg_square"]
 [connection signal="body_entered" from="Next_Area_Zone/A2D_Waiting_Room" to="." method="_on_waiting_room_body_entered"]
+[connection signal="body_exited" from="Next_Area_Zone/A2D_Waiting_Room" to="." method="_on_waiting_room_body_exited"]
+[connection signal="timeout" from="Next_Area_Zone/T_Waiting_Room" to="." method="_on_t_waiting_room_timeout"]

@@ -1,8 +1,7 @@
-[gd_scene load_steps=77 format=3 uid="uid://c7td7c3637cjq"]
+[gd_scene load_steps=75 format=3 uid="uid://c7td7c3637cjq"]
 
 [ext_resource type="Script" path="res://Scenes/Player_Systems/Dani_Dancer/dani_hud.gd" id="1_pyw3t"]
 [ext_resource type="Script" path="res://Scenes/Player_Systems/Dani_Dancer/dani_dancer.gd" id="1_tcuq5"]
-[ext_resource type="Script" path="res://Global_Scripts/Resources/Player/PLAYER_STATS.gd" id="2_p0kfy"]
 [ext_resource type="Script" path="res://Scenes/Player_Systems/player_physics_controller.gd" id="3_2yoqt"]
 [ext_resource type="Shader" path="res://Shaders/occlussion_cropper.gdshader" id="4_bmbnw"]
 [ext_resource type="Texture2D" uid="uid://dtukmk4xbmfja" path="res://Graphics/Characters/DANI_DANCER/Aseprite/Dani Dancer_o.png" id="5_daoa2"]
@@ -15,13 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://dui2bw50swvh" path="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Pirouette_1x.png" id="12_d4aod"]
 [ext_resource type="PackedScene" uid="uid://bg8sq66oyqmc1" path="res://Scenes/Player_Systems/HUD/Health_Heart.tscn" id="13_boqcl"]
 [ext_resource type="Texture2D" uid="uid://t8k3v2qmoxic" path="res://Graphics/UI/CD_Overlay_SM_4x.png" id="14_anesl"]
-
-[sub_resource type="Resource" id="Resource_dksgr"]
-script = ExtResource("2_p0kfy")
-max_health = 3.0
-health = 3.0
-armor = 0.0
-move_speed = 350.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ywj65"]
 shader = ExtResource("4_bmbnw")
@@ -1382,7 +1374,6 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource("1_pyw3t")
 char_instance = NodePath("DaniDancer")
-pstats = SubResource("Resource_dksgr")
 moveset_select1 = 1
 moveset_select2 = 2
 moveset_select3 = 3

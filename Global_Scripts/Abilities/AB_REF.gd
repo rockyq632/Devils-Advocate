@@ -3,14 +3,20 @@ extends Node
 
 @onready var dict = {
 	ENM.AB_KEY.RESET : PC_Ability.new(999, ENM.AB_KEY.RESET),
-		
+	
 	ENM.AB_KEY.POLE_SPIN_KICK : PC_Ability.new(500, ENM.AB_KEY.POLE_SPIN_KICK),
 	ENM.AB_KEY.POLE_INVERSION_STRIKE : PC_Ability.new(501, ENM.AB_KEY.POLE_INVERSION_STRIKE),
 	ENM.AB_KEY.POLE_INVERSION_DIVE : PC_Ability.new(502, ENM.AB_KEY.POLE_INVERSION_DIVE),
-	ENM.AB_KEY.POLE_PIROUETTE : PC_Ability.new(503, ENM.AB_KEY.POLE_PIROUETTE)
+	ENM.AB_KEY.POLE_PIROUETTE : PC_Ability.new(503, ENM.AB_KEY.POLE_PIROUETTE),
+	
+	ENM.AB_KEY.CARD_DRAW_AND_STORE : PC_Ability.new(504, ENM.AB_KEY.CARD_DRAW_AND_STORE),
+	ENM.AB_KEY.CARD_REVEAL : PC_Ability.new(505, ENM.AB_KEY.CARD_REVEAL),
+	ENM.AB_KEY.CARD_JACKPOT : PC_Ability.new(506, ENM.AB_KEY.CARD_JACKPOT),
+	ENM.AB_KEY.CARD_CHEAT : PC_Ability.new(507, ENM.AB_KEY.CARD_CHEAT)
 }
 
 func _ready() -> void:
+	# Read in all of the ability values from the csv list
 	var file = FileAccess.open("res://Global_Scripts/Abilities/Ability_List/ability_list.txt", FileAccess.READ)
 	file.get_csv_line()
 	while ( not file.eof_reached() ):
@@ -27,17 +33,20 @@ func _ready() -> void:
 				dict[i].ab_base_dmg = float( ab_line[10] )
 				dict[i].ab_base_dmg2 = float( ab_line[11] )
 				dict[i].ab_base_dmg3 = float( ab_line[12] )
+				#print(ab_line)
 				break
-			
-		#print(ab_line)
 	file.close()
 	
-	
-	
+	# Pre-load all of the ability icon textures
 	dict[ENM.AB_KEY.RESET].ab_icon_texture = preload("res://Graphics/Characters/ASTA_ASTROLOGIAN/Ability_Icons/ICON_Card_Draw_1x.png")
-	
-	
+
 	dict[ENM.AB_KEY.POLE_SPIN_KICK].ab_icon_texture = preload("res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Spin_Kick_1x.png")
 	dict[ENM.AB_KEY.POLE_INVERSION_STRIKE].ab_icon_texture = preload("res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Inversion_Strike_1x.png")
 	dict[ENM.AB_KEY.POLE_INVERSION_DIVE].ab_icon_texture = preload("res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Inversion_Dive_1x.png")
 	dict[ENM.AB_KEY.POLE_PIROUETTE].ab_icon_texture = preload("res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Pirouette_1x.png")
+	
+	dict[ENM.AB_KEY.CARD_DRAW_AND_STORE].ab_icon_texture = preload("res://Graphics/Characters/ASTA_ASTROLOGIAN/Ability_Icons/ICON_Card_Draw_1x.png")
+	dict[ENM.AB_KEY.CARD_REVEAL].ab_icon_texture = preload("res://Graphics/Characters/ASTA_ASTROLOGIAN/Ability_Icons/ICON_Card_Draw_1x.png")
+	dict[ENM.AB_KEY.CARD_JACKPOT].ab_icon_texture = preload("res://Graphics/Characters/ASTA_ASTROLOGIAN/Ability_Icons/ICON_Card_Draw_1x.png")
+	dict[ENM.AB_KEY.CARD_CHEAT].ab_icon_texture = preload("res://Graphics/Characters/ASTA_ASTROLOGIAN/Ability_Icons/ICON_Card_Draw_1x.png")
+	

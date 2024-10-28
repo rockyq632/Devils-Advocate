@@ -27,11 +27,9 @@ func _ready() -> void:
 		char_instance.effected_by_prj_gravity = effected_by_prj_gravity
 		char_instance.effected_by_world_gravity = effected_by_world_gravity
 	
-	#If P1 stats exist already, maintain stats
-	if(GSM.GLOBAL_P1_STATS):
-		char_instance.pstats = GSM.GLOBAL_P1_STATS
-	else:
-		GSM.GLOBAL_P1_STATS = char_instance.pstats
+	#
+	char_instance.pstats = pstats
+	GSM.GLOBAL_P1_STATS = pstats
 		
 	# Load selected ability icons
 	#var temp:Array[CompressedTexture2D] = char_instance.get_ability_icons()

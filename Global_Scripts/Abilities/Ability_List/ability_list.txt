@@ -1,5 +1,38 @@
-ID,Name,Short Description,Long Description,Moveset,Character,Type,Combos into,Cooldown time,Speed Scale,Base DMG 1,Base DMG 2,Base DMG 3,Buff Type,Buff Amount,Buff Mod
-500,Pole Spin Kick,,Pole Spin Kick - long description,Pole,Dancer,Offensive,,2,2,2.5,0,0,NONE,0,0
-501,Pole Inversion Strike,,Pole Inversion Strike - long description,Pole,Dancer,Offensive,,4,1.5,7.5,0,0,NONE,0,0
-502,Pole Inversion Dive,,Pole Inversion Dive - long description,Pole,Dancer,Offensive,,6,1.5,100,100,100,NONE,0,0
-503,Pole Pirouette,,Pole Pirouette - long description,Pole,Dancer,Defensive,,8,1,0,0,0,NONE,0,0
+ID,name,short_desc,long_desc,moveset,character,type,combos_into,cooldown,speed_scale,dmg1,dmg2,dmg3,buff_type,buff_amt,buff_mod
+999,Reset,,RESET ISN'T USED,NONE,,,,0,0,0,0,0,NONE,0,0
+,,,,,,,,,,,,,,,
+500,POLE_SPIN_KICK,,Light attack. Combos into Inversion moves,Pole,Dancer,Offensive,501 502,2,2,2.5,0,0,NONE,0,0
+501,POLE_INVERSION_STRIKE,,Heavy attack. Does more damage if combo,Pole,Dancer,Offensive,,4,1.5,7.5,0,0,NONE,0,0
+502,POLE_INVERSION_DIVE,,Heavy triple attack. Does more damage if combo,Pole,Dancer,Offensive,,6,1.5,100,100,100,NONE,0,0
+503,POLE_PIROUETTE,,Graceful dodge with a smooth speed increase ,Pole,Dancer,Defensive,,8,1,0,0,0,NONE,0,0
+,,,,,,,,,,,,,NONE,,
+504,CARD_DRAW_AND_STORE,,Draws a card and stores it in your hand,Gambler,Astrologian,Offensive,505 506,1.5,1,0,0,0,NONE,0,0
+505,CARD_REVEAL,,Reveals your hand and discards your cards,Gambler,Astrologian,Offensive,506,5,1,10,0,0,NONE,0,0
+506,CARD_JACKPOT,,Becomes available when on a hot streak. Does a bunch of damage,Gambler,Astrologian,Offensive,,6,1,100,0,0,NONE,0,0
+507,CARD_CHEAT,,"Dodges attacks, discards cards, and stacks the deck with good cards for some duration",Gambler,Astrologian,Defensive,504,8,1,10,0,0,SPECIAL,0,0
+,,,,,,,,,,,,,NONE,,
+508,,,,,,,,,,,,,NONE,,
+509,,,,,,,,,,,,,NONE,,
+510,,,,,,,,,,,,,NONE,,
+511,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,NONE,,
+,,,,,,,,,,,,,NONE,,
