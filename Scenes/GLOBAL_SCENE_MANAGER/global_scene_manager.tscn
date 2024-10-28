@@ -213,4 +213,3 @@ fit_content = true
 scroll_active = false
 
 [node name="Pause_Menu" parent="." instance=ExtResource("6_neh6m")]
-process_mode = 2

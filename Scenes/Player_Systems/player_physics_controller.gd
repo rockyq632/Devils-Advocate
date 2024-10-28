@@ -47,11 +47,7 @@ func process_inputs():
 		move_dir = Input.get_vector("left", "right", "up", "down")
 	
 	# Process Non-combat Inputs
-	
-	if( Input.is_action_just_pressed("pause_menu") and (not GSM.is_pause_disabled) and (not GSM.PAUSE_MENU.visible) ):
-		GSM.PAUSE_MENU.open_menu(get_tree())
-		#char_body.pause_anim_oneshot = true
-	elif( Input.is_action_pressed("inventory_menu")  and not GSM.is_inventory_disabled ):
+	if( Input.is_action_pressed("inventory_menu")  and not GSM.is_inventory_disabled ):
 		pass
 	# Process Attack Inputs
 	# If an attack is already going, skip until finished
