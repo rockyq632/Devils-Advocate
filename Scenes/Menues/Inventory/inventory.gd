@@ -1,3 +1,4 @@
+class_name Inventory
 extends Control
 
 
@@ -7,5 +8,15 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
+
+
+
+func open_inventory() -> void:
+	show()
+	
+
+func close_inventory() -> void:
+	hide()
+	

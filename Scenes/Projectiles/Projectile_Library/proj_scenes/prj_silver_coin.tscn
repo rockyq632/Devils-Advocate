@@ -1,0 +1,147 @@
+[gd_scene load_steps=10 format=3 uid="uid://v6j0ek2uxe1k"]
+
+[ext_resource type="Script" path="res://Scenes/Projectiles/projectile_controller.gd" id="1_kf2oq"]
+[ext_resource type="Texture2D" uid="uid://bp623dorajg3b" path="res://Graphics/Projectiles/Money/Silver_Coin_1x.png" id="2_tayus"]
+
+[sub_resource type="Animation" id="Animation_m0nju"]
+resource_name = "END"
+length = 0.11
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("S2D_Silver_Coin:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_no0rf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("S2D_Silver_Coin:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("S2D_Silver_Coin:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_g3ttf"]
+resource_name = "START"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("S2D_Silver_Coin:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_wxt0i"]
+resource_name = "TRAVEL"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("S2D_Silver_Coin:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [17, 18, 19, 20, 21, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0aw41"]
+_data = {
+"END": SubResource("Animation_m0nju"),
+"RESET": SubResource("Animation_no0rf"),
+"START": SubResource("Animation_g3ttf"),
+"TRAVEL": SubResource("Animation_wxt0i")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cfjny"]
+radius = 0.1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tkgdl"]
+radius = 200.0
+
+[node name="PRJ_Silver_Coin" type="CharacterBody2D"]
+motion_mode = 1
+
+[node name="PROJECTILE_CONTROLLER" type="Node2D" parent="." node_paths=PackedStringArray("anim_player", "hurt_box_area", "gravity_effect_collision")]
+script = ExtResource("1_kf2oq")
+anim_player = NodePath("../AP_Silver_Coin")
+hurt_box_area = NodePath("../A2D_Hurt_Box")
+is_shockwave = true
+rotates_toward_facing = true
+tracks_to_target = true
+track_on_spawn_only = true
+stop_on_timeout = true
+timeout_sec = 15.0
+bounce_off_walls = true
+orbit_spiral_angle = 60.0
+remove_windup = false
+gravity_weight = 1.0
+gravity_effect_collision = NodePath("../A2D_Gravity")
+
+[node name="S2D_Silver_Coin" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_tayus")
+hframes = 4
+vframes = 6
+
+[node name="AP_Silver_Coin" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0aw41")
+}
+
+[node name="CS_Silver_Coin" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_cfjny")
+
+[node name="A2D_Hurt_Box" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 197
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="A2D_Hurt_Box"]
+polygon = PackedVector2Array(-3, -4, 3, -4, 5, -2, 5, 2, 3, 4, -3, 4, -5, 2, -5, -2)
+
+[node name="A2D_Gravity" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 293
+
+[node name="CS_Gravity" type="CollisionShape2D" parent="A2D_Gravity"]
+shape = SubResource("CircleShape2D_tkgdl")
+debug_color = Color(0.688566, 0.289675, 1, 0.42)

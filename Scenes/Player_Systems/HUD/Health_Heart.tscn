@@ -84,6 +84,7 @@ _data = {
 light_mask = 16
 visibility_layer = 16
 texture = ExtResource("1_7a1xf")
+stretch_mode = 4
 script = ExtResource("2_q2pk3")
 
 [node name="AP_Heart" type="AnimationPlayer" parent="."]

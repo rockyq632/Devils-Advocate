@@ -1,14 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://m6heyk4adbkm"]
+[gd_scene load_steps=8 format=3 uid="uid://m6heyk4adbkm"]
 
 [ext_resource type="Texture2D" uid="uid://djnhjuf23frn" path="res://Graphics/BG/Tartarus_BG_Bot_1x.png" id="1_8vjbe"]
 [ext_resource type="Script" path="res://Scenes/Levels/DEBUG_BATTLE/debug_battle.gd" id="1_ew5ia"]
 [ext_resource type="PackedScene" uid="uid://1i7vyrm075md" path="res://Scenes/Enemy_Systems/BP_Enemy.tscn" id="5_05l17"]
 [ext_resource type="Script" path="res://Global_Scripts/Resources/Player/PLAYER_STATS.gd" id="5_cx0fl"]
 [ext_resource type="PackedScene" uid="uid://c7td7c3637cjq" path="res://Scenes/Player_Systems/Dani_Dancer/Dani_Dancer.tscn" id="6_fie7h"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ecfno"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_lnfty"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0gewc"]
 size = Vector2(200, 730)
@@ -46,22 +42,6 @@ visibility_layer = 16
 layout_mode = 1
 is_debug = true
 spawn_projectile_on_click = true
-debug_ai = true
-
-[node name="StaticBody2D" type="Area2D" parent="."]
-collision_layer = 9
-collision_mask = 9
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(980, 210)
-shape = SubResource("RectangleShape2D_ecfno")
-
-[node name="TextureRect" type="TextureRect" parent="StaticBody2D"]
-offset_left = 970.0
-offset_top = 200.0
-offset_right = 990.0
-offset_bottom = 220.0
-texture = SubResource("CanvasTexture_lnfty")
 
 [node name="Next_Area_Zone" type="Node2D" parent="."]
 
@@ -99,7 +79,6 @@ offset_bottom = 309.0
 pstats = SubResource("Resource_kgts2")
 
 [connection signal="enemy_dead" from="BP_Enemy" to="." method="_on_enemy_dead"]
-[connection signal="body_entered" from="StaticBody2D" to="." method="_on_body_entered_dmg_square"]
 [connection signal="body_entered" from="Next_Area_Zone/A2D_Waiting_Room" to="." method="_on_waiting_room_body_entered"]
 [connection signal="body_exited" from="Next_Area_Zone/A2D_Waiting_Room" to="." method="_on_waiting_room_body_exited"]
 [connection signal="timeout" from="Next_Area_Zone/T_Waiting_Room" to="." method="_on_t_waiting_room_timeout"]

@@ -10,9 +10,12 @@ var move_dir : Vector2 = Vector2(0,0)
 var type: ENM.TARGET_TYPE = ENM.TARGET_TYPE.PLAYER
 
 
+var inv_instance : Inventory = Inventory.new()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GSM.is_pause_disabled = false
+	GSM.is_inventory_disabled = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -47,8 +50,12 @@ func process_inputs():
 		move_dir = Input.get_vector("left", "right", "up", "down")
 	
 	# Process Non-combat Inputs
-	if( Input.is_action_pressed("inventory_menu")  and not GSM.is_inventory_disabled ):
-		pass
+	if( Input.is_action_just_pressed("inventory_menu")  and not GSM.is_inventory_disabled ):
+		if (not inv_instance.visible):
+			inv_instance.open_inventory()
+		else:
+			inv_instance.close_inventory()
+			
 	# Process Attack Inputs
 	# If an attack is already going, skip until finished
 	elif(char_body.is_anim_playing == true  or  GSM.is_paused):

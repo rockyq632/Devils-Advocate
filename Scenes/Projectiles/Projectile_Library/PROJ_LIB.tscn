@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://le8bjn04kvro"]
+[gd_scene load_steps=22 format=3 uid="uid://le8bjn04kvro"]
 
 [ext_resource type="Script" path="res://Scenes/Projectiles/Projectile_Library/proj_lib.gd" id="1_s73xv"]
 [ext_resource type="PackedScene" uid="uid://bcqncneucahp5" path="res://Scenes/Projectiles/Projectile_Library/proj_scenes/prj_ice_explosion.tscn" id="2_gnowd"]
@@ -7,6 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://km1dq8nd5dd5" path="res://Scenes/Projectiles/Projectile_Library/proj_scenes/prj_track_once_test.tscn" id="5_as3gm"]
 [ext_resource type="PackedScene" uid="uid://cu4xkr4daqfy8" path="res://Scenes/Projectiles/Projectile_Library/proj_scenes/prj_orbit_test.tscn" id="6_6f28y"]
 [ext_resource type="PackedScene" uid="uid://c1qrcv707i488" path="res://Scenes/Projectiles/Projectile_Library/proj_scenes/prj_test_shockwave.tscn" id="7_uxdau"]
+[ext_resource type="PackedScene" uid="uid://iuuntnrwddus" path="res://Scenes/Projectiles/Projectile_Library/proj_scenes/prj_gold_coin.tscn" id="8_lnb8e"]
+[ext_resource type="PackedScene" uid="uid://v6j0ek2uxe1k" path="res://Scenes/Projectiles/Projectile_Library/proj_scenes/prj_silver_coin.tscn" id="9_7m57m"]
+[ext_resource type="PackedScene" uid="uid://eim2do2abnqy" path="res://Scenes/Projectiles/Projectile_Library/proj_scenes/prj_copper_coin.tscn" id="10_2ja1c"]
+[ext_resource type="PackedScene" uid="uid://cnmkqyodq71ut" path="res://Scenes/Projectiles/Projectile_Library/proj_scenes/prj_dollar_bill.tscn" id="11_67rye"]
+[ext_resource type="PackedScene" uid="uid://dmtg3qfgtnc3f" path="res://Scenes/Projectiles/Projectile_Library/proj_scenes/prj_red_fireball.tscn" id="12_htplv"]
+[ext_resource type="PackedScene" uid="uid://da0kvgq3qywm" path="res://Scenes/Projectiles/Projectile_Library/proj_scenes/prj_music_note1.tscn" id="13_m8jqn"]
+[ext_resource type="PackedScene" uid="uid://dcflma2xmtcy" path="res://Scenes/Projectiles/Projectile_Library/proj_scenes/prj_music_note2.tscn" id="14_dmskj"]
+[ext_resource type="PackedScene" uid="uid://cp381qt5xcyl3" path="res://Scenes/Projectiles/Projectile_Library/proj_scenes/prj_music_note3.tscn" id="15_ncwl8"]
 
 [sub_resource type="Animation" id="Animation_r27d5"]
 resource_name = "END"
@@ -71,3 +79,28 @@ visible = false
 visible = false
 
 [node name="PRJ_Shockwave_Test" parent="." instance=ExtResource("7_uxdau")]
+visible = false
+
+[node name="PRJ_Gold_Coin" parent="." instance=ExtResource("8_lnb8e")]
+visible = false
+
+[node name="PRJ_Silver_Coin" parent="." instance=ExtResource("9_7m57m")]
+visible = false
+
+[node name="PRJ_Copper_Coin" parent="." instance=ExtResource("10_2ja1c")]
+visible = false
+
+[node name="PRJ_Dollar_Bill" parent="." instance=ExtResource("11_67rye")]
+visible = false
+
+[node name="PRJ_Red_Fireball" parent="." instance=ExtResource("12_htplv")]
+visible = false
+
+[node name="PRJ_Music_Note1" parent="." instance=ExtResource("13_m8jqn")]
+visible = false
+
+[node name="PRJ_Music_Note2" parent="." instance=ExtResource("14_dmskj")]
+visible = false
+
+[node name="PRJ_Music_Note3" parent="." instance=ExtResource("15_ncwl8")]
+visible = false

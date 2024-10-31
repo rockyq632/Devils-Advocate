@@ -39,12 +39,12 @@ func _physics_process(_delta: float) -> void:
 	# Handle armor frames display
 	if(%Armor_Frames.time_left>0.0):
 		if(%S2D_Dani.visible):
-			%S2D_Dani.visible = false
+			%S2D_Dani.hide()
 		else:
-			%S2D_Dani.visible = true
+			%S2D_Dani.show()
 	else:
 		if(not %S2D_Dani.visible):
-			%S2D_Dani.visible = true
+			%S2D_Dani.show()
 	
 	# Update Player position in the global scene manager
 	GSM.player_position = global_position

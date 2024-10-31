@@ -30,9 +30,13 @@ func _process(_delta: float) -> void:
 
 func _input(event):
 	if(event is InputEventMouseButton and is_debug and spawn_projectile_on_click):
-		spawn_projectile("PRJ_Shockwave_Test", event.global_position)
-
-
+		match randi_range(1,3):
+			1:
+				spawn_projectile("PRJ_Copper_Coin", event.global_position)
+			2:
+				spawn_projectile("PRJ_Silver_Coin", event.global_position)
+			_:
+				spawn_projectile("PRJ_Gold_Coin", event.global_position)
 
 
 func spawn_projectile(nam:String, pos:Vector2):

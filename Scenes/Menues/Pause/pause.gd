@@ -18,14 +18,14 @@ func open_menu() -> void:
 	GSM.is_paused = true
 	GSM.is_pc_movement_locked = true
 	GSM.is_pause_disabled = true
-	visible = true
+	show()
 
 
 func close_menu() -> void:
 	GSM.is_paused = false
 	GSM.is_pc_movement_locked = false
 	GSM.is_pause_disabled = false
-	visible = false
+	hide()
 	get_tree().paused = false
 
 
