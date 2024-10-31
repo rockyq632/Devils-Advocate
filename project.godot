@@ -146,11 +146,18 @@ inventory_menu={
 2d_physics/layer_8="Floor_Ceiling"
 2d_physics/layer_9="Player_Shape_Boundary"
 
+[physics]
+
+2d/run_on_separate_thread=true
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
 textures/canvas_textures/default_texture_repeat=1
+textures/lossless_compression/force_png=true
 anti_aliasing/screen_space_roughness_limiter/enabled=false
+textures/decals/filter=0
+textures/light_projectors/filter=0
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true
 2d/sdf/oversize=0

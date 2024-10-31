@@ -6,8 +6,6 @@ signal projectile_hit_wall
 signal projectile_hit_target
 signal projectile_spawned
 
-#@export var source:CharacterBody2D
-#@export var target:CharacterBody2D
 @export var source : ENM.TARGET_TYPE = ENM.TARGET_TYPE.ENEMY
 @export var target : ENM.TARGET_TYPE = ENM.TARGET_TYPE.PLAYER
 @export var anim_player:AnimationPlayer
@@ -19,14 +17,14 @@ signal projectile_spawned
 @export var h_acceleration:float = 10.0
 @export var v_move_speed:float = 200.0
 @export var v_acceleration:float = 10.0
-#@export var initial_angle_degs:float = 0.0
 
 
 
 @export_group("Projectile Options")
-@export_subgroup("Shockwave")
-@export var is_shockwave : bool = false
+@export_subgroup("Facing")
+@export var will_rotate : bool = false
 @export var rotates_toward_facing: bool = false
+@export var max_rotation_per_tick = 90.0
 
 @export_subgroup("Tracking")
 @export var tracking_deadzone : float = 0.0
@@ -59,6 +57,7 @@ signal projectile_spawned
 @export var effected_by_gravity : bool = false
 @export var creates_gravity : bool = false
 @export var remove_windup : bool = true
+@export var grav_ignores_target : bool = false
 @export var gravity_weight : float = 10.0
 @export var gravity_effect_collision : Area2D
 
@@ -72,8 +71,11 @@ var type: ENM.TARGET_TYPE = ENM.TARGET_TYPE.PROJECTILE
 # Ref to body of projectile
 var prj_body:CharacterBody2D
 
-# For timeou use
+# For timeout use
 var despawn_timer:Timer
+
+# Facing vars
+var last_angle:float
 
 # Speed vars
 var dir:Vector2 = Vector2(1,1)
@@ -231,18 +233,21 @@ func _physics_process(_delta: float) -> void:
 		if( remove_windup ):
 			self_grav_pull = Vector2(0,0)
 		
-		if( is_shockwave and rotates_toward_facing  and  anim_player.current_animation != "END" ):
+		if( will_rotate and rotates_toward_facing  and  anim_player.current_animation != "END" ):
 			var targ_ang:float = prj_body.velocity.angle()
+			if(abs(targ_ang-last_angle) > max_rotation_per_tick):
+				pass
+				#targ_ang = (targ_ang/abs(targ_ang))*abs(targ_ang-max_rotation_per_tick)
+			last_angle = prj_body.rotation
 			prj_body.rotation = targ_ang
 		
 		# updates progress bar for keep out area option
 		if(is_keep_out_area):
 			$"../PB_Timer".value = keep_out_detonate_timer.time_left
-	
-	
 
 
-#
+
+# Calculates (albeit poorly) the velocity of orbiting projectiles
 func calc_orbit(track_pos:Vector2) -> void:
 	# If projectile has gotten too far from track position
 	if( (not orbit_spiral) and (tracks_to_source or tracks_to_target)  and  prj_body.global_position.distance_to(track_pos) > orbit_radius+orbit_radius_deadzone):
@@ -399,19 +404,19 @@ func _keep_out_timeout() -> void:
 # When a body enters the gravity field
 func _gravity_entered(body:Node2D) -> void:
 	if("type" in body):
-		if(body.type == target):
+		if(body.type == target and not grav_ignores_target):
 			grav_effected.append(body)
 			
 	elif( "type" in body.get_child(0) ):
 		if(body.get_child(0) == self):
 				return
-		elif(body.get_child(0).type == target  or  body.get_child(0).type == ENM.TARGET_TYPE.PROJECTILE):
+		elif( (body.get_child(0).type == target and not grav_ignores_target)  or  body.get_child(0).type == ENM.TARGET_TYPE.PROJECTILE):
 			grav_effected.append(body.get_child(0))
 			
 	else:
 		#print("%s has no variable 'type'" % body)
 		pass
-			
+
 
 # When a body leaves the gravity field
 func _gravity_exited(body:Node2D) -> void:

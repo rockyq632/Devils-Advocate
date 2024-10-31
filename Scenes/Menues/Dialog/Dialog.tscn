@@ -1,0 +1,103 @@
+[gd_scene load_steps=3 format=3 uid="uid://us61sldjpnuj"]
+
+[ext_resource type="Script" path="res://Scenes/Menues/Dialog/dialog.gd" id="1_r4ceg"]
+[ext_resource type="Texture2D" uid="uid://pb8aoqsw33f0" path="res://Graphics/Items/Item_Placeholder_1x.png" id="2_5x0do"]
+
+[node name="Dialog" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r4ceg")
+
+[node name="MC" type="MarginContainer" parent="."]
+light_mask = 16
+visibility_layer = 16
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 500
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 20
+
+[node name="P_Total_Dialog_Space" type="Panel" parent="MC"]
+light_mask = 16
+visibility_layer = 16
+layout_mode = 2
+
+[node name="MC_img_text" type="MarginContainer" parent="MC/P_Total_Dialog_Space"]
+light_mask = 16
+visibility_layer = 16
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HB_img_text" type="HBoxContainer" parent="MC/P_Total_Dialog_Space/MC_img_text"]
+light_mask = 16
+visibility_layer = 16
+layout_mode = 2
+
+[node name="TR_dialog_img" type="TextureRect" parent="MC/P_Total_Dialog_Space/MC_img_text/HB_img_text"]
+unique_name_in_owner = true
+light_mask = 16
+visibility_layer = 16
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = ExtResource("2_5x0do")
+
+[node name="MC_dialog_txt" type="MarginContainer" parent="MC/P_Total_Dialog_Space/MC_img_text/HB_img_text"]
+light_mask = 16
+visibility_layer = 16
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 69
+theme_override_constants/margin_bottom = 20
+
+[node name="RTL_dialog_txt" type="RichTextLabel" parent="MC/P_Total_Dialog_Space/MC_img_text/HB_img_text/MC_dialog_txt"]
+unique_name_in_owner = true
+light_mask = 16
+visibility_layer = 16
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/bold_italics_font_size = 30
+theme_override_font_sizes/italics_font_size = 30
+theme_override_font_sizes/mono_font_size = 30
+theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/bold_font_size = 30
+text = "	This is where the dialog text will go. For now, here is some test text to see how it looks. Look at this test text. Does it not please you? I guess we will have to make this look better until it does."
+
+[node name="MarginContainer" type="MarginContainer" parent="MC/P_Total_Dialog_Space"]
+light_mask = 16
+visibility_layer = 16
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -100.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TR_interact_icon" type="TextureRect" parent="MC/P_Total_Dialog_Space/MarginContainer"]
+light_mask = 16
+visibility_layer = 16
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = ExtResource("2_5x0do")
