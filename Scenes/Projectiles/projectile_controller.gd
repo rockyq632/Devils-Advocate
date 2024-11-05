@@ -26,7 +26,7 @@ signal projectile_spawned
 @export var rotates_on_spawn_only : bool = false
 @export var rotates_toward_facing: bool = false
 @export var rotates_toward_target: bool = false
-@export var max_rotation_per_tick = 90.0
+@export var max_rotation_per_tick = 90.0 #TODO actually use this
 
 @export_subgroup("Tracking")
 @export var tracking_deadzone : float = 0.0
@@ -34,6 +34,10 @@ signal projectile_spawned
 @export var tracks_to_target : bool = false
 @export var track_on_spawn_only : bool = false
 @export var use_bad_tracking : bool = false
+
+@export_subgroup("Arcing")
+@export var will_arc:bool = false
+@export var arc_gravity:float = 0.98
 
 @export_subgroup("Stop")
 @export var stop_on_end : bool = true
@@ -156,9 +160,12 @@ func _physics_process(_delta: float) -> void:
 			tracks_to_target = false
 			tracks_to_source = false
 			
+		# If projectile wants to arc
+		if( will_arc ):
+			pass # TODO add arc motion to this
 			
 		# If projectile orbits target
-		if( orbits_target ):
+		elif( orbits_target ):
 			if(target == ENM.TARGET_TYPE.PLAYER):
 				calc_orbit(GSM.player_position)
 			elif(target == ENM.TARGET_TYPE.ENEMY):
@@ -206,6 +213,7 @@ func _physics_process(_delta: float) -> void:
 			curr_speed.x = clampf(curr_speed.x+h_acceleration, (-1*h_move_speed), h_move_speed)
 			curr_speed.y = clampf(curr_speed.y+v_acceleration, (-1*v_move_speed), v_move_speed)
 			prj_body.velocity = dir*curr_speed+self_grav_pull
+		
 		
 		# If projectile creates gravity
 		if(creates_gravity):
