@@ -134,7 +134,6 @@ motion_mode = 1
 script = ExtResource("1_vwflf")
 anim_player = NodePath("../AP_Music_Note1")
 hurt_box_area = NodePath("../A2D_Hurt_Box")
-will_rotate = true
 rotates_toward_facing = true
 tracks_to_target = true
 track_on_spawn_only = true

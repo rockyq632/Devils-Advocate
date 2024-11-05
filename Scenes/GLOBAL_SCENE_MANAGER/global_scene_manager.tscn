@@ -72,23 +72,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 1
 
-[node name="Global_2D_Node" type="Node2D" parent="."]
-unique_name_in_owner = true
-
-[node name="Global_Light" type="PointLight2D" parent="Global_2D_Node"]
-light_mask = 5
-visibility_layer = 5
-color = Color(1, 0.392157, 0.392157, 1)
-energy = 2.0
-shadow_enabled = true
-shadow_item_cull_mask = 2
-texture = ExtResource("3_qppog")
-offset = Vector2(640, 360)
-
-[node name="ScreenBounds" parent="." instance=ExtResource("2_h2cpf")]
-
-[node name="Global_Enemy_Projectiles" type="Node" parent="."]
-
 [node name="Debug_Stuff" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -212,4 +195,26 @@ text = "[left]var1"
 fit_content = true
 scroll_active = false
 
+[node name="Global_2D_Node" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Global_Light" type="PointLight2D" parent="Global_2D_Node"]
+light_mask = 5
+visibility_layer = 5
+color = Color(1, 0.392157, 0.392157, 1)
+energy = 2.0
+shadow_enabled = true
+shadow_item_cull_mask = 2
+texture = ExtResource("3_qppog")
+offset = Vector2(640, 360)
+
+[node name="ScreenBounds" parent="." instance=ExtResource("2_h2cpf")]
+
+[node name="Global_Enemy_Projectiles" type="Node" parent="."]
+
+[node name="Global_Hit_Sound_Effects_Player" type="AudioStreamPlayer" parent="."]
+
+[node name="Gobal_Music_Player" type="AudioStreamPlayer" parent="."]
+
 [node name="Pause_Menu" parent="." instance=ExtResource("6_neh6m")]
+visible = false

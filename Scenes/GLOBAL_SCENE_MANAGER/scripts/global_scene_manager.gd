@@ -15,6 +15,9 @@ func _ready() -> void:
 	
 	GSM.PAUSE_MENU = $Pause_Menu
 	
+	GSM.GLOBAL_HIT_SOUND_PLAYER = $Global_Hit_Sound_Effects_Player
+	GSM.GLOBAL_MUSIC_PLAYER = $Gobal_Music_Player
+	
 	GSM.GLOBAL_SAVE = GSM.GLOBAL_SAVE.game_load()
 	
 	GSM.DEBUG = $Debug_Stuff

@@ -1,8 +1,9 @@
 extends Control
 
 @export var char_instance : DaniDancer = DaniDancer.new()
-@export var health_heart_scn : PackedScene = preload("res://Scenes/Player_Systems/HUD/Health_Heart.tscn")
 @export var pstats : PStats = PStats.new()
+@export var health_heart_scn : PackedScene = preload("res://Scenes/Player_Systems/HUD/Health_Heart.tscn")
+@export var hit_sound : AudioStream
 
 @export_group("Character Specifics")
 @export var moveset_select1:ENM.AB_KEY
@@ -16,6 +17,7 @@ extends Control
 var UI_OFFSET : Vector2 = Vector2(64,64)
 var type : ENM.TARGET_TYPE = ENM.TARGET_TYPE.PLAYER
 var char_name : String = "Dani"
+
 
 
 var is_heart_container_gen_delayed : bool = false
@@ -62,8 +64,12 @@ func _process(_delta: float) -> void:
 
 func take_damage(_amt:float) -> void:
 	#RQ TODO Currently ignores amt variable
-	if( char_instance.pstats.health == -1 ):
+	if( char_instance.pstats.health <= -1 ):
 		return
+	
+	#Play hit Sound
+	GSM.GLOBAL_HIT_SOUND_PLAYER.stream = hit_sound
+	GSM.GLOBAL_HIT_SOUND_PLAYER.play()
 	
 	if(char_instance.pstats.health >= $MC_Character_UI/VB_CharacterUI/VF_Hearts.get_child_count()):
 		char_instance.pstats.health = clamp(char_instance.pstats.health-1, 0, char_instance.pstats.max_health)

@@ -9,6 +9,9 @@ var GLOBAL_ENEMY_PROJECTILES:Node
 var DEBUG:DebugConsole
 var PAUSE_MENU:PauseMenu
 
+var GLOBAL_HIT_SOUND_PLAYER:AudioStreamPlayer
+var GLOBAL_MUSIC_PLAYER:AudioStreamPlayer
+
 
 var GLOBAL_P1_STATS:PStats
 
