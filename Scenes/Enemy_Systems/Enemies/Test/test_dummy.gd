@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var estats:EStats
+
 var debug_ai:bool = false
 var ai_initial_pos:Vector2
 var ai_move_target:Vector2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://le8bjn04kvro"]
+[gd_scene load_steps=23 format=3 uid="uid://le8bjn04kvro"]
 
 [ext_resource type="Script" path="res://Scenes/Projectiles/Projectile_Library/proj_lib.gd" id="1_s73xv"]
 [ext_resource type="PackedScene" uid="uid://bcqncneucahp5" path="res://Scenes/Projectiles/Projectile_Library/proj_scenes/prj_ice_explosion.tscn" id="2_gnowd"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://da0kvgq3qywm" path="res://Scenes/Projectiles/Projectile_Library/proj_scenes/prj_music_note1.tscn" id="13_m8jqn"]
 [ext_resource type="PackedScene" uid="uid://dcflma2xmtcy" path="res://Scenes/Projectiles/Projectile_Library/proj_scenes/prj_music_note2.tscn" id="14_dmskj"]
 [ext_resource type="PackedScene" uid="uid://cp381qt5xcyl3" path="res://Scenes/Projectiles/Projectile_Library/proj_scenes/prj_music_note3.tscn" id="15_ncwl8"]
+[ext_resource type="PackedScene" uid="uid://d211rtc3wwd3d" path="res://Scenes/Projectiles/Projectile_Library/proj_scenes/prj_dan_shout.tscn" id="16_4evl2"]
 
 [sub_resource type="Animation" id="Animation_r27d5"]
 resource_name = "END"
@@ -66,9 +67,6 @@ disabled = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="000_EXAMPLE/Hurtbox"]
 shape = SubResource("CircleShape2D_2mi5y")
 
-[node name="PRJ_Ice_Explosion" parent="." instance=ExtResource("2_gnowd")]
-visible = false
-
 [node name="PRJ_Keep_Out_Test" parent="." instance=ExtResource("4_v5qxn")]
 visible = false
 
@@ -79,6 +77,12 @@ visible = false
 visible = false
 
 [node name="PRJ_Shockwave_Test" parent="." instance=ExtResource("7_uxdau")]
+visible = false
+
+[node name="PRJ_Ice_Explosion" parent="." instance=ExtResource("2_gnowd")]
+visible = false
+
+[node name="PRJ_Red_Fireball" parent="." instance=ExtResource("12_htplv")]
 visible = false
 
 [node name="PRJ_Gold_Coin" parent="." instance=ExtResource("8_lnb8e")]
@@ -93,9 +97,6 @@ visible = false
 [node name="PRJ_Dollar_Bill" parent="." instance=ExtResource("11_67rye")]
 visible = false
 
-[node name="PRJ_Red_Fireball" parent="." instance=ExtResource("12_htplv")]
-visible = false
-
 [node name="PRJ_Music_Note1" parent="." instance=ExtResource("13_m8jqn")]
 visible = false
 
@@ -104,3 +105,5 @@ visible = false
 
 [node name="PRJ_Music_Note3" parent="." instance=ExtResource("15_ncwl8")]
 visible = false
+
+[node name="PRJ_Dan_Shout" parent="." instance=ExtResource("16_4evl2")]

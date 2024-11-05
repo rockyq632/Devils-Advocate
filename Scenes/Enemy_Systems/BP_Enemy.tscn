@@ -13,6 +13,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hnl8i")
 enemy_scene = ExtResource("3_wycco")
+is_debug = true
+spawn_projectile_on_click = true
 
 [node name="BP_Health_Bar" parent="." instance=ExtResource("1_s215b")]
 layout_mode = 1

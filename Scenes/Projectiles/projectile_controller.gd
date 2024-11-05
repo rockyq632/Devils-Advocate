@@ -23,7 +23,9 @@ signal projectile_spawned
 @export_group("Projectile Options")
 @export_subgroup("Facing")
 @export var will_rotate : bool = false
+@export var rotates_on_spawn_only : bool = false
 @export var rotates_toward_facing: bool = false
+@export var rotates_toward_target: bool = false
 @export var max_rotation_per_tick = 90.0
 
 @export_subgroup("Tracking")
@@ -94,17 +96,6 @@ var self_grav_pull:Vector2 = Vector2(0,0)
 # Orbit vars
 var orbit_pos:Vector2 = Vector2(0,0)
 var orbit_update_dir:Vector2 = Vector2(0,0)
-var orbit_dirs:Array[Vector2] = [
-	Vector2(1,0),
-	Vector2(0.5,0.5),
-	Vector2(0,1),  
-	Vector2(-0.5,0.5),
-	Vector2(-1,0),
-	Vector2(-0.5,0.5),
-	Vector2(0,1),
-	Vector2(0.5,0.5)
-]
-var orbit_dirs_ind:float = 0
 
 # Keep out AOE vars
 var keep_out_detonate_timer:Timer
@@ -172,12 +163,14 @@ func _physics_process(_delta: float) -> void:
 				calc_orbit(GSM.player_position)
 			elif(target == ENM.TARGET_TYPE.ENEMY):
 				calc_orbit(GSM.enemy_position)
+				
 		# If projectile orbits source
 		elif( orbits_source ):
 			if(source == ENM.TARGET_TYPE.PLAYER):
 				calc_orbit(GSM.player_position)
 			elif(source == ENM.TARGET_TYPE.ENEMY):
 				calc_orbit(GSM.enemy_position)
+				
 		# If target tracking is enabled
 		elif( tracks_to_target ):
 			if(target == ENM.TARGET_TYPE.PLAYER):
@@ -233,13 +226,24 @@ func _physics_process(_delta: float) -> void:
 		if( remove_windup ):
 			self_grav_pull = Vector2(0,0)
 		
+		# If rotating toward velocity direction
 		if( will_rotate and rotates_toward_facing  and  anim_player.current_animation != "END" ):
 			var targ_ang:float = prj_body.velocity.angle()
-			if(abs(targ_ang-last_angle) > max_rotation_per_tick):
-				pass
-				#targ_ang = (targ_ang/abs(targ_ang))*abs(targ_ang-max_rotation_per_tick)
 			last_angle = prj_body.rotation
+			#prj_body.rotation = clampf(targ_ang, last_angle-deg_to_rad(max_rotation_per_tick), last_angle+deg_to_rad(max_rotation_per_tick))
 			prj_body.rotation = targ_ang
+			
+			# Ends rotation if only spawn rotation is wanted
+			if(rotates_on_spawn_only):
+				will_rotate = false
+		elif( will_rotate and rotates_toward_target  and  anim_player.current_animation != "END" ):
+			prj_body.rotation = prj_body.global_position.angle_to_point(GSM.player_position)
+			
+			# Ends rotation if only spawn rotation is wanted
+			if(rotates_on_spawn_only):
+				will_rotate = false
+			
+		
 		
 		# updates progress bar for keep out area option
 		if(is_keep_out_area):
@@ -377,7 +381,8 @@ func _on_hurtbox_entered(body: Node2D) -> void:
 			if(body.has_method("take_damage")):
 				body.take_damage(damage)
 			projectile_hit_target.emit()
-			end_projectile()
+			if(stop_on_end):
+				end_projectile()
 
 # If an area enters projectile hurtbox
 func _on_hurtbox_area_entered(area: Area2D) -> void:
@@ -387,7 +392,8 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 			if(area.get_parent().has_method("take_damage")):
 				area.get_parent().take_damage(damage)
 			projectile_hit_target.emit()
-			end_projectile()
+			if(stop_on_end):
+				end_projectile()
 
 # Despawn timer finished, ends projectile
 func _despawn_timout() -> void:

@@ -12,6 +12,7 @@ signal enemy_dead
 var enemy_instance
 var type : ENM.TARGET_TYPE = ENM.TARGET_TYPE.ENEMY
 
+
 func _ready() -> void:
 	#if( enemy_scene.has_method("instantiate") ):
 	enemy_instance = enemy_scene.instantiate()
@@ -19,6 +20,12 @@ func _ready() -> void:
 	$CB2D_Test_Dummy.queue_free()
 	if("debug_ai" in enemy_instance):
 		enemy_instance.debug_ai = debug_ai
+		
+	# Set correct Health Bar stats
+	$BP_Health_Bar.update_max_health( enemy_instance.estats.max_health )
+	$BP_Health_Bar.update_hp_bar( enemy_instance.estats.max_health )
+	
+	# Add non-placeholder enemy to the screen
 	add_child(enemy_instance)
 	
 
@@ -28,15 +35,20 @@ func _process(_delta: float) -> void:
 	GSM.enemy_position = enemy_instance.global_position
 
 
+
+# Input function only used during debug
 func _input(event):
 	if(event is InputEventMouseButton and is_debug and spawn_projectile_on_click):
 		match randi_range(1,3):
 			1:
-				spawn_projectile("PRJ_Music_Note1", event.global_position)
+				spawn_projectile("PRJ_Dan_Shout", event.global_position)
 			2:
-				spawn_projectile("PRJ_Music_Note2", event.global_position)
+				spawn_projectile("PRJ_Dan_Shout", event.global_position)
 			_:
-				spawn_projectile("PRJ_Music_Note3", event.global_position)
+				spawn_projectile("PRJ_Dan_Shout", event.global_position)
+
+
+
 
 
 func spawn_projectile(nam:String, pos:Vector2):

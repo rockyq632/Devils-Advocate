@@ -18,3 +18,10 @@ func update_hp_bar(value : float):
 	
 	var bot_tween = get_tree().create_tween()
 	bot_tween.tween_property(%PB_Bot_Bar, "value", clamped_v, 0.5).set_delay(0.1)
+	
+func update_max_health( val:float=max_hp ):
+	%PB_Top_Bar.max_value = val
+	%PB_Bot_Bar.max_value = val
+	
+	
+	
