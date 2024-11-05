@@ -62,8 +62,9 @@ func _process(_delta: float) -> void:
 	%MC_Character_UI.position = char_instance.position - UI_OFFSET
 
 
-func take_damage(_amt:float) -> void:
+func take_damage(amt:float) -> void:
 	#RQ TODO Currently ignores amt variable
+	
 	if( char_instance.pstats.health <= -1 ):
 		return
 	
@@ -75,19 +76,27 @@ func take_damage(_amt:float) -> void:
 		char_instance.pstats.health = clamp(char_instance.pstats.health-1, 0, char_instance.pstats.max_health)
 	
 	if( $MC_Character_UI/VB_CharacterUI/VF_Hearts.get_child_count() > 0 ):
-		if( $MC_Character_UI/VB_CharacterUI/VF_Hearts.get_child(int(char_instance.pstats.health)).has_method("damaged") ):
+		if($MC_Character_UI/VB_CharacterUI/VF_Hearts.get_child(int(char_instance.pstats.health)).is_armored):
+			$MC_Character_UI/VB_CharacterUI/VF_Hearts.get_child(int(char_instance.pstats.health)).remove_armor()
+		elif( $MC_Character_UI/VB_CharacterUI/VF_Hearts.get_child(int(char_instance.pstats.health)).has_method("damaged") ):
 			$MC_Character_UI/VB_CharacterUI/VF_Hearts.get_child(int(char_instance.pstats.health)).damaged()
+			char_instance.pstats.health = clamp( char_instance.pstats.health-amt, -1, char_instance.pstats.max_health)
 	else:
 		print("NO HEART CONTAINERS FOUND : dani_hud.gd")
 
 
 func refresh_heart_containers():
+	# Add Health Hearts
 	is_heart_container_gen_delayed = false
 	for i in range(0, char_instance.pstats.max_health):
 		heart_containers.append(health_heart_scn.instantiate())
 		$MC_Character_UI/VB_CharacterUI/VF_Hearts.add_child(heart_containers[i])
 		if( i > char_instance.pstats.health-1 ):
 			heart_containers[i].empty_heart()
+	
+	# Add armored hearts
+	for i in range(0, char_instance.pstats.armor):
+		heart_containers[char_instance.pstats.max_health-i-1].add_armor()
 
 func reset_cooldowns():
 	_on_cd_atk_1_timeout()

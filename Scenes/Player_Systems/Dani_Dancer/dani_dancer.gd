@@ -145,7 +145,6 @@ func def_triggered():
 # Called if hit by damage
 func take_damage(amt:int) -> void:
 	if(%Armor_Frames.is_stopped()):
-		pstats.health = clamp( pstats.health-amt, -1, pstats.max_health)
 		if( get_parent().has_method("take_damage") ):
 			get_parent().take_damage(amt)
 			%Armor_Frames.start()

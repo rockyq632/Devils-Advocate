@@ -1,7 +1,8 @@
-[gd_scene load_steps=75 format=3 uid="uid://c7td7c3637cjq"]
+[gd_scene load_steps=76 format=3 uid="uid://c7td7c3637cjq"]
 
 [ext_resource type="Script" path="res://Scenes/Player_Systems/Dani_Dancer/dani_hud.gd" id="1_pyw3t"]
 [ext_resource type="Script" path="res://Scenes/Player_Systems/Dani_Dancer/dani_dancer.gd" id="1_tcuq5"]
+[ext_resource type="AudioStream" uid="uid://8hcgpv4amdo3" path="res://Sounds/Sound_Effects/SE_Hit1.wav" id="2_i1wj4"]
 [ext_resource type="Script" path="res://Scenes/Player_Systems/player_physics_controller.gd" id="3_2yoqt"]
 [ext_resource type="Shader" path="res://Shaders/occlussion_cropper.gdshader" id="4_bmbnw"]
 [ext_resource type="Texture2D" uid="uid://dtukmk4xbmfja" path="res://Graphics/Characters/DANI_DANCER/Aseprite/Dani Dancer_o.png" id="5_daoa2"]
@@ -1374,6 +1375,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource("1_pyw3t")
 char_instance = NodePath("DaniDancer")
+hit_sound = ExtResource("2_i1wj4")
 moveset_select1 = 1
 moveset_select2 = 2
 moveset_select3 = 3
@@ -1484,8 +1486,8 @@ custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 3
-theme_override_constants/h_separation = -2
-theme_override_constants/v_separation = -2
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 0
 alignment = 1
 reverse_fill = true
 
@@ -1496,6 +1498,27 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="TR_Heart3" parent="MC_Character_UI/VB_CharacterUI/VF_Hearts" instance=ExtResource("13_boqcl")]
+layout_mode = 2
+
+[node name="TR_Heart4" parent="MC_Character_UI/VB_CharacterUI/VF_Hearts" instance=ExtResource("13_boqcl")]
+layout_mode = 2
+
+[node name="TR_Heart5" parent="MC_Character_UI/VB_CharacterUI/VF_Hearts" instance=ExtResource("13_boqcl")]
+layout_mode = 2
+
+[node name="TR_Heart6" parent="MC_Character_UI/VB_CharacterUI/VF_Hearts" instance=ExtResource("13_boqcl")]
+layout_mode = 2
+
+[node name="TR_Heart7" parent="MC_Character_UI/VB_CharacterUI/VF_Hearts" instance=ExtResource("13_boqcl")]
+layout_mode = 2
+
+[node name="TR_Heart8" parent="MC_Character_UI/VB_CharacterUI/VF_Hearts" instance=ExtResource("13_boqcl")]
+layout_mode = 2
+
+[node name="TR_Heart9" parent="MC_Character_UI/VB_CharacterUI/VF_Hearts" instance=ExtResource("13_boqcl")]
+layout_mode = 2
+
+[node name="TR_Heart10" parent="MC_Character_UI/VB_CharacterUI/VF_Hearts" instance=ExtResource("13_boqcl")]
 layout_mode = 2
 
 [node name="MC_Cooldowns" type="MarginContainer" parent="MC_Character_UI/VB_CharacterUI"]

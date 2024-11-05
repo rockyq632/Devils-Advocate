@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tqe1se30ejbq"
-path="res://.godot/imported/Heart4_1x.png-eee8085e3f89acd97b2d0c6c7f51521b.ctex"
+uid="uid://dv31j2yx3lhxn"
+path="res://.godot/imported/Armor_Break_1x.png-e10b7b0e5c84613f7e1da62f3164026c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/UI/Red_Hearts_1x/Heart4_1x.png"
-dest_files=["res://.godot/imported/Heart4_1x.png-eee8085e3f89acd97b2d0c6c7f51521b.ctex"]
+source_file="res://Graphics/UI/Hearts/16x16_Armor_Hearts_1x/Armor_Break_1x.png"
+dest_files=["res://.godot/imported/Armor_Break_1x.png-e10b7b0e5c84613f7e1da62f3164026c.ctex"]
 
 [params]
 
