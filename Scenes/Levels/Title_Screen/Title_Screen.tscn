@@ -51,13 +51,13 @@ bbcode_enabled = true
 text = "[center]Devil's Advovate[/center]"
 fit_content = true
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VB_TitleItems"]
+[node name="MC_Play_Btn" type="MarginContainer" parent="MarginContainer/VB_TitleItems"]
 layout_mode = 2
 theme_override_constants/margin_left = 500
 theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 500
 
-[node name="BTN_Play" type="Button" parent="MarginContainer/VB_TitleItems/MarginContainer"]
+[node name="BTN_Play" type="Button" parent="MarginContainer/VB_TitleItems/MC_Play_Btn"]
 light_mask = 16
 visibility_layer = 16
 layout_mode = 2
@@ -65,6 +65,21 @@ theme_override_fonts/font = ExtResource("4_t1hne")
 theme_override_font_sizes/font_size = 50
 text = "Play"
 
+[node name="MC_Settings_Btn" type="MarginContainer" parent="MarginContainer/VB_TitleItems"]
+layout_mode = 2
+theme_override_constants/margin_left = 500
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 500
+
+[node name="BTN_Settings" type="Button" parent="MarginContainer/VB_TitleItems/MC_Settings_Btn"]
+light_mask = 16
+visibility_layer = 16
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_t1hne")
+theme_override_font_sizes/font_size = 50
+text = "Settings"
+
 [node name="AP_TitleMenu" type="AnimationPlayer" parent="."]
 
-[connection signal="pressed" from="MarginContainer/VB_TitleItems/MarginContainer/BTN_Play" to="." method="_on_play_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/VB_TitleItems/MC_Play_Btn/BTN_Play" to="." method="_on_play_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/VB_TitleItems/MC_Settings_Btn/BTN_Settings" to="." method="_on_settings_btn_pressed"]

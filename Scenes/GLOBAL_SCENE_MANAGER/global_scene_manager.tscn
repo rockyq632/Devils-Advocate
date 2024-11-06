@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ba6xnfstclqbv"]
+[gd_scene load_steps=8 format=3 uid="uid://ba6xnfstclqbv"]
 
 [ext_resource type="Script" path="res://Scenes/GLOBAL_SCENE_MANAGER/scripts/global_scene_manager.gd" id="1_6gix0"]
 [ext_resource type="PackedScene" uid="uid://c6uwyusdwgn51" path="res://Scenes/GLOBAL_SCENE_MANAGER/Screen_Bounds.tscn" id="2_h2cpf"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bb6uy1ebpp7cr" path="res://Graphics/BG/generated/down_tran_img.png" id="3_qppog"]
 [ext_resource type="Script" path="res://Scenes/GLOBAL_SCENE_MANAGER/debug_stuff.gd" id="5_jnqj1"]
 [ext_resource type="PackedScene" uid="uid://cdve04xju573h" path="res://Scenes/Menues/Pause/Pause.tscn" id="6_neh6m"]
+[ext_resource type="PackedScene" uid="uid://cjapii1suvnye" path="res://Scenes/Menues/Settings/Settings.tscn" id="7_pmbqi"]
 
 [node name="Global_Scene_Manager" type="Node"]
 script = ExtResource("1_6gix0")
@@ -217,4 +218,7 @@ offset = Vector2(640, 360)
 [node name="Gobal_Music_Player" type="AudioStreamPlayer" parent="."]
 
 [node name="Pause_Menu" parent="." instance=ExtResource("6_neh6m")]
+visible = false
+
+[node name="Settings" parent="." instance=ExtResource("7_pmbqi")]
 visible = false

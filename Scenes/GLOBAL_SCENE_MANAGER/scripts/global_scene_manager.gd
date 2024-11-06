@@ -14,6 +14,7 @@ func _ready() -> void:
 	GSM.GLOBAL_ENEMY_PROJECTILES = $Global_Enemy_Projectiles
 	
 	GSM.PAUSE_MENU = $Pause_Menu
+	GSM.SETTINGS_MENU = $Settings
 	
 	GSM.GLOBAL_HIT_SOUND_PLAYER = $Global_Hit_Sound_Effects_Player
 	GSM.GLOBAL_MUSIC_PLAYER = $Gobal_Music_Player

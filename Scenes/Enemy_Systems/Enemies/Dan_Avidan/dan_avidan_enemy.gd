@@ -19,3 +19,4 @@ func _physics_process(_delta: float) -> void:
 func take_damage(amt:float):
 	estats.health -= amt
 	get_parent().take_damage(estats.health)
+	

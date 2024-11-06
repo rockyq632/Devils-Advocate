@@ -14,6 +14,9 @@ var type : ENM.TARGET_TYPE = ENM.TARGET_TYPE.ENEMY
 
 
 func _ready() -> void:
+	# Set HP Bar Opacity
+	$BP_Health_Bar.modulate = Color(1.0,1.0,1.0, (GCM.battle_hud_opacity/255.0) )
+	
 	#if( enemy_scene.has_method("instantiate") ):
 	enemy_instance = enemy_scene.instantiate()
 	enemy_instance.global_position = $CB2D_Test_Dummy.global_position

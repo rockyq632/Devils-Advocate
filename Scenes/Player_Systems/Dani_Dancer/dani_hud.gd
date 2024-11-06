@@ -25,11 +25,15 @@ var heart_containers : Array[HealthHeart] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Set Player HUD Opacity
+	%MC_Character_UI.modulate = Color(1.0,1.0,1.0, (GCM.player_hud_opacity/255.0))
+	
+	# Put Toggles in the right places
 	if("effected_by_prj_gravity" in char_instance):
 		char_instance.effected_by_prj_gravity = effected_by_prj_gravity
 		char_instance.effected_by_world_gravity = effected_by_world_gravity
 	
-	#
+	# Put stats places
 	char_instance.pstats = pstats
 	GSM.GLOBAL_P1_STATS = pstats
 		

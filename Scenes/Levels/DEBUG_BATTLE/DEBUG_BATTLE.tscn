@@ -42,8 +42,6 @@ light_mask = 16
 visibility_layer = 16
 layout_mode = 1
 enemy_scene = ExtResource("4_e1ku1")
-is_debug = true
-spawn_projectile_on_click = true
 
 [node name="Next_Area_Zone" type="Node2D" parent="."]
 

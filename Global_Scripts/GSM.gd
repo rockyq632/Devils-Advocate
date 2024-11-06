@@ -8,6 +8,7 @@ var GLOBAL_2D_NODE : Node2D
 var GLOBAL_ENEMY_PROJECTILES:Node
 var DEBUG:DebugConsole
 var PAUSE_MENU:PauseMenu
+var SETTINGS_MENU:SettingsMenu
 
 var GLOBAL_HIT_SOUND_PLAYER:AudioStreamPlayer
 var GLOBAL_MUSIC_PLAYER:AudioStreamPlayer

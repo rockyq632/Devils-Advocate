@@ -10,6 +10,7 @@ max_health = 200.0
 health = 200.0
 armor = 0.0
 move_speed = 200.0
+move_acceleration = null
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ykoey"]
 radius = 64.0

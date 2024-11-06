@@ -10,6 +10,7 @@ signal projectile_spawned
 @export var target : ENM.TARGET_TYPE = ENM.TARGET_TYPE.PLAYER
 @export var anim_player:AnimationPlayer
 @export var hurt_box_area:Area2D
+@export var prj_sprite:Node2D
 @export var damage:float = 1.0
 
 @export_group("Projectile Motion")
@@ -17,8 +18,6 @@ signal projectile_spawned
 @export var h_acceleration:float = 10.0
 @export var v_move_speed:float = 200.0
 @export var v_acceleration:float = 10.0
-
-
 
 @export_group("Projectile Options")
 @export_subgroup("Facing")
@@ -153,31 +152,30 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
-		
 	if(true):
 		# If projectile only tracks on spawn
 		if(track_on_spawn_only and has_tracked):
 			tracks_to_target = false
 			tracks_to_source = false
-			
+
 		# If projectile wants to arc
 		if( will_arc ):
 			pass # TODO add arc motion to this
-			
+
 		# If projectile orbits target
 		elif( orbits_target ):
 			if(target == ENM.TARGET_TYPE.PLAYER):
 				calc_orbit(GSM.player_position)
 			elif(target == ENM.TARGET_TYPE.ENEMY):
 				calc_orbit(GSM.enemy_position)
-				
+
 		# If projectile orbits source
 		elif( orbits_source ):
 			if(source == ENM.TARGET_TYPE.PLAYER):
 				calc_orbit(GSM.player_position)
 			elif(source == ENM.TARGET_TYPE.ENEMY):
 				calc_orbit(GSM.enemy_position)
-				
+
 		# If target tracking is enabled
 		elif( tracks_to_target ):
 			if(target == ENM.TARGET_TYPE.PLAYER):
@@ -192,6 +190,7 @@ func _physics_process(_delta: float) -> void:
 				else:
 					track_to( GSM.enemy_position )
 				has_tracked = true
+		
 		# If source tracking is enabled
 		elif( tracks_to_source ):
 			if(source == ENM.TARGET_TYPE.PLAYER):
@@ -206,15 +205,14 @@ func _physics_process(_delta: float) -> void:
 				else:
 					track_to( GSM.enemy_position )
 				has_tracked = true
-			
-			
+
 		# If no movement toggle is applied
 		else:
 			curr_speed.x = clampf(curr_speed.x+h_acceleration, (-1*h_move_speed), h_move_speed)
 			curr_speed.y = clampf(curr_speed.y+v_acceleration, (-1*v_move_speed), v_move_speed)
 			prj_body.velocity = dir*curr_speed+self_grav_pull
-		
-		
+
+
 		# If projectile creates gravity
 		if(creates_gravity):
 			var cnt = 0
@@ -225,34 +223,32 @@ func _physics_process(_delta: float) -> void:
 				elif(i.has_method("update_grav_vec")):
 					i.update_grav_vec(gravity_weight*i.global_position.direction_to(prj_body.global_position))
 					cnt += 1
-		
+
 		# If projectile has velocity
 		if(prj_body.velocity != Vector2(0,0)):
 			prj_body.move_and_slide()
-		
+
 		# if windup is removed, it resets gravity pull every frame
 		if( remove_windup ):
 			self_grav_pull = Vector2(0,0)
-		
+
 		# If rotating toward velocity direction
 		if( will_rotate and rotates_toward_facing  and  anim_player.current_animation != "END" ):
 			var targ_ang:float = prj_body.velocity.angle()
 			last_angle = prj_body.rotation
 			#prj_body.rotation = clampf(targ_ang, last_angle-deg_to_rad(max_rotation_per_tick), last_angle+deg_to_rad(max_rotation_per_tick))
 			prj_body.rotation = targ_ang
-			
+
 			# Ends rotation if only spawn rotation is wanted
 			if(rotates_on_spawn_only):
 				will_rotate = false
 		elif( will_rotate and rotates_toward_target  and  anim_player.current_animation != "END" ):
 			prj_body.rotation = prj_body.global_position.angle_to_point(GSM.player_position)
-			
+
 			# Ends rotation if only spawn rotation is wanted
 			if(rotates_on_spawn_only):
 				will_rotate = false
-			
-		
-		
+
 		# updates progress bar for keep out area option
 		if(is_keep_out_area):
 			$"../PB_Timer".value = keep_out_detonate_timer.time_left
@@ -349,10 +345,6 @@ func update_grav_vec(grav_vec:Vector2):
 			self_grav_pull = grav_vec
 		self_grav_pull += grav_vec
 	pass
-
-
-
-
 
 
 
