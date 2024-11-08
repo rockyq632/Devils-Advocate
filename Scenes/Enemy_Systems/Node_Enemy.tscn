@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://1i7vyrm075md"]
 
-[ext_resource type="Script" path="res://Scenes/Enemy_Systems/BP_Scripts/node_enemy.gd" id="1_hnl8i"]
+[ext_resource type="Script" path="res://Scenes/Enemy_Systems/node_enemy.gd" id="1_hnl8i"]
 [ext_resource type="PackedScene" uid="uid://c2m8vytmn4wws" path="res://Scenes/Enemy_Systems/Node_Health_Bar.tscn" id="1_s215b"]
 [ext_resource type="PackedScene" uid="uid://2vyfvewnbbnm" path="res://Scenes/Enemy_Systems/Enemies/Test/Test_Dummy.tscn" id="3_wycco"]
 

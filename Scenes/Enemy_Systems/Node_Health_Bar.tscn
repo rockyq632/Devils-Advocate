@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c2m8vytmn4wws"]
 
-[ext_resource type="Script" path="res://Scenes/Enemy_Systems/BP_Scripts/node_health_bar.gd" id="1_mkfk5"]
+[ext_resource type="Script" path="res://Scenes/Enemy_Systems/node_health_bar.gd" id="1_mkfk5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k67cp"]
 bg_color = Color(0.698039, 0.329412, 0.196078, 1)
