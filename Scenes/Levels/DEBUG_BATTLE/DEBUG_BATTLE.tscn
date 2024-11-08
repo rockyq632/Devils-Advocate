@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://djnhjuf23frn" path="res://Graphics/BG/Tartarus_BG_Bot_1x.png" id="1_8vjbe"]
 [ext_resource type="Script" path="res://Scenes/Levels/DEBUG_BATTLE/debug_battle.gd" id="1_ew5ia"]
 [ext_resource type="PackedScene" uid="uid://cg7ifh35qsbef" path="res://Scenes/Enemy_Systems/Enemies/Dan_Avidan/Dan_Avidan_Enemy.tscn" id="4_e1ku1"]
-[ext_resource type="PackedScene" uid="uid://1i7vyrm075md" path="res://Scenes/Enemy_Systems/BP_Enemy.tscn" id="5_05l17"]
+[ext_resource type="PackedScene" uid="uid://1i7vyrm075md" path="res://Scenes/Enemy_Systems/Node_Enemy.tscn" id="5_05l17"]
 [ext_resource type="Script" path="res://Global_Scripts/Resources/Player/PLAYER_STATS.gd" id="5_cx0fl"]
 [ext_resource type="PackedScene" uid="uid://c7td7c3637cjq" path="res://Scenes/Player_Systems/Dani_Dancer/Dani_Dancer.tscn" id="6_fie7h"]
 
@@ -37,11 +37,13 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_8vjbe")
 
-[node name="BP_Enemy" parent="." instance=ExtResource("5_05l17")]
+[node name="Node_Enemy" parent="." instance=ExtResource("5_05l17")]
 light_mask = 16
 visibility_layer = 16
 layout_mode = 1
 enemy_scene = ExtResource("4_e1ku1")
+is_debug = false
+spawn_projectile_on_click = false
 
 [node name="Next_Area_Zone" type="Node2D" parent="."]
 
@@ -78,7 +80,7 @@ offset_right = 311.0
 offset_bottom = 309.0
 pstats = SubResource("Resource_di6ee")
 
-[connection signal="enemy_dead" from="BP_Enemy" to="." method="_on_enemy_dead"]
+[connection signal="enemy_dead" from="Node_Enemy" to="." method="_on_enemy_dead"]
 [connection signal="body_entered" from="Next_Area_Zone/A2D_Waiting_Room" to="." method="_on_waiting_room_body_entered"]
 [connection signal="body_exited" from="Next_Area_Zone/A2D_Waiting_Room" to="." method="_on_waiting_room_body_exited"]
 [connection signal="timeout" from="Next_Area_Zone/T_Waiting_Room" to="." method="_on_t_waiting_room_timeout"]

@@ -1,19 +1,15 @@
-extends CharacterBody2D
+extends Enemy
 
-@export var estats:EStats
-
-var debug_ai:bool = false
 var ai_initial_pos:Vector2
 var ai_move_target:Vector2
 var ai_max_move_speed:float = 400.0
 var ai_move_speed:float = 0.0
 var ai_move_acc:float = 10.0
-
+var ai_time_cnt_secs:float = 0.0
 
 var max_hp:float = 100.0
 var curr_hp:float = 100.0
 
-var ai_time_cnt_secs:float = 0.0
 
 
 
@@ -22,7 +18,7 @@ func _ready() -> void:
 	ai_move_target = global_position
 
 func _physics_process(delta: float) -> void:
-	if(debug_ai):
+	if(enable_ai):
 		ai_time_cnt_secs += delta
 		
 		if(ai_time_cnt_secs > 3.0  and ai_time_cnt_secs<3.03):
