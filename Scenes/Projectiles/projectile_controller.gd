@@ -144,7 +144,29 @@ func _ready() -> void:
 			if(stop_on_timeout):
 				despawn_timer.start()
 		
+		
+		# Set up "on spawn" conditions
+		# If rotating toward velocity direction
+		if( will_rotate and rotates_toward_facing  and  anim_player.current_animation != "END" ):
+			var targ_ang:float = prj_body.velocity.angle()
+			last_angle = prj_body.rotation
+			#prj_body.rotation = clampf(targ_ang, last_angle-deg_to_rad(max_rotation_per_tick), last_angle+deg_to_rad(max_rotation_per_tick))
+			prj_body.rotation = targ_ang
+
+			# Ends rotation if only spawn rotation is wanted
+			if(rotates_on_spawn_only):
+				will_rotate = false
+		# If rotating toward target
+		elif( will_rotate and rotates_toward_target  and  anim_player.current_animation != "END" ):
+			prj_body.rotation = prj_body.global_position.angle_to_point(GSM.player_position)
+
+			# Ends rotation if only spawn rotation is wanted
+			if(rotates_on_spawn_only):
+				will_rotate = false
+		
+		
 		# Play spawning animation
+		get_parent().show()
 		anim_player.play("START")
 		projectile_spawned.emit()
 			
@@ -242,6 +264,7 @@ func _physics_process(_delta: float) -> void:
 			# Ends rotation if only spawn rotation is wanted
 			if(rotates_on_spawn_only):
 				will_rotate = false
+		# If rotating toward target
 		elif( will_rotate and rotates_toward_target  and  anim_player.current_animation != "END" ):
 			prj_body.rotation = prj_body.global_position.angle_to_point(GSM.player_position)
 

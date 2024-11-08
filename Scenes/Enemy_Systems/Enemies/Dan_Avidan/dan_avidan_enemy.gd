@@ -28,7 +28,9 @@ func _on_shout_atk_state_finished() -> void:
 func _on_state_change_timeout() -> void:
 	if(enable_ai):
 		if(state_machine.curr_state == $State_Machine/Idle_State):
-			match randi_range(1,3):
-				1: state_machine.change_state($State_Machine/Move_State)
+			match randi_range(1,4):
+				1: state_machine.change_state($State_Machine/Shout_Atk_State)
 				2: state_machine.change_state($State_Machine/Music_Note_Atk_State)
-				_: state_machine.change_state($State_Machine/Shout_Atk_State)
+				_: state_machine.change_state($State_Machine/Move_State)
+		else:
+			state_machine.change_state($State_Machine/Idle_State)

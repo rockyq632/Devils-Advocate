@@ -17,7 +17,7 @@ func _ready() -> void:
 func get_prj(nam:String) -> CharacterBody2D:
 	if(dict.has(nam)):
 		var ret = dict[nam].instantiate()
-		ret.visible = true
+		ret.hide()
 		return ret
 	else:
 		print("Projectile doesn't exist: %s"%nam)
