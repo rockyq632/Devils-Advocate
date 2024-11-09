@@ -99,10 +99,11 @@ radius = 200.0
 [node name="PRJ_Copper_Coin" type="CharacterBody2D"]
 motion_mode = 1
 
-[node name="PROJECTILE_CONTROLLER" type="Node2D" parent="." node_paths=PackedStringArray("anim_player", "hurt_box_area", "gravity_effect_collision")]
+[node name="PROJECTILE_CONTROLLER" type="Node2D" parent="." node_paths=PackedStringArray("anim_player", "hurt_box_area", "prj_sprite", "gravity_effect_collision")]
 script = ExtResource("1_vmd25")
 anim_player = NodePath("../AP_Copper_Coin")
 hurt_box_area = NodePath("../A2D_Hurt_Box")
+prj_sprite = NodePath("../S2D_Copper_Coin")
 will_rotate = true
 rotates_toward_facing = true
 tracks_to_target = true

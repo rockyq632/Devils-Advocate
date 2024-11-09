@@ -14,7 +14,7 @@ script = ExtResource("2_pr0ny")
 max_health = 200.0
 health = 200.0
 armor = 0.0
-move_speed = 200.0
+move_speed = 500.0
 move_acceleration = 10.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ykoey"]
@@ -27,7 +27,7 @@ script = ExtResource("1_a5fdo")
 estats = SubResource("Resource_lvkn8")
 state_machine = NodePath("State_Machine")
 enable_ai = true
-delay_between_states = 3.0
+delay_between_states = 2.0
 
 [node name="S2D_Dan_Avidan" type="Sprite2D" parent="."]
 texture = ExtResource("1_xj82n")
@@ -53,11 +53,11 @@ script = ExtResource("5_vijbf")
 enm_body = NodePath("../..")
 anim_player = NodePath("../../AP_Dan_Avidan")
 
-[node name="Move_State" type="Node" parent="State_Machine" node_paths=PackedStringArray("enm_body", "anim_player")]
+[node name="Move_State" type="Node" parent="State_Machine" node_paths=PackedStringArray("enm_body", "anim_player", "visual_rep_pos")]
 script = ExtResource("6_xf4ql")
 enm_body = NodePath("../..")
 anim_player = NodePath("../../AP_Dan_Avidan")
-positions = Array[Vector2]([Vector2(1000, 360), Vector2(650, 360), Vector2(300, 360), Vector2(650, 360)])
+visual_rep_pos = NodePath("../../Movable_Positions")
 
 [node name="Music_Note_Atk_State" type="Node" parent="State_Machine" node_paths=PackedStringArray("enm_body", "anim_player")]
 script = ExtResource("7_srgup")
@@ -68,6 +68,20 @@ anim_player = NodePath("../../AP_Dan_Avidan")
 script = ExtResource("8_kdgrt")
 enm_body = NodePath("../..")
 anim_player = NodePath("../../AP_Dan_Avidan")
+
+[node name="Movable_Positions" type="Node" parent="."]
+
+[node name="Pos0" type="Node2D" parent="Movable_Positions"]
+position = Vector2(1000, 360)
+
+[node name="Pos1" type="Node2D" parent="Movable_Positions"]
+position = Vector2(600, 150)
+
+[node name="Pos2" type="Node2D" parent="Movable_Positions"]
+position = Vector2(200, 400)
+
+[node name="Pos3" type="Node2D" parent="Movable_Positions"]
+position = Vector2(700, 550)
 
 [connection signal="state_change_timeout" from="." to="." method="_on_state_change_timeout"]
 [connection signal="state_finished" from="State_Machine/Move_State" to="." method="_on_move_state_finished"]

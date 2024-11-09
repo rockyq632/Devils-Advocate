@@ -138,10 +138,11 @@ radius = 200.0
 
 [node name="PRJ_Track_Once_Test" type="CharacterBody2D"]
 
-[node name="PROJECTILE_CONTROLLER" type="Node2D" parent="." node_paths=PackedStringArray("anim_player", "hurt_box_area", "gravity_effect_collision")]
+[node name="PROJECTILE_CONTROLLER" type="Node2D" parent="." node_paths=PackedStringArray("anim_player", "hurt_box_area", "prj_sprite", "gravity_effect_collision")]
 script = ExtResource("1_6jb0k")
 anim_player = NodePath("../AP_track_once_test")
 hurt_box_area = NodePath("../A2D_Hurt_Box")
+prj_sprite = NodePath("../S2D_track_once_test")
 tracks_to_target = true
 stop_on_timeout = true
 timeout_sec = 10.0

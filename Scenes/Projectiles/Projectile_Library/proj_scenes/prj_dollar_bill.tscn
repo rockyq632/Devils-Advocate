@@ -99,10 +99,11 @@ radius = 200.0
 [node name="PRJ_Dollar_Bill" type="CharacterBody2D"]
 motion_mode = 1
 
-[node name="PROJECTILE_CONTROLLER" type="Node2D" parent="." node_paths=PackedStringArray("anim_player", "hurt_box_area", "gravity_effect_collision")]
+[node name="PROJECTILE_CONTROLLER" type="Node2D" parent="." node_paths=PackedStringArray("anim_player", "hurt_box_area", "prj_sprite", "gravity_effect_collision")]
 script = ExtResource("1_ickix")
 anim_player = NodePath("../AP_Dollar_Bill")
 hurt_box_area = NodePath("../A2D_Hurt_Box")
+prj_sprite = NodePath("../S2D_Dollar_Bill")
 will_rotate = true
 rotates_toward_facing = true
 tracks_to_target = true

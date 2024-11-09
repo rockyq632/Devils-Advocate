@@ -139,10 +139,11 @@ radius = 200.0
 [node name="PRJ_Orbit_Test" type="CharacterBody2D"]
 motion_mode = 1
 
-[node name="PROJECTILE_CONTROLLER" type="Node2D" parent="." node_paths=PackedStringArray("anim_player", "hurt_box_area", "gravity_effect_collision")]
+[node name="PROJECTILE_CONTROLLER" type="Node2D" parent="." node_paths=PackedStringArray("anim_player", "hurt_box_area", "prj_sprite", "gravity_effect_collision")]
 script = ExtResource("1_tlq6k")
 anim_player = NodePath("../AP_Ice_Explosion")
 hurt_box_area = NodePath("../A2D_Hurt_Box")
+prj_sprite = NodePath("../S2D_Ice_Explosion")
 h_move_speed = 400.0
 v_move_speed = 400.0
 tracks_to_target = true

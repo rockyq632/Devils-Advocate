@@ -184,10 +184,11 @@ radius = 200.0
 [node name="PRJ_Keep_Out_Test" type="CharacterBody2D"]
 motion_mode = 1
 
-[node name="PROJECTILE_CONTROLLER" type="Node2D" parent="." node_paths=PackedStringArray("anim_player", "hurt_box_area", "gravity_effect_collision")]
+[node name="PROJECTILE_CONTROLLER" type="Node2D" parent="." node_paths=PackedStringArray("anim_player", "hurt_box_area", "prj_sprite", "gravity_effect_collision")]
 script = ExtResource("1_rl5lx")
 anim_player = NodePath("../AP_Keep_Out_Test")
 hurt_box_area = NodePath("../A2D_Hurt_Box")
+prj_sprite = NodePath("../S2D_Keep_Out_Test")
 h_move_speed = 100.0
 h_acceleration = 5.0
 v_move_speed = 100.0

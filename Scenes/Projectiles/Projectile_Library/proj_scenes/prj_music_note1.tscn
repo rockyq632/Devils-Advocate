@@ -130,10 +130,11 @@ radius = 200.0
 [node name="PRJ_Music_Note1" type="CharacterBody2D"]
 motion_mode = 1
 
-[node name="PROJECTILE_CONTROLLER" type="Node2D" parent="." node_paths=PackedStringArray("anim_player", "hurt_box_area", "gravity_effect_collision")]
+[node name="PROJECTILE_CONTROLLER" type="Node2D" parent="." node_paths=PackedStringArray("anim_player", "hurt_box_area", "prj_sprite", "gravity_effect_collision")]
 script = ExtResource("1_vwflf")
 anim_player = NodePath("../AP_Music_Note1")
 hurt_box_area = NodePath("../A2D_Hurt_Box")
+prj_sprite = NodePath("../S2D_Music_Note1")
 rotates_toward_facing = true
 tracks_to_target = true
 track_on_spawn_only = true
