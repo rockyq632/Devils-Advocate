@@ -23,12 +23,7 @@ func _enter_state() -> void:
 	var temp = pos_index
 	while( pos_index == temp ):
 		pos_index = randi_range(0,positions.size()-1)
-	
-	'''# Chooses position in order
-	pos_index += 1
-	if(pos_index >= positions.size()):
-		pos_index = 0
-	'''
+		
 	super._enter_state()
 	
 func _exit_state() -> void:

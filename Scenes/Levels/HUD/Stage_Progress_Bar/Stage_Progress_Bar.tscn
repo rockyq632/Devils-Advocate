@@ -1,0 +1,79 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctrwcjfwrg2pf"]
+
+[ext_resource type="Script" path="res://Scenes/Levels/HUD/Stage_Progress_Bar/stage_progress_bar.gd" id="1_c0y1g"]
+[ext_resource type="Texture2D" uid="uid://56ltfpkao7n8" path="res://Graphics/UI/Stage_Progression_bar/Level_Progress_1x.png" id="1_slgfm"]
+[ext_resource type="Texture2D" uid="uid://chtk0rkehsy4q" path="res://Graphics/UI/Stage_Progression_bar/level_on_marker.png" id="3_sv1x1"]
+
+[node name="Stage_Progress_Bar" type="Control"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+script = ExtResource("1_c0y1g")
+
+[node name="TR_Progress_Bar" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -4.0
+offset_right = 68.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(68, 4)
+texture = ExtResource("1_slgfm")
+
+[node name="Pos1" type="Node2D" parent="."]
+position = Vector2(506, 4)
+
+[node name="TR_pos1" type="TextureRect" parent="Pos1"]
+offset_right = 6.0
+offset_bottom = 6.0
+scale = Vector2(2, 2)
+texture = ExtResource("3_sv1x1")
+
+[node name="Pos2" type="Node2D" parent="."]
+visible = false
+position = Vector2(570, 4)
+
+[node name="TR_pos2" type="TextureRect" parent="Pos2"]
+offset_right = 6.0
+offset_bottom = 6.0
+scale = Vector2(2, 2)
+texture = ExtResource("3_sv1x1")
+
+[node name="Pos3" type="Node2D" parent="."]
+visible = false
+position = Vector2(634, 4)
+scale = Vector2(2, 2)
+
+[node name="TR_pos3" type="TextureRect" parent="Pos3"]
+offset_right = 6.0
+offset_bottom = 6.0
+texture = ExtResource("3_sv1x1")
+
+[node name="Pos4" type="Node2D" parent="."]
+visible = false
+position = Vector2(698, 4)
+
+[node name="TR_pos4" type="TextureRect" parent="Pos4"]
+offset_right = 6.0
+offset_bottom = 6.0
+scale = Vector2(2, 2)
+texture = ExtResource("3_sv1x1")
+
+[node name="Pos5" type="Node2D" parent="."]
+visible = false
+position = Vector2(762, 4)
+
+[node name="TR_pos5" type="TextureRect" parent="Pos5"]
+offset_right = 6.0
+offset_bottom = 6.0
+scale = Vector2(2, 2)
+texture = ExtResource("3_sv1x1")

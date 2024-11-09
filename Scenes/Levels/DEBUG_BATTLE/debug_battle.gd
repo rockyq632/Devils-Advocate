@@ -20,6 +20,7 @@ func _process(_delta: float) -> void:
 	if(load_next_area):
 		GSM.clear_screen()
 		GSM.debug_scene_instance = GSM.DEBUG_SCENE.instantiate()
+		#$Stage_Indicator.inc_stage()
 		GSM.GLOBAL_CONTROL_NODE.add_child(GSM.debug_scene_instance)
 		queue_free()
 
