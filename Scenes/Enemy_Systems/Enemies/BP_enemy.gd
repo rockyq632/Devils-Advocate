@@ -3,6 +3,7 @@ class_name Enemy
 extends CharacterBody2D
 
 signal state_change_timeout
+signal death_signal
 
 # EStats keeps track of all of the enemy stats
 @export var estats:EStats
@@ -17,6 +18,8 @@ signal state_change_timeout
 # State Change Timer is used to trigger each enemy state change
 var state_change_timer:Timer
 
+var is_dead:bool = false
+
 func _ready() -> void:
 	state_change_timer = Timer.new()
 	state_change_timer.wait_time = delay_between_states
@@ -24,6 +27,16 @@ func _ready() -> void:
 	state_change_timer.one_shot = false
 	state_change_timer.connect("timeout", _state_change_timeout_trig)
 	add_child(state_change_timer)
+	set_process(true)
+	
+
+func _process(_delta: float) -> void:
+	if( estats.health == 0 ):
+		is_dead = true
+		death_signal.emit()
+		state_change_timer.stop()
+		set_process(false)
+		set_physics_process(false)
 
 
 # Move body a specific direction. 

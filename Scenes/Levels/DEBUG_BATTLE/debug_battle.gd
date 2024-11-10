@@ -47,8 +47,8 @@ func _on_waiting_room_body_exited(body: Node2D) -> void:
 	if( "type" in body ):
 		if( body.type == ENM.TARGET_TYPE.PLAYER ):
 			$Next_Area_Zone/T_Waiting_Room.stop()
-			
 
 
-func _on_t_waiting_room_timeout() -> void:
+
+func _on_waiting_room_timeout() -> void:
 	load_next_area = true

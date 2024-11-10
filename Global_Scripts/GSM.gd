@@ -31,9 +31,10 @@ var is_pause_disabled : bool = true
 var is_inventory_disabled : bool = true
 
 
-
+#TODO
 func set_bgs(_bg_close:Texture2D, _bg_far:Texture2D, _bg_farthest:Texture2D):
 	pass
+
 
 func clear_enemy_projectiles():
 	for i in GLOBAL_ENEMY_PROJECTILES.get_children():
