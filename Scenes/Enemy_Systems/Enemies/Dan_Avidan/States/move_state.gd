@@ -32,13 +32,7 @@ func _exit_state() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	var direction:Vector2 = enm_body.global_position.direction_to(positions[pos_index])
-	enm_body.velocity = enm_body.velocity.move_toward(	direction*clampf(	enm_body.estats.move_speed, 
-																			0.0,
-																			enm_body.global_position.distance_to(positions[pos_index])*2.5),
-														enm_body.estats.move_acceleration )
-	#print("%s -> %s" % [enm_body.global_position, positions[pos_index]])
-	enm_body.move_and_slide()
-	if( enm_body.global_position.distance_to(positions[pos_index]) < 1 ):
+	# Moves until reaches the target position
+	if( enm_body.move_toward(positions[pos_index]) ):
 		_state_finished()
 	

@@ -31,7 +31,5 @@ const MAX_MOVE_SPEED = 1000.0
 @export_range(MIN_MOVE_SPEED, MAX_MOVE_SPEED) var move_acceleration:float = 10.0
 
 
-
-
-
 var type : ENM.TARGET_TYPE = ENM.TARGET_TYPE.ENEMY
+var dir : Vector2 = Vector2.ZERO

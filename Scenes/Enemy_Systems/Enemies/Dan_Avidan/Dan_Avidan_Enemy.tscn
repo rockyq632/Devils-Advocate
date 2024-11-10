@@ -30,19 +30,22 @@ enable_ai = true
 delay_between_states = 2.0
 
 [node name="S2D_Dan_Avidan" type="Sprite2D" parent="."]
+position = Vector2(0, 6.10352e-05)
 texture = ExtResource("1_xj82n")
 
+[node name="AP_Dan_Avidan" type="AnimationPlayer" parent="."]
+
 [node name="CS2D_Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3.05176e-05)
 shape = SubResource("CircleShape2D_ykoey")
 
 [node name="A2D_Hurtbox" type="Area2D" parent="."]
 visible = false
+position = Vector2(0, 6.10352e-05)
 
 [node name="CP2D_Hurtbox" type="CollisionPolygon2D" parent="A2D_Hurtbox"]
 polygon = PackedVector2Array(-89, -99, -67, -96, -91, -65)
 disabled = true
-
-[node name="AP_Dan_Avidan" type="AnimationPlayer" parent="."]
 
 [node name="State_Machine" type="Node" parent="." node_paths=PackedStringArray("curr_state")]
 script = ExtResource("4_c7tbg")
@@ -64,10 +67,11 @@ script = ExtResource("7_srgup")
 enm_body = NodePath("../..")
 anim_player = NodePath("../../AP_Dan_Avidan")
 
-[node name="Shout_Atk_State" type="Node" parent="State_Machine" node_paths=PackedStringArray("enm_body", "anim_player")]
+[node name="Shout_Atk_State" type="Node" parent="State_Machine" node_paths=PackedStringArray("enm_body", "anim_player", "move_first")]
 script = ExtResource("8_kdgrt")
 enm_body = NodePath("../..")
 anim_player = NodePath("../../AP_Dan_Avidan")
+move_first = NodePath("../../Movable_Positions/Pos1")
 
 [node name="Movable_Positions" type="Node" parent="."]
 

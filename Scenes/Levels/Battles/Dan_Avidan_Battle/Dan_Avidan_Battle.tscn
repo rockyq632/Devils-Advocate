@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx1yec27gbobn"]
+
+[ext_resource type="PackedScene" uid="uid://cg7ifh35qsbef" path="res://Scenes/Enemy_Systems/Enemies/Dan_Avidan/Dan_Avidan_Enemy.tscn" id="1_k2ocx"]
+
+[sub_resource type="Curve2D" id="Curve2D_4sx0x"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1000, 360, -216, 14, 216, -14, 566, 104, 0, 0, 0, 0, 198, 395, -52.3842, -30.1606, 52.3842, 30.1606, 556, 676, 0, 0, 0, 0, 1000, 360)
+}
+point_count = 5
+
+[node name="DanAvidanBattle" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="P2D_Enemy_Move_Path" type="Path2D" parent="."]
+position = Vector2(12, 9.18182)
+scale = Vector2(1, 0.786713)
+curve = SubResource("Curve2D_4sx0x")
+
+[node name="PF2D_Follower" type="PathFollow2D" parent="P2D_Enemy_Move_Path"]
+position = Vector2(977.306, 351.415)
+rotation = -2.60866
+progress = 24.2874
+rotates = false
+
+[node name="DanAvidanEnemy" parent="P2D_Enemy_Move_Path/PF2D_Follower" node_paths=PackedStringArray("movement_path") instance=ExtResource("1_k2ocx")]
+position = Vector2(-1.24988, -0.150269)
+rotation = 2.60866
+scale = Vector2(1, 1.27111)
+use_movement_path = true
+movement_path = NodePath("..")

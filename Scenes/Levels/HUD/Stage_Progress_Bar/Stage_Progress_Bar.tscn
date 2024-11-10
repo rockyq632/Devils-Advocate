@@ -30,50 +30,46 @@ pivot_offset = Vector2(68, 4)
 texture = ExtResource("1_slgfm")
 
 [node name="Pos1" type="Node2D" parent="."]
-position = Vector2(506, 4)
+position = Vector2(508, 6)
 
 [node name="TR_pos1" type="TextureRect" parent="Pos1"]
-offset_right = 6.0
-offset_bottom = 6.0
+offset_right = 4.0
+offset_bottom = 4.0
 scale = Vector2(2, 2)
 texture = ExtResource("3_sv1x1")
 
 [node name="Pos2" type="Node2D" parent="."]
-visible = false
-position = Vector2(570, 4)
+position = Vector2(572, 6)
 
 [node name="TR_pos2" type="TextureRect" parent="Pos2"]
-offset_right = 6.0
-offset_bottom = 6.0
+offset_right = 4.0
+offset_bottom = 4.0
 scale = Vector2(2, 2)
 texture = ExtResource("3_sv1x1")
 
 [node name="Pos3" type="Node2D" parent="."]
-visible = false
-position = Vector2(634, 4)
+position = Vector2(636, 6)
 scale = Vector2(2, 2)
 
 [node name="TR_pos3" type="TextureRect" parent="Pos3"]
-offset_right = 6.0
-offset_bottom = 6.0
+offset_right = 4.0
+offset_bottom = 4.0
 texture = ExtResource("3_sv1x1")
 
 [node name="Pos4" type="Node2D" parent="."]
-visible = false
-position = Vector2(698, 4)
+position = Vector2(700, 6)
 
 [node name="TR_pos4" type="TextureRect" parent="Pos4"]
-offset_right = 6.0
-offset_bottom = 6.0
+offset_right = 4.0
+offset_bottom = 4.0
 scale = Vector2(2, 2)
 texture = ExtResource("3_sv1x1")
 
 [node name="Pos5" type="Node2D" parent="."]
-visible = false
-position = Vector2(762, 4)
+position = Vector2(764, 6)
 
 [node name="TR_pos5" type="TextureRect" parent="Pos5"]
-offset_right = 6.0
-offset_bottom = 6.0
+offset_right = 4.0
+offset_bottom = 4.0
 scale = Vector2(2, 2)
 texture = ExtResource("3_sv1x1")
