@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctrwcjfwrg2pf"]
+[gd_scene load_steps=5 format=3 uid="uid://ctrwcjfwrg2pf"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/HUD/Stage_Progress_Bar/stage_progress_bar.gd" id="1_c0y1g"]
 [ext_resource type="Texture2D" uid="uid://56ltfpkao7n8" path="res://Graphics/UI/Stage_Progression_bar/Level_Progress_1x.png" id="1_slgfm"]
+[ext_resource type="Texture2D" uid="uid://dwribh8ktqhkq" path="res://Graphics/UI/Stage_Progression_bar/level_done_marker.png" id="3_ii8eo"]
 [ext_resource type="Texture2D" uid="uid://chtk0rkehsy4q" path="res://Graphics/UI/Stage_Progression_bar/level_on_marker.png" id="3_sv1x1"]
 
 [node name="Stage_Progress_Bar" type="Control"]
@@ -10,7 +11,10 @@ layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
+mouse_filter = 1
 script = ExtResource("1_c0y1g")
+stage_on = ExtResource("3_sv1x1")
+stage_done = ExtResource("3_ii8eo")
 
 [node name="TR_Progress_Bar" type="TextureRect" parent="."]
 layout_mode = 1
@@ -39,6 +43,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("3_sv1x1")
 
 [node name="Pos2" type="Node2D" parent="."]
+visible = false
 position = Vector2(572, 6)
 
 [node name="TR_pos2" type="TextureRect" parent="Pos2"]
@@ -48,6 +53,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("3_sv1x1")
 
 [node name="Pos3" type="Node2D" parent="."]
+visible = false
 position = Vector2(636, 6)
 scale = Vector2(2, 2)
 
@@ -57,6 +63,7 @@ offset_bottom = 4.0
 texture = ExtResource("3_sv1x1")
 
 [node name="Pos4" type="Node2D" parent="."]
+visible = false
 position = Vector2(700, 6)
 
 [node name="TR_pos4" type="TextureRect" parent="Pos4"]
@@ -66,6 +73,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("3_sv1x1")
 
 [node name="Pos5" type="Node2D" parent="."]
+visible = false
 position = Vector2(764, 6)
 
 [node name="TR_pos5" type="TextureRect" parent="Pos5"]

@@ -18,7 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+mouse_filter = 1
 script = ExtResource("1_mkfk5")
 
 [node name="MC_Bar_Placement" type="MarginContainer" parent="."]
@@ -40,7 +40,7 @@ visibility_layer = 16
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_styles/fill = SubResource("StyleBoxFlat_k67cp")
-value = 60.0
+value = 100.0
 show_percentage = false
 
 [node name="PB_Top_Bar" type="ProgressBar" parent="MC_Bar_Placement"]
@@ -51,5 +51,5 @@ layout_mode = 2
 size_flags_vertical = 1
 theme_override_styles/background = SubResource("StyleBoxFlat_p8li4")
 theme_override_styles/fill = SubResource("StyleBoxFlat_x636r")
-value = 50.0
+value = 100.0
 show_percentage = false

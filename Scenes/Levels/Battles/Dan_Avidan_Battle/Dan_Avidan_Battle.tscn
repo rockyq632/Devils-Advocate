@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dx1yec27gbobn"]
+[gd_scene load_steps=5 format=3 uid="uid://dx1yec27gbobn"]
 
+[ext_resource type="Script" path="res://Scenes/Levels/Battles/Dan_Avidan_Battle/dan_avidan_battle.gd" id="1_8wkuh"]
 [ext_resource type="PackedScene" uid="uid://cg7ifh35qsbef" path="res://Scenes/Enemy_Systems/Enemies/Dan_Avidan/Dan_Avidan_Enemy.tscn" id="1_k2ocx"]
+[ext_resource type="PackedScene" uid="uid://c2m8vytmn4wws" path="res://Scenes/Enemy_Systems/Node_Health_Bar.tscn" id="2_2qqgc"]
 
 [sub_resource type="Curve2D" id="Curve2D_4sx0x"]
 _data = {
@@ -8,13 +10,18 @@ _data = {
 }
 point_count = 5
 
-[node name="DanAvidanBattle" type="Control"]
+[node name="DanAvidanBattle" type="Control" node_paths=PackedStringArray("enm_body")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_8wkuh")
+enm_body = NodePath("P2D_Enemy_Move_Path/PF2D_Follower/DanAvidanEnemy")
+
+[node name="BP_Health_Bar" parent="." instance=ExtResource("2_2qqgc")]
+layout_mode = 1
 
 [node name="P2D_Enemy_Move_Path" type="Path2D" parent="."]
 position = Vector2(12, 9.18182)
@@ -26,9 +33,11 @@ position = Vector2(1000, 360)
 rotation = -2.60866
 rotates = false
 
-[node name="DanAvidanEnemy" parent="P2D_Enemy_Move_Path/PF2D_Follower" node_paths=PackedStringArray("movement_path") instance=ExtResource("1_k2ocx")]
+[node name="DanAvidanEnemy" parent="P2D_Enemy_Move_Path/PF2D_Follower" node_paths=PackedStringArray("health_bar", "movement_path") instance=ExtResource("1_k2ocx")]
 position = Vector2(-1.24988, -0.150269)
 rotation = 2.60866
 scale = Vector2(1, 1.27111)
-use_movement_path = true
+health_bar = NodePath("../../../BP_Health_Bar")
 movement_path = NodePath("..")
+
+[connection signal="death_signal" from="P2D_Enemy_Move_Path/PF2D_Follower/DanAvidanEnemy" to="." method="_on_death_signal"]

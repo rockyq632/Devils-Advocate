@@ -13,7 +13,7 @@ config_version=5
 config/name="Devils Advocate"
 run/main_scene="res://Scenes/GLOBAL_SCENE_MANAGER/global_scene_manager.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-run/max_fps=75
+run/max_fps=60
 config/icon="res://Graphics/Icons/Taskbar_Icon_1x.png"
 
 [autoload]
@@ -145,6 +145,10 @@ inventory_menu={
 2d_physics/layer_7="Walls"
 2d_physics/layer_8="Floor_Ceiling"
 2d_physics/layer_9="Player_Shape_Boundary"
+
+[network]
+
+limits/tcp/connect_timeout_seconds=10
 
 [rendering]
 

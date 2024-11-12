@@ -7,14 +7,12 @@ func _ready() -> void:
 	$MC_PU_Char_Details.visible = false
 	GSM.is_pc_movement_locked = true
 	current_selection = Control.new()
-	
-	
 	current_selection.global_position = $TR_Player_Placeholder.global_position+Vector2(-32,-32)
 
 
-
+# One of the side character buttons is hit
 func char_selected() -> void:
-	$MC_PU_Char_Details.visible = true
+	$MC_PU_Char_Details.show()
 	
 	var temp: Array[PC_Ability] = current_selection.char_instance.get_moveset()
 	$"MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/TabContainer/Set 1/P_AB1/TR_AB1".texture = temp[0].ab_icon_texture
@@ -33,15 +31,27 @@ func char_selected() -> void:
 
 
 
-
+# Debug button takes you to the Debug Battle Scene
 func _on_btn_debug_pressed() -> void:
 	# If a character is actually selected
 	if("char_name" in current_selection):
 		RUN_STATS.selected_char1 = current_selection.char_name
 		GSM.debug_scene_instance = GSM.DEBUG_SCENE.instantiate()
 		GSM.GLOBAL_CONTROL_NODE.add_child( GSM.debug_scene_instance )
-		get_parent().remove_child(self)
-	
+		queue_free()
+	# If no character is selected
+	else:
+		pass
+
+
+func _on_play_btn_pressed() -> void:
+	# If a character is actually selected
+	if("char_name" in current_selection):
+		RUN_STATS.selected_char1 = current_selection.char_name
+		GSM.current_scene_instance = load("res://Scenes/Levels/Circles_of_Hell/Tartarus/Circle_Tartarus.tscn").instantiate()
+		GSM.GLOBAL_CONTROL_NODE.add_child( GSM.current_scene_instance )
+		#get_parent().remove_child(self)
+		queue_free()
 	# If no character is selected
 	else:
 		pass
@@ -50,16 +60,30 @@ func _on_btn_debug_pressed() -> void:
 # Dancer Selected
 func _on_btn_dani_pressed() -> void:
 	var temp:Vector2 = current_selection.global_position
-	$TR_Player_Placeholder.visible = false
+	$TR_Player_Placeholder.hide()
 	
 	current_selection.queue_free()
 	current_selection = load("res://Scenes/Player_Systems/Dani_Dancer/Dani_Dancer.tscn").instantiate()
 	current_selection.position = temp
 	add_child( current_selection )
-	
 	char_selected()
+
+
+
+	
 	
 
 # Astrologian Selected
 func _on_btn_asta_pressed() -> void:
 	pass
+
+
+# Character select button pressed
+func _on_select_btn_pressed() -> void:
+	# Remove character details popup
+	remove_child( current_selection )
+	$MC_PU_Char_Details.hide()
+	
+	# Add character to the Global 2D node
+	GSM.GLOBAL_2D_NODE.add_child( current_selection )
+	GSM.is_pc_movement_locked = false

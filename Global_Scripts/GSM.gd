@@ -18,9 +18,11 @@ var GLOBAL_P1_STATS:PStats
 
 @onready var TITLE_MENU : TitleMenu = load("res://Scenes/Levels/Title_Screen/Title_Screen.tscn").instantiate()
 @onready var DEBUG_SCENE : PackedScene = load("res://Scenes/Levels/DEBUG_BATTLE/DEBUG_BATTLE.tscn")
-@onready var CHAR_SELECT_SCENE : PackedScene = load("res://Scenes/Levels/Character_Select_Screen/character_select_screen.tscn")
+@onready var CHAR_SELECT_SCENE : PackedScene = load("res://Scenes/Menues/Character_Select_Screen/character_select_screen.tscn")
 
 var debug_scene_instance : DEBUG_BATTLE_SCENE
+
+var current_scene_instance:Control
 
 var player_position : Vector2 = Vector2(0,0)
 var enemy_position : Vector2 = Vector2(0,0)

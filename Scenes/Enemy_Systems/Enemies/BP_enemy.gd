@@ -7,6 +7,7 @@ signal death_signal
 
 # EStats keeps track of all of the enemy stats
 @export var estats:EStats
+@export var health_bar:HealthBar
 
 @export_subgroup("AI")
 @export var state_machine:EnemyStateMachine 	#Enemy state machine handles different movement and attacks
@@ -21,6 +22,10 @@ var state_change_timer:Timer
 var is_dead:bool = false
 
 func _ready() -> void:
+	# Set up Health Bar
+	health_bar.update_max_health( estats.max_health )
+	health_bar.update_hp_bar( estats.health )
+	# Set up state change timer
 	state_change_timer = Timer.new()
 	state_change_timer.wait_time = delay_between_states
 	state_change_timer.autostart = true
@@ -28,15 +33,7 @@ func _ready() -> void:
 	state_change_timer.connect("timeout", _state_change_timeout_trig)
 	add_child(state_change_timer)
 	set_process(true)
-	
 
-func _process(_delta: float) -> void:
-	if( estats.health == 0 ):
-		is_dead = true
-		death_signal.emit()
-		state_change_timer.stop()
-		set_process(false)
-		set_physics_process(false)
 
 
 # Move body a specific direction. 
@@ -102,8 +99,37 @@ func spawn_projectile(nam:String, pos:Vector2) -> CharacterBody2D:
 func take_damage(amt:float) -> void:
 	estats.health -= amt
 	# Calls to the Stage to change the healthbar
-	if("take_damage" in get_parent()):
-		get_parent().take_damage(estats.health)
+	health_bar.update_hp_bar( estats.health )
+	# Check if the enemy is dead
+	if( estats.health == 0 ):
+		is_dead = true
+		death_signal.emit()
+		state_change_timer.stop()
+		remove_child(state_change_timer)
+		set_process(false)
+		set_physics_process(false)
+
+
+# Revives enemy with some percentage of health
+func revive_enemy(hp_percent:float=0.0):
+	if( hp_percent<=0.0 ):
+		estats.health = estats.max_health
+	elif( hp_percent<=100.0 ):
+		estats.health = estats.max_health*(hp_percent*0.01)
+	else:
+		estats.health = estats.max_health
+	
+	health_bar.reset_hp_bar()
+	is_dead = false
+	set_process(true)
+	set_physics_process(true)
+	#Recreate State Machine timer
+	state_change_timer = Timer.new()
+	state_change_timer.wait_time = delay_between_states
+	state_change_timer.autostart = true
+	state_change_timer.one_shot = false
+	state_change_timer.connect("timeout", _state_change_timeout_trig)
+	add_child( state_change_timer )
 
 
 # Emits a signal every time the state change timer finishes

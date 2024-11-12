@@ -23,9 +23,7 @@ func inc_stage():
 	# Set all unfinished stage textures
 	for i in range(curr_stage+1, stage_nodes.size()):
 		stage_nodes[i].hide()
-	
-	
-		
+
 
 
 func reset_to_stage1():

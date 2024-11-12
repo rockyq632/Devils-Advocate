@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://cekhruau50dl8"]
 
-[ext_resource type="Script" path="res://Scenes/Levels/Character_Select_Screen/character_select_screen.gd" id="1_13toc"]
+[ext_resource type="Script" path="res://Scenes/Menues/Character_Select_Screen/character_select_screen.gd" id="1_13toc"]
 [ext_resource type="Texture2D" uid="uid://ux5u7qhxxkau" path="res://Graphics/BG/Char_Select_BG_no-light_1x.png" id="2_7xld5"]
 [ext_resource type="Theme" uid="uid://6yidb12fyc8i" path="res://Themes/UI_TEXT_BUTTON_THEME.tres" id="3_2rlyx"]
 [ext_resource type="Texture2D" uid="uid://ct1etpd1eytb5" path="res://Graphics/BG/LeftSpotlight.png" id="3_6egn6"]
@@ -138,24 +138,6 @@ light_mask = 16
 visibility_layer = 16
 layout_mode = 2
 texture_normal = ExtResource("4_80qt6")
-
-[node name="MC_Debug_Btn" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -77.0
-offset_bottom = 45.0
-grow_horizontal = 0
-theme = ExtResource("3_2rlyx")
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-
-[node name="BTN_Debug" type="Button" parent="MC_Debug_Btn"]
-light_mask = 16
-visibility_layer = 16
-layout_mode = 2
-text = "DEBUG"
 
 [node name="MC_PU_Char_Details" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(600, 400)
@@ -320,6 +302,69 @@ layout_mode = 2
 text = "Stats and stuff"
 metadata/_tab_index = 0
 
+[node name="MC_Select" type="MarginContainer" parent="MC_PU_Char_Details/Total_Panel"]
+light_mask = 16
+visibility_layer = 16
+custom_minimum_size = Vector2(50, 30)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -30.0
+offset_right = 25.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 10
+
+[node name="BTN_Select" type="Button" parent="MC_PU_Char_Details/Total_Panel/MC_Select"]
+light_mask = 16
+visibility_layer = 16
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+text = "SELECT"
+
+[node name="MC_Debug_Btn" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -77.0
+offset_bottom = 45.0
+grow_horizontal = 0
+theme = ExtResource("3_2rlyx")
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="BTN_Debug" type="Button" parent="MC_Debug_Btn"]
+light_mask = 16
+visibility_layer = 16
+layout_mode = 2
+text = "DEBUG"
+
+[node name="MC_Play_Btn" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -77.0
+offset_top = 45.0
+offset_bottom = 90.0
+grow_horizontal = 0
+theme = ExtResource("3_2rlyx")
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="BTN_Play" type="Button" parent="MC_Play_Btn"]
+light_mask = 16
+visibility_layer = 16
+layout_mode = 2
+text = "PLAY"
+
 [connection signal="pressed" from="HB_Container/VB_Character_Buttons/ARC1/BTN_Dani" to="." method="_on_btn_dani_pressed"]
 [connection signal="pressed" from="HB_Container/VB_Character_Buttons/ARC2/BTN_Asta" to="." method="_on_btn_asta_pressed"]
+[connection signal="pressed" from="MC_PU_Char_Details/Total_Panel/MC_Select/BTN_Select" to="." method="_on_select_btn_pressed"]
 [connection signal="pressed" from="MC_Debug_Btn/BTN_Debug" to="." method="_on_btn_debug_pressed"]
+[connection signal="pressed" from="MC_Play_Btn/BTN_Play" to="." method="_on_play_btn_pressed"]
