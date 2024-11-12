@@ -1,6 +1,5 @@
-@tool
-class_name PStats
-extends Resource
+class_name PlayableCharacter
+extends CharacterBody2D
 
 # Set maximum supported values
 const MAX_HEALTH = 10.0
@@ -27,7 +26,3 @@ const MAX_MOVE_SPEED = 1000.0
 
 
 var type : ENM.TARGET_TYPE = ENM.TARGET_TYPE.PLAYER
-
-func get_dani_default_pstats() -> PStats:
-	var base_stats:PStats = PStats.new()
-	return base_stats

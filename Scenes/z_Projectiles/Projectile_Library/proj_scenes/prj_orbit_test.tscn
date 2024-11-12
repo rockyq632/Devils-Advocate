@@ -1,30 +1,36 @@
-[gd_scene load_steps=12 format=3 uid="uid://da0kvgq3qywm"]
+[gd_scene load_steps=12 format=3 uid="uid://cu4xkr4daqfy8"]
 
-[ext_resource type="Script" path="res://Scenes/Projectiles/projectile_controller.gd" id="1_vwflf"]
-[ext_resource type="Texture2D" uid="uid://dc6xo6im14jve" path="res://Graphics/Projectiles/Musical/Music_Note1_1x.png" id="2_54kts"]
-[ext_resource type="Shader" path="res://Shaders/Border_Glow_Shader.gdshader" id="2_thuma"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cos2y"]
-shader = ExtResource("2_thuma")
-shader_parameter/line_color = Color(1, 1, 1, 0.23)
-shader_parameter/line_thickness = 1.0
-shader_parameter/line_fade = 1.0
+[ext_resource type="Script" path="res://Scenes/z_Projectiles/projectile_controller.gd" id="1_tlq6k"]
+[ext_resource type="Texture2D" uid="uid://cddmax33h3714" path="res://Graphics/Projectiles/PE_Ice_Explosion.png" id="2_i6er1"]
+[ext_resource type="Texture2D" uid="uid://384uvi5ypumk" path="res://Graphics/BG/BLANK.png" id="3_5ykcr"]
 
 [sub_resource type="Animation" id="Animation_m0nju"]
 resource_name = "END"
-length = 0.11
+length = 0.62
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("S2D_Music_Note1:modulate")
+tracks/0/path = NodePath("S2D_Ice_Explosion:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 3, 4, 5, 6, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("S2D_Ice_Explosion:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.61),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 0, 0, 1), Color(1, 0, 0, 0)]
+"update": 1,
+"values": [ExtResource("2_i6er1"), ExtResource("3_5ykcr")]
 }
 
 [sub_resource type="Animation" id="Animation_no0rf"]
@@ -32,66 +38,36 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("S2D_Music_Note1:frame")
+tracks/0/path = NodePath("S2D_Ice_Explosion:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [2]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("S2D_Music_Note1:modulate")
+tracks/1/path = NodePath("S2D_Ice_Explosion:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("S2D_Music_Note1:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"update": 1,
+"values": [ExtResource("2_i6er1")]
 }
 
 [sub_resource type="Animation" id="Animation_g3ttf"]
 resource_name = "START"
 length = 0.1
-step = 0.05
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("S2D_Music_Note1:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_wxt0i"]
-resource_name = "TRAVEL"
-length = 0.4
-loop_mode = 1
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("S2D_Music_Note1:frame")
+tracks/0/path = NodePath("S2D_Ice_Explosion:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -103,14 +79,44 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("S2D_Music_Note1:rotation")
+tracks/1/path = NodePath("S2D_Ice_Explosion:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.05, 0.15, 0.25, 0.35),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0174533, 0.20944, 0.10472, -0.0872665]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_i6er1")]
+}
+
+[sub_resource type="Animation" id="Animation_wxt0i"]
+resource_name = "TRAVEL"
+length = 0.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("S2D_Ice_Explosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("S2D_Ice_Explosion:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_i6er1")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0aw41"]
@@ -124,47 +130,54 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_cfjny"]
 radius = 0.1
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_1mpw6"]
+radius = 4.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_tkgdl"]
 radius = 200.0
 
-[node name="PRJ_Music_Note1" type="CharacterBody2D"]
+[node name="PRJ_Orbit_Test" type="CharacterBody2D"]
 motion_mode = 1
 
 [node name="PROJECTILE_CONTROLLER" type="Node2D" parent="." node_paths=PackedStringArray("anim_player", "hurt_box_area", "prj_sprite", "gravity_effect_collision")]
-script = ExtResource("1_vwflf")
-anim_player = NodePath("../AP_Music_Note1")
+script = ExtResource("1_tlq6k")
+anim_player = NodePath("../AP_Ice_Explosion")
 hurt_box_area = NodePath("../A2D_Hurt_Box")
-prj_sprite = NodePath("../S2D_Music_Note1")
-rotates_toward_facing = true
+prj_sprite = NodePath("../S2D_Ice_Explosion")
+h_move_speed = 400.0
+v_move_speed = 400.0
 tracks_to_target = true
-track_on_spawn_only = true
 stop_on_timeout = true
 timeout_sec = 15.0
-bounce_off_walls = true
+orbits_target = true
+orbit_spiral = true
 orbit_spiral_angle = 60.0
 remove_windup = false
 gravity_weight = 1.0
 gravity_effect_collision = NodePath("../A2D_Gravity")
 
-[node name="S2D_Music_Note1" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_cos2y")
-texture = ExtResource("2_54kts")
+[node name="S2D_Ice_Explosion" type="Sprite2D" parent="."]
+texture = ExtResource("2_i6er1")
+hframes = 4
+vframes = 2
+frame = 2
 
-[node name="AP_Music_Note1" type="AnimationPlayer" parent="."]
+[node name="AP_Ice_Explosion" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_0aw41")
 }
 
-[node name="CS_Music_Note1" type="CollisionShape2D" parent="."]
+[node name="CS_Ice_Explosion" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_cfjny")
 
 [node name="A2D_Hurt_Box" type="Area2D" parent="."]
+visible = false
 collision_layer = 32
 collision_mask = 197
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="A2D_Hurt_Box"]
-polygon = PackedVector2Array(-5, 1, -1, 0, -1, -5, 0, -6, 4, -6, 6, -4, 4, 1, 1, 3, -2, 6, -5, 6, -6, 5, -6, 2)
+[node name="CS_Hurt_Box" type="CollisionShape2D" parent="A2D_Hurt_Box"]
+shape = SubResource("CircleShape2D_1mpw6")
 
 [node name="A2D_Gravity" type="Area2D" parent="."]
 visible = false

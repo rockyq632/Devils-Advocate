@@ -1,36 +1,23 @@
-[gd_scene load_steps=12 format=3 uid="uid://cu4xkr4daqfy8"]
+[gd_scene load_steps=10 format=3 uid="uid://cnmkqyodq71ut"]
 
-[ext_resource type="Script" path="res://Scenes/Projectiles/projectile_controller.gd" id="1_tlq6k"]
-[ext_resource type="Texture2D" uid="uid://cddmax33h3714" path="res://Graphics/Projectiles/PE_Ice_Explosion.png" id="2_i6er1"]
-[ext_resource type="Texture2D" uid="uid://384uvi5ypumk" path="res://Graphics/BG/BLANK.png" id="3_5ykcr"]
+[ext_resource type="Script" path="res://Scenes/z_Projectiles/projectile_controller.gd" id="1_ickix"]
+[ext_resource type="Texture2D" uid="uid://cpbg0nhcghvs1" path="res://Graphics/Projectiles/Money/Dollar_1x.png" id="2_p5i1j"]
 
 [sub_resource type="Animation" id="Animation_m0nju"]
 resource_name = "END"
-length = 0.62
+length = 0.11
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("S2D_Ice_Explosion:frame")
+tracks/0/path = NodePath("S2D_Dollar_Bill:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [2, 3, 4, 5, 6, 7]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("S2D_Ice_Explosion:texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.61),
+"times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("2_i6er1"), ExtResource("3_5ykcr")]
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_no0rf"]
@@ -38,26 +25,26 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("S2D_Ice_Explosion:frame")
+tracks/0/path = NodePath("S2D_Dollar_Bill:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [2]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("S2D_Ice_Explosion:texture")
+tracks/1/path = NodePath("S2D_Dollar_Bill:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_i6er1")]
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_g3ttf"]
@@ -67,7 +54,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("S2D_Ice_Explosion:frame")
+tracks/0/path = NodePath("S2D_Dollar_Bill:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -76,47 +63,23 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("S2D_Ice_Explosion:texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_i6er1")]
-}
 
 [sub_resource type="Animation" id="Animation_wxt0i"]
 resource_name = "TRAVEL"
-length = 0.2
+length = 0.6
 loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("S2D_Ice_Explosion:frame")
+tracks/0/path = NodePath("S2D_Dollar_Bill:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [1, 2]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("S2D_Ice_Explosion:texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_i6er1")]
+"values": [1, 2, 3, 4, 5, 0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0aw41"]
@@ -130,54 +93,49 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_cfjny"]
 radius = 0.1
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1mpw6"]
-radius = 4.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_tkgdl"]
 radius = 200.0
 
-[node name="PRJ_Orbit_Test" type="CharacterBody2D"]
+[node name="PRJ_Dollar_Bill" type="CharacterBody2D"]
 motion_mode = 1
 
 [node name="PROJECTILE_CONTROLLER" type="Node2D" parent="." node_paths=PackedStringArray("anim_player", "hurt_box_area", "prj_sprite", "gravity_effect_collision")]
-script = ExtResource("1_tlq6k")
-anim_player = NodePath("../AP_Ice_Explosion")
+script = ExtResource("1_ickix")
+anim_player = NodePath("../AP_Dollar_Bill")
 hurt_box_area = NodePath("../A2D_Hurt_Box")
-prj_sprite = NodePath("../S2D_Ice_Explosion")
-h_move_speed = 400.0
-v_move_speed = 400.0
+prj_sprite = NodePath("../S2D_Dollar_Bill")
+will_rotate = true
+rotates_toward_facing = true
 tracks_to_target = true
+track_on_spawn_only = true
 stop_on_timeout = true
 timeout_sec = 15.0
-orbits_target = true
-orbit_spiral = true
+bounce_off_walls = true
 orbit_spiral_angle = 60.0
 remove_windup = false
 gravity_weight = 1.0
 gravity_effect_collision = NodePath("../A2D_Gravity")
 
-[node name="S2D_Ice_Explosion" type="Sprite2D" parent="."]
-texture = ExtResource("2_i6er1")
+[node name="S2D_Dollar_Bill" type="Sprite2D" parent="."]
+texture = ExtResource("2_p5i1j")
 hframes = 4
 vframes = 2
-frame = 2
 
-[node name="AP_Ice_Explosion" type="AnimationPlayer" parent="."]
+[node name="AP_Dollar_Bill" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_0aw41")
 }
 
-[node name="CS_Ice_Explosion" type="CollisionShape2D" parent="."]
+[node name="CS_Dollar_Bill" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_cfjny")
 
 [node name="A2D_Hurt_Box" type="Area2D" parent="."]
-visible = false
 collision_layer = 32
 collision_mask = 197
 
-[node name="CS_Hurt_Box" type="CollisionShape2D" parent="A2D_Hurt_Box"]
-shape = SubResource("CircleShape2D_1mpw6")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="A2D_Hurt_Box"]
+polygon = PackedVector2Array(-2, -4, 3, -4, 5, -2, 5, 2, 3, 4, -2, 4, -4, 2, -4, -2)
 
 [node name="A2D_Gravity" type="Area2D" parent="."]
 visible = false

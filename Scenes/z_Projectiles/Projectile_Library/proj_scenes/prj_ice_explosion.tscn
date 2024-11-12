@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://bcqncneucahp5"]
 
-[ext_resource type="Script" path="res://Scenes/Projectiles/projectile_controller.gd" id="1_o0tjr"]
+[ext_resource type="Script" path="res://Scenes/z_Projectiles/projectile_controller.gd" id="1_o0tjr"]
 [ext_resource type="Texture2D" uid="uid://cddmax33h3714" path="res://Graphics/Projectiles/PE_Ice_Explosion.png" id="2_7bt0m"]
 [ext_resource type="Texture2D" uid="uid://384uvi5ypumk" path="res://Graphics/BG/BLANK.png" id="3_1y4se"]
 

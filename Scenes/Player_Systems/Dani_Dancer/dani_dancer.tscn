@@ -1,9 +1,8 @@
-[gd_scene load_steps=78 format=3 uid="uid://c7td7c3637cjq"]
+[gd_scene load_steps=76 format=3 uid="uid://c7td7c3637cjq"]
 
 [ext_resource type="Script" path="res://Scenes/Player_Systems/Dani_Dancer/dani_hud.gd" id="1_pyw3t"]
 [ext_resource type="Script" path="res://Scenes/Player_Systems/Dani_Dancer/dani_dancer.gd" id="1_tcuq5"]
 [ext_resource type="AudioStream" uid="uid://8hcgpv4amdo3" path="res://Sounds/Sound_Effects/SE_Hit1.wav" id="2_i1wj4"]
-[ext_resource type="Script" path="res://Global_Scripts/Resources/Player/PLAYER_STATS.gd" id="2_ro7d0"]
 [ext_resource type="Script" path="res://Scenes/Player_Systems/player_physics_controller.gd" id="3_2yoqt"]
 [ext_resource type="Shader" path="res://Shaders/occlussion_cropper.gdshader" id="4_bmbnw"]
 [ext_resource type="Texture2D" uid="uid://dtukmk4xbmfja" path="res://Graphics/Characters/DANI_DANCER/Aseprite/Dani Dancer_o.png" id="5_daoa2"]
@@ -16,13 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://dui2bw50swvh" path="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Pirouette_1x.png" id="12_d4aod"]
 [ext_resource type="PackedScene" uid="uid://bg8sq66oyqmc1" path="res://Scenes/Player_Systems/HUD/Health_Heart.tscn" id="13_boqcl"]
 [ext_resource type="Texture2D" uid="uid://t8k3v2qmoxic" path="res://Graphics/UI/CD_Overlay_SM_4x.png" id="14_anesl"]
-
-[sub_resource type="Resource" id="Resource_mdevr"]
-script = ExtResource("2_ro7d0")
-max_health = 3.0
-health = 3.0
-armor = 0.0
-move_speed = 350.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ywj65"]
 shader = ExtResource("4_bmbnw")
@@ -1383,7 +1375,6 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource("1_pyw3t")
 char_instance = NodePath("DaniDancer")
-pstats = SubResource("Resource_mdevr")
 hit_sound = ExtResource("2_i1wj4")
 moveset_select1 = 1
 moveset_select2 = 2
@@ -1401,6 +1392,8 @@ platform_wall_layers = 64
 script = ExtResource("1_tcuq5")
 player_hud = NodePath("..")
 phys_ctrl = NodePath("PLAYER_PHYS_CONTROLLER")
+armor = 2.0
+move_speed = 350.0
 
 [node name="PLAYER_PHYS_CONTROLLER" type="Node" parent="DaniDancer" node_paths=PackedStringArray("char_body")]
 script = ExtResource("3_2yoqt")

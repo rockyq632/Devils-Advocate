@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://iuuntnrwddus"]
+[gd_scene load_steps=10 format=3 uid="uid://v6j0ek2uxe1k"]
 
-[ext_resource type="Script" path="res://Scenes/Projectiles/projectile_controller.gd" id="1_edgt5"]
-[ext_resource type="Texture2D" uid="uid://u8gun1r6qpt1" path="res://Graphics/Projectiles/Money/Gold_Coin_1x.png" id="2_7s5wi"]
+[ext_resource type="Script" path="res://Scenes/z_Projectiles/projectile_controller.gd" id="1_kf2oq"]
+[ext_resource type="Texture2D" uid="uid://bp623dorajg3b" path="res://Graphics/Projectiles/Money/Silver_Coin_1x.png" id="2_tayus"]
 
 [sub_resource type="Animation" id="Animation_m0nju"]
 resource_name = "END"
@@ -10,14 +10,14 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("S2D_Gold_Coin:modulate")
+tracks/0/path = NodePath("S2D_Silver_Coin:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0.784314, 0, 0, 1), Color(1, 0, 0, 0)]
+"values": [Color(1, 0, 0, 1), Color(1, 0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_no0rf"]
@@ -25,7 +25,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("S2D_Gold_Coin:frame")
+tracks/0/path = NodePath("S2D_Silver_Coin:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -37,7 +37,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("S2D_Gold_Coin:modulate")
+tracks/1/path = NodePath("S2D_Silver_Coin:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -54,7 +54,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("S2D_Gold_Coin:frame")
+tracks/0/path = NodePath("S2D_Silver_Coin:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -72,7 +72,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("S2D_Gold_Coin:frame")
+tracks/0/path = NodePath("S2D_Silver_Coin:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -96,14 +96,14 @@ radius = 0.1
 [sub_resource type="CircleShape2D" id="CircleShape2D_tkgdl"]
 radius = 200.0
 
-[node name="PRJ_Gold_Coin" type="CharacterBody2D"]
+[node name="PRJ_Silver_Coin" type="CharacterBody2D"]
 motion_mode = 1
 
 [node name="PROJECTILE_CONTROLLER" type="Node2D" parent="." node_paths=PackedStringArray("anim_player", "hurt_box_area", "prj_sprite", "gravity_effect_collision")]
-script = ExtResource("1_edgt5")
-anim_player = NodePath("../AP_Gold_Coin")
+script = ExtResource("1_kf2oq")
+anim_player = NodePath("../AP_Silver_Coin")
 hurt_box_area = NodePath("../A2D_Hurt_Box")
-prj_sprite = NodePath("../S2D_Gold_Coin")
+prj_sprite = NodePath("../S2D_Silver_Coin")
 will_rotate = true
 rotates_toward_facing = true
 tracks_to_target = true
@@ -116,18 +116,18 @@ remove_windup = false
 gravity_weight = 1.0
 gravity_effect_collision = NodePath("../A2D_Gravity")
 
-[node name="S2D_Gold_Coin" type="Sprite2D" parent="."]
+[node name="S2D_Silver_Coin" type="Sprite2D" parent="."]
 rotation = 1.5708
-texture = ExtResource("2_7s5wi")
+texture = ExtResource("2_tayus")
 hframes = 4
 vframes = 6
 
-[node name="AP_Gold_Coin" type="AnimationPlayer" parent="."]
+[node name="AP_Silver_Coin" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_0aw41")
 }
 
-[node name="CS_Gold_Coin" type="CollisionShape2D" parent="."]
+[node name="CS_Silver_Coin" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_cfjny")
 

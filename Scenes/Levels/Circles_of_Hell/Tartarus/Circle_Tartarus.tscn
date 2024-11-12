@@ -33,6 +33,5 @@ layout_mode = 1
 layout_mode = 1
 
 [node name="Waiting_Room" parent="." instance=ExtResource("5_isq3s")]
-visible = false
 
 [connection signal="waiting_room_timer_finished" from="Waiting_Room" to="." method="_on_waiting_room_timer_finished"]

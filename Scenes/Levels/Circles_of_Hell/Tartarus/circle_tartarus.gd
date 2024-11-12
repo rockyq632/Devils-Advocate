@@ -15,7 +15,6 @@ func _ready() -> void:
 	curr_stage_control = stage_list[0].instantiate()
 	add_child( curr_stage_control )
 	
-	
 	# Grab the enemy body's death signal
 	if( "enm_body" in curr_stage_control ):
 		curr_enemy_body = curr_stage_control.enm_body
@@ -25,19 +24,28 @@ func _ready() -> void:
 		
 
 
+
 func load_next_stage() -> void:
 	# Increment Stage Progress
 	$Stage_Progress_Bar.inc_stage()
 	# Remove the current control
+	#curr_enemy_body.death_signal.disconnect(_waiting_room_visible)
 	remove_child( curr_stage_control )
 	
 	# Instantiate new scene
 	var ind:int = $Stage_Progress_Bar.curr_stage
 	curr_stage_control = stage_list[ind].instantiate()
 	
+	# if stage is an enemy
+	if( "enm_body" in curr_stage_control ):
+		curr_enemy_body.revive_enemy()
+		curr_enemy_body.death_signal.connect(_waiting_room_visible)
+	
+	
 	# Create next enemy
-	curr_enemy_body.revive_enemy()
-	add_child( curr_stage_control )
+	add_child( curr_stage_control )# if stage is a shop
+	if( "is_shop" in curr_stage_control):
+		_waiting_room_visible()
 
 
 

@@ -1,21 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://cg7ifh35qsbef"]
+[gd_scene load_steps=9 format=3 uid="uid://cg7ifh35qsbef"]
 
 [ext_resource type="Script" path="res://Scenes/Enemy_Systems/Enemies/Dan_Avidan/dan_avidan_enemy.gd" id="1_a5fdo"]
 [ext_resource type="Texture2D" uid="uid://bs8a6nmwj2tha" path="res://Graphics/PLACEHOLDERS/PLACEHOLDER_ENEMY.png" id="1_xj82n"]
-[ext_resource type="Script" path="res://Global_Scripts/Resources/Enemies/ENEMY_STATS.gd" id="2_pr0ny"]
 [ext_resource type="Script" path="res://Scenes/Enemy_Systems/Enemies/BP_enemy_state_machine.gd" id="4_c7tbg"]
 [ext_resource type="Script" path="res://Scenes/Enemy_Systems/Enemies/Dan_Avidan/States/idle_state.gd" id="5_vijbf"]
 [ext_resource type="Script" path="res://Scenes/Enemy_Systems/Enemies/Dan_Avidan/States/move_state.gd" id="6_xf4ql"]
 [ext_resource type="Script" path="res://Scenes/Enemy_Systems/Enemies/Dan_Avidan/States/music_note_atk_state.gd" id="7_srgup"]
 [ext_resource type="Script" path="res://Scenes/Enemy_Systems/Enemies/Dan_Avidan/States/shout_state.gd" id="8_kdgrt"]
-
-[sub_resource type="Resource" id="Resource_lvkn8"]
-script = ExtResource("2_pr0ny")
-max_health = 200.0
-health = 200.0
-armor = 0.0
-move_speed = 500.0
-move_acceleration = 10.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ykoey"]
 radius = 64.0
@@ -24,7 +15,9 @@ radius = 64.0
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_a5fdo")
-estats = SubResource("Resource_lvkn8")
+max_health = 200.0
+health = 200.0
+move_speed = 500.0
 state_machine = NodePath("State_Machine")
 enable_ai = true
 delay_between_states = 2.0

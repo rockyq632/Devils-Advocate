@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://px2tuv0xexo0"]
+[gd_scene load_steps=4 format=3 uid="uid://px2tuv0xexo0"]
 
+[ext_resource type="Script" path="res://Scenes/Levels/Stage_Shops/Tartarus_Shop/tartarus_shop.gd" id="1_0jonj"]
 [ext_resource type="PackedScene" uid="uid://dwk12r2hqwvoh" path="res://Scenes/NPC_Systems/Shopkeeper/Shopkeeper.tscn" id="1_o2uoh"]
+[ext_resource type="PackedScene" uid="uid://b0myhd2w8so6j" path="res://Scenes/Menues/Shop/shop.tscn" id="2_hirl3"]
 
 [node name="TartarusShop" type="Control"]
 layout_mode = 3
@@ -9,6 +11,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_0jonj")
 
-[node name="Shopkeeper" parent="." instance=ExtResource("1_o2uoh")]
+[node name="Shopkeeper" parent="." node_paths=PackedStringArray("shop_menu") instance=ExtResource("1_o2uoh")]
 position = Vector2(360, 360)
+shop_menu = NodePath("../Shop")
+
+[node name="Shop" parent="." instance=ExtResource("2_hirl3")]
+visible = false
+layout_mode = 1

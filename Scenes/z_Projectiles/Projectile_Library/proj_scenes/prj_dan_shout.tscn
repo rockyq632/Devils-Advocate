@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://d211rtc3wwd3d"]
 
-[ext_resource type="Script" path="res://Scenes/Projectiles/projectile_controller.gd" id="1_s3dxe"]
+[ext_resource type="Script" path="res://Scenes/z_Projectiles/projectile_controller.gd" id="1_s3dxe"]
 [ext_resource type="Texture2D" uid="uid://bw4hx4q2gb8rt" path="res://Graphics/PLACEHOLDERS/PLACEHOLDER_RAY.png" id="2_pc8l8"]
 
 [sub_resource type="Animation" id="Animation_m0nju"]

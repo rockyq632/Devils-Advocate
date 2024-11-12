@@ -1,5 +1,5 @@
 class_name DaniDancer
-extends CharacterBody2D
+extends PlayableCharacter
 
 
 @export var player_hud : Control
@@ -9,7 +9,6 @@ extends CharacterBody2D
 
 var effected_by_prj_gravity : bool = true
 var effected_by_world_gravity : bool = false
-var pstats:PStats = PStats.new()
 
 var pause_anim_oneshot:bool = false
 var resume_anim_oneshot:bool = false
@@ -22,7 +21,6 @@ var moveset : Array[PC_Ability] = [
 	AB_REF.dict[ENM.AB_KEY.POLE_PIROUETTE]
 ]
 
-var type : ENM.TARGET_TYPE = ENM.TARGET_TYPE.PLAYER
 
 var is_anim_playing : bool = false
 var curr_anim : String = "RESET"
@@ -31,11 +29,9 @@ var cd1_time : float = 2.0
 
 
 func _ready() -> void:
-	type = pstats.type
+	pass
 	
 func _physics_process(_delta: float) -> void:
-	pstats = player_hud.pstats
-	
 	# Handle armor frames display
 	if(%Armor_Frames.time_left>0.0):
 		if(%S2D_Dani.visible):

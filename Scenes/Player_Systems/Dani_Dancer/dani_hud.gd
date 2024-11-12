@@ -1,7 +1,6 @@
 extends Control
 
 @export var char_instance : DaniDancer = DaniDancer.new()
-@export var pstats : PStats = PStats.new()
 @export var health_heart_scn : PackedScene = preload("res://Scenes/Player_Systems/HUD/Health_Heart.tscn")
 @export var hit_sound : AudioStream
 
@@ -32,10 +31,6 @@ func _ready() -> void:
 	if("effected_by_prj_gravity" in char_instance):
 		char_instance.effected_by_prj_gravity = effected_by_prj_gravity
 		char_instance.effected_by_world_gravity = effected_by_world_gravity
-	
-	# Put stats places
-	char_instance.pstats = pstats
-	GSM.GLOBAL_P1_STATS = pstats
 		
 	# Load selected ability icons
 	#var temp:Array[CompressedTexture2D] = char_instance.get_ability_icons()
@@ -49,7 +44,7 @@ func _ready() -> void:
 		i.queue_free()
 	
 	# Add selected character hearts
-	if("pstats" in char_instance):
+	if("health" in char_instance):
 		refresh_heart_containers()
 	else:
 		is_heart_container_gen_delayed = true
@@ -69,22 +64,22 @@ func _process(_delta: float) -> void:
 func take_damage(amt:float) -> void:
 	#RQ TODO Currently ignores amt variable
 	
-	if( char_instance.pstats.health <= -1 ):
+	if( char_instance.health <= -1 ):
 		return
 	
 	#Play hit Sound
 	GSM.GLOBAL_HIT_SOUND_PLAYER.stream = hit_sound
 	GSM.GLOBAL_HIT_SOUND_PLAYER.play()
 	
-	if(char_instance.pstats.health >= $MC_Character_UI/VB_CharacterUI/VF_Hearts.get_child_count()):
-		char_instance.pstats.health = clamp(char_instance.pstats.health-1, 0, char_instance.pstats.max_health)
+	if(char_instance.health >= $MC_Character_UI/VB_CharacterUI/VF_Hearts.get_child_count()):
+		char_instance.health = clamp(char_instance.health-1, 0, char_instance.max_health)
 	
 	if( $MC_Character_UI/VB_CharacterUI/VF_Hearts.get_child_count() > 0 ):
-		if($MC_Character_UI/VB_CharacterUI/VF_Hearts.get_child(int(char_instance.pstats.health)).is_armored):
-			$MC_Character_UI/VB_CharacterUI/VF_Hearts.get_child(int(char_instance.pstats.health)).remove_armor()
-		elif( $MC_Character_UI/VB_CharacterUI/VF_Hearts.get_child(int(char_instance.pstats.health)).has_method("damaged") ):
-			$MC_Character_UI/VB_CharacterUI/VF_Hearts.get_child(int(char_instance.pstats.health)).damaged()
-			char_instance.pstats.health = clamp( char_instance.pstats.health-amt, -1, char_instance.pstats.max_health)
+		if($MC_Character_UI/VB_CharacterUI/VF_Hearts.get_child(int(char_instance.health)).is_armored):
+			$MC_Character_UI/VB_CharacterUI/VF_Hearts.get_child(int(char_instance.health)).remove_armor()
+		elif( $MC_Character_UI/VB_CharacterUI/VF_Hearts.get_child(int(char_instance.health)).has_method("damaged") ):
+			$MC_Character_UI/VB_CharacterUI/VF_Hearts.get_child(int(char_instance.health)).damaged()
+			char_instance.health = clamp( char_instance.health-amt, -1, char_instance.max_health)
 	else:
 		print("NO HEART CONTAINERS FOUND : dani_hud.gd")
 
@@ -92,15 +87,15 @@ func take_damage(amt:float) -> void:
 func refresh_heart_containers():
 	# Add Health Hearts
 	is_heart_container_gen_delayed = false
-	for i in range(0, char_instance.pstats.max_health):
+	for i in range(0, char_instance.max_health):
 		heart_containers.append(health_heart_scn.instantiate())
 		$MC_Character_UI/VB_CharacterUI/VF_Hearts.add_child(heart_containers[i])
-		if( i > char_instance.pstats.health-1 ):
+		if( i > char_instance.health-1 ):
 			heart_containers[i].empty_heart()
 	
 	# Add armored hearts
-	for i in range(0, char_instance.pstats.armor):
-		heart_containers[char_instance.pstats.max_health-i-1].add_armor()
+	for i in range(0, char_instance.armor):
+		heart_containers[char_instance.max_health-i-1].add_armor()
 
 func reset_cooldowns():
 	_on_cd_atk_1_timeout()

@@ -2,7 +2,7 @@ class_name PlayerPhysicsController
 extends Node
 
 
-@export var char_body : DaniDancer
+@export var char_body : PlayableCharacter
 
 
 var grav_pull : Vector2 = Vector2(0,0)
@@ -27,7 +27,7 @@ func _physics_process(_delta: float) -> void:
 	process_inputs()
 		
 	# Calculate initial velocity
-	char_body.velocity = char_body.pstats.move_speed*move_dir
+	char_body.velocity = char_body.move_speed*move_dir
 	
 	# If gravity via projectile is being applied to character
 	if(char_body.effected_by_prj_gravity):

@@ -9,15 +9,19 @@ extends Enemy
 
 func _ready() -> void:
 	super._ready()
+	death_signal.connect(_death)
 	
 	
 
 func _physics_process(_delta: float) -> void:
 	pass
 
+# Called on death
+func _death() -> void:
+	state_machine.change_state($State_Machine/Idle_State)
 
 
-
+# Following function are called when specific states are finished
 func _on_move_state_finished() -> void:
 	state_machine.change_state($State_Machine/Idle_State)
 func _on_music_note_atk_state_finished() -> void:
@@ -25,7 +29,7 @@ func _on_music_note_atk_state_finished() -> void:
 func _on_shout_atk_state_finished() -> void:
 	state_machine.change_state($State_Machine/Idle_State)
 
-
+# Called everytime a state change timer happens
 func _on_state_change_timeout() -> void:
 	if(enable_ai):
 		if(state_machine.curr_state == $State_Machine/Idle_State):

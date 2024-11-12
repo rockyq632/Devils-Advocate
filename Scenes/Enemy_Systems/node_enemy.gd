@@ -12,7 +12,6 @@ signal enemy_dead
 @export var spawn_projectile_on_click:bool=false
 
 var enemy_instance:Enemy
-var type : ENM.TARGET_TYPE = ENM.TARGET_TYPE.ENEMY
 
 
 func _ready() -> void:
@@ -27,8 +26,8 @@ func _ready() -> void:
 		enemy_instance.enable_ai = enable_ai
 		
 	# Set correct Health Bar stats
-	$Node_Health_Bar.update_max_health( enemy_instance.estats.max_health )
-	$Node_Health_Bar.update_hp_bar( enemy_instance.estats.max_health )
+	$Node_Health_Bar.update_max_health( enemy_instance.max_health )
+	$Node_Health_Bar.update_hp_bar( enemy_instance.max_health )
 	
 	# Add non-placeholder enemy to the screen
 	add_child(enemy_instance)
