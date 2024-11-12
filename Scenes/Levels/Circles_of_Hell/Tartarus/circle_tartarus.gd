@@ -1,8 +1,8 @@
 extends Control
 
-@export var curr_enemy_control:Control
+@export var stage_list:Array[PackedScene]
 
-
+var curr_stage_control:Control
 var curr_enemy_body:Enemy
 
 # Called when the node enters the scene tree for the first time.
@@ -12,31 +12,39 @@ func _ready() -> void:
 	
 	# Create 1st enemy
 	remove_child($DanAvidanBattle)
-	curr_enemy_control = load("res://Scenes/Levels/Battles/Dan_Avidan_Battle/Dan_Avidan_Battle.tscn").instantiate()
-	add_child( curr_enemy_control )
+	curr_stage_control = stage_list[0].instantiate()
+	add_child( curr_stage_control )
 	
 	
 	# Grab the enemy body's death signal
-	if( "enm_body" in curr_enemy_control ):
-		curr_enemy_body = curr_enemy_control.enm_body
-		curr_enemy_body.death_signal.connect(_enemy_has_died)
+	if( "enm_body" in curr_stage_control ):
+		curr_enemy_body = curr_stage_control.enm_body
+		curr_enemy_body.death_signal.connect(_waiting_room_visible)
+	elif( "is_shop" in curr_stage_control):
+		_waiting_room_visible()
+		
 
 
 func load_next_stage() -> void:
 	# Increment Stage Progress
 	$Stage_Progress_Bar.inc_stage()
+	# Remove the current control
+	remove_child( curr_stage_control )
+	
+	# Instantiate new scene
+	var ind:int = $Stage_Progress_Bar.curr_stage
+	curr_stage_control = stage_list[ind].instantiate()
 	
 	# Create next enemy
-	remove_child( curr_enemy_control )
 	curr_enemy_body.revive_enemy()
-	add_child( curr_enemy_control )
+	add_child( curr_stage_control )
 
 
 
 
 
 # Received when the enemy dies
-func _enemy_has_died() -> void:
+func _waiting_room_visible() -> void:
 	$Waiting_Room.show()
 
 # Received when 

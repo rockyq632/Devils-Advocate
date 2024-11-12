@@ -4,6 +4,7 @@ signal waiting_room_entered
 signal waiting_room_exited
 signal waiting_room_timer_finished
 
+
 func _process(_delta: float) -> void:
 	$PB_Waiting_Room.value = $T_Waiting_Room.wait_time-$T_Waiting_Room.time_left
 

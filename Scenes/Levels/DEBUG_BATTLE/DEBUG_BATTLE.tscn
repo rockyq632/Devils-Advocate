@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://m6heyk4adbkm"]
+[gd_scene load_steps=9 format=3 uid="uid://m6heyk4adbkm"]
 
 [ext_resource type="Texture2D" uid="uid://djnhjuf23frn" path="res://Graphics/BG/Tartarus_BG_Bot_1x.png" id="1_8vjbe"]
 [ext_resource type="Script" path="res://Scenes/Levels/DEBUG_BATTLE/debug_battle.gd" id="1_ew5ia"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://1i7vyrm075md" path="res://Scenes/Enemy_Systems/Node_Enemy.tscn" id="5_05l17"]
 [ext_resource type="Script" path="res://Global_Scripts/Resources/Player/PLAYER_STATS.gd" id="5_cx0fl"]
 [ext_resource type="PackedScene" uid="uid://c7td7c3637cjq" path="res://Scenes/Player_Systems/Dani_Dancer/Dani_Dancer.tscn" id="6_fie7h"]
-[ext_resource type="PackedScene" uid="uid://ctrwcjfwrg2pf" path="res://Scenes/Levels/HUD/Stage_Progress_Bar/Stage_Progress_Bar.tscn" id="7_ywusa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0gewc"]
 size = Vector2(200, 730)
@@ -80,9 +79,6 @@ offset_top = 189.0
 offset_right = 311.0
 offset_bottom = 309.0
 pstats = SubResource("Resource_di6ee")
-
-[node name="Stage_Progress_Bar" parent="." instance=ExtResource("7_ywusa")]
-layout_mode = 1
 
 [connection signal="enemy_dead" from="Node_Enemy" to="." method="_on_enemy_dead"]
 [connection signal="body_entered" from="Next_Area_Zone/A2D_Waiting_Room" to="." method="_on_waiting_room_body_entered"]

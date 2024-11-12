@@ -11,7 +11,7 @@ bg_color = Color(0, 0, 0, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x636r"]
 bg_color = Color(0.698903, 0.0997856, 0.19628, 1)
 
-[node name="BP_Health_Bar" type="Control"]
+[node name="BP_Health_Bar" type="Control" node_paths=PackedStringArray("bot_bar", "top_bar")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,6 +20,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_mkfk5")
+bot_bar = NodePath("MC_Bar_Placement/PB_Bot_Bar")
+top_bar = NodePath("MC_Bar_Placement/PB_Top_Bar")
 
 [node name="MC_Bar_Placement" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -34,7 +36,6 @@ theme_override_constants/margin_right = 200
 theme_override_constants/margin_bottom = 670
 
 [node name="PB_Bot_Bar" type="ProgressBar" parent="MC_Bar_Placement"]
-unique_name_in_owner = true
 light_mask = 16
 visibility_layer = 16
 layout_mode = 2
@@ -44,7 +45,6 @@ value = 100.0
 show_percentage = false
 
 [node name="PB_Top_Bar" type="ProgressBar" parent="MC_Bar_Placement"]
-unique_name_in_owner = true
 light_mask = 16
 visibility_layer = 16
 layout_mode = 2

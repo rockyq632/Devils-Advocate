@@ -33,6 +33,7 @@ func _ready() -> void:
 	state_change_timer.connect("timeout", _state_change_timeout_trig)
 	add_child(state_change_timer)
 	set_process(true)
+	set_physics_process(true)
 
 
 

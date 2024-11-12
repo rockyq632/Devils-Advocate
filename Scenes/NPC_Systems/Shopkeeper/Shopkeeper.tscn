@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwk12r2hqwvoh"]
+
+[ext_resource type="Script" path="res://Scenes/NPC_Systems/Shopkeeper/shopkeeper.gd" id="1_lkc1y"]
+[ext_resource type="Texture2D" uid="uid://ogpf7vucv8qj" path="res://Graphics/Characters/Locked_Character_1x.png" id="2_f0tdx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qwwg6"]
+height = 58.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7gpvk"]
+radius = 100.0
+
+[node name="Shopkeeper" type="CharacterBody2D" node_paths=PackedStringArray("interact_area")]
+collision_layer = 32768
+collision_mask = 32768
+script = ExtResource("1_lkc1y")
+is_interactable = true
+interact_area = NodePath("A2D_Interact_Area")
+
+[node name="S2D_Shopkeeper" type="Sprite2D" parent="."]
+scale = Vector2(-1, 1)
+texture = ExtResource("2_f0tdx")
+
+[node name="CS2D_Shopekeeper" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CapsuleShape2D_qwwg6")
+
+[node name="A2D_Interact_Area" type="Area2D" parent="."]
+collision_layer = 32768
+collision_mask = 256
+
+[node name="CS2D_Interact_Area" type="CollisionShape2D" parent="A2D_Interact_Area"]
+shape = SubResource("CircleShape2D_7gpvk")

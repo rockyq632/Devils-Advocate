@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://px2tuv0xexo0"]
+
+[ext_resource type="PackedScene" uid="uid://dwk12r2hqwvoh" path="res://Scenes/NPC_Systems/Shopkeeper/Shopkeeper.tscn" id="1_o2uoh"]
+
+[node name="TartarusShop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shopkeeper" parent="." instance=ExtResource("1_o2uoh")]
+position = Vector2(360, 360)
