@@ -1376,7 +1376,7 @@ size_flags_vertical = 0
 script = ExtResource("1_pyw3t")
 char_instance = NodePath("DaniDancer")
 hit_sound = ExtResource("2_i1wj4")
-moveset_select1 = 1
+moveset_select1 = 6
 moveset_select2 = 2
 moveset_select3 = 3
 moveset_select4 = 4
@@ -1392,7 +1392,6 @@ platform_wall_layers = 64
 script = ExtResource("1_tcuq5")
 player_hud = NodePath("..")
 phys_ctrl = NodePath("PLAYER_PHYS_CONTROLLER")
-armor = 2.0
 move_speed = 350.0
 
 [node name="PLAYER_PHYS_CONTROLLER" type="Node" parent="DaniDancer" node_paths=PackedStringArray("char_body")]

@@ -1,7 +1,10 @@
 class_name DEBUG_BATTLE_SCENE
 extends Control
 
+@export var DebugScene:PackedScene
+
 var load_next_area:bool = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,9 +22,9 @@ func _process(_delta: float) -> void:
 	
 	if(load_next_area):
 		GSM.clear_screen()
-		GSM.debug_scene_instance = GSM.DEBUG_SCENE.instantiate()
+		#GSM.debug_scene_instance = GSM.DEBUG_SCENE.instantiate()
 		#$Stage_Indicator.inc_stage()
-		GSM.GLOBAL_CONTROL_NODE.add_child(GSM.debug_scene_instance)
+		GSM.GLOBAL_CONTROL_NODE.add_child( DebugScene.instantiate() )
 		queue_free()
 
 

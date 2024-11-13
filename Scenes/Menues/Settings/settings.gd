@@ -122,6 +122,15 @@ func _on_audio_close_pressed() -> void:
 # Closes menu and applies settings
 func _on_audio_apply_pressed() -> void:
 	GCM.master_volume = %HS_Master_Volume.value
+	#var temp = linear_to_db(GCM.master_volume)
+	#AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), temp)
+	
 	GCM.music_volume = %HS_Music.value
+	#temp = linear_to_db(GCM.music_volume)
+	#AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), temp)
+	
 	GCM.se_volume = %HS_Sounds.value
+	#temp = linear_to_db(GCM.se_volume)
+	#AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), temp)
+	
 	return_to_main()

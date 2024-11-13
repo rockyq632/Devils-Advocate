@@ -34,24 +34,15 @@ func char_selected() -> void:
 # Debug button takes you to the Debug Battle Scene
 func _on_btn_debug_pressed() -> void:
 	return #RQ TODO Debug is broken for now
-	# If a character is actually selected
-	if("char_name" in current_selection):
-		RUN_STATS.selected_char1 = current_selection.char_name
-		GSM.debug_scene_instance = GSM.DEBUG_SCENE.instantiate()
-		GSM.GLOBAL_CONTROL_NODE.add_child( GSM.debug_scene_instance )
-		queue_free()
-	# If no character is selected
-	else:
-		pass
+
 
 
 func _on_play_btn_pressed() -> void:
 	# If a character is actually selected
-	if("char_name" in current_selection):
+	if(GSM.GLOBAL_2D_NODE.get_child_count() >= 1):
 		RUN_STATS.selected_char1 = current_selection.char_name
 		GSM.current_scene_instance = load("res://Scenes/Levels/Circles_of_Hell/Tartarus/Circle_Tartarus.tscn").instantiate()
 		GSM.GLOBAL_CONTROL_NODE.add_child( GSM.current_scene_instance )
-		#get_parent().remove_child(self)
 		queue_free()
 	# If no character is selected
 	else:

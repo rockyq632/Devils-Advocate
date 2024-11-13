@@ -1,3 +1,4 @@
+@tool
 extends Control
 
 @export var char_instance : DaniDancer = DaniDancer.new()
@@ -6,9 +7,9 @@ extends Control
 
 @export_group("Character Specifics")
 @export var moveset_select1:ENM.AB_KEY
-@export var moveset_select2:ENM.AB_KEY 
-@export var moveset_select3:ENM.AB_KEY 
-@export var moveset_select4:ENM.AB_KEY 
+@export var moveset_select2:ENM.AB_KEY
+@export var moveset_select3:ENM.AB_KEY
+@export var moveset_select4:ENM.AB_KEY
 @export_subgroup("Gravity")
 @export var effected_by_prj_gravity:bool
 @export var effected_by_world_gravity:bool

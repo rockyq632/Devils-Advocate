@@ -11,7 +11,7 @@ const MAX_HEALTH = 100000.0
 const MIN_MOVE_SPEED = 100.0
 const MAX_MOVE_SPEED = 1000.0
 
-# EStats keeps track of all of the enemy stats
+# Stats to keep track of all of the enemy stats
 @export var health_bar:HealthBar
 
 @export_group("Stats")

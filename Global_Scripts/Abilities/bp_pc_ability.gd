@@ -2,6 +2,7 @@ class_name PC_Ability
 extends Node
 
 # Important References
+var ab_character : ENM.PC
 var ab_id : int
 var ab_key : ENM.AB_KEY
 var ab_name : String
@@ -20,8 +21,9 @@ var ab_short_desc : String = "Ability Short Desc"
 var ab_long_desc : String = "Ability Long Description"
 
 
-func _init( id:int, key:ENM.AB_KEY ) -> void:
+func _init( id:int, pc:ENM.PC, key:ENM.AB_KEY ) -> void:
 	ab_id = id
+	ab_character = pc
 	ab_key = key
 	
 	

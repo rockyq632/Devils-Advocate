@@ -1,18 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://2vyfvewnbbnm"]
+[gd_scene load_steps=8 format=3 uid="uid://2vyfvewnbbnm"]
 
 [ext_resource type="Texture2D" uid="uid://ri26k61wdbrx" path="res://Graphics/Enemies/Test_Dummy_4x.png" id="1_1tfy6"]
 [ext_resource type="Script" path="res://Scenes/Enemy_Systems/Enemies/Test/test_dummy.gd" id="1_bv1n7"]
-[ext_resource type="Script" path="res://Global_Scripts/Resources/Enemies/ENEMY_STATS.gd" id="2_8wpdx"]
 [ext_resource type="Script" path="res://Scenes/Enemy_Systems/Enemies/BP_enemy_state_machine.gd" id="4_tl54y"]
 [ext_resource type="Script" path="res://Scenes/Enemy_Systems/Enemies/BP_enemy_state.gd" id="5_m8sy6"]
-
-[sub_resource type="Resource" id="Resource_2v5x0"]
-script = ExtResource("2_8wpdx")
-max_health = 100.0
-health = 100.0
-armor = 0.0
-move_speed = 200.0
-move_acceleration = 10.0
 
 [sub_resource type="Animation" id="Animation_1rdsr"]
 resource_name = "HIT"
@@ -80,7 +71,6 @@ _data = {
 collision_layer = 4
 collision_mask = 34
 script = ExtResource("1_bv1n7")
-estats = SubResource("Resource_2v5x0")
 state_machine = NodePath("State_Machine")
 
 [node name="S2D_Test_Dummy" type="Sprite2D" parent="."]
@@ -95,8 +85,9 @@ libraries = {
 "": SubResource("AnimationLibrary_82p6u")
 }
 
-[node name="State_Machine" type="Node" parent="."]
+[node name="State_Machine" type="Node" parent="." node_paths=PackedStringArray("curr_state")]
 script = ExtResource("4_tl54y")
+curr_state = NodePath("State_Idle")
 
 [node name="State_Idle" type="Node" parent="State_Machine"]
 script = ExtResource("5_m8sy6")

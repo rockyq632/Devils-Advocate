@@ -5,6 +5,7 @@ extends Node
 var GLOBAL_SCENE_MANAGER : Node 
 var GLOBAL_CONTROL_NODE : Control
 var GLOBAL_2D_NODE : Node2D
+var GLOBAL_LIGHTING_NODE : Node2D
 var GLOBAL_ENEMY_PROJECTILES:Node
 var DEBUG:DebugConsole
 var PAUSE_MENU:PauseMenu
