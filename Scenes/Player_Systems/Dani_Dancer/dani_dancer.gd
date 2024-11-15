@@ -14,7 +14,7 @@ var pause_anim_oneshot:bool = false
 var resume_anim_oneshot:bool = false
 
 
-var moveset : Array[PC_Ability] = [
+@onready var moveset : Array[PC_Ability] = [
 	AB_REF.dict[ENM.AB_KEY.POLE_SPIN_KICK],
 	AB_REF.dict[ENM.AB_KEY.POLE_INVERSION_STRIKE],
 	AB_REF.dict[ENM.AB_KEY.POLE_INVERSION_DIVE],

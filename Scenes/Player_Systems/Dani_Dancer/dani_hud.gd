@@ -25,6 +25,8 @@ var heart_containers : Array[HealthHeart] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if( Engine.is_editor_hint() ):
+		return
 	# Set Player HUD Opacity
 	%MC_Character_UI.modulate = Color(1.0,1.0,1.0, (GCM.player_hud_opacity/255.0))
 	
@@ -54,6 +56,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	if( Engine.is_editor_hint() ):
+		return
+	
 	# Sometimes the heart containers need to be generated after ready function
 	if(is_heart_container_gen_delayed):
 		refresh_heart_containers()

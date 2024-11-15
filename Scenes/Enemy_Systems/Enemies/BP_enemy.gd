@@ -55,18 +55,19 @@ var state_change_timer:Timer
 var is_dead:bool = false
 
 func _ready() -> void:
-	# Set up Health Bar
-	health_bar.update_max_health( max_health )
-	health_bar.update_hp_bar( health )
-	# Set up state change timer
-	state_change_timer = Timer.new()
-	state_change_timer.wait_time = delay_between_states
-	state_change_timer.autostart = true
-	state_change_timer.one_shot = false
-	state_change_timer.connect("timeout", _state_change_timeout_trig)
-	add_child(state_change_timer)
-	set_process(true)
-	set_physics_process(true)
+	if( not Engine.is_editor_hint() ):
+		# Set up Health Bar
+		health_bar.update_max_health( max_health )
+		health_bar.update_hp_bar( health )
+		# Set up state change timer
+		state_change_timer = Timer.new()
+		state_change_timer.wait_time = delay_between_states
+		state_change_timer.autostart = true
+		state_change_timer.one_shot = false
+		state_change_timer.connect("timeout", _state_change_timeout_trig)
+		add_child(state_change_timer)
+		set_process(true)
+		set_physics_process(true)
 
 
 
