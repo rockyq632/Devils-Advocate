@@ -1,20 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cyadr4cgmsinp"]
+[gd_scene load_steps=4 format=3 uid="uid://cyadr4cgmsinp"]
 
 [ext_resource type="PackedScene" uid="uid://dhda3ovd3m25a" path="res://Scenes/Player_Systems/Status_Effects/Ball_and_chain/chainlink1.tscn" id="1_qnd0v"]
 [ext_resource type="PackedScene" uid="uid://b2onwoji4g3kq" path="res://Scenes/Player_Systems/Status_Effects/Ball_and_chain/chainlink2.tscn" id="2_ehf2l"]
 [ext_resource type="PackedScene" uid="uid://0oo2i041b8hk" path="res://Scenes/Player_Systems/Status_Effects/Ball_and_chain/Ball_type1.tscn" id="3_uxnnk"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8w6wg"]
-radius = 3.0
-height = 26.0
-
-[node name="BallAndChain" type="RigidBody2D"]
-collision_layer = 8
-collision_mask = 8
-
-[node name="CS_Whole_Package" type="CollisionShape2D" parent="."]
-position = Vector2(0, 9)
-shape = SubResource("CapsuleShape2D_8w6wg")
+[node name="BallAndChain" type="Node2D"]
 
 [node name="Chainlink1-1" parent="." instance=ExtResource("1_qnd0v")]
 
