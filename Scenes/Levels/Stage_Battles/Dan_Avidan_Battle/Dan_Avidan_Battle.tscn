@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/Levels/Stage_Battles/Dan_Avidan_Battle/dan_avidan_battle.gd" id="1_8wkuh"]
 [ext_resource type="PackedScene" uid="uid://cg7ifh35qsbef" path="res://Scenes/Enemy_Systems/Enemies/Dan_Avidan/Dan_Avidan_Enemy.tscn" id="1_k2ocx"]
 [ext_resource type="PackedScene" uid="uid://c2m8vytmn4wws" path="res://Scenes/Enemy_Systems/Node_Health_Bar.tscn" id="2_2qqgc"]
-[ext_resource type="PackedScene" uid="uid://cyadr4cgmsinp" path="res://Scenes/Player_Systems/Status_Effects/ball_and_chain.tscn" id="4_vqm1s"]
+[ext_resource type="PackedScene" uid="uid://cyadr4cgmsinp" path="res://Scenes/Player_Systems/Status_Effects/Ball_and_chain/ball_and_chain.tscn" id="4_vqm1s"]
 
 [sub_resource type="Curve2D" id="Curve2D_4sx0x"]
 _data = {

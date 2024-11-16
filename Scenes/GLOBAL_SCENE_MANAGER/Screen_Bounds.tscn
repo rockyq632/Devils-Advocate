@@ -31,7 +31,7 @@ script = ExtResource("1_hjls1")
 
 [node name="TB_Bounds" type="StaticBody2D" parent="."]
 collision_layer = 16
-collision_mask = 288
+collision_mask = 296
 
 [node name="Top_Bound" type="CollisionShape2D" parent="TB_Bounds"]
 position = Vector2(640, -50)
@@ -43,7 +43,7 @@ shape = SubResource("RectangleShape2D_w7t7c")
 
 [node name="LR_Bounds" type="StaticBody2D" parent="."]
 collision_layer = 16
-collision_mask = 288
+collision_mask = 296
 
 [node name="Left_Bound" type="CollisionShape2D" parent="LR_Bounds"]
 position = Vector2(-50, 360)

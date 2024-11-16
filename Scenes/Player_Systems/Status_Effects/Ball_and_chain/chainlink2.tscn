@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2onwoji4g3kq"]
+
+[ext_resource type="Texture2D" uid="uid://cjhchurp2rtp0" path="res://Graphics/Status_Effects/chain2_1x.png" id="1_o7euu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tgqfh"]
+radius = 3.0
+height = 8.0
+
+[node name="Chainlink_Pin" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 56
+mass = 0.001
+can_sleep = false
+
+[node name="S2D_Chain2" type="Sprite2D" parent="."]
+texture = ExtResource("1_o7euu")
+
+[node name="CS_Chain2" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CapsuleShape2D_tgqfh")

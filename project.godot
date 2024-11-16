@@ -145,6 +145,7 @@ inventory_menu={
 2d_physics/layer_7="Walls"
 2d_physics/layer_8="Floor_Ceiling"
 2d_physics/layer_9="Player_Shape_Boundary"
+2d_physics/layer_10="Player_Limb"
 2d_physics/layer_16="NPC"
 
 [network]
