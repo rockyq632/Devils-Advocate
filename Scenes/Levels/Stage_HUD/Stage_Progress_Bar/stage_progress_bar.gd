@@ -8,7 +8,7 @@ var curr_stage:int = 0
 @onready var stage_textures:Array[TextureRect] = [$Pos1/TR_pos1, $Pos2/TR_pos2, $Pos3/TR_pos3, $Pos4/TR_pos4, $Pos5/TR_pos5]
 
 
-func inc_stage():
+func inc_stage() -> void:
 	curr_stage = clampi(curr_stage+1, 0, stage_nodes.size()-1)
 	
 	# Set all finished stages' textures
@@ -26,6 +26,6 @@ func inc_stage():
 
 
 
-func reset_to_stage1():
+func reset_to_stage1() -> void:
 	curr_stage = -1
 	inc_stage()

@@ -33,22 +33,22 @@ var is_inventory_disabled : bool = true
 
 
 #TODO
-func set_bgs(_bg_close:Texture2D, _bg_far:Texture2D, _bg_farthest:Texture2D):
+func set_bgs(_bg_close:Texture2D, _bg_far:Texture2D, _bg_farthest:Texture2D) -> void:
 	pass
 
 
-func clear_enemy_projectiles():
+func clear_enemy_projectiles() -> void:
 	for i in GLOBAL_ENEMY_PROJECTILES.get_children():
 		i.queue_free()
 
 
-func clear_screen():
+func clear_screen() -> void:
 	for i in GLOBAL_CONTROL_NODE.get_children():
 		i.queue_free()
 	for i in GLOBAL_ENEMY_PROJECTILES.get_children():
 		i.queue_free()
 		
 		
-func clear_screen_on_close():
+func clear_screen_on_close() -> void:
 	for i in GLOBAL_SCENE_MANAGER.get_children():
 		i.queue_free()

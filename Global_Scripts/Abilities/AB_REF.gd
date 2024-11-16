@@ -1,7 +1,7 @@
 extends Node
 
 
-@onready var dict = {
+@onready var dict:Dictionary = {
 	ENM.AB_KEY.RESET : PC_Ability.new(999, ENM.PC.ANY, ENM.AB_KEY.RESET),
 	
 	ENM.AB_KEY.POLE_SPIN_KICK : PC_Ability.new(500, ENM.PC.DANCER, ENM.AB_KEY.POLE_SPIN_KICK),
@@ -17,12 +17,12 @@ extends Node
 
 func _ready() -> void:
 	# Read in all of the ability values from the csv list
-	var file = FileAccess.open("res://Global_Scripts/Abilities/Ability_List/ability_list.txt", FileAccess.READ)
+	var file := FileAccess.open("res://Global_Scripts/Abilities/Ability_List/ability_list.txt", FileAccess.READ)
 	file.get_csv_line()
 	while ( not file.eof_reached() ):
-		var ab_line = file.get_csv_line(",")
+		var ab_line:PackedStringArray = file.get_csv_line(",")
 		#ID number
-		for i in dict:
+		for i:ENM.AB_KEY in dict:
 			# Find the right item, then load in all of the ability data
 			if (dict[i].ab_id == int(ab_line[0])):
 				dict[i].ab_name = ab_line[1]

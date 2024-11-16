@@ -85,7 +85,7 @@ func get_ability_icons() -> Array[CompressedTexture2D]:
 	return ret
 
 # Trigger animation for Attack 1
-func atk1_triggered():
+func atk1_triggered() -> void:
 	curr_anim = moveset[0].ab_name
 	curr_anim_key = moveset[0].ab_key
 	%AP_Dani.speed_scale = moveset[0].ab_anim_speed_scale
@@ -98,7 +98,7 @@ func atk1_triggered():
 	is_anim_playing = true
 	moveset[0].is_ready = false
 	
-func atk2_triggered():
+func atk2_triggered() -> void:
 	curr_anim = moveset[1].ab_name
 	curr_anim_key = moveset[1].ab_key
 	%AP_Dani.speed_scale = moveset[1].ab_anim_speed_scale
@@ -111,7 +111,7 @@ func atk2_triggered():
 	is_anim_playing = true
 	moveset[1].is_ready = false
 
-func atk3_triggered():
+func atk3_triggered() -> void:
 	curr_anim = moveset[2].ab_name
 	curr_anim_key = moveset[2].ab_key
 	%AP_Dani.speed_scale = moveset[2].ab_anim_speed_scale
@@ -124,7 +124,7 @@ func atk3_triggered():
 	is_anim_playing = true
 	moveset[2].is_ready = false
 	
-func def_triggered():
+func def_triggered() -> void:
 	curr_anim = moveset[3].ab_name
 	curr_anim_key = moveset[3].ab_key
 	%AP_Dani.speed_scale = moveset[3].ab_anim_speed_scale
@@ -146,7 +146,7 @@ func take_damage(amt:int) -> void:
 			%Armor_Frames.start()
 
 # Called if gravity field entered
-func update_grav_vec(src:Vector2):
+func update_grav_vec(src:Vector2) -> void:
 	if(effected_by_prj_gravity):
 		if(src == Vector2(0,0)):
 			phys_ctrl.grav_pull = src

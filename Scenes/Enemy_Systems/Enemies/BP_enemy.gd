@@ -16,7 +16,7 @@ const MAX_MOVE_SPEED = 1000.0
 
 @export_group("Stats")
 # Maximum Health Setting
-@export_range(0.0, MAX_HEALTH) var max_health = 100.0:
+@export_range(0.0, MAX_HEALTH) var max_health:float = 100.0:
 	set(new_val):
 		max_health = clampf(roundf(new_val), 0.0, MAX_HEALTH)
 		health = clampf(roundf(health), 0.0, MAX_HEALTH)
@@ -73,7 +73,7 @@ func _ready() -> void:
 
 # Move body a specific direction. 
 # CAUTION: dir is used as a float if using a Path2D, and is used as a Vector2 otherwise
-func move(dir):
+func move(dir) -> void:
 	if(use_movement_path):
 		movement_path.progress += dir*move_speed
 	else:
@@ -117,14 +117,14 @@ func move_toward(pos:Vector2) -> bool:
 #	The body of the projectile sent (RQ NOTE Might change later if I define a Projectile class)
 func spawn_projectile(nam:String, pos:Vector2) -> CharacterBody2D:
 	if(ProjLib.dict.has(nam)):
-		var proj = ProjLib.get_prj(nam)
+		var proj:CharacterBody2D = ProjLib.get_prj(nam)
 		proj.position = pos
 		GSM.GLOBAL_ENEMY_PROJECTILES.add_child( proj )
 		return proj
 	else:
 		#Error: projectile name nott found
 		print("Error: Projectile name not in PROJ_LIB: %s" % nam)
-		var proj = ProjLib.get_prj("PRJ_Track_Once_Test")
+		var proj:CharacterBody2D = ProjLib.get_prj("PRJ_Track_Once_Test")
 		proj.position = pos
 		GSM.GLOBAL_ENEMY_PROJECTILES.add_child( proj )
 		return proj
@@ -141,7 +141,7 @@ func take_damage(amt:float) -> void:
 
 
 # Called when enemy dies
-func death():
+func death() -> void:
 	is_dead = true
 	death_signal.emit()
 	state_change_timer.stop()
@@ -151,7 +151,7 @@ func death():
 	
 
 # Revives enemy with some percentage of health
-func revive_enemy(hp_percent:float=0.0):
+func revive_enemy(hp_percent:float=0.0) -> void:
 	if( hp_percent<=0.0 ):
 		health = max_health
 	elif( hp_percent<=100.0 ):

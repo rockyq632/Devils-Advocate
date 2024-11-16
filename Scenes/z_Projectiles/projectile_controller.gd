@@ -25,7 +25,7 @@ signal projectile_spawned
 @export var rotates_on_spawn_only : bool = false
 @export var rotates_toward_facing: bool = false
 @export var rotates_toward_target: bool = false
-@export var max_rotation_per_tick = 90.0 #TODO actually use this
+@export var max_rotation_per_tick:float = 90.0 #TODO actually use this
 
 @export_subgroup("Tracking")
 @export var tracking_deadzone : float = 0.0
@@ -56,7 +56,7 @@ signal projectile_spawned
 @export var orbit_radius_deadzone:float = 10.0
 @export var orbit_CW:bool = false
 @export var orbit_spiral:bool = false
-@export var orbit_spiral_angle = 90.0
+@export var orbit_spiral_angle:float = 90.0
 
 @export_subgroup("Gravity")
 @export var effected_by_gravity : bool = false
@@ -237,7 +237,7 @@ func _physics_process(_delta: float) -> void:
 
 		# If projectile creates gravity
 		if(creates_gravity):
-			var cnt = 0
+			var cnt:int = 0
 			#print(grav_effected.size())
 			for i in grav_effected:
 				if( not is_instance_valid(i)):
@@ -362,7 +362,7 @@ func floor_hit() -> void:
 
 
 
-func update_grav_vec(grav_vec:Vector2):
+func update_grav_vec(grav_vec:Vector2) -> void:
 	if(effected_by_gravity):
 		if(grav_vec == Vector2(0,0)):
 			self_grav_pull = grav_vec
@@ -372,7 +372,7 @@ func update_grav_vec(grav_vec:Vector2):
 
 
 # Stops the movement of the projectile
-func stop_movement():
+func stop_movement() -> void:
 		h_move_speed = 0.0
 		h_acceleration = 0.0
 		v_move_speed = 0.0
@@ -381,7 +381,7 @@ func stop_movement():
 		projectile_stopped.emit()
 
 # Ends and detonates projectile
-func end_projectile():
+func end_projectile() -> void:
 	anim_player.play("END")
 	if(stop_on_end):
 		stop_movement()
@@ -451,7 +451,7 @@ func _gravity_entered(body:Node2D) -> void:
 func _gravity_exited(body:Node2D) -> void:
 	if("type" in body):
 		if(body.type == target):
-			var cnt = 0
+			var cnt:int = 0
 			for i in grav_effected:
 				if( i == body  and  body.has_method("update_grav_vec")):
 					body.update_grav_vec(Vector2(0,0))
@@ -463,7 +463,7 @@ func _gravity_exited(body:Node2D) -> void:
 		if(body.get_child(0).type == target):
 			if(body.get_child(0) == self):
 				return
-			var cnt = 0
+			var cnt:int = 0
 			for i in grav_effected:
 				if( i == body.get_child(0) and body.get_child(0).has_method("update_grav_vec")):
 					body.get_child(0).update_grav_vec(Vector2(0,0))

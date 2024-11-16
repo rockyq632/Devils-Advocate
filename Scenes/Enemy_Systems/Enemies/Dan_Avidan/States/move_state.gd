@@ -20,7 +20,7 @@ func _enter_state() -> void:
 	enm_body.state_change_timer.stop()
 	
 	# Chooses position at random
-	var temp = pos_index
+	var temp:int = pos_index
 	while( pos_index == temp ):
 		pos_index = randi_range(0,positions.size()-1)
 		

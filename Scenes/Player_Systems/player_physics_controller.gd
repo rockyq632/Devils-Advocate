@@ -43,7 +43,7 @@ func _physics_process(_delta: float) -> void:
 		char_body.move_and_slide()
 	
 
-func process_inputs():
+func process_inputs() -> void:
 	# Process Movement input
 	if( GSM.is_pc_movement_locked  or  GSM.is_paused ):
 		pass

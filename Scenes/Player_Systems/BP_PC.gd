@@ -2,13 +2,13 @@ class_name PlayableCharacter
 extends CharacterBody2D
 
 # Set maximum supported values
-const MAX_HEALTH = 10.0
-const MIN_MOVE_SPEED = 0.0
-const MAX_MOVE_SPEED = 1000.0
+const MAX_HEALTH:float = 10.0
+const MIN_MOVE_SPEED:float = 0.0
+const MAX_MOVE_SPEED:float = 1000.0
 
 
 
-@export_range(0.0, MAX_HEALTH) var max_health = 3.0:
+@export_range(0.0, MAX_HEALTH) var max_health:float = 3.0:
 	set(new_val):
 		max_health = clampf(roundf(new_val), 0.0, MAX_HEALTH)
 		health = clampf(roundf(health), 0.0, MAX_HEALTH)

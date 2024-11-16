@@ -13,6 +13,6 @@ var dict:Dictionary = {
 
 
 # Resets all run stats
-func reset_stats():
-	for i in dict.keys:
+func reset_stats() -> void:
+	for i:String in dict.keys:
 		dict[i]=0.0

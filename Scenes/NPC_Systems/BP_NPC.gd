@@ -16,8 +16,8 @@ func _process(_delta: float) -> void:
 	pass
 
 
-func _body_entered_interact_range(_body) -> void:
+func _body_entered_interact_range(_body:PhysicsBody2D) -> void:
 	interact_range_entered = true
 	
-func _body_exited_interact_range(_body) -> void:
+func _body_exited_interact_range(_body:PhysicsBody2D) -> void:
 	interact_range_entered = false

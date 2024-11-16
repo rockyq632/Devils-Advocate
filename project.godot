@@ -25,6 +25,10 @@ AB_REF="*res://Global_Scripts/Abilities/AB_REF.gd"
 RUN_STATS="*res://Global_Scripts/RUN_STATS.gd"
 ProjLib="*res://Scenes/z_Projectiles/Projectile_Library/PROJ_LIB.tscn"
 
+[debug]
+
+gdscript/warnings/untyped_declaration=1
+
 [display]
 
 window/size/viewport_width=1280

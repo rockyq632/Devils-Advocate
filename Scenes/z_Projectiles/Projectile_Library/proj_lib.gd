@@ -16,7 +16,7 @@ func _ready() -> void:
 	
 func get_prj(nam:String) -> CharacterBody2D:
 	if(dict.has(nam)):
-		var ret = dict[nam].instantiate()
+		var ret:CharacterBody2D = dict[nam].instantiate()
 		ret.hide()
 		return ret
 	else:

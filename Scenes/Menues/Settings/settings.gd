@@ -13,7 +13,7 @@ func _ready() -> void:
 # Settings Visibility Changed (Menu was opened or closed)
 func _on_visibility_changed() -> void:
 	# Refresh Gameplay Settings
-	var temp = GCM.player_hud_opacity/255.0*100.0
+	var temp:float = GCM.player_hud_opacity/255.0*100.0
 	%HS_PHUD.value = temp
 	_on_phud_opacity_changed(temp)
 	
@@ -38,7 +38,7 @@ func _on_visibility_changed() -> void:
 ###
 
 # Main Functions
-func return_to_main():
+func return_to_main() -> void:
 	$MC_Popup_Audio.hide()
 	$MC_Popup_Gameplay.hide()
 	$MC_Popup_Main.show()

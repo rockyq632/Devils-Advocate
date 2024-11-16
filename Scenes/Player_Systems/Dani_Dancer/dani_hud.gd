@@ -90,7 +90,7 @@ func take_damage(amt:float) -> void:
 		print("NO HEART CONTAINERS FOUND : dani_hud.gd")
 
 
-func refresh_heart_containers():
+func refresh_heart_containers() -> void:
 	# Add Health Hearts
 	is_heart_container_gen_delayed = false
 	for i in range(0, char_instance.max_health):
@@ -103,7 +103,7 @@ func refresh_heart_containers():
 	for i in range(0, char_instance.armor):
 		heart_containers[char_instance.max_health-i-1].add_armor()
 
-func reset_cooldowns():
+func reset_cooldowns() -> void:
 	_on_cd_atk_1_timeout()
 	_on_cd_atk_2_timeout()
 	_on_cd_atk_3_timeout()
