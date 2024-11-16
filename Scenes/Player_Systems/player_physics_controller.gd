@@ -18,14 +18,16 @@ func _ready() -> void:
 	GSM.is_inventory_disabled = false
 
 
+func _process(_delta: float) -> void:
+	process_inputs()
+	
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
 	# Covers case where character body is not ready yet
 	if(not char_body):
 		return
-		
-	process_inputs()
-		
+	
 	# Calculate initial velocity
 	char_body.velocity = char_body.move_speed*move_dir
 	

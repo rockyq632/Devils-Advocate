@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dx1yec27gbobn"]
+[gd_scene load_steps=6 format=3 uid="uid://dx1yec27gbobn"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/Stage_Battles/Dan_Avidan_Battle/dan_avidan_battle.gd" id="1_8wkuh"]
 [ext_resource type="PackedScene" uid="uid://cg7ifh35qsbef" path="res://Scenes/Enemy_Systems/Enemies/Dan_Avidan/Dan_Avidan_Enemy.tscn" id="1_k2ocx"]
 [ext_resource type="PackedScene" uid="uid://c2m8vytmn4wws" path="res://Scenes/Enemy_Systems/Node_Health_Bar.tscn" id="2_2qqgc"]
+[ext_resource type="PackedScene" uid="uid://cyadr4cgmsinp" path="res://Scenes/Player_Systems/Status_Effects/ball_and_chain.tscn" id="4_vqm1s"]
 
 [sub_resource type="Curve2D" id="Curve2D_4sx0x"]
 _data = {
@@ -39,5 +40,8 @@ rotation = 2.60866
 scale = Vector2(1, 1.27111)
 health_bar = NodePath("../../../BP_Health_Bar")
 movement_path = NodePath("..")
+
+[node name="BallAndChain" parent="." instance=ExtResource("4_vqm1s")]
+position = Vector2(566, 307)
 
 [connection signal="death_signal" from="P2D_Enemy_Move_Path/PF2D_Follower/DanAvidanEnemy" to="." method="_on_death_signal"]

@@ -132,7 +132,7 @@ fit_content = true
 
 [node name="MC_PHUD" type="MarginContainer" parent="MC_Popup_Gameplay/VB"]
 layout_mode = 2
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_bottom = 2
 
 [node name="HB_PHUD" type="HBoxContainer" parent="MC_Popup_Gameplay/VB/MC_PHUD"]
 layout_mode = 2
@@ -201,6 +201,40 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 bbcode_enabled = true
 text = "[left]0%"
+
+[node name="MC_Text_Size" type="MarginContainer" parent="MC_Popup_Gameplay/VB"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 10
+
+[node name="HB_Text_Size" type="HBoxContainer" parent="MC_Popup_Gameplay/VB/MC_Text_Size"]
+layout_mode = 2
+
+[node name="RTL_Text_Size" type="RichTextLabel" parent="MC_Popup_Gameplay/VB/MC_Text_Size/HB_Text_Size"]
+light_mask = 16
+visibility_layer = 16
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+bbcode_enabled = true
+text = "[right]Text Size"
+
+[node name="MC_Text_Size" type="MarginContainer" parent="MC_Popup_Gameplay/VB/MC_Text_Size/HB_Text_Size"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 5
+
+[node name="HS_Text_Size" type="HSlider" parent="MC_Popup_Gameplay/VB/MC_Text_Size/HB_Text_Size/MC_Text_Size"]
+light_mask = 16
+visibility_layer = 16
+layout_mode = 2
+scrollable = false
+
+[node name="RTL_Text_Size_val" type="RichTextLabel" parent="MC_Popup_Gameplay/VB/MC_Text_Size/HB_Text_Size"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "[left]IDK"
 
 [node name="MC_Close_Buttons" type="MarginContainer" parent="MC_Popup_Gameplay/VB"]
 layout_mode = 2

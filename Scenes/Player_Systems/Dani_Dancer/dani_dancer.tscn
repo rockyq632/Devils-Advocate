@@ -1,12 +1,9 @@
-[gd_scene load_steps=76 format=3 uid="uid://c7td7c3637cjq"]
+[gd_scene load_steps=72 format=3 uid="uid://c7td7c3637cjq"]
 
 [ext_resource type="Script" path="res://Scenes/Player_Systems/Dani_Dancer/dani_hud.gd" id="1_pyw3t"]
 [ext_resource type="Script" path="res://Scenes/Player_Systems/Dani_Dancer/dani_dancer.gd" id="1_tcuq5"]
 [ext_resource type="AudioStream" uid="uid://8hcgpv4amdo3" path="res://Sounds/Sound_Effects/SE_Hit1.wav" id="2_i1wj4"]
 [ext_resource type="Script" path="res://Scenes/Player_Systems/player_physics_controller.gd" id="3_2yoqt"]
-[ext_resource type="Shader" path="res://Shaders/occlussion_cropper.gdshader" id="4_bmbnw"]
-[ext_resource type="Texture2D" uid="uid://dtukmk4xbmfja" path="res://Graphics/Characters/DANI_DANCER/Aseprite/Dani Dancer_o.png" id="5_daoa2"]
-[ext_resource type="Script" path="res://Scenes/Player_Systems/Dani_Dancer/s2d_glow.gd" id="6_uvj8t"]
 [ext_resource type="Texture2D" uid="uid://btibexyqi2aau" path="res://Graphics/Characters/DANI_DANCER/Aseprite/Dani Dancer_d.png" id="8_m3ns8"]
 [ext_resource type="Texture2D" uid="uid://cv43o6wodeqdi" path="res://Graphics/Characters/DANI_DANCER/Aseprite/Dani Dancer_n.png" id="8_wq3sx"]
 [ext_resource type="Texture2D" uid="uid://du07g1qula55v" path="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Spin_Kick_1x.png" id="9_j1ene"]
@@ -15,9 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://dui2bw50swvh" path="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Pirouette_1x.png" id="12_d4aod"]
 [ext_resource type="PackedScene" uid="uid://bg8sq66oyqmc1" path="res://Scenes/Player_Systems/HUD/Health_Heart.tscn" id="13_boqcl"]
 [ext_resource type="Texture2D" uid="uid://t8k3v2qmoxic" path="res://Graphics/UI/CD_Overlay_SM_4x.png" id="14_anesl"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ywj65"]
-shader = ExtResource("4_bmbnw")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_3isxc"]
 diffuse_texture = ExtResource("8_m3ns8")
@@ -593,18 +587,6 @@ tracks/8/keys = {
 "update": 1,
 "values": [false]
 }
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("S2D_Glow:frame")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75]
-}
 
 [sub_resource type="Animation" id="Animation_7h063"]
 resource_name = "POLE_PIROUETTE"
@@ -705,18 +687,6 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("S2D_Glow:frame")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [97, 98, 99, 100, 101, 102, 103, 104, 105]
 }
 
 [sub_resource type="Animation" id="Animation_q6nou"]
@@ -829,18 +799,6 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("S2D_Glow:frame")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [49, 50, 51, 52, 53, 54, 55, 56, 57, 58]
 }
 
 [sub_resource type="Animation" id="Animation_ve04m"]
@@ -981,34 +939,22 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("S2D_Glow:frame")
+tracks/11/path = NodePath("LO_Shadow:occluder:polygon")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [49]
+"update": 0,
+"values": [PackedVector2Array(53, -3, 53, -2, 52, -2, 52, -1, 51, -1, 51, 0, 50, 0, 50, 1, 49, 1, 49, 2, 46, 2, 46, 3, 50, 3, 50, 8, 51, 8, 51, 9, 53, 9, 53, 7, 54, 7, 54, 2, 55, 2, 55, -1, 57, -1, 57, 2, 58, 2, 58, 9, 59, 9, 59, 10, 61, 10, 61, 8, 62, 8, 62, 1, 61, 1, 61, 0, 68, 0, 68, -1, 65, -1, 65, -2, 63, -2, 63, -3, 59, -3, 59, -4, 56, -4, 56, -3)]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("LO_Shadow:occluder:polygon")
+tracks/12/path = NodePath("LO_Shadow:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [PackedVector2Array(53, -3, 53, -2, 52, -2, 52, -1, 51, -1, 51, 0, 50, 0, 50, 1, 49, 1, 49, 2, 46, 2, 46, 3, 50, 3, 50, 8, 51, 8, 51, 9, 53, 9, 53, 7, 54, 7, 54, 2, 55, 2, 55, -1, 57, -1, 57, 2, 58, 2, 58, 9, 59, 9, 59, 10, 61, 10, 61, 8, 62, 8, 62, 1, 61, 1, 61, 0, 68, 0, 68, -1, 65, -1, 65, -2, 63, -2, 63, -3, 59, -3, 59, -4, 56, -4, 56, -3)]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("LO_Shadow:position")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -1397,16 +1343,6 @@ move_speed = 350.0
 [node name="PLAYER_PHYS_CONTROLLER" type="Node" parent="DaniDancer" node_paths=PackedStringArray("char_body")]
 script = ExtResource("3_2yoqt")
 char_body = NodePath("..")
-
-[node name="S2D_Glow" type="Sprite2D" parent="DaniDancer"]
-visible = false
-material = SubResource("ShaderMaterial_ywj65")
-position = Vector2(32, -32)
-texture = ExtResource("5_daoa2")
-hframes = 16
-vframes = 8
-frame = 49
-script = ExtResource("6_uvj8t")
 
 [node name="S2D_Dani" type="Sprite2D" parent="DaniDancer"]
 unique_name_in_owner = true

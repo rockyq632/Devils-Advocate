@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyadr4cgmsinp"]
+
+[ext_resource type="Texture2D" uid="uid://c63j7h6bv36l6" path="res://Graphics/Status_Effects/Chain1.png" id="1_xuqee"]
+[ext_resource type="Texture2D" uid="uid://dj4qbn658k24w" path="res://Graphics/Status_Effects/Chain2.png" id="2_arqk4"]
+
+[node name="BallAndChain" type="Node2D"]
+
+[node name="Chain1" type="CharacterBody2D" parent="."]
+collision_layer = 8
+collision_mask = 9
+
+[node name="S2D_Chain1" type="Sprite2D" parent="Chain1"]
+texture = ExtResource("1_xuqee")
+
+[node name="CP2D_Chain1" type="CollisionPolygon2D" parent="Chain1"]
+polygon = PackedVector2Array(1, 3, 2, 3, 2, -3, -2, -3, -2, -2, 1, -2, 1, 2, -1, 2, -1, -2, -2, -2, -2, 3)
+
+[node name="Chain2" type="CharacterBody2D" parent="."]
+position = Vector2(0, 3)
+collision_layer = 8
+collision_mask = 8
+
+[node name="S2D_Chain2" type="Sprite2D" parent="Chain2"]
+texture = ExtResource("2_arqk4")
+
+[node name="CP2D_Chain2-Top" type="CollisionPolygon2D" parent="Chain2"]
+position = Vector2(0, 2)
+polygon = PackedVector2Array(0, -5, 0, -4, 1, -4, 1, -5)
+
+[node name="CP2D_Chain2-Bot" type="CollisionPolygon2D" parent="Chain2"]
+polygon = PackedVector2Array(0, 1, 1, 1, 1, 2, 0, 2)
