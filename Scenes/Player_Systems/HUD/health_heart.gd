@@ -5,7 +5,6 @@ var is_armored:bool = false
 
 
 
-
 func damaged() -> void:
 	$AP_Heart.play("DAMAGED")
 	

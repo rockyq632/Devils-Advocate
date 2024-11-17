@@ -90,9 +90,9 @@ func atk1_triggered() -> void:
 	curr_anim_key = moveset[0].ab_key
 	%AP_Dani.speed_scale = moveset[0].ab_anim_speed_scale
 	%AP_Dani.play(curr_anim)
-	%S2D_CD1.speed_scale = 1/moveset[0].ab_cd_time
-	%S2D_CD1.play("COOLDOWN")
-	%CD_ATK1.wait_time = moveset[0].ab_cd_time
+	%CD1.set_cooldown_time(self,moveset[0])
+	%CD1.play_cd()
+	%CD_ATK1.wait_time = %CD1.get_cooldown_time()
 	%CD_ATK1.start()
 	
 	is_anim_playing = true
@@ -103,9 +103,9 @@ func atk2_triggered() -> void:
 	curr_anim_key = moveset[1].ab_key
 	%AP_Dani.speed_scale = moveset[1].ab_anim_speed_scale
 	%AP_Dani.play(curr_anim)
-	%S2D_CD2.speed_scale = 1/moveset[1].ab_cd_time
-	%S2D_CD2.play("COOLDOWN")
-	%CD_ATK2.wait_time = moveset[1].ab_cd_time
+	%CD2.set_cooldown_time(self,moveset[1])
+	%CD2.play_cd()
+	%CD_ATK2.wait_time = %CD2.get_cooldown_time()
 	%CD_ATK2.start()
 	
 	is_anim_playing = true
@@ -116,9 +116,9 @@ func atk3_triggered() -> void:
 	curr_anim_key = moveset[2].ab_key
 	%AP_Dani.speed_scale = moveset[2].ab_anim_speed_scale
 	%AP_Dani.play(curr_anim)
-	%S2D_CD3.speed_scale = 1/moveset[2].ab_cd_time
-	%S2D_CD3.play("COOLDOWN")
-	%CD_ATK3.wait_time = moveset[2].ab_cd_time
+	%CD3.set_cooldown_time(self,moveset[2])
+	%CD3.play_cd()
+	%CD_ATK3.wait_time = %CD3.get_cooldown_time()
 	%CD_ATK3.start()
 	
 	is_anim_playing = true
@@ -129,9 +129,9 @@ func def_triggered() -> void:
 	curr_anim_key = moveset[3].ab_key
 	%AP_Dani.speed_scale = moveset[3].ab_anim_speed_scale
 	%AP_Dani.play(curr_anim)
-	%S2D_CD4.speed_scale = 1/moveset[3].ab_cd_time
-	%S2D_CD4.play("COOLDOWN")
-	%CD_DEF.wait_time = moveset[3].ab_cd_time
+	%CD4.set_cooldown_time(self,moveset[3])
+	%CD4.play_cd()
+	%CD_DEF.wait_time = %CD4.get_cooldown_time()
 	%CD_DEF.start()
 	
 	is_anim_playing = true

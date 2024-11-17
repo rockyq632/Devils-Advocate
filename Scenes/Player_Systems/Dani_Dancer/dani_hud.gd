@@ -36,14 +36,14 @@ func _ready() -> void:
 		char_instance.effected_by_world_gravity = effected_by_world_gravity
 		
 	# Load selected ability icons
-	#var temp:Array[CompressedTexture2D] = char_instance.get_ability_icons()
-	%S2D_AB1_ICON.texture = %TR_Pole_Spin_Kick.texture
-	%S2D_AB2_ICON.texture = %TR_Pole_Inversion_Strike.texture
-	%S2D_AB3_ICON.texture = %TR_Pole_Inversion_Dive.texture
-	%S2D_AB4_ICON.texture = %TR_Pole_Pirouette.texture
+	
+	%CD1.set_ab_icon(char_instance.moveset[0].ab_icon_texture)
+	%CD2.set_ab_icon(char_instance.moveset[1].ab_icon_texture)
+	%CD3.set_ab_icon(char_instance.moveset[2].ab_icon_texture)
+	%CD4.set_ab_icon(char_instance.moveset[3].ab_icon_texture)
 	
 	# Remove all heart placeholders
-	for i in $MC_Character_UI/VB_CharacterUI/VF_Hearts.get_children():
+	for i in %VF_Hearts.get_children():
 		i.queue_free()
 	
 	# Add selected character hearts
@@ -77,14 +77,14 @@ func take_damage(amt:float) -> void:
 	GSM.GLOBAL_HIT_SOUND_PLAYER.stream = hit_sound
 	GSM.GLOBAL_HIT_SOUND_PLAYER.play()
 	
-	if(char_instance.health >= $MC_Character_UI/VB_CharacterUI/VF_Hearts.get_child_count()):
+	if(char_instance.health >= %VF_Hearts.get_child_count()):
 		char_instance.health = clamp(char_instance.health-1, 0, char_instance.max_health)
 	
-	if( $MC_Character_UI/VB_CharacterUI/VF_Hearts.get_child_count() > 0 ):
-		if($MC_Character_UI/VB_CharacterUI/VF_Hearts.get_child(int(char_instance.health)).is_armored):
-			$MC_Character_UI/VB_CharacterUI/VF_Hearts.get_child(int(char_instance.health)).remove_armor()
-		elif( $MC_Character_UI/VB_CharacterUI/VF_Hearts.get_child(int(char_instance.health)).has_method("damaged") ):
-			$MC_Character_UI/VB_CharacterUI/VF_Hearts.get_child(int(char_instance.health)).damaged()
+	if( %VF_Hearts.get_child_count() > 0 ):
+		if(%VF_Hearts.get_child(int(char_instance.health)).is_armored):
+			%VF_Hearts.get_child(int(char_instance.health)).remove_armor()
+		elif( %VF_Hearts.get_child(int(char_instance.health)).has_method("damaged") ):
+			%VF_Hearts.get_child(int(char_instance.health)).damaged()
 			char_instance.health = clamp( char_instance.health-amt, -1, char_instance.max_health)
 	else:
 		print("NO HEART CONTAINERS FOUND : dani_hud.gd")
@@ -95,7 +95,7 @@ func refresh_heart_containers() -> void:
 	is_heart_container_gen_delayed = false
 	for i in range(0, char_instance.max_health):
 		heart_containers.append(health_heart_scn.instantiate())
-		$MC_Character_UI/VB_CharacterUI/VF_Hearts.add_child(heart_containers[i])
+		%VF_Hearts.add_child(heart_containers[i])
 		if( i > char_instance.health-1 ):
 			heart_containers[i].empty_heart()
 	

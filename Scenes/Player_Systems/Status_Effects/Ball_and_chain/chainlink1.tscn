@@ -16,5 +16,4 @@ can_sleep = false
 texture = ExtResource("1_2b2nb")
 
 [node name="CS_Chain1" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CapsuleShape2D_ow6vc")
