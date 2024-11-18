@@ -27,6 +27,7 @@ func _ready() -> void:
 
 func load_next_stage() -> void:
 	# Increment Stage Progress
+	$Waiting_Room.hide()
 	$Stage_Progress_Bar.inc_stage()
 	# Remove the current control
 	#curr_enemy_body.death_signal.disconnect(_waiting_room_visible)

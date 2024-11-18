@@ -30,7 +30,10 @@ func _on_waiting_room_timeout() -> void:
 
 # sets process callback based on visibility change
 func _on_visibility_changed() -> void:
-	if( visible ): set_process(true)
+	if( visible ): 
+		set_process(true)
+		$A2D_Waiting_Room.monitoring = true
 	else: 
 		set_process(false)
+		$A2D_Waiting_Room.monitoring = false
 		$T_Waiting_Room.stop()

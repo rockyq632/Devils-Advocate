@@ -23,6 +23,10 @@ var debug_scene_instance : DEBUG_BATTLE_SCENE
 
 var current_scene_instance:Control
 
+var PLAYERS : Array[PlayableCharacter] = []
+
+
+
 var player_position : Vector2 = Vector2(0,0)
 var enemy_position : Vector2 = Vector2(0,0)
 

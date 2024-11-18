@@ -23,7 +23,7 @@ func _physics_process(delta: float) -> void:
 		
 		if(ai_time_cnt_secs > 3.0  and ai_time_cnt_secs<3.03):
 			# Set a random position to move to
-			var temp = Vector2(randf_range(100.0,global_position.x), randf_range(120.0,620.0))
+			var temp:Vector2 = Vector2(randf_range(100.0,global_position.x), randf_range(120.0,620.0))
 			ai_move_target = temp
 		
 		elif(ai_time_cnt_secs >= 6.0):
@@ -49,7 +49,7 @@ func _physics_process(delta: float) -> void:
 	
 
 
-func take_damage(dmg:float):
+func take_damage(dmg:float) -> void:
 	%AP_Test_Dummy.play("HIT")
 	curr_hp -= dmg
 	if(get_parent().has_method("take_damage")):

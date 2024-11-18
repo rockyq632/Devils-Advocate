@@ -6,8 +6,6 @@ signal projectile_hit_wall
 signal projectile_hit_target
 signal projectile_spawned
 
-@export var source : ENM.TARGET_TYPE = ENM.TARGET_TYPE.ENEMY
-@export var target : ENM.TARGET_TYPE = ENM.TARGET_TYPE.PLAYER
 @export var anim_player:AnimationPlayer
 @export var hurt_box_area:Area2D
 @export var prj_sprite:Node2D
@@ -72,6 +70,14 @@ signal projectile_spawned
 
 
 var type: ENM.TARGET_TYPE = ENM.TARGET_TYPE.PROJECTILE
+
+
+# source stuff
+var source:CharacterBody2D = CharacterBody2D.new()
+
+# target stuff
+var target:CharacterBody2D = CharacterBody2D.new()
+
 
 # Ref to body of projectile
 var prj_body:CharacterBody2D
@@ -186,47 +192,28 @@ func _physics_process(_delta: float) -> void:
 
 		# If projectile orbits target
 		elif( orbits_target ):
-			if(target == ENM.TARGET_TYPE.PLAYER):
-				calc_orbit(GSM.player_position)
-			elif(target == ENM.TARGET_TYPE.ENEMY):
-				calc_orbit(GSM.enemy_position)
+			if(target):
+				calc_orbit(target.global_position)
 
 		# If projectile orbits source
 		elif( orbits_source ):
-			if(source == ENM.TARGET_TYPE.PLAYER):
-				calc_orbit(GSM.player_position)
-			elif(source == ENM.TARGET_TYPE.ENEMY):
-				calc_orbit(GSM.enemy_position)
+			calc_orbit(source.global_position)
 
 		# If target tracking is enabled
 		elif( tracks_to_target ):
-			if(target == ENM.TARGET_TYPE.PLAYER):
-				if( use_bad_tracking ):
-					bad_track_to( GSM.player_position )
-				else:
-					track_to( GSM.player_position )
-				has_tracked = true
-			elif(target == ENM.TARGET_TYPE.ENEMY):
-				if( use_bad_tracking ):
-					bad_track_to( GSM.enemy_position )
-				else:
-					track_to( GSM.enemy_position )
-				has_tracked = true
+			if( use_bad_tracking ):
+				bad_track_to( target.global_position )
+			else:
+				track_to( target.global_position )
+			has_tracked = true
 		
 		# If source tracking is enabled
 		elif( tracks_to_source ):
-			if(source == ENM.TARGET_TYPE.PLAYER):
-				if( use_bad_tracking ):
-					bad_track_to( GSM.player_position )
-				else:
-					track_to( GSM.player_position )
-				has_tracked = true
-			elif(source == ENM.TARGET_TYPE.ENEMY):
-				if( use_bad_tracking ):
-					bad_track_to( GSM.enemy_position )
-				else:
-					track_to( GSM.enemy_position )
-				has_tracked = true
+			if( use_bad_tracking ):
+				bad_track_to( source.global_position )
+			else:
+				track_to( source.global_position )
+			has_tracked = true
 
 		# If no movement toggle is applied
 		else:
@@ -266,7 +253,7 @@ func _physics_process(_delta: float) -> void:
 				will_rotate = false
 		# If rotating toward target
 		elif( will_rotate and rotates_toward_target  and  anim_player.current_animation != "END" ):
-			prj_body.rotation = prj_body.global_position.angle_to_point(GSM.player_position)
+			prj_body.rotation = prj_body.global_position.angle_to_point(target.global_position)
 
 			# Ends rotation if only spawn rotation is wanted
 			if(rotates_on_spawn_only):
@@ -400,7 +387,7 @@ func _on_ap_projectile_animation_finished(anim_name: StringName) -> void:
 func _on_hurtbox_entered(body: Node2D) -> void:
 	# If target is in the hurtbox -> hurt target
 	if("type" in body.get_parent()):
-		if(body.get_parent().type == target):
+		if(body == target):
 			if(body.has_method("take_damage")):
 				body.take_damage(damage)
 			projectile_hit_target.emit()
@@ -411,7 +398,7 @@ func _on_hurtbox_entered(body: Node2D) -> void:
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	# If target is in the hurtbox -> hurt target
 	if("type" in area.get_parent() ):
-		if( area.get_parent().type == target): 
+		if( area.get_parent().type == target.type): 
 			if(area.get_parent().has_method("take_damage")):
 				area.get_parent().take_damage(damage)
 			projectile_hit_target.emit()
@@ -433,13 +420,13 @@ func _keep_out_timeout() -> void:
 # When a body enters the gravity field
 func _gravity_entered(body:Node2D) -> void:
 	if("type" in body):
-		if(body.type == target and not grav_ignores_target):
+		if(body == target and not grav_ignores_target):
 			grav_effected.append(body)
 			
 	elif( "type" in body.get_child(0) ):
 		if(body.get_child(0) == self):
 				return
-		elif( (body.get_child(0).type == target and not grav_ignores_target)  or  body.get_child(0).type == ENM.TARGET_TYPE.PROJECTILE):
+		elif( (body.get_child(0) == target and not grav_ignores_target)  or  body.get_child(0).type == ENM.TARGET_TYPE.PROJECTILE):
 			grav_effected.append(body.get_child(0))
 			
 	else:
@@ -450,7 +437,7 @@ func _gravity_entered(body:Node2D) -> void:
 # When a body leaves the gravity field
 func _gravity_exited(body:Node2D) -> void:
 	if("type" in body):
-		if(body.type == target):
+		if(body == target):
 			var cnt:int = 0
 			for i in grav_effected:
 				if( i == body  and  body.has_method("update_grav_vec")):
@@ -460,7 +447,7 @@ func _gravity_exited(body:Node2D) -> void:
 				cnt += 1
 			
 	elif( "type" in body.get_child(0) ):
-		if(body.get_child(0).type == target):
+		if(body.get_child(0) == target):
 			if(body.get_child(0) == self):
 				return
 			var cnt:int = 0

@@ -45,6 +45,9 @@ const MAX_MOVE_SPEED = 1000.0
 @export var use_movement_path:bool = false		#If the body is within a Path2D
 @export var movement_path:PathFollow2D			#The Path2DFollower the body is within
 
+@export_group("Debug")
+@export var is_debug:bool = false
+
 
 
 var type : ENM.TARGET_TYPE = ENM.TARGET_TYPE.ENEMY
@@ -69,6 +72,10 @@ func _ready() -> void:
 		set_process(true)
 		set_physics_process(true)
 
+
+func _input(_event: InputEvent) -> void:
+	if(is_debug):
+		pass
 
 
 # Move body a specific direction. 
@@ -115,18 +122,23 @@ func move_toward(pos:Vector2) -> bool:
 # Spawns a projectile by name
 # Returns:
 #	The body of the projectile sent (RQ NOTE Might change later if I define a Projectile class)
-func spawn_projectile(nam:String, pos:Vector2) -> CharacterBody2D:
+func spawn_projectile(nam:String, pos:Vector2, source:CharacterBody2D, target:CharacterBody2D) -> CharacterBody2D:
+	# if key is found
 	if(ProjLib.dict.has(nam)):
 		var proj:CharacterBody2D = ProjLib.get_prj(nam)
 		proj.position = pos
+		proj.get_child(0).target = target
+		proj.get_child(0).source = source
 		GSM.GLOBAL_ENEMY_PROJECTILES.add_child( proj )
 		return proj
+	# Key not found
 	else:
 		#Error: projectile name nott found
 		print("Error: Projectile name not in PROJ_LIB: %s" % nam)
 		var proj:CharacterBody2D = ProjLib.get_prj("PRJ_Track_Once_Test")
+		proj.get_child(0).target = target
+		proj.get_child(0).source = source
 		proj.position = pos
-		GSM.GLOBAL_ENEMY_PROJECTILES.add_child( proj )
 		return proj
 
 
