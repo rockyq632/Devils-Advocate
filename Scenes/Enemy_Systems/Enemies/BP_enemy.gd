@@ -86,9 +86,7 @@ func move(dir) -> void:
 		movement_path.progress += dir*move_speed
 	else:
 		velocity += dir*move_acceleration
-		#velocity.length()
-		velocity.x = clampf(velocity.x, 0.0, move_speed)
-		velocity.y = clampf(velocity.y, 0.0, move_speed)
+		velocity.clamp(Vector2.ZERO, Vector2(move_speed,move_speed))
 		
 		# Prevents weird move_and_slide glitch with zero velocity
 		if(velocity != Vector2.ZERO):

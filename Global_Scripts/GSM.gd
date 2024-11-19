@@ -24,11 +24,8 @@ var debug_scene_instance : DEBUG_BATTLE_SCENE
 var current_scene_instance:Control
 
 var PLAYERS : Array[PlayableCharacter] = []
+var ENEMIES : Array[Enemy] = []
 
-
-
-#var player_position : Vector2 = Vector2(0,0)
-var enemy_position : Vector2 = Vector2(0,0)
 
 var is_paused : bool = false
 var is_pc_movement_locked : bool = true

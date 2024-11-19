@@ -19,6 +19,7 @@ func _ready() -> void:
 	if( "enm_body" in curr_stage_control ):
 		curr_enemy_body = curr_stage_control.enm_body
 		curr_enemy_body.death_signal.connect(_waiting_room_visible)
+		GSM.ENEMIES.append(curr_enemy_body)
 	elif( "is_shop" in curr_stage_control):
 		_waiting_room_visible()
 		
@@ -26,27 +27,32 @@ func _ready() -> void:
 
 
 func load_next_stage() -> void:
+	# Reset the ENEMIES array
+	GSM.ENEMIES = []
 	# Increment Stage Progress
-	$Waiting_Room.hide()
 	$Stage_Progress_Bar.inc_stage()
 	# Remove the current control
 	#curr_enemy_body.death_signal.disconnect(_waiting_room_visible)
-	remove_child( curr_stage_control )
+	#remove_child( curr_stage_control )
+	curr_stage_control.queue_free()
 	
 	# Instantiate new scene
 	var ind:int = $Stage_Progress_Bar.curr_stage
 	curr_stage_control = stage_list[ind].instantiate()
 	
+	
 	# if stage is an enemy
 	if( "enm_body" in curr_stage_control ):
+		$Waiting_Room.hide()
+		curr_enemy_body = curr_stage_control.enm_body
 		curr_enemy_body.revive_enemy()
 		curr_enemy_body.death_signal.connect(_waiting_room_visible)
+	elif( "is_shop" in curr_stage_control ):
+		curr_stage_control.is_shop.connect(_waiting_room_visible)
 	
 	
 	# Create next enemy
 	add_child( curr_stage_control )# if stage is a shop
-	if( "is_shop" in curr_stage_control):
-		_waiting_room_visible()
 
 
 
