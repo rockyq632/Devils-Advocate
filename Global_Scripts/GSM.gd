@@ -27,7 +27,7 @@ var PLAYERS : Array[PlayableCharacter] = []
 
 
 
-var player_position : Vector2 = Vector2(0,0)
+#var player_position : Vector2 = Vector2(0,0)
 var enemy_position : Vector2 = Vector2(0,0)
 
 var is_paused : bool = false

@@ -10,6 +10,7 @@ signal death_signal
 const MAX_HEALTH = 100000.0
 const MIN_MOVE_SPEED = 100.0
 const MAX_MOVE_SPEED = 1000.0
+const type : ENM.TARGET_TYPE = ENM.TARGET_TYPE.ENEMY
 
 # Stats to keep track of all of the enemy stats
 @export var health_bar:HealthBar
@@ -50,7 +51,6 @@ const MAX_MOVE_SPEED = 1000.0
 
 
 
-var type : ENM.TARGET_TYPE = ENM.TARGET_TYPE.ENEMY
 var direction : Vector2 = Vector2.ZERO
 # State Change Timer is used to trigger each enemy state change
 var state_change_timer:Timer
@@ -71,6 +71,7 @@ func _ready() -> void:
 		add_child(state_change_timer)
 		set_process(true)
 		set_physics_process(true)
+		
 
 
 func _input(_event: InputEvent) -> void:

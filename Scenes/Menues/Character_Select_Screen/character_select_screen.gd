@@ -78,6 +78,6 @@ func _on_select_btn_pressed() -> void:
 	
 	# Add character to the Global 2D node
 	GSM.PLAYERS.append( current_selection.char_instance )
-	print(GSM.PLAYERS)
+	#print(GSM.PLAYERS)
 	GSM.GLOBAL_2D_NODE.add_child( current_selection )
 	GSM.is_pc_movement_locked = false

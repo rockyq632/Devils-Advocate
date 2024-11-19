@@ -59,8 +59,8 @@ enum PC {
 }
 
 enum TARGET_TYPE {
+	NONE,
 	ENEMY,
 	PLAYER,
-	PROJECTILE,
-	NONE
+	PROJECTILE
 }

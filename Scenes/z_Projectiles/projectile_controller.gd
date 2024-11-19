@@ -158,7 +158,8 @@ func _ready() -> void:
 				will_rotate = false
 		# If rotating toward target
 		elif( will_rotate and rotates_toward_target  and  anim_player.current_animation != "END" ):
-			rotation = global_position.angle_to_point(GSM.player_position)
+			if(GSM.PLAYERS.size() > 0):
+				rotation = global_position.angle_to_point(GSM.PLAYERS[0].global_position)
 
 			# Ends rotation if only spawn rotation is wanted
 			if(rotates_on_spawn_only):
@@ -380,7 +381,8 @@ func _on_ap_projectile_animation_finished(anim_name: StringName) -> void:
 # If a body enters projectile hurtbox
 func _on_hurtbox_entered(body: Node2D) -> void:
 	# If target is in the hurtbox -> hurt target
-	if(body == target):
+	#print("%s == %s = %s" % [body.type, target.type, (body.type==target.type)])
+	if(body.type == target.type):
 		if(body.has_method("take_damage")):
 			body.take_damage(damage)
 		projectile_hit_target.emit()
@@ -402,18 +404,17 @@ func _keep_out_timeout() -> void:
 # When a body enters the gravity field
 func _gravity_entered(body:Node2D) -> void:
 	if("type" in body):
-		if(body == target and not grav_ignores_target):
+		if(body.type == target.type and not grav_ignores_target):
 			grav_effected.append(body)
 			
 	else:
 		#print("%s has no variable 'type'" % body)
 		pass
 
-
 # When a body leaves the gravity field
 func _gravity_exited(body:Node2D) -> void:
 	if("type" in body):
-		if(body == target):
+		if(body.type == target.type):
 			var cnt:int = 0
 			for i in grav_effected:
 				if( i == body  and  body.has_method("update_grav_vec")):

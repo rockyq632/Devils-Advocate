@@ -42,9 +42,6 @@ func _physics_process(_delta: float) -> void:
 		if(not %S2D_Dani.visible):
 			%S2D_Dani.show()
 	
-	# Update Player position in the global scene manager
-	GSM.player_position = global_position
-	
 	# If an animation has finished, continue other animations
 	if( is_anim_playing == false  and  (not GSM.is_paused)):
 		curr_anim = "RESET"
