@@ -143,11 +143,11 @@ func spawn_projectile(nam:String, pos:Vector2, source:CharacterBody2D, target:Ch
 
 # Function called by any hurtbox that this body enters
 func take_damage(amt:float) -> void:
-	health -= amt
+	health = clampf( health-amt, 0, max_health )
 	# Calls to the Stage to change the healthbar
 	health_bar.update_hp_bar( health )
 	# Check if the enemy is dead
-	if( health == 0 ):
+	if( health <= 0 ):
 		death()
 
 

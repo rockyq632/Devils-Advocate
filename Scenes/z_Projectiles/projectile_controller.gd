@@ -18,12 +18,24 @@ signal projectile_spawned
 @export var v_acceleration:float = 10.0
 
 @export_group("Projectile Options")
+@export_subgroup("Stop")
+@export var stop_on_end : bool = true
+@export var stop_on_walls : bool = false
+@export var stop_on_timeout : bool = true
+@export var timeout_sec : float = 10.0
+
 @export_subgroup("Facing")
 @export var will_rotate : bool = false
 @export var rotates_on_spawn_only : bool = false
 @export var rotates_toward_facing: bool = false
 @export var rotates_toward_target: bool = false
-@export var max_rotation_per_tick:float = 90.0 #TODO actually use this
+@export var todo_max_rotation_per_tick:float = 90.0 #TODO actually use this
+
+@export_subgroup("Knockback")
+@export var todo_has_knockback:bool = false
+@export var todo_kb_force:float = 10.0
+@export var todo_kb_direction:float = 0.0
+@export var todo_is_dir_normal_to_vel:bool =true
 
 @export_subgroup("Tracking")
 @export var tracking_deadzone : float = 0.0
@@ -33,19 +45,17 @@ signal projectile_spawned
 @export var use_bad_tracking : bool = false
 
 @export_subgroup("Arcing")
-@export var will_arc:bool = false
-@export var arc_gravity:float = 0.98
-
-@export_subgroup("Stop")
-@export var stop_on_end : bool = true
-@export var stop_on_walls : bool = false
-@export var stop_on_timeout : bool = true
-@export var timeout_sec : float = 10.0
+@export var todo_will_arc:bool = false
+@export var todo_arc_grav:float = 0.98
 
 @export_subgroup("Bounce")
 @export var bounce_off_walls : bool = false
 @export var bounce_force_ratio : float = 0.75
 @export var max_bounces : int = 3
+
+@export_subgroup("Keep Out AOE")
+@export var is_keep_out_area : bool = false
+@export var keep_out_detonate_time:float = 2.0
 
 @export_subgroup("Orbiting")
 @export var orbits_source:bool = false
@@ -63,10 +73,6 @@ signal projectile_spawned
 @export var grav_ignores_target : bool = false
 @export var gravity_weight : float = 10.0
 @export var gravity_effect_collision : Area2D
-
-@export_subgroup("Keep Out AOE")
-@export var is_keep_out_area : bool = false
-@export var keep_out_detonate_time:float = 2.0
 
 
 var type: ENM.TARGET_TYPE = ENM.TARGET_TYPE.PROJECTILE
@@ -150,7 +156,7 @@ func _ready() -> void:
 		if( will_rotate and rotates_toward_facing  and  anim_player.current_animation != "END" ):
 			var targ_ang:float = velocity.angle()
 			last_angle = rotation
-			#rotation = clampf(targ_ang, last_angle-deg_to_rad(max_rotation_per_tick), last_angle+deg_to_rad(max_rotation_per_tick))
+			#rotation = clampf(targ_ang, last_angle-deg_to_rad(todo_max_rotation_per_tick), last_angle+deg_to_rad(todo_max_rotation_per_tick))
 			rotation = targ_ang
 
 			# Ends rotation if only spawn rotation is wanted
@@ -182,7 +188,7 @@ func _physics_process(_delta: float) -> void:
 			tracks_to_source = false
 
 		# If projectile wants to arc
-		if( will_arc ):
+		if( todo_will_arc ):
 			pass # TODO add arc motion to this
 
 		# If projectile orbits target
@@ -240,7 +246,7 @@ func _physics_process(_delta: float) -> void:
 		if( will_rotate and rotates_toward_facing  and  anim_player.current_animation != "END" ):
 			var targ_ang:float = velocity.angle()
 			last_angle = rotation
-			#rotation = clampf(targ_ang, last_angle-deg_to_rad(max_rotation_per_tick), last_angle+deg_to_rad(max_rotation_per_tick))
+			#rotation = clampf(targ_ang, last_angle-deg_to_rad(todo_max_rotation_per_tick), last_angle+deg_to_rad(todo_max_rotation_per_tick))
 			rotation = targ_ang
 
 			# Ends rotation if only spawn rotation is wanted

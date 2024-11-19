@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d211rtc3wwd3d"]
+[gd_scene load_steps=9 format=3 uid="uid://d211rtc3wwd3d"]
 
 [ext_resource type="Script" path="res://Scenes/z_Projectiles/projectile_controller.gd" id="1_s3dxe"]
 [ext_resource type="Texture2D" uid="uid://bw4hx4q2gb8rt" path="res://Graphics/PLACEHOLDERS/PLACEHOLDER_RAY.png" id="2_pc8l8"]
@@ -178,9 +178,6 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_cfjny"]
 radius = 0.1
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_tkgdl"]
-radius = 200.0
-
 [node name="PRJ_Dan_Shout" type="CharacterBody2D" node_paths=PackedStringArray("anim_player", "hurt_box_area", "prj_sprite", "gravity_effect_collision")]
 motion_mode = 1
 script = ExtResource("1_s3dxe")
@@ -194,7 +191,7 @@ v_acceleration = 0.0
 will_rotate = true
 rotates_on_spawn_only = true
 rotates_toward_target = true
-gravity_effect_collision = NodePath("A2D_Gravity")
+gravity_effect_collision = NodePath("")
 is_keep_out_area = true
 
 [node name="S2D_Dan_Shout" type="Sprite2D" parent="."]
@@ -221,15 +218,6 @@ collision_mask = 197
 position = Vector2(-114, -2)
 polygon = PackedVector2Array(754, -62, 114, 0, 114, 4, 754, 66)
 disabled = true
-
-[node name="A2D_Gravity" type="Area2D" parent="."]
-visible = false
-collision_layer = 0
-collision_mask = 293
-
-[node name="CS_Gravity" type="CollisionShape2D" parent="A2D_Gravity"]
-shape = SubResource("CircleShape2D_tkgdl")
-debug_color = Color(0.688566, 0.289675, 1, 0.42)
 
 [node name="PB_Timer" type="ProgressBar" parent="."]
 offset_left = 253.0

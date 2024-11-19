@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://le8bjn04kvro"]
+[gd_scene load_steps=24 format=3 uid="uid://le8bjn04kvro"]
 
 [ext_resource type="Script" path="res://Scenes/z_Projectiles/Projectile_Library/proj_lib.gd" id="1_s73xv"]
 [ext_resource type="PackedScene" uid="uid://bcqncneucahp5" path="res://Scenes/z_Projectiles/Projectile_Library/proj_scenes/prj_ice_explosion.tscn" id="2_gnowd"]
+[ext_resource type="Script" path="res://Scenes/z_Projectiles/projectile_controller.gd" id="3_apn5j"]
 [ext_resource type="PackedScene" uid="uid://c6eyr2302jgqo" path="res://Scenes/z_Projectiles/Projectile_Library/proj_scenes/prj_test_keep_out.tscn" id="4_v5qxn"]
 [ext_resource type="PackedScene" uid="uid://km1dq8nd5dd5" path="res://Scenes/z_Projectiles/Projectile_Library/proj_scenes/prj_track_once_test.tscn" id="5_as3gm"]
 [ext_resource type="PackedScene" uid="uid://cu4xkr4daqfy8" path="res://Scenes/z_Projectiles/Projectile_Library/proj_scenes/prj_orbit_test.tscn" id="6_6f28y"]
@@ -38,11 +39,19 @@ radius = 0.1
 [sub_resource type="CircleShape2D" id="CircleShape2D_2mi5y"]
 radius = 1.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_6lx08"]
+radius = 200.0
+
 [node name="PROJ_LIB" type="Node"]
 script = ExtResource("1_s73xv")
 
-[node name="000_EXAMPLE" type="CharacterBody2D" parent="."]
+[node name="000_EXAMPLE" type="CharacterBody2D" parent="." node_paths=PackedStringArray("anim_player", "hurt_box_area", "prj_sprite", "gravity_effect_collision")]
 visible = false
+script = ExtResource("3_apn5j")
+anim_player = NodePath("AP_EXAMPLE")
+hurt_box_area = NodePath("A2D_Hurtbox")
+prj_sprite = NodePath("S2D_EXAMPLE")
+gravity_effect_collision = NodePath("A2D_Gravity")
 
 [node name="S2D_EXAMPLE" type="Sprite2D" parent="000_EXAMPLE"]
 
@@ -56,10 +65,26 @@ visible = false
 shape = SubResource("CircleShape2D_bs2km")
 disabled = true
 
-[node name="Hurtbox" type="Area2D" parent="000_EXAMPLE"]
+[node name="A2D_Hurtbox" type="Area2D" parent="000_EXAMPLE"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="000_EXAMPLE/Hurtbox"]
+[node name="CS_Hurtbox" type="CollisionShape2D" parent="000_EXAMPLE/A2D_Hurtbox"]
 shape = SubResource("CircleShape2D_2mi5y")
+
+[node name="A2D_Gravity" type="Area2D" parent="000_EXAMPLE"]
+visible = false
+collision_layer = 0
+collision_mask = 293
+
+[node name="CS_Gravity" type="CollisionShape2D" parent="000_EXAMPLE/A2D_Gravity"]
+shape = SubResource("CircleShape2D_6lx08")
+debug_color = Color(0.688566, 0.289675, 1, 0.42)
+
+[node name="PB_Timer" type="ProgressBar" parent="000_EXAMPLE"]
+offset_left = 253.0
+offset_top = -51.0
+offset_right = 339.0
+offset_bottom = -46.0
+show_percentage = false
 
 [node name="PRJ_Keep_Out_Test" parent="." instance=ExtResource("4_v5qxn")]
 visible = false

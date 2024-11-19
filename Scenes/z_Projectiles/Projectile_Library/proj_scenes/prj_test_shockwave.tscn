@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1qrcv707i488"]
+[gd_scene load_steps=8 format=3 uid="uid://c1qrcv707i488"]
 
 [ext_resource type="Script" path="res://Scenes/z_Projectiles/projectile_controller.gd" id="1_17uym"]
 
@@ -116,9 +116,6 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_cfjny"]
 radius = 0.1
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_tkgdl"]
-radius = 200.0
-
 [node name="PRJ_Shockwave_Test" type="CharacterBody2D" node_paths=PackedStringArray("anim_player", "hurt_box_area", "prj_sprite", "gravity_effect_collision")]
 motion_mode = 1
 script = ExtResource("1_17uym")
@@ -128,7 +125,7 @@ prj_sprite = NodePath("P2D_Shockwave")
 will_rotate = true
 rotates_on_spawn_only = true
 rotates_toward_target = true
-gravity_effect_collision = NodePath("A2D_Gravity")
+gravity_effect_collision = NodePath("")
 
 [node name="P2D_Shockwave" type="Polygon2D" parent="."]
 color = Color(1, 0.0862745, 1, 0.392157)
@@ -150,12 +147,3 @@ collision_mask = 197
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="A2D_Hurt_Box"]
 polygon = PackedVector2Array(-25, -20, 20, 0, -25, 20, -10, 0)
-
-[node name="A2D_Gravity" type="Area2D" parent="."]
-visible = false
-collision_layer = 0
-collision_mask = 293
-
-[node name="CS_Gravity" type="CollisionShape2D" parent="A2D_Gravity"]
-shape = SubResource("CircleShape2D_tkgdl")
-debug_color = Color(0.688566, 0.289675, 1, 0.42)

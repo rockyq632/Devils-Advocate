@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c6eyr2302jgqo"]
+[gd_scene load_steps=11 format=3 uid="uid://c6eyr2302jgqo"]
 
 [ext_resource type="Script" path="res://Scenes/z_Projectiles/projectile_controller.gd" id="1_rl5lx"]
 [ext_resource type="Texture2D" uid="uid://cddmax33h3714" path="res://Graphics/Projectiles/PE_Ice_Explosion.png" id="2_mtopr"]
@@ -178,16 +178,12 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_1mpw6"]
 radius = 40.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_tkgdl"]
-radius = 200.0
-
-[node name="PRJ_Keep_Out_Test" type="CharacterBody2D" node_paths=PackedStringArray("anim_player", "hurt_box_area", "prj_sprite", "gravity_effect_collision")]
+[node name="PRJ_Keep_Out_Test" type="CharacterBody2D" node_paths=PackedStringArray("anim_player", "hurt_box_area", "prj_sprite")]
 motion_mode = 1
 script = ExtResource("1_rl5lx")
 anim_player = NodePath("AP_Keep_Out_Test")
 hurt_box_area = NodePath("A2D_Hurt_Box")
 prj_sprite = NodePath("S2D_Keep_Out_Test")
-gravity_effect_collision = NodePath("A2D_Gravity")
 is_keep_out_area = true
 
 [node name="RTL_Explain_Text" type="RichTextLabel" parent="."]
@@ -239,12 +235,3 @@ collision_mask = 197
 
 [node name="CS_Hurt_Box" type="CollisionShape2D" parent="A2D_Hurt_Box"]
 shape = SubResource("CircleShape2D_1mpw6")
-
-[node name="A2D_Gravity" type="Area2D" parent="."]
-visible = false
-collision_layer = 0
-collision_mask = 293
-
-[node name="CS_Gravity" type="CollisionShape2D" parent="A2D_Gravity"]
-shape = SubResource("CircleShape2D_tkgdl")
-debug_color = Color(0.688566, 0.289675, 1, 0.42)
