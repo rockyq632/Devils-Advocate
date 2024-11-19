@@ -1,5 +1,5 @@
 class_name ProjectileController
-extends Node2D
+extends CharacterBody2D
 
 signal projectile_stopped
 signal projectile_hit_wall
@@ -39,8 +39,8 @@ signal projectile_spawned
 @export_subgroup("Stop")
 @export var stop_on_end : bool = true
 @export var stop_on_walls : bool = false
-@export var stop_on_timeout : bool = false
-@export var timeout_sec : float = 1.0
+@export var stop_on_timeout : bool = true
+@export var timeout_sec : float = 10.0
 
 @export_subgroup("Bounce")
 @export var bounce_off_walls : bool = false
@@ -78,10 +78,6 @@ var source:CharacterBody2D = CharacterBody2D.new()
 # target stuff
 var target:CharacterBody2D = CharacterBody2D.new()
 
-
-# Ref to body of projectile
-var prj_body:CharacterBody2D
-
 # For timeout use
 var despawn_timer:Timer
 
@@ -115,14 +111,12 @@ func _ready() -> void:
 	if( Engine.is_editor_hint() ):
 		pass
 	else:
-		# Get the CharacterBody2D representing the projectile
-		prj_body = get_parent()
-		prj_body.velocity = Vector2(0,0)
+		# 
+		velocity = Vector2.ZERO
 		# Connect Animation Finished signal
 		anim_player.animation_finished.connect(_on_ap_projectile_animation_finished)
 		# Connect HurtBox Area2D for collisions
 		hurt_box_area.body_entered.connect(_on_hurtbox_entered)
-		hurt_box_area.area_entered.connect(_on_hurtbox_area_entered)
 		
 		# Connect Gravity creation collision if it exists
 		if(creates_gravity):
@@ -137,8 +131,8 @@ func _ready() -> void:
 			keep_out_detonate_timer.one_shot = true
 			add_child(keep_out_detonate_timer)
 			keep_out_detonate_timer.start()
-			$"../PB_Timer".max_value = keep_out_detonate_time
-			$"../PB_Timer".value = keep_out_detonate_time
+			$PB_Timer.max_value = keep_out_detonate_time
+			$PB_Timer.value = keep_out_detonate_time
 		
 		# Initiate timeout despawn Timer
 		if(stop_on_timeout):
@@ -154,17 +148,17 @@ func _ready() -> void:
 		# Set up "on spawn" conditions
 		# If rotating toward velocity direction
 		if( will_rotate and rotates_toward_facing  and  anim_player.current_animation != "END" ):
-			var targ_ang:float = prj_body.velocity.angle()
-			last_angle = prj_body.rotation
-			#prj_body.rotation = clampf(targ_ang, last_angle-deg_to_rad(max_rotation_per_tick), last_angle+deg_to_rad(max_rotation_per_tick))
-			prj_body.rotation = targ_ang
+			var targ_ang:float = velocity.angle()
+			last_angle = rotation
+			#rotation = clampf(targ_ang, last_angle-deg_to_rad(max_rotation_per_tick), last_angle+deg_to_rad(max_rotation_per_tick))
+			rotation = targ_ang
 
 			# Ends rotation if only spawn rotation is wanted
 			if(rotates_on_spawn_only):
 				will_rotate = false
 		# If rotating toward target
 		elif( will_rotate and rotates_toward_target  and  anim_player.current_animation != "END" ):
-			prj_body.rotation = prj_body.global_position.angle_to_point(GSM.player_position)
+			rotation = global_position.angle_to_point(GSM.player_position)
 
 			# Ends rotation if only spawn rotation is wanted
 			if(rotates_on_spawn_only):
@@ -172,7 +166,7 @@ func _ready() -> void:
 		
 		
 		# Play spawning animation
-		get_parent().show()
+		show()
 		anim_player.play("START")
 		projectile_spawned.emit()
 			
@@ -219,7 +213,7 @@ func _physics_process(_delta: float) -> void:
 		else:
 			curr_speed.x = clampf(curr_speed.x+h_acceleration, (-1*h_move_speed), h_move_speed)
 			curr_speed.y = clampf(curr_speed.y+v_acceleration, (-1*v_move_speed), v_move_speed)
-			prj_body.velocity = dir*curr_speed+self_grav_pull
+			velocity = dir*curr_speed+self_grav_pull
 
 
 		# If projectile creates gravity
@@ -230,12 +224,12 @@ func _physics_process(_delta: float) -> void:
 				if( not is_instance_valid(i)):
 					grav_effected.remove_at(cnt)
 				elif(i.has_method("update_grav_vec")):
-					i.update_grav_vec(gravity_weight*i.global_position.direction_to(prj_body.global_position))
+					i.update_grav_vec(gravity_weight*i.global_position.direction_to(global_position))
 					cnt += 1
 
 		# If projectile has velocity
-		if(prj_body.velocity != Vector2(0,0)):
-			prj_body.move_and_slide()
+		if(velocity != Vector2(0,0)):
+			move_and_slide()
 
 		# if windup is removed, it resets gravity pull every frame
 		if( remove_windup ):
@@ -243,17 +237,17 @@ func _physics_process(_delta: float) -> void:
 
 		# If rotating toward velocity direction
 		if( will_rotate and rotates_toward_facing  and  anim_player.current_animation != "END" ):
-			var targ_ang:float = prj_body.velocity.angle()
-			last_angle = prj_body.rotation
-			#prj_body.rotation = clampf(targ_ang, last_angle-deg_to_rad(max_rotation_per_tick), last_angle+deg_to_rad(max_rotation_per_tick))
-			prj_body.rotation = targ_ang
+			var targ_ang:float = velocity.angle()
+			last_angle = rotation
+			#rotation = clampf(targ_ang, last_angle-deg_to_rad(max_rotation_per_tick), last_angle+deg_to_rad(max_rotation_per_tick))
+			rotation = targ_ang
 
 			# Ends rotation if only spawn rotation is wanted
 			if(rotates_on_spawn_only):
 				will_rotate = false
 		# If rotating toward target
 		elif( will_rotate and rotates_toward_target  and  anim_player.current_animation != "END" ):
-			prj_body.rotation = prj_body.global_position.angle_to_point(target.global_position)
+			rotation = global_position.angle_to_point(target.global_position)
 
 			# Ends rotation if only spawn rotation is wanted
 			if(rotates_on_spawn_only):
@@ -261,57 +255,57 @@ func _physics_process(_delta: float) -> void:
 
 		# updates progress bar for keep out area option
 		if(is_keep_out_area):
-			$"../PB_Timer".value = keep_out_detonate_timer.time_left
+			$PB_Timer.value = keep_out_detonate_timer.time_left
 
 
 
 # Calculates (albeit poorly) the velocity of orbiting projectiles
 func calc_orbit(track_pos:Vector2) -> void:
 	# If projectile has gotten too far from track position
-	if( (not orbit_spiral) and (tracks_to_source or tracks_to_target)  and  prj_body.global_position.distance_to(track_pos) > orbit_radius+orbit_radius_deadzone):
-		orbit_update_dir = prj_body.global_position.direction_to(track_pos)
+	if( (not orbit_spiral) and (tracks_to_source or tracks_to_target)  and  global_position.distance_to(track_pos) > orbit_radius+orbit_radius_deadzone):
+		orbit_update_dir = global_position.direction_to(track_pos)
 	# If orbiting CW direction
 	elif(orbit_CW):
 		if( orbit_spiral ):
-			orbit_update_dir = prj_body.global_position.direction_to(track_pos).rotated(deg_to_rad(-1*orbit_spiral_angle))
+			orbit_update_dir = global_position.direction_to(track_pos).rotated(deg_to_rad(-1*orbit_spiral_angle))
 		else:
-			orbit_update_dir = prj_body.global_position.direction_to(track_pos).rotated(deg_to_rad(-90))
+			orbit_update_dir = global_position.direction_to(track_pos).rotated(deg_to_rad(-90))
 	# If orbiting CCW direction
 	else:
 		if( orbit_spiral ):
-			orbit_update_dir = prj_body.global_position.direction_to(track_pos).rotated(deg_to_rad(orbit_spiral_angle))
+			orbit_update_dir = global_position.direction_to(track_pos).rotated(deg_to_rad(orbit_spiral_angle))
 		else:
-			orbit_update_dir = prj_body.global_position.direction_to(track_pos).rotated(deg_to_rad(90))
+			orbit_update_dir = global_position.direction_to(track_pos).rotated(deg_to_rad(90))
 	
 	dir = orbit_update_dir
 	curr_speed.x = clampf(curr_speed.x+h_acceleration, (-1*h_move_speed), h_move_speed)
 	curr_speed.y = clampf(curr_speed.y+v_acceleration, (-1*v_move_speed), v_move_speed)
-	prj_body.velocity = dir*curr_speed+self_grav_pull
+	velocity = dir*curr_speed+self_grav_pull
 
 # Called when we want to track to a specific position
 func track_to(track_pos:Vector2) -> void:
 	curr_speed.x = clampf(curr_speed.x+h_acceleration, (-1*h_move_speed), h_move_speed)
 	curr_speed.y = clampf(curr_speed.y+v_acceleration, (-1*v_move_speed), v_move_speed)
 	
-	dir = prj_body.global_position.direction_to(track_pos)
-	prj_body.velocity = dir*curr_speed+self_grav_pull
+	dir = global_position.direction_to(track_pos)
+	velocity = dir*curr_speed+self_grav_pull
 	
 # A much worse version of the track_to function, still fun to play with
 func bad_track_to(track_pos:Vector2) -> void:
-	if(track_pos.x < (prj_body.global_position.x-tracking_deadzone) ):
+	if(track_pos.x < (global_position.x-tracking_deadzone) ):
 		dir.x = -1
 		curr_speed.x = clampf(curr_speed.x-h_acceleration, (-1*h_move_speed), h_move_speed)
-	elif(track_pos.x > (prj_body.global_position.x+tracking_deadzone) ):
+	elif(track_pos.x > (global_position.x+tracking_deadzone) ):
 		dir.x = 1
 		curr_speed.x = clampf(curr_speed.x+h_acceleration, (-1*h_move_speed), h_move_speed)
 			
-	if(track_pos.y < (prj_body.global_position.y-tracking_deadzone) ):
+	if(track_pos.y < (global_position.y-tracking_deadzone) ):
 		dir.y = -1
 		curr_speed.y = clampf(curr_speed.y-v_acceleration, (-1*v_move_speed), v_move_speed)
-	elif((track_pos.y > (prj_body.global_position.y+tracking_deadzone) )):
+	elif((track_pos.y > (global_position.y+tracking_deadzone) )):
 		dir.y = 1
 		curr_speed.y = clampf(curr_speed.y+v_acceleration, (-1*v_move_speed), v_move_speed)
-	prj_body.velocity = curr_speed+self_grav_pull
+	velocity = curr_speed+self_grav_pull
 
 
 
@@ -379,31 +373,19 @@ func end_projectile() -> void:
 # When an animation finishes, trigger the correct next step
 func _on_ap_projectile_animation_finished(anim_name: StringName) -> void:
 	if(anim_name == "END"):
-		get_parent().queue_free()
+		queue_free()
 	elif(anim_name == "START"):
 		anim_player.play("TRAVEL")
 
 # If a body enters projectile hurtbox
 func _on_hurtbox_entered(body: Node2D) -> void:
 	# If target is in the hurtbox -> hurt target
-	if("type" in body.get_parent()):
-		if(body == target):
-			if(body.has_method("take_damage")):
-				body.take_damage(damage)
-			projectile_hit_target.emit()
-			if(stop_on_end):
-				end_projectile()
-
-# If an area enters projectile hurtbox
-func _on_hurtbox_area_entered(area: Area2D) -> void:
-	# If target is in the hurtbox -> hurt target
-	if("type" in area.get_parent() ):
-		if( area.get_parent().type == target.type): 
-			if(area.get_parent().has_method("take_damage")):
-				area.get_parent().take_damage(damage)
-			projectile_hit_target.emit()
-			if(stop_on_end):
-				end_projectile()
+	if(body == target):
+		if(body.has_method("take_damage")):
+			body.take_damage(damage)
+		projectile_hit_target.emit()
+		if(stop_on_end):
+			end_projectile()
 
 # Despawn timer finished, ends projectile
 func _despawn_timout() -> void:
@@ -423,12 +405,6 @@ func _gravity_entered(body:Node2D) -> void:
 		if(body == target and not grav_ignores_target):
 			grav_effected.append(body)
 			
-	elif( "type" in body.get_child(0) ):
-		if(body.get_child(0) == self):
-				return
-		elif( (body.get_child(0) == target and not grav_ignores_target)  or  body.get_child(0).type == ENM.TARGET_TYPE.PROJECTILE):
-			grav_effected.append(body.get_child(0))
-			
 	else:
 		#print("%s has no variable 'type'" % body)
 		pass
@@ -442,18 +418,6 @@ func _gravity_exited(body:Node2D) -> void:
 			for i in grav_effected:
 				if( i == body  and  body.has_method("update_grav_vec")):
 					body.update_grav_vec(Vector2(0,0))
-					grav_effected.remove_at(cnt)
-					break
-				cnt += 1
-			
-	elif( "type" in body.get_child(0) ):
-		if(body.get_child(0) == target):
-			if(body.get_child(0) == self):
-				return
-			var cnt:int = 0
-			for i in grav_effected:
-				if( i == body.get_child(0) and body.get_child(0).has_method("update_grav_vec")):
-					body.get_child(0).update_grav_vec(Vector2(0,0))
 					grav_effected.remove_at(cnt)
 					break
 				cnt += 1

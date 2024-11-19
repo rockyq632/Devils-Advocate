@@ -136,25 +136,15 @@ radius = 4.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_tkgdl"]
 radius = 200.0
 
-[node name="PRJ_Orbit_Test" type="CharacterBody2D"]
+[node name="PRJ_Orbit_Test" type="CharacterBody2D" node_paths=PackedStringArray("anim_player", "hurt_box_area", "prj_sprite", "gravity_effect_collision")]
 motion_mode = 1
-
-[node name="PROJECTILE_CONTROLLER" type="Node2D" parent="." node_paths=PackedStringArray("anim_player", "hurt_box_area", "prj_sprite", "gravity_effect_collision")]
 script = ExtResource("1_tlq6k")
-anim_player = NodePath("../AP_Ice_Explosion")
-hurt_box_area = NodePath("../A2D_Hurt_Box")
-prj_sprite = NodePath("../S2D_Ice_Explosion")
-h_move_speed = 400.0
-v_move_speed = 400.0
+anim_player = NodePath("AP_Ice_Explosion")
+hurt_box_area = NodePath("A2D_Hurt_Box")
+prj_sprite = NodePath("S2D_Ice_Explosion")
 tracks_to_target = true
-stop_on_timeout = true
-timeout_sec = 15.0
 orbits_target = true
-orbit_spiral = true
-orbit_spiral_angle = 60.0
-remove_windup = false
-gravity_weight = 1.0
-gravity_effect_collision = NodePath("../A2D_Gravity")
+gravity_effect_collision = NodePath("A2D_Gravity")
 
 [node name="S2D_Ice_Explosion" type="Sprite2D" parent="."]
 texture = ExtResource("2_i6er1")

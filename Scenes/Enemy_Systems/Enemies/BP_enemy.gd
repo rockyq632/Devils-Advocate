@@ -127,8 +127,8 @@ func spawn_projectile(nam:String, pos:Vector2, source:CharacterBody2D, target:Ch
 	if(ProjLib.dict.has(nam)):
 		var proj:CharacterBody2D = ProjLib.get_prj(nam)
 		proj.position = pos
-		proj.get_child(0).target = target
-		proj.get_child(0).source = source
+		proj.target = target
+		proj.source = source
 		GSM.GLOBAL_ENEMY_PROJECTILES.add_child( proj )
 		return proj
 	# Key not found
@@ -136,8 +136,8 @@ func spawn_projectile(nam:String, pos:Vector2, source:CharacterBody2D, target:Ch
 		#Error: projectile name nott found
 		print("Error: Projectile name not in PROJ_LIB: %s" % nam)
 		var proj:CharacterBody2D = ProjLib.get_prj("PRJ_Track_Once_Test")
-		proj.get_child(0).target = target
-		proj.get_child(0).source = source
+		proj.target = target
+		proj.source = source
 		proj.position = pos
 		return proj
 

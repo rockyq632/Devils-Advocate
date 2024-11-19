@@ -1,8 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://le8bjn04kvro"]
+[gd_scene load_steps=22 format=3 uid="uid://le8bjn04kvro"]
 
 [ext_resource type="Script" path="res://Scenes/z_Projectiles/Projectile_Library/proj_lib.gd" id="1_s73xv"]
 [ext_resource type="PackedScene" uid="uid://bcqncneucahp5" path="res://Scenes/z_Projectiles/Projectile_Library/proj_scenes/prj_ice_explosion.tscn" id="2_gnowd"]
-[ext_resource type="Script" path="res://Scenes/z_Projectiles/projectile_controller.gd" id="3_apn5j"]
 [ext_resource type="PackedScene" uid="uid://c6eyr2302jgqo" path="res://Scenes/z_Projectiles/Projectile_Library/proj_scenes/prj_test_keep_out.tscn" id="4_v5qxn"]
 [ext_resource type="PackedScene" uid="uid://km1dq8nd5dd5" path="res://Scenes/z_Projectiles/Projectile_Library/proj_scenes/prj_track_once_test.tscn" id="5_as3gm"]
 [ext_resource type="PackedScene" uid="uid://cu4xkr4daqfy8" path="res://Scenes/z_Projectiles/Projectile_Library/proj_scenes/prj_orbit_test.tscn" id="6_6f28y"]
@@ -44,11 +43,6 @@ script = ExtResource("1_s73xv")
 
 [node name="000_EXAMPLE" type="CharacterBody2D" parent="."]
 visible = false
-
-[node name="PROJECTILE_CONTROLLER" type="Node2D" parent="000_EXAMPLE" node_paths=PackedStringArray("anim_player", "hurt_box_area")]
-script = ExtResource("3_apn5j")
-anim_player = NodePath("../AP_EXAMPLE")
-hurt_box_area = NodePath("../Hurtbox")
 
 [node name="S2D_EXAMPLE" type="Sprite2D" parent="000_EXAMPLE"]
 

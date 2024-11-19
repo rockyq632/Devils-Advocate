@@ -119,25 +119,16 @@ radius = 0.1
 [sub_resource type="CircleShape2D" id="CircleShape2D_tkgdl"]
 radius = 200.0
 
-[node name="PRJ_Shockwave_Test" type="CharacterBody2D"]
+[node name="PRJ_Shockwave_Test" type="CharacterBody2D" node_paths=PackedStringArray("anim_player", "hurt_box_area", "prj_sprite", "gravity_effect_collision")]
 motion_mode = 1
-
-[node name="PROJECTILE_CONTROLLER" type="Node2D" parent="." node_paths=PackedStringArray("anim_player", "hurt_box_area", "prj_sprite", "gravity_effect_collision")]
 script = ExtResource("1_17uym")
-anim_player = NodePath("../AP_Shockwave")
-hurt_box_area = NodePath("../A2D_Hurt_Box")
-prj_sprite = NodePath("../P2D_Shockwave")
+anim_player = NodePath("AP_Shockwave")
+hurt_box_area = NodePath("A2D_Hurt_Box")
+prj_sprite = NodePath("P2D_Shockwave")
 will_rotate = true
-rotates_toward_facing = true
-tracks_to_target = true
-track_on_spawn_only = true
-stop_on_timeout = true
-timeout_sec = 15.0
-bounce_off_walls = true
-orbit_spiral_angle = 60.0
-remove_windup = false
-gravity_weight = 1.0
-gravity_effect_collision = NodePath("../A2D_Gravity")
+rotates_on_spawn_only = true
+rotates_toward_target = true
+gravity_effect_collision = NodePath("A2D_Gravity")
 
 [node name="P2D_Shockwave" type="Polygon2D" parent="."]
 color = Color(1, 0.0862745, 1, 0.392157)
