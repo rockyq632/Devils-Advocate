@@ -25,3 +25,14 @@ const type : ENM.TARGET_TYPE = ENM.TARGET_TYPE.PLAYER
 		armor = clampf(roundf(new_val), 0.0, MAX_HEALTH)
 		
 @export_range(MIN_MOVE_SPEED, MAX_MOVE_SPEED) var move_speed:float = 200.0
+
+
+@export_subgroup("Knockback")
+@export_range(0.0, 1.0) var knb_resistance:float = 0.9
+
+var knockback_force:Vector2 = Vector2.ZERO
+
+func knockback_hit(knb_hit_force:Vector2) -> void:
+	knockback_force = knb_hit_force
+	
+	

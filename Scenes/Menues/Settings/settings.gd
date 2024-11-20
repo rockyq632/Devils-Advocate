@@ -22,14 +22,14 @@ func _on_visibility_changed() -> void:
 	_on_bhud_opacity_changed(temp)
 	
 	# Refresh Audio Settings
-	%HS_Master_Volume.value = GCM.master_volume
-	_on_master_volume_value_changed(GCM.master_volume)
+	%HS_Master_Volume.value = GCM.master_volume_pcnt
+	_on_master_volume_value_changed(GCM.master_volume_pcnt)
 	
-	%HS_Music.value = GCM.music_volume
-	_on_music_value_changed(GCM.music_volume)
+	%HS_Music.value = GCM.music_volume_pcnt
+	_on_music_value_changed(GCM.music_volume_pcnt)
 	
-	%HS_Sounds.value = GCM.se_volume
-	_on_sounds_value_changed(GCM.se_volume)
+	%HS_Sounds.value = GCM.sfx_volume_pcnt
+	_on_sounds_value_changed(GCM.sfx_volume_pcnt)
 
 
 
@@ -121,16 +121,15 @@ func _on_audio_close_pressed() -> void:
 
 # Closes menu and applies settings
 func _on_audio_apply_pressed() -> void:
-	GCM.master_volume = %HS_Master_Volume.value
-	#var temp = linear_to_db(GCM.master_volume)
+	GCM.master_volume_pcnt = GCM.MASTER_DB_MIN + (GCM.MASTER_DB_MAX - GCM.MASTER_DB_MIN) * (%HS_Master_Volume.value * 0.01)
+	#if GCM.master_volume_pcnt <= GCM.MASTER_DB_MIN -> mute channel
 	#AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), temp)
 	
-	GCM.music_volume = %HS_Music.value
-	#temp = linear_to_db(GCM.music_volume)
+	GCM.music_volume_pcnt = GCM.MASTER_DB_MIN + (GCM.MASTER_DB_MAX - GCM.MASTER_DB_MIN) * (%HS_Music.value * 0.01)
 	#AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), temp)
 	
-	GCM.se_volume = %HS_Sounds.value
-	#temp = linear_to_db(GCM.se_volume)
+	GCM.sfx_volume_pcnt = GCM.MASTER_DB_MIN + (GCM.MASTER_DB_MAX - GCM.MASTER_DB_MIN) * (%HS_Sounds.value * 0.01)
 	#AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), temp)
+	
 	
 	return_to_main()

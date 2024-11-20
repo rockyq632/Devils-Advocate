@@ -178,7 +178,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_cfjny"]
 radius = 0.1
 
-[node name="PRJ_Dan_Shout" type="CharacterBody2D" node_paths=PackedStringArray("anim_player", "hurt_box_area", "prj_sprite", "gravity_effect_collision")]
+[node name="PRJ_Dan_Shout" type="CharacterBody2D" node_paths=PackedStringArray("anim_player", "hurt_box_area", "prj_sprite")]
 motion_mode = 1
 script = ExtResource("1_s3dxe")
 anim_player = NodePath("AP_Dan_Shout")
@@ -191,7 +191,8 @@ v_acceleration = 0.0
 will_rotate = true
 rotates_on_spawn_only = true
 rotates_toward_target = true
-gravity_effect_collision = NodePath("")
+has_knockback = true
+is_normal_to_src = true
 is_keep_out_area = true
 
 [node name="S2D_Dan_Shout" type="Sprite2D" parent="."]

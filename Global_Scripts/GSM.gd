@@ -33,7 +33,7 @@ var is_pause_disabled : bool = true
 var is_inventory_disabled : bool = true
 
 
-#TODO
+# TODO Sets the paralax BG images from close to farthest
 func set_bgs(_bg_close:Texture2D, _bg_far:Texture2D, _bg_farthest:Texture2D) -> void:
 	pass
 

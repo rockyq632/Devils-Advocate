@@ -33,7 +33,15 @@ func _physics_process(_delta: float) -> void:
 	
 	# If gravity via projectile is being applied to character
 	if(char_body.effected_by_prj_gravity):
-		char_body.velocity+=grav_pull
+		char_body.velocity += grav_pull
+		
+	# If knockback was applied
+	if(char_body.knockback_force != Vector2.ZERO):
+		char_body.velocity += char_body.knockback_force
+		
+		char_body.knockback_force = char_body.knockback_force*char_body.knb_resistance
+		if( abs(char_body.knockback_force.x)<=5.0  and  abs(char_body.knockback_force.y)<=5.0 ):
+			char_body.knockback_force = Vector2.ZERO
 		
 	# If animation player changes move speed 
 	char_body.velocity *= char_body.ap_move_speed_scale

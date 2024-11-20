@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.3", "Forward Plus")
 run/max_fps=60
 config/icon="res://Graphics/Icons/Taskbar_Icon_1x.png"
 
+[audio]
+
+buses/default_bus_layout="res://Sounds/default_bus_layout.tres"
+
 [autoload]
 
 GSM="*res://Global_Scripts/GSM.gd"

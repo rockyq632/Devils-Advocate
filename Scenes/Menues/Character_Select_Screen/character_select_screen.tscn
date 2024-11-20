@@ -36,6 +36,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_7xld5")
+expand_mode = 1
 
 [node name="PL_Left_Light" type="PointLight2D" parent="TR_BG"]
 light_mask = 9

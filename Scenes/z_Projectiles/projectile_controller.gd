@@ -32,10 +32,10 @@ signal projectile_spawned
 @export var todo_max_rotation_per_tick:float = 90.0 #TODO actually use this
 
 @export_subgroup("Knockback")
-@export var todo_has_knockback:bool = false
-@export var todo_kb_force:float = 10.0
-@export var todo_kb_direction:float = 0.0
-@export var todo_is_dir_normal_to_vel:bool =true
+@export var has_knockback:bool = false
+@export var knb_force:float = 1000.0
+@export var knb_direction_adj:float = 0.0
+@export var is_normal_to_src:bool =false
 
 @export_subgroup("Tracking")
 @export var tracking_deadzone : float = 0.0
@@ -389,9 +389,31 @@ func _on_hurtbox_entered(body: Node2D) -> void:
 	# If target is in the hurtbox -> hurt target
 	#print("%s == %s = %s" % [body.type, target.type, (body.type==target.type)])
 	if(body.type == target.type):
+		# Target takes damage
 		if(body.has_method("take_damage")):
 			body.take_damage(damage)
+		
+		# Target takes knockback
+		if(has_knockback):
+			var kb_force_vec:Vector2 = Vector2.ZERO
+			# Calculate force normal to spawning source
+			if(is_normal_to_src):
+				var norm_ang:float = rad_to_deg( source.global_position.angle_to_point(target.global_position) )
+				var adj_ang:float = deg_to_rad( norm_ang + knb_direction_adj )
+				kb_force_vec = Vector2((knb_force * cos(adj_ang)), (knb_force * sin(adj_ang)))
+			# Calculate force normal to velocity
+			else:
+				var norm_ang:float = rad_to_deg( velocity.angle() )
+				var adj_ang:float = deg_to_rad( norm_ang + knb_direction_adj )
+				kb_force_vec = Vector2((knb_force * cos(adj_ang)), (knb_force * sin(adj_ang)))
+			
+			if( "knockback_hit" in body ):
+				body.knockback_hit( kb_force_vec )
+		
+		# Emit target hit signal
 		projectile_hit_target.emit()
+		
+		# Stop projectile
 		if(stop_on_end):
 			end_projectile()
 
