@@ -45,8 +45,9 @@ signal projectile_spawned
 @export var use_bad_tracking : bool = false
 
 @export_subgroup("Arcing")
-@export var todo_will_arc:bool = false
-@export var todo_arc_grav:float = 0.98
+@export var will_arc:bool = false
+@export var arc_grav:float = 10.0
+@export var todo_initial_ang:float = 45.0
 
 @export_subgroup("Bounce")
 @export var bounce_off_walls : bool = false
@@ -100,16 +101,16 @@ var has_tracked:bool = false
 # bounce vars
 var bounce_count:int=0
 
-# Gravity vars
-var grav_effected:Array[Node] = []
-var self_grav_pull:Vector2 = Vector2(0,0)
-
 # Orbit vars
 var orbit_pos:Vector2 = Vector2(0,0)
 var orbit_update_dir:Vector2 = Vector2(0,0)
 
 # Keep out AOE vars
 var keep_out_detonate_timer:Timer
+
+# Gravity vars
+var grav_effected:Array[Node] = []
+var self_grav_pull:Vector2 = Vector2(0,0)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -188,8 +189,8 @@ func _physics_process(_delta: float) -> void:
 			tracks_to_source = false
 
 		# If projectile wants to arc
-		if( todo_will_arc ):
-			pass # TODO add arc motion to this
+		if( will_arc ):
+			calc_arc()
 
 		# If projectile orbits target
 		elif( orbits_target ):
@@ -265,6 +266,25 @@ func _physics_process(_delta: float) -> void:
 			$PB_Timer.value = keep_out_detonate_timer.time_left
 
 
+# Calculations needed for arc
+func calc_arc() -> void:
+	if(track_on_spawn_only and not has_tracked):
+		has_tracked = true
+		if(tracks_to_target):
+			if(global_position.x < target.global_position.x):
+				dir = Vector2(1,1)
+			else:
+				dir = Vector2(-1,1)
+		elif(tracks_to_source):
+			if(global_position.x < source.global_position.x):
+				dir = Vector2(1,1)
+			else:
+				dir = Vector2(-1,1)
+				
+	curr_speed.y = curr_speed.y+arc_grav
+	curr_speed.x = clampf( curr_speed.x+h_acceleration, (-1*h_move_speed), h_move_speed )
+	velocity.x = dir.x*curr_speed.x+self_grav_pull.x
+	velocity.y = curr_speed.y+self_grav_pull.y
 
 # Calculates (albeit poorly) the velocity of orbiting projectiles
 func calc_orbit(track_pos:Vector2) -> void:
@@ -343,6 +363,9 @@ func floor_hit() -> void:
 		bounce_count += 1
 		if( bounce_count > max_bounces ):
 			end_projectile()
+			
+		if( will_arc ):
+			curr_speed.y *= -1*bounce_force_ratio
 		dir *= Vector2(1,-1)
 		h_move_speed *= bounce_force_ratio
 		v_move_speed *= bounce_force_ratio
