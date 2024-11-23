@@ -28,6 +28,7 @@ GCM="*res://Global_Scripts/GCM.gd"
 AB_REF="*res://Global_Scripts/Abilities/AB_REF.gd"
 RUN_STATS="*res://Global_Scripts/RUN_STATS.gd"
 ProjLib="*res://Scenes/z_Projectiles/Projectile_Library/PROJ_LIB.tscn"
+PLOT="*res://Global_Scripts/Plot/PLOT.gd"
 
 [debug]
 

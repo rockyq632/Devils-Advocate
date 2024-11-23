@@ -132,7 +132,6 @@ hurt_box_area = NodePath("A2D_Hurt_Box")
 prj_sprite = NodePath("S2D_Music_Note1")
 tracks_to_target = true
 track_on_spawn_only = true
-will_arc = true
 bounce_off_walls = true
 bounce_force_ratio = 0.8
 

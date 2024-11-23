@@ -81,16 +81,19 @@ func _input(_event: InputEvent) -> void:
 
 # Move body a specific direction. 
 # CAUTION: dir is used as a float if using a Path2D, and is used as a Vector2 otherwise
-func move(dir) -> void:
+func move(dir:Vector2) -> void:
+	'''
 	if(use_movement_path):
 		movement_path.progress += dir*move_speed
+	
 	else:
-		velocity += dir*move_acceleration
-		velocity.clamp(Vector2.ZERO, Vector2(move_speed,move_speed))
+	'''
+	velocity += dir*move_acceleration
+	velocity.clamp(Vector2.ZERO, Vector2(move_speed,move_speed))
 		
-		# Prevents weird move_and_slide glitch with zero velocity
-		if(velocity != Vector2.ZERO):
-			move_and_slide()
+	# Prevents weird move_and_slide glitch with zero velocity
+	if(velocity != Vector2.ZERO):
+		move_and_slide()
 
 
 # Move without overshoot (RQ NOTE It actually just does minimal overshoot
