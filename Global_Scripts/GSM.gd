@@ -1,6 +1,7 @@
 extends Node
 
 @onready var GLOBAL_SAVE: SaveLoad = SaveLoad.new()
+@onready var PLOT_TRACKER:PLOT = PLOT.new()
 
 var GLOBAL_SCENE_MANAGER : Node 
 var GLOBAL_CONTROL_NODE : Control

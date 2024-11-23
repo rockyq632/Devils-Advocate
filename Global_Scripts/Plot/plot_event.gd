@@ -1,10 +1,17 @@
 class_name PlotEvent
 extends Node
 
+# ID number for plot reference, starts @ 1000
 var id:int
+
+# Description of event, mostly for codingg purposes
 var desc:String
 
+# Script of text to be displayed during the plot event
 var text_script:Array[String] = []
+
+# States whether the event has occurfed in this game instance
+var is_finished:bool = false
 
 
 

@@ -4,4 +4,11 @@
 
 [resource]
 script = ExtResource("1_5uvi7")
-save_num = 727
+save_num = 741
+plot_list = {
+1000: false,
+1001: false,
+1002: false,
+1003: false,
+1004: false
+}
