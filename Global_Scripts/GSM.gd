@@ -3,17 +3,21 @@ extends Node
 @onready var GLOBAL_SAVE: SaveLoad = SaveLoad.new()
 @onready var PLOT_TRACKER:PLOT = PLOT.new()
 
+# Global Access Control Nodes
 var GLOBAL_SCENE_MANAGER : Node 
 var GLOBAL_CONTROL_NODE : Control
 var GLOBAL_2D_NODE : Node2D
 var GLOBAL_LIGHTING_NODE : Node2D
 var GLOBAL_ENEMY_PROJECTILES:Node
+
+# Sound Buses & Players
+var GLOBAL_HIT_SOUND_PLAYER:AudioStreamPlayer
+var GLOBAL_MUSIC_PLAYER:AudioStreamPlayer
+
+# Screens and stuff
 var DEBUG:DebugConsole
 var PAUSE_MENU:PauseMenu
 var SETTINGS_MENU:SettingsMenu
-
-var GLOBAL_HIT_SOUND_PLAYER:AudioStreamPlayer
-var GLOBAL_MUSIC_PLAYER:AudioStreamPlayer
 
 
 
@@ -36,6 +40,8 @@ var is_inventory_disabled : bool = true
 
 # TODO Sets the paralax BG images from close to farthest
 func set_bgs(_bg_close:Texture2D, _bg_far:Texture2D, _bg_farthest:Texture2D) -> void:
+	# TODO Things to look at:
+	#		- An actual class in GDScript ParallaxBackground
 	pass
 
 

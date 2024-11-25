@@ -17,6 +17,9 @@ signal projectile_spawned
 @export var v_move_speed:float = 200.0
 @export var v_acceleration:float = 10.0
 
+###
+### Projectile Options
+###
 @export_group("Projectile Options")
 @export_subgroup("Stop")
 @export var stop_on_end : bool = true
@@ -54,10 +57,6 @@ signal projectile_spawned
 @export var bounce_force_ratio : float = 0.75
 @export var max_bounces : int = 3
 
-@export_subgroup("Keep Out AOE")
-@export var is_keep_out_area : bool = false
-@export var keep_out_detonate_time:float = 2.0
-
 @export_subgroup("Orbiting")
 @export var orbits_source:bool = false
 @export var orbits_target:bool = false
@@ -66,6 +65,39 @@ signal projectile_spawned
 @export var orbit_CW:bool = false
 @export var orbit_spiral:bool = false
 @export var orbit_spiral_angle:float = 90.0
+
+###
+### Mechanic Options
+###
+@export_group("Mechanic Options")
+@export_subgroup("Display Warnings")
+@export var has_path_warning : bool = false
+@export var warning_display_time : float = 2.0
+@export var warning_color : Color = Color(1.0, 1.0, 1.0, 0.35)
+
+@export_subgroup("Status Effects") #TODO
+@export var todo_apply_sts_effect : bool = false
+
+@export_subgroup("Keep Out AOE")
+@export var is_keep_out_area : bool = false
+@export var keep_out_detonate_time:float = 2.0
+
+@export_subgroup("Spread Out")
+@export var todo_is_spread_aoe : bool = false
+@export var todo_is_spread_dist : bool = false
+@export var todo_spread_time : float = 4.0
+
+@export_subgroup("Come Together")
+@export var todo_is_together_aoe : bool = false
+@export var todo_is_together_dist : bool = false
+@export var todo_together_time : float = 4.0
+
+@export_subgroup("Ball & Chain") #TODO
+@export var todo_is_ball_chain : bool = false
+
+
+
+
 
 @export_subgroup("Gravity")
 @export var effected_by_gravity : bool = false
@@ -76,8 +108,9 @@ signal projectile_spawned
 @export var gravity_effect_collision : Area2D
 
 
-var type: ENM.TARGET_TYPE = ENM.TARGET_TYPE.PROJECTILE
 
+# Type defined as projectile
+var type: ENM.TARGET_TYPE = ENM.TARGET_TYPE.PROJECTILE
 
 # source stuff
 var source:CharacterBody2D = CharacterBody2D.new()
@@ -112,13 +145,16 @@ var keep_out_detonate_timer:Timer
 var grav_effected:Array[Node] = []
 var self_grav_pull:Vector2 = Vector2(0,0)
 
+# Warning vars
+var warn_timer:Timer
+var warn_shape:Line2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if( Engine.is_editor_hint() ):
 		pass
 	else:
-		# 
+		# Initialize velocity at zero
 		velocity = Vector2.ZERO
 		# Connect Animation Finished signal
 		anim_player.animation_finished.connect(_on_ap_projectile_animation_finished)
@@ -171,6 +207,23 @@ func _ready() -> void:
 			# Ends rotation if only spawn rotation is wanted
 			if(rotates_on_spawn_only):
 				will_rotate = false
+		
+		
+		# Initiate Warning
+		if(has_path_warning):
+			# Create and initialize warning timer
+			warn_timer = Timer.new()
+			warn_timer.timeout.connect(_warning_timeout)
+			warn_timer.wait_time = keep_out_detonate_time
+			warn_timer.one_shot = true
+			add_child(warn_timer)
+			warn_timer.start()
+			
+			# Create and add path shape
+			warn_shape = Line2D.new()
+			warn_shape.default_color = warning_color
+			warn_shape.points = [Vector2.ZERO, Vector2.ZERO]
+			add_child(warn_shape)
 		
 		
 		# Play spawning animation
@@ -264,6 +317,16 @@ func _physics_process(_delta: float) -> void:
 		# updates progress bar for keep out area option
 		if(is_keep_out_area):
 			$PB_Timer.value = keep_out_detonate_timer.time_left
+			
+		if(has_path_warning):
+			calc_path_warning()
+
+
+func calc_path_warning() -> void:
+	warn_shape.position = Vector2.ZERO
+	warn_shape.points[0] = position
+	warn_shape.points[1] = position+velocity
+	print( "%s = %s" % [global_position, warn_shape.global_position] )
 
 
 # Calculations needed for arc
@@ -451,6 +514,11 @@ func _keep_out_timeout() -> void:
 	if(is_keep_out_area):
 		stop_movement()
 		end_projectile()
+
+# Warning timer timeout
+func _warning_timeout() -> void:
+	#warn_shape.queue_free()
+	pass
 
 # When a body enters the gravity field
 func _gravity_entered(body:Node2D) -> void:

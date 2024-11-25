@@ -134,6 +134,7 @@ tracks_to_target = true
 track_on_spawn_only = true
 bounce_off_walls = true
 bounce_force_ratio = 0.8
+warning_color = Color(1, 1, 1, 1)
 
 [node name="S2D_Music_Note1" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_cos2y")

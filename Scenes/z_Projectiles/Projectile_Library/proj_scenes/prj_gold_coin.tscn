@@ -93,7 +93,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_cfjny"]
 radius = 0.1
 
-[node name="PRJ_Gold_Coin" type="CharacterBody2D" node_paths=PackedStringArray("anim_player", "hurt_box_area", "prj_sprite", "gravity_effect_collision")]
+[node name="PRJ_Gold_Coin" type="CharacterBody2D" node_paths=PackedStringArray("anim_player", "hurt_box_area", "prj_sprite")]
 motion_mode = 1
 script = ExtResource("1_edgt5")
 anim_player = NodePath("AP_Gold_Coin")
@@ -104,7 +104,6 @@ rotates_toward_facing = true
 tracks_to_target = true
 track_on_spawn_only = true
 bounce_off_walls = true
-gravity_effect_collision = NodePath("")
 
 [node name="S2D_Gold_Coin" type="Sprite2D" parent="."]
 rotation = 1.5708
