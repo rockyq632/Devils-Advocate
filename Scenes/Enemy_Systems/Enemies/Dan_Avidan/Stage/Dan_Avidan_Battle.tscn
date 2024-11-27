@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dx1yec27gbobn"]
 
-[ext_resource type="Script" path="res://Scenes/Levels/Stage_Battles/Dan_Avidan_Battle/dan_avidan_battle.gd" id="1_8wkuh"]
+[ext_resource type="Script" path="res://Scenes/Enemy_Systems/Enemies/Dan_Avidan/Stage/enemy_stage.gd" id="1_8wkuh"]
 [ext_resource type="PackedScene" uid="uid://cg7ifh35qsbef" path="res://Scenes/Enemy_Systems/Enemies/Dan_Avidan/Dan_Avidan_Enemy.tscn" id="1_k2ocx"]
 [ext_resource type="PackedScene" uid="uid://c2m8vytmn4wws" path="res://Scenes/Enemy_Systems/Node_Health_Bar.tscn" id="2_2qqgc"]
 

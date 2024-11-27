@@ -8,7 +8,7 @@ signal death_signal
 
 # Set maximum supported values
 const MAX_HEALTH = 100000.0
-const MIN_MOVE_SPEED = 100.0
+const MIN_MOVE_SPEED = 10.0
 const MAX_MOVE_SPEED = 1000.0
 const type : ENM.TARGET_TYPE = ENM.TARGET_TYPE.ENEMY
 

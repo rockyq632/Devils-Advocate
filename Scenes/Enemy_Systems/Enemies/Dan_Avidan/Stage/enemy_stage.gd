@@ -1,3 +1,4 @@
+class_name EnemyStage
 extends Control
 
 signal death_signal

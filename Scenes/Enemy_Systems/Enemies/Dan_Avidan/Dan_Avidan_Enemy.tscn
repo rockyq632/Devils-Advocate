@@ -18,6 +18,7 @@ script = ExtResource("1_a5fdo")
 max_health = 200.0
 health = 200.0
 move_speed = 500.0
+move_acceleration = 50.0
 state_machine = NodePath("State_Machine")
 enable_ai = true
 delay_between_states = 2.0

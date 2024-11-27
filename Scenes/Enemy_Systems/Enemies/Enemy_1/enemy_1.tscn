@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://c2p1fx8u05yvf"]
+
+[ext_resource type="Script" path="res://Scenes/Enemy_Systems/Enemies/Enemy_1/enemy_1.gd" id="1_ew4qu"]
+[ext_resource type="Texture2D" uid="uid://bs8a6nmwj2tha" path="res://Graphics/PLACEHOLDERS/PLACEHOLDER_ENEMY.png" id="2_orxe8"]
+[ext_resource type="Script" path="res://Scenes/Enemy_Systems/Enemies/BP_enemy_state_machine.gd" id="3_wu3lp"]
+[ext_resource type="Script" path="res://Scenes/Enemy_Systems/Enemies/Enemy_1/States/move_to_center_state.gd" id="4_u10gt"]
+[ext_resource type="Script" path="res://Scenes/Enemy_Systems/Enemies/Enemy_1/States/idle_state.gd" id="4_xg7bv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mf4yw"]
+radius = 64.0
+
+[node name="Enemy_1" type="CharacterBody2D" node_paths=PackedStringArray("state_machine")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_ew4qu")
+move_speed = 800.0
+move_acceleration = 100.0
+state_machine = NodePath("State_Machine")
+enable_ai = true
+
+[node name="S2D_Enemy1" type="Sprite2D" parent="."]
+texture = ExtResource("2_orxe8")
+
+[node name="AP_Enemy1" type="AnimationPlayer" parent="."]
+
+[node name="CS2D_Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mf4yw")
+
+[node name="State_Machine" type="Node" parent="." node_paths=PackedStringArray("curr_state")]
+script = ExtResource("3_wu3lp")
+curr_state = NodePath("Move_To_Center_State")
+
+[node name="Move_To_Center_State" type="Node" parent="State_Machine" node_paths=PackedStringArray("enm_body", "anim_player")]
+script = ExtResource("4_u10gt")
+enm_body = NodePath("../..")
+anim_player = NodePath("../../AP_Enemy1")
+
+[node name="Idle_State" type="Node" parent="State_Machine" node_paths=PackedStringArray("enm_body", "anim_player")]
+script = ExtResource("4_xg7bv")
+enm_body = NodePath("../..")
+anim_player = NodePath("../../AP_Enemy1")

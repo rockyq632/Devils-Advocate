@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4u2yywoya3ts"]
+[gd_scene load_steps=8 format=3 uid="uid://c4u2yywoya3ts"]
 
 [ext_resource type="Texture2D" uid="uid://djnhjuf23frn" path="res://Graphics/BG/Tartarus_BG_Bot_1x.png" id="1_2urq1"]
 [ext_resource type="Script" path="res://Scenes/Levels/Circles_of_Hell/Tartarus/circle_tartarus.gd" id="1_qqlg8"]
 [ext_resource type="PackedScene" uid="uid://ctrwcjfwrg2pf" path="res://Scenes/Levels/Stage_HUD/Stage_Progress_Bar/Stage_Progress_Bar.tscn" id="2_nwdda"]
 [ext_resource type="PackedScene" uid="uid://px2tuv0xexo0" path="res://Scenes/Levels/Stage_Shops/Tartarus_Shop/Tartarus_Shop.tscn" id="3_8ma3n"]
-[ext_resource type="PackedScene" uid="uid://dx1yec27gbobn" path="res://Scenes/Levels/Stage_Battles/Dan_Avidan_Battle/Dan_Avidan_Battle.tscn" id="4_1v1a8"]
+[ext_resource type="PackedScene" uid="uid://dx1yec27gbobn" path="res://Scenes/Enemy_Systems/Enemies/Dan_Avidan/Stage/Dan_Avidan_Battle.tscn" id="4_1v1a8"]
+[ext_resource type="PackedScene" uid="uid://c32fx6himgys5" path="res://Scenes/Enemy_Systems/Enemies/Enemy_1/Stage/enemy1_stage.tscn" id="4_p5nvt"]
 [ext_resource type="PackedScene" uid="uid://d3davql1phdke" path="res://Scenes/Levels/Stage_HUD/Waiting_Room/waiting_room.tscn" id="5_isq3s"]
 
 [node name="CircleTartarus" type="Control"]
@@ -15,7 +16,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qqlg8")
-stage_list = Array[PackedScene]([ExtResource("4_1v1a8"), ExtResource("3_8ma3n"), ExtResource("4_1v1a8"), ExtResource("4_1v1a8"), ExtResource("4_1v1a8")])
+stage_list = Array[PackedScene]([ExtResource("4_p5nvt"), ExtResource("3_8ma3n"), ExtResource("4_1v1a8"), ExtResource("4_1v1a8"), ExtResource("4_1v1a8")])
 
 [node name="TR_BG" type="TextureRect" parent="."]
 layout_mode = 1

@@ -1,18 +1,26 @@
-[gd_scene load_steps=9 format=3 uid="uid://ba6xnfstclqbv"]
+[gd_scene load_steps=10 format=3 uid="uid://ba6xnfstclqbv"]
 
 [ext_resource type="Script" path="res://Scenes/GLOBAL_SCENE_MANAGER/scripts/global_scene_manager.gd" id="1_6gix0"]
 [ext_resource type="PackedScene" uid="uid://c6uwyusdwgn51" path="res://Scenes/GLOBAL_SCENE_MANAGER/Screen_Bounds.tscn" id="2_h2cpf"]
 [ext_resource type="Script" path="res://Scenes/GLOBAL_SCENE_MANAGER/scripts/global_bg_viewports.gd" id="2_lj6ur"]
-[ext_resource type="Texture2D" uid="uid://bb6uy1ebpp7cr" path="res://Graphics/BG/generated/down_tran_img.png" id="3_qppog"]
 [ext_resource type="Script" path="res://Scenes/GLOBAL_SCENE_MANAGER/debug_stuff.gd" id="5_jnqj1"]
 [ext_resource type="AudioStream" uid="uid://8hcgpv4amdo3" path="res://Sounds/Sound_Effects/SE_Hit1.wav" id="6_6gnvb"]
 [ext_resource type="PackedScene" uid="uid://cdve04xju573h" path="res://Scenes/Menues/Pause/Pause.tscn" id="6_neh6m"]
 [ext_resource type="PackedScene" uid="uid://cjapii1suvnye" path="res://Scenes/Menues/Settings/Settings.tscn" id="7_pmbqi"]
 
+[sub_resource type="Gradient" id="Gradient_lw8vh"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_201bi"]
+gradient = SubResource("Gradient_lw8vh")
+width = 1280
+height = 800
+fill_to = Vector2(0.00854701, 0.0042735)
+
 [node name="Global_Scene_Manager" type="Node"]
 script = ExtResource("1_6gix0")
 
 [node name="Global_BG_Viewports_Node" type="Control" parent="."]
+visible = false
 custom_minimum_size = Vector2(1300, 740)
 layout_mode = 3
 anchors_preset = 15
@@ -32,33 +40,39 @@ grow_vertical = 2
 
 [node name="SVP_BG_Close" type="SubViewport" parent="Global_BG_Viewports_Node/VP_BG_Close"]
 handle_input_locally = false
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="TR_BG_Close" type="TextureRect" parent="Global_BG_Viewports_Node/VP_BG_Close/SVP_BG_Close"]
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="VP_BG_Far" type="SubViewportContainer" parent="Global_BG_Viewports_Node"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="SVP_BG_Far" type="SubViewport" parent="Global_BG_Viewports_Node/VP_BG_Far"]
 handle_input_locally = false
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="TR_BG_Far" type="TextureRect" parent="Global_BG_Viewports_Node/VP_BG_Far/SVP_BG_Far"]
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="VP_BG_Farthest" type="SubViewportContainer" parent="Global_BG_Viewports_Node"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="SVP_BG_Farthest" type="SubViewport" parent="Global_BG_Viewports_Node/VP_BG_Farthest"]
 handle_input_locally = false
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="TR_BG_Farthest" type="TextureRect" parent="Global_BG_Viewports_Node/VP_BG_Farthest/SVP_BG_Farthest"]
 offset_right = 40.0
@@ -207,10 +221,9 @@ unique_name_in_owner = true
 light_mask = 5
 visibility_layer = 5
 color = Color(1, 0.392157, 0.392157, 1)
-energy = 2.0
 shadow_enabled = true
 shadow_item_cull_mask = 2
-texture = ExtResource("3_qppog")
+texture = SubResource("GradientTexture2D_201bi")
 offset = Vector2(640, 360)
 
 [node name="ScreenBounds" parent="." instance=ExtResource("2_h2cpf")]

@@ -11,6 +11,11 @@ func _ready() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func change_state(new_state:EnemyState) -> void:
+	#Check that the state exists
+	if( not new_state in get_children() ):
+		push_error("%s not in current state machine" % new_state)
+	
+	
 	if(curr_state):
 		curr_state._exit_state()
 	new_state._enter_state()

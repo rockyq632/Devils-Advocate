@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c32fx6himgys5"]
+
+[ext_resource type="Script" path="res://Scenes/Enemy_Systems/Enemies/Dan_Avidan/Stage/enemy_stage.gd" id="1_2flr8"]
+[ext_resource type="PackedScene" uid="uid://c2m8vytmn4wws" path="res://Scenes/Enemy_Systems/Node_Health_Bar.tscn" id="2_oik6s"]
+[ext_resource type="PackedScene" uid="uid://c2p1fx8u05yvf" path="res://Scenes/Enemy_Systems/Enemies/Enemy_1/enemy_1.tscn" id="3_r8vdm"]
+
+[node name="Enemy1Stage" type="Control" node_paths=PackedStringArray("enm_body")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2flr8")
+enm_body = NodePath("Enemy_1")
+
+[node name="BP_Health_Bar" parent="." instance=ExtResource("2_oik6s")]
+layout_mode = 1
+
+[node name="Enemy_1" parent="." node_paths=PackedStringArray("health_bar") instance=ExtResource("3_r8vdm")]
+position = Vector2(996.147, 368.459)
+health_bar = NodePath("../BP_Health_Bar")
