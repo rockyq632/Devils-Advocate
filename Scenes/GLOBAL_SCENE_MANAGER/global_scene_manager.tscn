@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://ba6xnfstclqbv"]
+[gd_scene load_steps=11 format=3 uid="uid://ba6xnfstclqbv"]
 
 [ext_resource type="Script" path="res://Scenes/GLOBAL_SCENE_MANAGER/scripts/global_scene_manager.gd" id="1_6gix0"]
+[ext_resource type="Script" path="res://Scenes/GLOBAL_SCENE_MANAGER/scripts/multiplayer_handler.gd" id="2_784jr"]
 [ext_resource type="PackedScene" uid="uid://c6uwyusdwgn51" path="res://Scenes/GLOBAL_SCENE_MANAGER/Screen_Bounds.tscn" id="2_h2cpf"]
 [ext_resource type="Script" path="res://Scenes/GLOBAL_SCENE_MANAGER/scripts/global_bg_viewports.gd" id="2_lj6ur"]
 [ext_resource type="Script" path="res://Scenes/GLOBAL_SCENE_MANAGER/debug_stuff.gd" id="5_jnqj1"]
@@ -18,6 +19,10 @@ fill_to = Vector2(0.00854701, 0.0042735)
 
 [node name="Global_Scene_Manager" type="Node"]
 script = ExtResource("1_6gix0")
+
+[node name="Multiplayer_Handler" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_784jr")
 
 [node name="Global_BG_Viewports_Node" type="Control" parent="."]
 visible = false

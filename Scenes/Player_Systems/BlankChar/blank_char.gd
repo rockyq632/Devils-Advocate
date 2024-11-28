@@ -1,6 +1,5 @@
-extends CharacterBody2D
+extends PlayableCharacter
 
-@export var pstats:PStats
 
 var moveset : Array[PC_Ability] = [
 	AB_REF.dict[ENM.AB_KEY.RESET],
@@ -11,7 +10,6 @@ var moveset : Array[PC_Ability] = [
 
 var MOVE_SPEED : float = 0.0
 var MOVE_DIR : Vector2 = Vector2(0,0)
-var MAX_HEALTH : float = 3.0
 
 var curr_health : float = 3.0
 
@@ -40,14 +38,14 @@ func get_ability_icons() -> Array[CompressedTexture2D]:
 	return ret
 
 # Trigger animation for Attack 1
-func atk1_triggered():
+func atk1_triggered() -> void:
 	pass
 	
-func atk2_triggered():
+func atk2_triggered() -> void:
 	pass
 
-func atk3_triggered():
+func atk3_triggered() -> void:
 	pass
 	
-func def_triggered():
+func def_triggered() -> void:
 	pass
