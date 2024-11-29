@@ -81,3 +81,11 @@ func _on_select_btn_pressed() -> void:
 	#print(GSM.PLAYERS)
 	GSM.GLOBAL_2D_NODE.add_child( current_selection )
 	GSM.is_pc_movement_locked = false
+
+# Become host
+func _on_host_btn_pressed() -> void:
+	GSM.MULTIPLAYER_HANDLER._become_server()
+
+# Join Host
+func _on_join_btn_pressed() -> void:
+	GSM.MULTIPLAYER_HANDLER._become_client()

@@ -7,6 +7,9 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GSM.MULTIPLAYER_HANDLER = %Multiplayer_Handler
+	
+	
 	GSM.GLOBAL_SCENE_MANAGER = self
 	GSM.GLOBAL_CONTROL_NODE = %Global_Control_Node
 	GSM.GLOBAL_2D_NODE = %Global_2D_Node
@@ -29,6 +32,7 @@ func _ready() -> void:
 		$Debug_Stuff.visible=true
 	else:
 		$Debug_Stuff.visible=false
+	
 
 
 

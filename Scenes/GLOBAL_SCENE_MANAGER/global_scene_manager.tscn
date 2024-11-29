@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ba6xnfstclqbv"]
+[gd_scene load_steps=12 format=3 uid="uid://ba6xnfstclqbv"]
 
 [ext_resource type="Script" path="res://Scenes/GLOBAL_SCENE_MANAGER/scripts/global_scene_manager.gd" id="1_6gix0"]
 [ext_resource type="Script" path="res://Scenes/GLOBAL_SCENE_MANAGER/scripts/multiplayer_handler.gd" id="2_784jr"]
@@ -8,6 +8,8 @@
 [ext_resource type="AudioStream" uid="uid://8hcgpv4amdo3" path="res://Sounds/Sound_Effects/SE_Hit1.wav" id="6_6gnvb"]
 [ext_resource type="PackedScene" uid="uid://cdve04xju573h" path="res://Scenes/Menues/Pause/Pause.tscn" id="6_neh6m"]
 [ext_resource type="PackedScene" uid="uid://cjapii1suvnye" path="res://Scenes/Menues/Settings/Settings.tscn" id="7_pmbqi"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_lkn1j"]
 
 [sub_resource type="Gradient" id="Gradient_lw8vh"]
 
@@ -19,6 +21,13 @@ fill_to = Vector2(0.00854701, 0.0042735)
 
 [node name="Global_Scene_Manager" type="Node"]
 script = ExtResource("1_6gix0")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_lkn1j")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("")
+spawn_path = NodePath("../Multiplayer_Handler")
 
 [node name="Multiplayer_Handler" type="Node" parent="."]
 unique_name_in_owner = true

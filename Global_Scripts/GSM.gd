@@ -3,6 +3,10 @@ extends Node
 @onready var GLOBAL_SAVE: SaveLoad = SaveLoad.new()
 @onready var PLOT_TRACKER:PLOT = PLOT.new()
 
+# Global Multiplayer Stuff
+var MULTIPLAYER_HANDLER : MultiplayerHandler
+
+
 # Global Access Control Nodes
 var GLOBAL_SCENE_MANAGER : Node 
 var GLOBAL_CONTROL_NODE : Control
