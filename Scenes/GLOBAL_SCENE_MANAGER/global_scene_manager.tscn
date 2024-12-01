@@ -26,8 +26,7 @@ script = ExtResource("1_6gix0")
 replication_config = SubResource("SceneReplicationConfig_lkn1j")
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("")
-spawn_path = NodePath("../Multiplayer_Handler")
+spawn_path = NodePath("..")
 
 [node name="Multiplayer_Handler" type="Node" parent="."]
 unique_name_in_owner = true

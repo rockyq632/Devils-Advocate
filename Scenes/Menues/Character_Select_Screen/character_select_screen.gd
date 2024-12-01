@@ -81,6 +81,12 @@ func _on_select_btn_pressed() -> void:
 	#print(GSM.PLAYERS)
 	GSM.GLOBAL_2D_NODE.add_child( current_selection )
 	GSM.is_pc_movement_locked = false
+	
+	# If connected, add PC to others
+	if( multiplayer.connected_to_server or multiplayer.is_server() ):
+		rpc("add_pc", multiplayer.get_unique_id(), current_selection.scene_file_path)
+
+
 
 # Become host
 func _on_host_btn_pressed() -> void:
@@ -89,3 +95,14 @@ func _on_host_btn_pressed() -> void:
 # Join Host
 func _on_join_btn_pressed() -> void:
 	GSM.MULTIPLAYER_HANDLER._become_client()
+
+
+
+###					  ###
+### Network RPC Calls ###
+###					  ###
+@rpc("any_peer")
+func add_pc(_peer_id:int, path_to_spawn:String) -> void:
+	var PC:Control = load(path_to_spawn).instantiate()
+	GSM.GLOBAL_2D_NODE.add_child(PC)
+	GSM.PLAYERS.append( PC.char_instance )

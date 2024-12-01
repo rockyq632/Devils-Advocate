@@ -19,7 +19,8 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	process_inputs()
+	if is_multiplayer_authority():
+		process_inputs()
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

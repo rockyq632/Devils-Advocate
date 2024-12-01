@@ -3,20 +3,7 @@ extends Node
 
 var peer:ENetMultiplayerPeer = ENetMultiplayerPeer.new()
 var ip:String = "127.0.0.1"
-var port:int = 269
-
-
-'''
-# Create client.
-var peer = ENetMultiplayerPeer.new()
-peer.create_client(IP_ADDRESS, PORT)
-multiplayer.multiplayer_peer = peer
-
-# Create server.
-var peer = ENetMultiplayerPeer.new()
-peer.create_server(PORT, MAX_CLIENTS)
-multiplayer.multiplayer_peer = peer
-'''
+var port:int = 2069
 
 func _ready() -> void:
 	# This node does nothing until connected to something
@@ -50,3 +37,13 @@ func _become_client() -> bool:
 	
 func _become_singleplayer() -> void:
 	set_process(false)
+
+#RQ TODO
+@rpc("any_peer")
+func update_peers_player_info(player_pos:Vector2, player_anim:String) -> void:
+	pass
+
+#RQ TODO
+@rpc("any_peer")
+func update_peers_enemy_info(enemy_pos:Vector2, enm_anim:String) -> void:
+	pass

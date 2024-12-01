@@ -135,7 +135,7 @@ func spawn_projectile(nam:String, pos:Vector2, source:CharacterBody2D, target:Ch
 		return proj
 	# Key not found
 	else:
-		#Error: projectile name nott found
+		#Error: projectile name not found
 		print("Error: Projectile name not in PROJ_LIB: %s" % nam)
 		var proj:CharacterBody2D = ProjLib.get_prj("PRJ_Track_Once_Test")
 		proj.target = target
@@ -159,7 +159,7 @@ func death() -> void:
 	is_dead = true
 	death_signal.emit()
 	state_change_timer.stop()
-	remove_child(state_change_timer)
+	#remove_child(state_change_timer)
 	set_process(false)
 	set_physics_process(false)
 	
@@ -188,4 +188,9 @@ func revive_enemy(hp_percent:float=0.0) -> void:
 
 # Emits a signal every time the state change timer finishes
 func _state_change_timeout_trig() -> void:
-	state_change_timeout.emit()
+	# if enemy is dead, stop emiting this shit
+	if( is_dead ):
+		state_change_timer.stop()
+	# If still alive, emit the signal
+	else:
+		state_change_timeout.emit()
