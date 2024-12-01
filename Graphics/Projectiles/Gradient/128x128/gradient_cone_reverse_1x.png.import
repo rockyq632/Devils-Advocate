@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjt3a0ujqge5t"
-path="res://.godot/imported/red_fireball_1x.png-a5c13f4f1c2a8bc97fc371ebbd0aa68e.ctex"
+uid="uid://dchkaht4tw2ep"
+path="res://.godot/imported/gradient_cone_reverse_1x.png-578d10699ec600479b867ccff67a9c89.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Projectiles/Fire/red_fireball_1x.png"
-dest_files=["res://.godot/imported/red_fireball_1x.png-a5c13f4f1c2a8bc97fc371ebbd0aa68e.ctex"]
+source_file="res://Graphics/Projectiles/Gradient/128x128/gradient_cone_reverse_1x.png"
+dest_files=["res://.godot/imported/gradient_cone_reverse_1x.png-578d10699ec600479b867ccff67a9c89.ctex"]
 
 [params]
 

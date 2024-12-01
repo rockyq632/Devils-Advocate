@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjt3a0ujqge5t"
-path="res://.godot/imported/red_fireball_1x.png-a5c13f4f1c2a8bc97fc371ebbd0aa68e.ctex"
+uid="uid://dcxdrlxt26oak"
+path="res://.godot/imported/smoke_ring_1x.png-57e7db6b5c37d3a05fd7e32d61bbbe4d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Projectiles/Fire/red_fireball_1x.png"
-dest_files=["res://.godot/imported/red_fireball_1x.png-a5c13f4f1c2a8bc97fc371ebbd0aa68e.ctex"]
+source_file="res://Graphics/Projectiles/Smoke/smoke_ring_1x.png"
+dest_files=["res://.godot/imported/smoke_ring_1x.png-57e7db6b5c37d3a05fd7e32d61bbbe4d.ctex"]
 
 [params]
 

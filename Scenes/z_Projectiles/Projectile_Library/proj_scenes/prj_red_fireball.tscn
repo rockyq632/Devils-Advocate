@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dmtg3qfgtnc3f"]
 
 [ext_resource type="Script" path="res://Scenes/z_Projectiles/projectile_controller.gd" id="1_d8d3b"]
-[ext_resource type="Texture2D" uid="uid://c2rpm5vq4duv2" path="res://Graphics/Projectiles/Fire/Red_Fireball_1x.png" id="2_ojbiv"]
+[ext_resource type="Texture2D" uid="uid://c2rpm5vq4duv2" path="res://Graphics/Projectiles/Fire/OLD/Red_Fireball_1x.png" id="2_ojbiv"]
 
 [sub_resource type="Animation" id="Animation_m0nju"]
 resource_name = "END"

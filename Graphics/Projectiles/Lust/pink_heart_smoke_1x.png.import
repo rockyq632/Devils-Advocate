@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjt3a0ujqge5t"
-path="res://.godot/imported/red_fireball_1x.png-a5c13f4f1c2a8bc97fc371ebbd0aa68e.ctex"
+uid="uid://vgc3yhqugd2y"
+path="res://.godot/imported/pink_heart_smoke_1x.png-3737a3e88704d6a94830ad296a63a02e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Projectiles/Fire/red_fireball_1x.png"
-dest_files=["res://.godot/imported/red_fireball_1x.png-a5c13f4f1c2a8bc97fc371ebbd0aa68e.ctex"]
+source_file="res://Graphics/Projectiles/Lust/pink_heart_smoke_1x.png"
+dest_files=["res://.godot/imported/pink_heart_smoke_1x.png-3737a3e88704d6a94830ad296a63a02e.ctex"]
 
 [params]
 
