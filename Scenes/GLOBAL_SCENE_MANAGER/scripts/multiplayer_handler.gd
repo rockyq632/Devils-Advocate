@@ -37,13 +37,3 @@ func _become_client() -> bool:
 	
 func _become_singleplayer() -> void:
 	set_process(false)
-
-#RQ TODO
-@rpc("any_peer")
-func update_peers_player_info(player_pos:Vector2, player_anim:String) -> void:
-	pass
-
-#RQ TODO
-@rpc("any_peer")
-func update_peers_enemy_info(enemy_pos:Vector2, enm_anim:String) -> void:
-	pass

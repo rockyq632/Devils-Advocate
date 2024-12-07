@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c7td7c3637cjq"]
+[gd_scene load_steps=26 format=3 uid="uid://c7td7c3637cjq"]
 
 [ext_resource type="Script" path="res://Scenes/Player_Systems/Dani_Dancer/dani_hud.gd" id="1_pyw3t"]
 [ext_resource type="Script" path="res://Scenes/Player_Systems/Dani_Dancer/dani_dancer.gd" id="1_tcuq5"]
@@ -12,6 +12,14 @@
 [ext_resource type="Texture2D" uid="uid://dyf5s4t0sisab" path="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Inversion_Dive_1x.png" id="11_wfdce"]
 [ext_resource type="Texture2D" uid="uid://dui2bw50swvh" path="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Pirouette_1x.png" id="12_d4aod"]
 [ext_resource type="PackedScene" uid="uid://bg8sq66oyqmc1" path="res://Scenes/Player_Systems/HUD/Health_Heart.tscn" id="13_boqcl"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5sh6a"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("S2D_Dani:frame")
+properties/1/spawn = true
+properties/1/replication_mode = 1
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_3isxc"]
 diffuse_texture = ExtResource("8_m3ns8")
@@ -1008,6 +1016,9 @@ move_speed = 350.0
 [node name="PLAYER_PHYS_CONTROLLER" type="Node" parent="DaniDancer" node_paths=PackedStringArray("char_body")]
 script = ExtResource("3_2yoqt")
 char_body = NodePath("..")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="DaniDancer"]
+replication_config = SubResource("SceneReplicationConfig_5sh6a")
 
 [node name="S2D_Dani" type="Sprite2D" parent="DaniDancer"]
 unique_name_in_owner = true
