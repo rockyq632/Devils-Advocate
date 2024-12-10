@@ -25,5 +25,7 @@ func _init( id:int, pc:ENM.PC, key:ENM.AB_KEY ) -> void:
 	ab_id = id
 	ab_character = pc
 	ab_key = key
-	
-	
+
+
+func _cd_timeout() -> void:
+	is_ready = true

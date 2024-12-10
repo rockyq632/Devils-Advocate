@@ -14,7 +14,7 @@ func _ready() -> void:
 func char_selected() -> void:
 	$MC_PU_Char_Details.show()
 	
-	var temp: Array[PC_Ability] = current_selection.char_instance.get_moveset()
+	var temp: Array[PC_Ability] = current_selection.char_instance.moveset
 	$"MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/TabContainer/Set 1/P_AB1/TR_AB1".texture = temp[0].ab_icon_texture
 	$"MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/TabContainer/Set 1/P_AB2/TR_AB2".texture = temp[1].ab_icon_texture
 	$"MC_PU_Char_Details/Total_Panel/MC_Ability_Descriptions/TabContainer/Set 1/P_AB3/TR_AB3".texture = temp[2].ab_icon_texture
@@ -39,7 +39,7 @@ func _on_btn_debug_pressed() -> void:
 
 func _on_play_btn_pressed() -> void:
 	# If a character is actually selected
-	if(GSM.GLOBAL_2D_NODE.get_child_count() >= 1):
+	if(GSM.GLOBAL_PLAYERS_NODE.get_child_count() >= 1):
 		RUN_STATS.selected_char1 = current_selection.char_name
 		GSM.current_scene_instance = load("res://Scenes/Levels/Circles_of_Hell/Tartarus/Circle_Tartarus.tscn").instantiate()
 		GSM.GLOBAL_CONTROL_NODE.add_child( GSM.current_scene_instance )
@@ -79,7 +79,7 @@ func _on_select_btn_pressed() -> void:
 	# Add character to the Global 2D node
 	GSM.PLAYERS.append( current_selection.char_instance )
 	#print(GSM.PLAYERS)
-	GSM.GLOBAL_2D_NODE.add_child( current_selection )
+	GSM.GLOBAL_PLAYERS_NODE.add_child( current_selection )
 	GSM.is_pc_movement_locked = false
 	
 	# If connected, add PC to others
@@ -104,5 +104,5 @@ func _on_join_btn_pressed() -> void:
 @rpc("any_peer")
 func add_pc(_peer_id:int, path_to_spawn:String) -> void:
 	var PC:Control = load(path_to_spawn).instantiate()
-	GSM.GLOBAL_2D_NODE.add_child(PC)
+	GSM.GLOBAL_PLAYERS_NODE.add_child(PC)
 	GSM.PLAYERS.append( PC.char_instance )
