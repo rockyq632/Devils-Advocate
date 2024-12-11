@@ -1,9 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://c7td7c3637cjq"]
+[gd_scene load_steps=25 format=3 uid="uid://c7td7c3637cjq"]
 
 [ext_resource type="Script" path="res://Scenes/Player_Systems/Dani_Dancer/dani_hud.gd" id="1_pyw3t"]
 [ext_resource type="Script" path="res://Scenes/Player_Systems/Dani_Dancer/dani_dancer.gd" id="1_tcuq5"]
 [ext_resource type="AudioStream" uid="uid://8hcgpv4amdo3" path="res://Sounds/Sound_Effects/SE_Hit1.wav" id="2_i1wj4"]
-[ext_resource type="Script" path="res://Scenes/Player_Systems/player_physics_controller.gd" id="3_2yoqt"]
 [ext_resource type="PackedScene" uid="uid://ct31rbvjefjs6" path="res://Scenes/Player_Systems/HUD/CD_Frame.tscn" id="8_apbsw"]
 [ext_resource type="Texture2D" uid="uid://btibexyqi2aau" path="res://Graphics/Characters/DANI_DANCER/Aseprite/Dani Dancer_d.png" id="8_m3ns8"]
 [ext_resource type="Texture2D" uid="uid://cv43o6wodeqdi" path="res://Graphics/Characters/DANI_DANCER/Aseprite/Dani Dancer_n.png" id="8_wq3sx"]
@@ -980,7 +979,7 @@ moveset_select3 = 3
 moveset_select4 = 4
 effected_by_prj_gravity = true
 
-[node name="DaniDancer" type="CharacterBody2D" parent="." node_paths=PackedStringArray("sprite", "anim_player")]
+[node name="DaniDancer" type="CharacterBody2D" parent="." node_paths=PackedStringArray("sprite", "anim_player", "player_hud", "hitbox")]
 position = Vector2(64, 64)
 collision_layer = 257
 collision_mask = 16
@@ -990,11 +989,10 @@ platform_wall_layers = 64
 script = ExtResource("1_tcuq5")
 sprite = NodePath("S2D_Dani")
 anim_player = NodePath("AP_Dani")
+player_hud = NodePath("..")
+hitbox = NodePath("CP_Hitbox")
+scene_path = "res://Scenes/Player_Systems/Dani_Dancer/Dani_Dancer.tscn"
 move_speed = 350.0
-
-[node name="PLAYER_PHYS_CONTROLLER" type="Node" parent="DaniDancer" node_paths=PackedStringArray("char_body")]
-script = ExtResource("3_2yoqt")
-char_body = NodePath("..")
 
 [node name="DaniSynchronizer" type="MultiplayerSynchronizer" parent="DaniDancer"]
 replication_config = SubResource("SceneReplicationConfig_5sh6a")

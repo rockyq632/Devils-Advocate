@@ -27,6 +27,7 @@ var heart_containers : Array[HealthHeart] = []
 func _ready() -> void:
 	if( Engine.is_editor_hint() ):
 		return
+	
 	# Set Player HUD Opacity
 	%MC_Character_UI.modulate = Color(1.0,1.0,1.0, (GCM.player_hud_opacity/255.0))
 	

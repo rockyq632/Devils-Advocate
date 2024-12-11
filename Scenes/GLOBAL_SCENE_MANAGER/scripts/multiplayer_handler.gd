@@ -5,6 +5,8 @@ var peer:ENetMultiplayerPeer = ENetMultiplayerPeer.new()
 var ip:String = "127.0.0.1"
 var port:int = 2069
 
+var peer_ids:Array[int] = []
+
 func _ready() -> void:
 	# This node does nothing until connected to something
 	set_process(false)
@@ -37,3 +39,22 @@ func _become_client() -> bool:
 	
 func _become_singleplayer() -> void:
 	set_process(false)
+	
+
+func add_player(id:int, pc_selected:String) -> void:
+	if(id in peer_ids):
+		return
+	
+	var new_pc:Control = load(pc_selected).instantiate()
+	new_pc.name = str( id )
+	
+	peer_ids.append(id)
+	print( peer_ids )
+
+@rpc("any_peer", "call_local")
+func rpc_add_all_players(pc_selected:String) -> void:
+	for i in multiplayer.get_peers():
+		add_player( i, pc_selected )
+
+func add_all_players(pc_selected:String) -> void:
+	rpc("rpc_add_all_players", pc_selected)

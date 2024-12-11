@@ -13,6 +13,8 @@ const type : ENM.TARGET_TYPE = ENM.TARGET_TYPE.PLAYER
 @export var sprite:Sprite2D
 @export var anim_player:AnimationPlayer
 @export var player_hud : Control
+@export var hitbox : CollisionShape2D
+@export var scene_path:String
 
 
 
@@ -62,8 +64,6 @@ var inv_instance : Inventory = Inventory.new()
 var ap_move_speed_scale : float = 1.0
 
 func _ready() -> void:
-	name = str( multiplayer.get_unique_id() )
-	
 	# Add a node to store timers in
 	var timers_node:Node = Node.new()
 	timers_node.name = "TIMERS"
@@ -79,12 +79,17 @@ func _ready() -> void:
 	
 	# Set Armor Frames timer
 	armor_frames_timer.wait_time = 0.5
+	armor_frames_timer.one_shot = true
 	armor_frames_timer.name = "Armor_Frames_Timer"
 	timers_node.add_child(armor_frames_timer)
 	
 	# Unpause and enable stuff
 	GSM.is_pause_disabled = false
 	GSM.is_inventory_disabled = false
+	
+	# Make RPC call to add all players
+	if( multiplayer ):
+		GSM.MULTIPLAYER_HANDLER.add_all_players(scene_path)
 
 
 func _process(_delta: float) -> void:
@@ -96,6 +101,7 @@ func _process(_delta: float) -> void:
 			sprite.show()
 	else:
 		if(not sprite.visible):
+			collision_layer += 1
 			sprite.show()
 
 	# Process Inputs
@@ -103,6 +109,24 @@ func _process(_delta: float) -> void:
 		process_inputs()
 
 func _physics_process(_delta: float) -> void:
+	# Calculate initial velocity
+	velocity = move_speed*move_dir
+	
+	# If gravity via projectile is being applied to character
+	if(effected_by_prj_gravity):
+		velocity += grav_pull
+		
+	# If knockback was applied
+	if(knockback_force != Vector2.ZERO):
+		velocity += knockback_force
+		
+		knockback_force = knockback_force*knb_resistance
+		if( abs(knockback_force.x)<=5.0  and  abs(knockback_force.y)<=5.0 ):
+			knockback_force = Vector2.ZERO
+		
+	# If animation player changes move speed 
+	velocity *= ap_move_speed_scale
+	
 	#Move as long as movement isn't locked
 	if( not GSM.is_pc_movement_locked  and  velocity != Vector2.ZERO ):
 		move_and_slide()
@@ -169,9 +193,8 @@ func def_triggered() -> void:
 
 # Called if hit by damage
 func take_damage(amt:int) -> void:
-	if( not armor_frames_timer.is_stopped()):
-		armor_frames_timer.stop()
 	armor_frames_timer.start()
+	collision_layer -= 1
 		
 	if( get_parent().has_method("take_damage") ):
 		get_parent().take_damage(amt)
