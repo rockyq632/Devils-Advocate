@@ -1,10 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://ba6xnfstclqbv"]
+[gd_scene load_steps=9 format=3 uid="uid://ba6xnfstclqbv"]
 
 [ext_resource type="Script" path="res://Scenes/GLOBAL_SCENE_MANAGER/scripts/global_scene_manager.gd" id="1_6gix0"]
 [ext_resource type="Script" path="res://Scenes/GLOBAL_SCENE_MANAGER/scripts/multiplayer_handler.gd" id="2_784jr"]
 [ext_resource type="PackedScene" uid="uid://c6uwyusdwgn51" path="res://Scenes/GLOBAL_SCENE_MANAGER/Screen_Bounds.tscn" id="2_h2cpf"]
-[ext_resource type="Script" path="res://Scenes/GLOBAL_SCENE_MANAGER/scripts/global_bg_viewports.gd" id="2_lj6ur"]
-[ext_resource type="Script" path="res://Scenes/GLOBAL_SCENE_MANAGER/debug_stuff.gd" id="5_jnqj1"]
 [ext_resource type="AudioStream" uid="uid://8hcgpv4amdo3" path="res://Sounds/Sound_Effects/SE_Hit1.wav" id="6_6gnvb"]
 [ext_resource type="PackedScene" uid="uid://cdve04xju573h" path="res://Scenes/Menues/Pause/Pause.tscn" id="6_neh6m"]
 [ext_resource type="PackedScene" uid="uid://cjapii1suvnye" path="res://Scenes/Menues/Settings/Settings.tscn" id="7_pmbqi"]
@@ -24,65 +22,6 @@ script = ExtResource("1_6gix0")
 unique_name_in_owner = true
 script = ExtResource("2_784jr")
 
-[node name="Global_BG_Viewports_Node" type="Control" parent="."]
-visible = false
-custom_minimum_size = Vector2(1300, 740)
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("2_lj6ur")
-
-[node name="VP_BG_Close" type="SubViewportContainer" parent="Global_BG_Viewports_Node"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SVP_BG_Close" type="SubViewport" parent="Global_BG_Viewports_Node/VP_BG_Close"]
-handle_input_locally = false
-render_target_update_mode = 0
-
-[node name="TR_BG_Close" type="TextureRect" parent="Global_BG_Viewports_Node/VP_BG_Close/SVP_BG_Close"]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="VP_BG_Far" type="SubViewportContainer" parent="Global_BG_Viewports_Node"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SVP_BG_Far" type="SubViewport" parent="Global_BG_Viewports_Node/VP_BG_Far"]
-handle_input_locally = false
-render_target_update_mode = 0
-
-[node name="TR_BG_Far" type="TextureRect" parent="Global_BG_Viewports_Node/VP_BG_Far/SVP_BG_Far"]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="VP_BG_Farthest" type="SubViewportContainer" parent="Global_BG_Viewports_Node"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SVP_BG_Farthest" type="SubViewport" parent="Global_BG_Viewports_Node/VP_BG_Farthest"]
-handle_input_locally = false
-render_target_update_mode = 0
-
-[node name="TR_BG_Farthest" type="TextureRect" parent="Global_BG_Viewports_Node/VP_BG_Farthest/SVP_BG_Farthest"]
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="Global_Control_Node" type="Control" parent="."]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(1280, 720)
@@ -94,133 +33,9 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 mouse_filter = 1
 
-[node name="Debug_Stuff" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 250.0
-offset_bottom = 100.0
-mouse_filter = 2
-script = ExtResource("5_jnqj1")
-
-[node name="Panel" type="Panel" parent="Debug_Stuff"]
-modulate = Color(1, 1, 1, 0.54902)
-light_mask = 16
-visibility_layer = 16
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Debug_Stuff"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="VB" type="VBoxContainer" parent="Debug_Stuff/MarginContainer"]
-layout_mode = 2
-
-[node name="HB1" type="HBoxContainer" parent="Debug_Stuff/MarginContainer/VB"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="dbg_lbl1" type="RichTextLabel" parent="Debug_Stuff/MarginContainer/VB/HB1"]
-custom_minimum_size = Vector2(100, 10)
-layout_mode = 2
-mouse_filter = 2
-bbcode_enabled = true
-text = "[right]debug1:"
-fit_content = true
-scroll_active = false
-
-[node name="dbg_var1" type="RichTextLabel" parent="Debug_Stuff/MarginContainer/VB/HB1"]
-custom_minimum_size = Vector2(100, 10)
-layout_mode = 2
-mouse_filter = 2
-bbcode_enabled = true
-text = "[left]var1"
-fit_content = true
-scroll_active = false
-
-[node name="HB2" type="HBoxContainer" parent="Debug_Stuff/MarginContainer/VB"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="dbg_lbl2" type="RichTextLabel" parent="Debug_Stuff/MarginContainer/VB/HB2"]
-custom_minimum_size = Vector2(100, 10)
-layout_mode = 2
-mouse_filter = 2
-bbcode_enabled = true
-text = "[right]debug2:"
-fit_content = true
-scroll_active = false
-
-[node name="dbg_var2" type="RichTextLabel" parent="Debug_Stuff/MarginContainer/VB/HB2"]
-custom_minimum_size = Vector2(100, 10)
-layout_mode = 2
-mouse_filter = 2
-bbcode_enabled = true
-text = "[left]var1"
-fit_content = true
-scroll_active = false
-
-[node name="HB3" type="HBoxContainer" parent="Debug_Stuff/MarginContainer/VB"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="dbg_lbl3" type="RichTextLabel" parent="Debug_Stuff/MarginContainer/VB/HB3"]
-custom_minimum_size = Vector2(100, 10)
-layout_mode = 2
-mouse_filter = 2
-bbcode_enabled = true
-text = "[right]debug3:"
-fit_content = true
-scroll_active = false
-
-[node name="dbg_var3" type="RichTextLabel" parent="Debug_Stuff/MarginContainer/VB/HB3"]
-custom_minimum_size = Vector2(100, 10)
-layout_mode = 2
-mouse_filter = 2
-bbcode_enabled = true
-text = "[left]var1"
-fit_content = true
-scroll_active = false
-
-[node name="HB4" type="HBoxContainer" parent="Debug_Stuff/MarginContainer/VB"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="dbg_lbl4" type="RichTextLabel" parent="Debug_Stuff/MarginContainer/VB/HB4"]
-custom_minimum_size = Vector2(100, 10)
-layout_mode = 2
-mouse_filter = 2
-bbcode_enabled = true
-text = "[right]debug4:"
-fit_content = true
-scroll_active = false
-
-[node name="dbg_var4" type="RichTextLabel" parent="Debug_Stuff/MarginContainer/VB/HB4"]
-custom_minimum_size = Vector2(100, 10)
-layout_mode = 2
-mouse_filter = 2
-bbcode_enabled = true
-text = "[left]var1"
-fit_content = true
-scroll_active = false
-
-[node name="Global_2D_Node" type="Node2D" parent="."]
-unique_name_in_owner = true
-
 [node name="Global_Players_Node" type="Node2D" parent="."]
+
+[node name="Global_Enemies_Node" type="Node2D" parent="."]
 
 [node name="Global_Lighting" type="Node2D" parent="."]
 
@@ -237,6 +52,12 @@ offset = Vector2(640, 360)
 
 [node name="Global_Enemy_Projectiles" type="Node" parent="."]
 
+[node name="Pause_Menu" parent="." instance=ExtResource("6_neh6m")]
+visible = false
+
+[node name="Settings" parent="." instance=ExtResource("7_pmbqi")]
+visible = false
+
 [node name="Global_Hit_Sound_Effects_Player" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_6gnvb")
 max_polyphony = 10
@@ -245,9 +66,3 @@ bus = &"SFX"
 [node name="Gobal_Music_Player" type="AudioStreamPlayer" parent="."]
 max_polyphony = 2
 bus = &"Music"
-
-[node name="Pause_Menu" parent="." instance=ExtResource("6_neh6m")]
-visible = false
-
-[node name="Settings" parent="." instance=ExtResource("7_pmbqi")]
-visible = false

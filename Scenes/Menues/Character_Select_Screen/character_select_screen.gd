@@ -1,6 +1,7 @@
 extends Control
 
 var current_selection:Control
+var current_selection_path:String
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -55,9 +56,11 @@ func _on_btn_dani_pressed() -> void:
 	$TR_Player_Placeholder.hide()
 	
 	current_selection.queue_free()
+	current_selection_path = "res://Scenes/Player_Systems/Dani_Dancer/Dani_Dancer.tscn"
 	current_selection = load("res://Scenes/Player_Systems/Dani_Dancer/Dani_Dancer.tscn").instantiate()
 	current_selection.position = temp
 	add_child( current_selection )
+	#GSM.MULTIPLAYER_HANDLER.add_player(multiplayer.get_unique_id(), current_selection_path)
 	char_selected()
 
 
@@ -77,14 +80,13 @@ func _on_select_btn_pressed() -> void:
 	$MC_PU_Char_Details.hide()
 	
 	# Add character to the Global 2D node
-	GSM.PLAYERS.append( current_selection.char_instance )
-	#print(GSM.PLAYERS)
+	GSM.PLAYERS.append( current_selection )
 	GSM.GLOBAL_PLAYERS_NODE.add_child( current_selection )
 	GSM.is_pc_movement_locked = false
+	GSM.MULTIPLAYER_HANDLER.add_all_players(current_selection_path)
 	
 	# If connected, add PC to others
-	if( multiplayer.connected_to_server or multiplayer.is_server() ):
-		rpc("add_pc", multiplayer.get_unique_id(), current_selection.scene_file_path)
+	#if( multiplayer.connected_to_server or multiplayer.is_server() ):
 
 
 
@@ -95,14 +97,3 @@ func _on_host_btn_pressed() -> void:
 # Join Host
 func _on_join_btn_pressed() -> void:
 	GSM.MULTIPLAYER_HANDLER._become_client()
-
-
-
-###					  ###
-### Network RPC Calls ###
-###					  ###
-@rpc("any_peer")
-func add_pc(_peer_id:int, path_to_spawn:String) -> void:
-	var PC:Control = load(path_to_spawn).instantiate()
-	GSM.GLOBAL_PLAYERS_NODE.add_child(PC)
-	GSM.PLAYERS.append( PC.char_instance )

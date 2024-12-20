@@ -67,6 +67,34 @@ theme_override_fonts/font = ExtResource("4_t1hne")
 theme_override_font_sizes/font_size = 50
 text = "Play"
 
+[node name="MC_Host_Btn" type="MarginContainer" parent="MarginContainer/VB_TitleItems"]
+layout_mode = 2
+theme_override_constants/margin_left = 500
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 500
+
+[node name="BTN_Host" type="Button" parent="MarginContainer/VB_TitleItems/MC_Host_Btn"]
+light_mask = 16
+visibility_layer = 16
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_t1hne")
+theme_override_font_sizes/font_size = 50
+text = "Host"
+
+[node name="MC_Join_Btn" type="MarginContainer" parent="MarginContainer/VB_TitleItems"]
+layout_mode = 2
+theme_override_constants/margin_left = 500
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 500
+
+[node name="BTN_Join" type="Button" parent="MarginContainer/VB_TitleItems/MC_Join_Btn"]
+light_mask = 16
+visibility_layer = 16
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_t1hne")
+theme_override_font_sizes/font_size = 50
+text = "Join"
+
 [node name="MC_Settings_Btn" type="MarginContainer" parent="MarginContainer/VB_TitleItems"]
 layout_mode = 2
 theme_override_constants/margin_left = 500
@@ -84,4 +112,6 @@ text = "Settings"
 [node name="AP_TitleMenu" type="AnimationPlayer" parent="."]
 
 [connection signal="pressed" from="MarginContainer/VB_TitleItems/MC_Play_Btn/BTN_Play" to="." method="_on_play_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/VB_TitleItems/MC_Host_Btn/BTN_Host" to="." method="_on_host_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/VB_TitleItems/MC_Join_Btn/BTN_Join" to="." method="_on_join_btn_pressed"]
 [connection signal="pressed" from="MarginContainer/VB_TitleItems/MC_Settings_Btn/BTN_Settings" to="." method="_on_settings_btn_pressed"]

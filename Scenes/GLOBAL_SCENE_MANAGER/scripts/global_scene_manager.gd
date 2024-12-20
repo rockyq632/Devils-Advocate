@@ -1,9 +1,6 @@
 extends Node
 
 
-#@onready var TITLE_MENU : TitleMenu = load("res://Scenes/Levels/Title_Menu/Title_Menu.tscn").instantiate()
-
-@export var is_debug:bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,7 +9,6 @@ func _ready() -> void:
 	
 	GSM.GLOBAL_SCENE_MANAGER = self
 	GSM.GLOBAL_CONTROL_NODE = %Global_Control_Node
-	GSM.GLOBAL_2D_NODE = %Global_2D_Node
 	GSM.GLOBAL_PLAYERS_NODE = $Global_Players_Node
 	GSM.GLOBAL_LIGHTING_NODE = $Global_Lighting
 	GSM.GLOBAL_CONTROL_NODE.add_child(GSM.TITLE_MENU)
@@ -26,18 +22,10 @@ func _ready() -> void:
 	
 	GSM.GLOBAL_SAVE = GSM.GLOBAL_SAVE.game_load()
 	
-	GSM.DEBUG = $Debug_Stuff
-	
-	
-	if(is_debug):
-		$Debug_Stuff.visible=true
-	else:
-		$Debug_Stuff.visible=false
-	
 
 
 
-
+# On close notification. Makes sure game closes properly
 func _notification(what: int) -> void:
 	if(what == NOTIFICATION_WM_CLOSE_REQUEST):
 		print("closing...")

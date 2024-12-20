@@ -10,8 +10,8 @@ var MULTIPLAYER_HANDLER : MultiplayerHandler
 # Global Access Control Nodes
 var GLOBAL_SCENE_MANAGER : Node 
 var GLOBAL_CONTROL_NODE : Control
-var GLOBAL_2D_NODE : Node2D
 var GLOBAL_PLAYERS_NODE : Node2D
+var GLOBAL_ENEMIES_NODE : Node2D
 var GLOBAL_LIGHTING_NODE : Node2D
 var GLOBAL_ENEMY_PROJECTILES:Node
 
@@ -33,7 +33,10 @@ var debug_scene_instance : DEBUG_BATTLE_SCENE
 
 var current_scene_instance:Control
 
-var PLAYERS : Array[PlayableCharacter] = []
+# Stores the active players
+var PLAYERS : Array[Control] = []
+
+# Stores the active enemies
 var ENEMIES : Array[Enemy] = []
 
 
@@ -52,6 +55,11 @@ func set_bgs(_bg_close:Texture2D, _bg_far:Texture2D, _bg_farthest:Texture2D) -> 
 
 func clear_enemy_projectiles() -> void:
 	for i in GLOBAL_ENEMY_PROJECTILES.get_children():
+		i.queue_free()
+
+
+func clear_enemies() -> void:
+	for i in GLOBAL_ENEMIES_NODE.get_children():
 		i.queue_free()
 
 

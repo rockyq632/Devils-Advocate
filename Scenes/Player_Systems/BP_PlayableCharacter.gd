@@ -39,25 +39,30 @@ const type : ENM.TARGET_TYPE = ENM.TARGET_TYPE.PLAYER
 @export_subgroup("Knockback")
 @export_range(0.0, 1.0) var knb_resistance:float = 0.9
 
+# Knockback & Gravity Forces
 var knockback_force:Vector2 = Vector2.ZERO
 var grav_pull:Vector2 = Vector2.ZERO
 
+# If character is is effected by certain types of gravity
 var effected_by_prj_gravity : bool = true
 var effected_by_world_gravity : bool = false
 
+# Moveset access
 var moveset_inputs:Array[bool] = [false,false,false,false]
 var moveset:Array[PC_Ability] = []
 var moveset_cd_timers:Array[Timer] = [Timer.new(), Timer.new(), Timer.new(), Timer.new()]
 
+# Timer for armor frames
 var armor_frames_timer:Timer = Timer.new()
 
 
-var pause_anim_oneshot:bool = false
-var resume_anim_oneshot:bool = false
+# Movement & Animation
 var is_anim_playing : bool = false
 var curr_anim : String = "RESET"
 var curr_anim_key : ENM.AB_KEY = ENM.AB_KEY.RESET
 var move_dir : Vector2 = Vector2.ZERO
+
+# Inventory
 var inv_instance : Inventory = Inventory.new()
 
 #Exports used exclusively in animation player
@@ -89,6 +94,7 @@ func _ready() -> void:
 	
 	# Make RPC call to add all players
 	if( multiplayer ):
+		name = str( multiplayer.get_unique_id() )
 		GSM.MULTIPLAYER_HANDLER.add_all_players(scene_path)
 
 
@@ -105,8 +111,8 @@ func _process(_delta: float) -> void:
 			sprite.show()
 
 	# Process Inputs
-	if(str(multiplayer.get_unique_id()) == name):
-		process_inputs()
+	#if(str(multiplayer.get_unique_id()) == name):
+	process_inputs()
 
 func _physics_process(_delta: float) -> void:
 	# Calculate initial velocity
@@ -153,33 +159,41 @@ func process_inputs() -> void:
 	elif(is_anim_playing == true ):# or  GSM.is_paused
 		pass
 		
-	# Triggers defensive ability
+	# Queues defensive ability
 	elif( Input.is_action_pressed("defensive") ):
 		moveset_inputs[0]=false
 		moveset_inputs[1]=false
 		moveset_inputs[2]=false
 		moveset_inputs[3]=true
 		
-	# Triggers attack 1 ability
+	# Queues attack 1 ability
 	elif( Input.is_action_pressed("attack1") ):
 		moveset_inputs[0]=true
 		moveset_inputs[1]=false
 		moveset_inputs[2]=false
 		moveset_inputs[3]=false
 		
-	# Triggers attack 2 ability
+	# Queues attack 2 ability
 	elif( Input.is_action_pressed("attack2") ):
 		moveset_inputs[0]=false
 		moveset_inputs[1]=true
 		moveset_inputs[2]=false
 		moveset_inputs[3]=false
 		
-	# Triggers attack 3 ability
+	# Queues attack 3 ability
 	elif( Input.is_action_pressed("attack3") ):
 		moveset_inputs[0]=false
 		moveset_inputs[1]=false
 		moveset_inputs[2]=true
 		moveset_inputs[3]=false
+	
+	# No input is pressed
+	else:
+		moveset_inputs[0]=false
+		moveset_inputs[1]=false
+		moveset_inputs[2]=false
+		moveset_inputs[3]=false
+		
 
 func atk1_triggered() -> void:
 	moveset_inputs[0] = false

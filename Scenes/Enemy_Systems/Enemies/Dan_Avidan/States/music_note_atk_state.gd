@@ -10,7 +10,7 @@ var target_body:PlayableCharacter
 
 func _enter_state() -> void:
 	# Pick a target
-	target_body = GSM.PLAYERS[0]
+	target_body = GSM.PLAYERS[0].char_instance
 	
 	# Set initial stuff
 	enm_body.state_change_timer.stop()

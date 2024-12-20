@@ -9,7 +9,7 @@ var move_finished:bool = false
 
 func _enter_state() -> void:
 	# Pick a target
-	target_body = GSM.PLAYERS[0]
+	target_body = GSM.PLAYERS[0].char_instance
 	
 	# Set Initial stuff
 	enm_body.state_change_timer.stop()

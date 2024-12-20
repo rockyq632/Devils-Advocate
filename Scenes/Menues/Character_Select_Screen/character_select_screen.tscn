@@ -365,6 +365,7 @@ layout_mode = 2
 text = "PLAY"
 
 [node name="MC_Host_Test" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -384,6 +385,7 @@ layout_mode = 2
 text = "HOST"
 
 [node name="MC_Join_Test" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
