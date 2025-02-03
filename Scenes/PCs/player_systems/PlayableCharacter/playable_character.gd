@@ -2,6 +2,8 @@ class_name PlayableCharacter
 extends CharacterBody2D
 
 signal just_died
+signal buff_gained
+signal buff_lost
 signal health_changed
 signal atk1_used
 signal atk2_used
@@ -336,11 +338,21 @@ func network_remove_all_buffs(id:int) -> void:
 
 # Adds buffs to the player accesible lists
 func add_buff(new_buff:Buff) -> bool:
+	
 	if( not buff_dict.get(new_buff.key) ):
+		# Add to dictionary
 		buff_dict[new_buff.key] = new_buff
+		
+		# Add to key list
 		buff_list_keys.append(new_buff.key)
+		
+		# Add buff to children
 		new_buff.name = new_buff.buff_name
 		buffs_debuffs_node.add_child(new_buff)
+		
+		buff_gained.emit(new_buff)
+	
+	
 	else:
 		return false
 	return true
@@ -348,11 +360,14 @@ func add_buff(new_buff:Buff) -> bool:
 
 # Removes buffs from the player accesible lists
 func remove_buff(buf_key:ENM.BUF_KEY) -> bool:
-	var does_buf_exist:bool = buff_dict.erase(buf_key)
-	if( does_buf_exist ):
-		buff_list_keys.erase(buf_key)
-	else:
+	if( not buff_dict[buf_key] ):
 		return false
+	
+	buff_lost.emit(buff_dict[buf_key])
+	
+	buff_dict.erase(buf_key)
+	buff_list_keys.erase(buf_key)
+	
 	return true
 	
 

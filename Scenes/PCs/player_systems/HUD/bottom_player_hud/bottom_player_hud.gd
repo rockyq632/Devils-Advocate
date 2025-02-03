@@ -4,6 +4,12 @@ extends Panel
 @export var pc:PlayableCharacter
 
 
+func _ready() -> void:
+	# Clear out temporary items
+	for i:Node in %HB_Buffs.get_children():
+		i.queue_free()
+
+
 
 func set_pc(new_pc:PlayableCharacter) -> void:
 	name = new_pc.name
@@ -11,6 +17,8 @@ func set_pc(new_pc:PlayableCharacter) -> void:
 	
 	pc = new_pc
 	pc.health_changed.connect(_health_changed)
+	pc.buff_gained.connect(_add_buff_icon)
+	pc.buff_lost.connect(_remove_buff_icon)
 
 
 func set_text(new_text:String) -> void:
@@ -58,3 +66,21 @@ func refresh_num_health_ticks() -> void:
 	# Add the correct amount of hearts
 	for i:int in range( 0, pc.max_health ):
 		%HB_Health.add_child( preload("res://Scenes/PCs/player_systems/HUD/bottom_player_hud/bottom_hud_health/health_tick.tscn").instantiate() )
+
+
+
+
+func _add_buff_icon(new_buff:Buff) -> void:
+	var temp:TextureRect = TextureRect.new()
+	temp.texture = new_buff.icon
+	temp.expand_mode = temp.ExpandMode.EXPAND_IGNORE_SIZE
+	temp.custom_minimum_size = Vector2(8,8)
+	temp.size = Vector2(8,8)
+	temp.name = new_buff.buff_name
+	%HB_Buffs.add_child( temp )
+	
+
+func _remove_buff_icon(old_buff:Buff) -> void:
+	for i:Node in %HB_Buffs.get_children():
+		if(i.name == old_buff.buff_name):
+			%HB_Buffs.remove_child( i )

@@ -1,23 +1,58 @@
-[gd_scene load_steps=3 format=3 uid="uid://dahbp04i2mfmc"]
+[gd_scene load_steps=4 format=3 uid="uid://dahbp04i2mfmc"]
 
 [ext_resource type="Script" path="res://Scenes/PCs/player_systems/HUD/bottom_player_hud/bottom_player_hud.gd" id="1_5x73g"]
 [ext_resource type="PackedScene" uid="uid://d1dpw4xtrtnof" path="res://Scenes/PCs/player_systems/HUD/bottom_player_hud/bottom_hud_health/health_tick.tscn" id="2_qlula"]
+[ext_resource type="Texture2D" uid="uid://c8r55xwyskrjn" path="res://icon.svg" id="2_sdvld"]
 
 [node name="Bottom_player_hud" type="Panel"]
-custom_minimum_size = Vector2(100, 50)
+custom_minimum_size = Vector2(100, 64)
 size_flags_horizontal = 6
 size_flags_vertical = 0
 script = ExtResource("1_5x73g")
 
+[node name="MC_Buffs" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="HB_Buffs" type="HBoxContainer" parent="MC_Buffs"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="MC_Buffs/HB_Buffs"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+texture = ExtResource("2_sdvld")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="MC_Buffs/HB_Buffs"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+texture = ExtResource("2_sdvld")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="MC_Buffs/HB_Buffs"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+texture = ExtResource("2_sdvld")
+expand_mode = 1
+
 [node name="MC_Health" type="MarginContainer" parent="."]
-custom_minimum_size = Vector2(0, 16)
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 2.0
 grow_horizontal = 2
 theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
+theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 1
 theme_override_constants/margin_bottom = 1
 
