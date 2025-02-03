@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://0a8wvuoxfqbq"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/enemy_systems/enemy_hud/health_bar/health_bar.gd" id="1_rftsg"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_h61ro"]
+properties/0/path = NodePath("PB_Bot_Bar:value")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath("PB_Bot_Bar:max_value")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+properties/2/path = NodePath("PB_Top_Bar:value")
+properties/2/spawn = true
+properties/2/replication_mode = 2
+properties/3/path = NodePath("PB_Top_Bar:max_value")
+properties/3/spawn = true
+properties/3/replication_mode = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_17cd7"]
+bg_color = Color(0.698039, 0.329412, 0.196078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bj6wa"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jlylm"]
+bg_color = Color(0.698039, 0.0980392, 0.196078, 1)
+
+[node name="MC_Health_Bar" type="MarginContainer" node_paths=PackedStringArray("bot_bar", "top_bar")]
+custom_minimum_size = Vector2(500, 40)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+theme_override_constants/margin_top = 20
+script = ExtResource("1_rftsg")
+bot_bar = NodePath("PB_Bot_Bar")
+top_bar = NodePath("PB_Top_Bar")
+
+[node name="EnemyHealthbarSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_h61ro")
+
+[node name="PB_Bot_Bar" type="ProgressBar" parent="."]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/fill = SubResource("StyleBoxFlat_17cd7")
+value = 100.0
+show_percentage = false
+
+[node name="PB_Top_Bar" type="ProgressBar" parent="."]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_bj6wa")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jlylm")
+value = 100.0
+show_percentage = false

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvxudok2yujqf"]
+
+[ext_resource type="Script" path="res://Scenes/PCs/player_systems/Buffs/built_debuffs/allured/allured.gd" id="1_ovkyt"]
+[ext_resource type="Texture2D" uid="uid://c8r55xwyskrjn" path="res://icon.svg" id="2_a4nma"]
+
+[node name="Allured" type="Node2D"]
+script = ExtResource("1_ovkyt")
+key = 3
+buff_name = "Allured"
+time_in_secs = 3.0
+description = "Sinner is pulled in by temptation"
+icon = ExtResource("2_a4nma")

@@ -1,0 +1,348 @@
+[gd_scene load_steps=27 format=3 uid="uid://cntivycv8p2r3"]
+
+[ext_resource type="Script" path="res://Scenes/Menues/Character_Select_Menu/character_select.gd" id="1_e3opu"]
+[ext_resource type="Texture2D" uid="uid://ux5u7qhxxkau" path="res://Graphics/BG/Char_Select_BG_no-light_1x.png" id="2_jtyrk"]
+[ext_resource type="Texture2D" uid="uid://dsnhq44eyt30r" path="res://Graphics/BG/char_select_spotlight/left/char_sel_spotlight_1.png" id="3_vp6mv"]
+[ext_resource type="Texture2D" uid="uid://bbffpbjwawei" path="res://Graphics/Characters/DANI_DANCER/Character_Select/Dani_Select_30p_1x.png" id="5_l25qh"]
+[ext_resource type="Texture2D" uid="uid://bm2a2wwt2q6ub" path="res://Graphics/Characters/DANI_DANCER/Character_Select/Dani_Select_90p_1x.png" id="6_uh1yy"]
+[ext_resource type="Texture2D" uid="uid://b61f7t680gvk7" path="res://Graphics/Characters/DANI_DANCER/Character_Select/Dani_Select_60p_1x.png" id="7_phuv7"]
+[ext_resource type="Texture2D" uid="uid://cm3vh07ehyy6i" path="res://Graphics/Characters/ASTA_ASTROLOGIAN/Character_Select/Asta_Select_30p_1x.png" id="8_vctuq"]
+[ext_resource type="Texture2D" uid="uid://c6fb0gfhs0scs" path="res://Graphics/Characters/ASTA_ASTROLOGIAN/Character_Select/Asta_Select_90p_1x.png" id="9_tem7a"]
+[ext_resource type="Texture2D" uid="uid://chcm502wq0vd6" path="res://Graphics/Characters/ASTA_ASTROLOGIAN/Character_Select/Asta_Select_60p_1x.png" id="10_p4ih4"]
+[ext_resource type="Texture2D" uid="uid://ogpf7vucv8qj" path="res://Graphics/Characters/Locked_Character_1x.png" id="11_hygim"]
+[ext_resource type="Texture2D" uid="uid://bqn8w34ss7h0l" path="res://Graphics/BG/char_select_spotlight/left/char_sel_spotlight_2.png" id="11_q8g6v"]
+[ext_resource type="Texture2D" uid="uid://bo3i1mmd2ucrp" path="res://Graphics/BG/char_select_spotlight/left/char_sel_spotlight_3.png" id="12_octyk"]
+[ext_resource type="Texture2D" uid="uid://d2e2jtjkf4ubs" path="res://Graphics/BG/char_select_spotlight/left/char_sel_spotlight_4.png" id="13_4uvar"]
+[ext_resource type="Texture2D" uid="uid://y8xx10hwrcts" path="res://Graphics/BG/char_select_spotlight/left/char_sel_spotlight_5.png" id="14_egb27"]
+[ext_resource type="Texture2D" uid="uid://ckporcnm8lkpm" path="res://Graphics/BG/char_select_spotlight/left/char_sel_spotlight_6.png" id="15_hwjjs"]
+[ext_resource type="Texture2D" uid="uid://cyjvon71uu6bo" path="res://Graphics/BG/char_select_spotlight/left/char_sel_spotlight_7.png" id="16_cgmn7"]
+[ext_resource type="Texture2D" uid="uid://bnxyweul8wcof" path="res://Graphics/BG/char_select_spotlight/left/char_sel_spotlight_8.png" id="17_7ae6u"]
+[ext_resource type="Texture2D" uid="uid://bbxc84sthpxmt" path="res://Graphics/BG/char_select_spotlight/left/char_sel_spotlight_9.png" id="18_imfqa"]
+[ext_resource type="Texture2D" uid="uid://b1hfcrx00aw4s" path="res://Graphics/BG/char_select_spotlight/left/char_sel_spotlight_10.png" id="19_pemvn"]
+[ext_resource type="Texture2D" uid="uid://7juj7tw80jro" path="res://Graphics/BG/char_select_spotlight/left/char_sel_spotlight_11.png" id="20_y8t11"]
+[ext_resource type="Texture2D" uid="uid://ca5s3ojeb1pb5" path="res://Graphics/BG/char_select_spotlight/left/char_sel_spotlight_12.png" id="21_gmguy"]
+[ext_resource type="Texture2D" uid="uid://bvfa846g213ji" path="res://Graphics/BG/char_select_spotlight/left/char_sel_spotlight_13.png" id="22_04xf3"]
+
+[sub_resource type="Animation" id="Animation_r8b8h"]
+resource_name = "ON_CHARS_SELECTED"
+length = 0.65
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BG/Left_spotlight:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("16_cgmn7"), ExtResource("17_7ae6u"), ExtResource("18_imfqa"), ExtResource("19_pemvn"), ExtResource("20_y8t11"), ExtResource("21_gmguy"), ExtResource("22_04xf3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BG/Left_spotlight:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.25, 0.5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BG/Right_spotlight:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("16_cgmn7"), ExtResource("17_7ae6u"), ExtResource("18_imfqa"), ExtResource("19_pemvn"), ExtResource("20_y8t11"), ExtResource("21_gmguy"), ExtResource("22_04xf3")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BG/Right_spotlight:energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.25, 0.5]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Waiting_Area:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Waiting_Area/CP_Waiting_Area:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_inmic"]
+resource_name = "ON_START"
+length = 0.65
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BG/Left_spotlight:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_vp6mv"), ExtResource("11_q8g6v"), ExtResource("12_octyk"), ExtResource("13_4uvar"), ExtResource("14_egb27"), ExtResource("15_hwjjs"), ExtResource("16_cgmn7")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BG/Right_spotlight:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_vp6mv"), ExtResource("11_q8g6v"), ExtResource("12_octyk"), ExtResource("13_4uvar"), ExtResource("14_egb27"), ExtResource("15_hwjjs"), ExtResource("16_cgmn7")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Waiting_Area:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Waiting_Area/CP_Waiting_Area:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_h1vv1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BG/Left_spotlight:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_vp6mv")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BG/Left_spotlight:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.25]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BG/Right_spotlight:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_vp6mv")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BG/Right_spotlight:energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.25]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Waiting_Area:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Waiting_Area/CP_Waiting_Area:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ynhk1"]
+_data = {
+"ON_CHARS_SELECTED": SubResource("Animation_r8b8h"),
+"ON_START": SubResource("Animation_inmic"),
+"RESET": SubResource("Animation_h1vv1")
+}
+
+[node name="Character_Select" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e3opu")
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_jtyrk")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Right_spotlight" type="PointLight2D" parent="BG"]
+position = Vector2(640, 0)
+scale = Vector2(-0.5, 0.5)
+energy = 0.25
+texture = ExtResource("3_vp6mv")
+offset = Vector2(640, 360)
+
+[node name="Left_spotlight" type="PointLight2D" parent="BG"]
+scale = Vector2(0.5, 0.5)
+energy = 0.25
+texture = ExtResource("3_vp6mv")
+offset = Vector2(640, 360)
+
+[node name="Waiting_Area" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+
+[node name="CP_Waiting_Area" type="CollisionPolygon2D" parent="Waiting_Area"]
+polygon = PackedVector2Array(282, 0, 358, 0, 385, 271, 378, 278, 363, 286, 336, 291, 320, 292, 303, 291, 280, 287, 261, 278, 255, 271)
+disabled = true
+
+[node name="Waiting_Area_Text" type="RichTextLabel" parent="Waiting_Area"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 30)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 295.0
+offset_right = 345.0
+offset_bottom = 40.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+bbcode_enabled = true
+text = "[center]0/1"
+
+[node name="MC_char_btns" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(50, 100)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -124.0
+offset_right = 100.0
+offset_bottom = 376.0
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+
+[node name="VB" type="VBoxContainer" parent="MC_char_btns"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="DANCER_BTN" type="TextureButton" parent="MC_char_btns/VB"]
+layout_mode = 2
+texture_normal = ExtResource("5_l25qh")
+texture_pressed = ExtResource("6_uh1yy")
+texture_hover = ExtResource("7_phuv7")
+texture_focused = ExtResource("6_uh1yy")
+stretch_mode = 4
+
+[node name="GAMBLER_BTN" type="TextureButton" parent="MC_char_btns/VB"]
+layout_mode = 2
+texture_normal = ExtResource("8_vctuq")
+texture_pressed = ExtResource("9_tem7a")
+texture_hover = ExtResource("10_p4ih4")
+texture_focused = ExtResource("9_tem7a")
+stretch_mode = 4
+
+[node name="???_BTN" type="TextureButton" parent="MC_char_btns/VB"]
+layout_mode = 2
+texture_normal = ExtResource("11_hygim")
+stretch_mode = 4
+
+[node name="???_BTN2" type="TextureButton" parent="MC_char_btns/VB"]
+layout_mode = 2
+texture_normal = ExtResource("11_hygim")
+stretch_mode = 4
+
+[node name="???_BTN3" type="TextureButton" parent="MC_char_btns/VB"]
+layout_mode = 2
+texture_normal = ExtResource("11_hygim")
+stretch_mode = 4
+
+[node name="LightAnimPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ynhk1")
+}
+
+[connection signal="pressed" from="MC_char_btns/VB/DANCER_BTN" to="." method="_on_dancer_btn_pressed"]
+[connection signal="pressed" from="MC_char_btns/VB/GAMBLER_BTN" to="." method="_on_gambler_btn_pressed"]

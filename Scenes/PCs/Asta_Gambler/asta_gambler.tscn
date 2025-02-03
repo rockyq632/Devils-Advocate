@@ -1,0 +1,157 @@
+[gd_scene load_steps=12 format=3 uid="uid://dthsjbr2th3i3"]
+
+[ext_resource type="Script" path="res://Scenes/PCs/Asta_Gambler/asta_gambler.gd" id="1_318fy"]
+[ext_resource type="Texture2D" uid="uid://dtymtw5ds3s3q" path="res://Graphics/Characters/ASTA_ASTROLOGIAN/Fly_Idle_4x.png" id="2_7k06w"]
+[ext_resource type="Script" path="res://Scenes/PCs/player_systems/hitbox.gd" id="3_1s5pg"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vhv7u"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath("Sprite2D:frame")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+properties/2/path = NodePath(".:max_health")
+properties/2/spawn = true
+properties/2/replication_mode = 2
+properties/3/path = NodePath(".:curr_health")
+properties/3/spawn = true
+properties/3/replication_mode = 2
+properties/4/path = NodePath(".:curr_armor")
+properties/4/spawn = true
+properties/4/replication_mode = 2
+properties/5/path = NodePath(".:scale")
+properties/5/spawn = true
+properties/5/replication_mode = 2
+properties/6/path = NodePath(".:modulate")
+properties/6/spawn = true
+properties/6/replication_mode = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xkkym"]
+radius = 3.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rdy78"]
+radius = 3.0
+
+[sub_resource type="Animation" id="Animation_3bs7o"]
+resource_name = "FLY_EAST"
+length = 0.1
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_5a0v7"]
+resource_name = "FLY_IDLE"
+length = 0.5
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_ymk7w"]
+resource_name = "FLY_WEST"
+length = 0.1
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_jne6f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nyves"]
+_data = {
+"FLY_EAST": SubResource("Animation_3bs7o"),
+"FLY_IDLE": SubResource("Animation_5a0v7"),
+"FLY_WEST": SubResource("Animation_ymk7w"),
+"RESET": SubResource("Animation_jne6f")
+}
+
+[node name="AstaGambler" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "anim_player", "hitbox", "hurtbox", "buffs_debuffs_node", "items_node")]
+script = ExtResource("1_318fy")
+sprite = NodePath("Sprite2D")
+anim_player = NodePath("AnimationPlayer")
+hitbox = NodePath("Hitbox")
+hurtbox = NodePath("Hurtbox")
+buffs_debuffs_node = NodePath("Buffs_Debuffs")
+items_node = NodePath("Items")
+
+[node name="PlayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_vhv7u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("2_7k06w")
+hframes = 4
+vframes = 2
+
+[node name="Boundbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xkkym")
+
+[node name="Hitbox" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_1s5pg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_rdy78")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 256
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hurtbox"]
+polygon = PackedVector2Array(-1, -9, 1, -9, 0, -11)
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nyves")
+}
+
+[node name="Buffs_Debuffs" type="Node2D" parent="."]
+
+[node name="Items" type="Node2D" parent="."]

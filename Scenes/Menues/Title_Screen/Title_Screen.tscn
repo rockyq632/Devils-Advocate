@@ -1,0 +1,103 @@
+[gd_scene load_steps=3 format=3 uid="uid://u16j7ftpkdkr"]
+
+[ext_resource type="Script" path="res://Scenes/Menues/Title_Screen/title_screen.gd" id="1_o252f"]
+[ext_resource type="Texture2D" uid="uid://d3qgiifj3epgl" path="res://Graphics/BG/Title_BG_1x.png" id="2_ob5xi"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o252f")
+
+[node name="BG" type="TextureRect" parent="."]
+light_mask = 2
+visibility_layer = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ob5xi")
+expand_mode = 2
+
+[node name="MC" type="MarginContainer" parent="."]
+light_mask = 2
+visibility_layer = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MC"]
+light_mask = 2
+visibility_layer = 2
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MC/VBoxContainer"]
+light_mask = 2
+visibility_layer = 2
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center]DEVIL'S ADVOCATE"
+fit_content = true
+
+[node name="MC_Host_btn" type="MarginContainer" parent="MC/VBoxContainer"]
+light_mask = 2
+visibility_layer = 2
+layout_mode = 2
+theme_override_constants/margin_left = 225
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 225
+
+[node name="host_btn" type="Button" parent="MC/VBoxContainer/MC_Host_btn"]
+light_mask = 2
+visibility_layer = 2
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "HOST"
+
+[node name="MC_Join_btn" type="MarginContainer" parent="MC/VBoxContainer"]
+light_mask = 2
+visibility_layer = 2
+layout_mode = 2
+theme_override_constants/margin_left = 225
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 225
+
+[node name="join_btn" type="Button" parent="MC/VBoxContainer/MC_Join_btn"]
+light_mask = 2
+visibility_layer = 2
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "JOIN"
+
+[node name="MC_settings_btn" type="MarginContainer" parent="MC/VBoxContainer"]
+light_mask = 2
+visibility_layer = 2
+layout_mode = 2
+theme_override_constants/margin_left = 225
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 225
+
+[node name="settings_btn" type="Button" parent="MC/VBoxContainer/MC_settings_btn"]
+light_mask = 2
+visibility_layer = 2
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "SETTINGS"
+
+[connection signal="pressed" from="MC/VBoxContainer/MC_Host_btn/host_btn" to="." method="_on_host_btn_pressed"]
+[connection signal="pressed" from="MC/VBoxContainer/MC_Join_btn/join_btn" to="." method="_on_join_btn_pressed"]
+[connection signal="pressed" from="MC/VBoxContainer/MC_settings_btn/settings_btn" to="." method="_on_settings_btn_pressed"]

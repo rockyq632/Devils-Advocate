@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dim16tpn80620"]
+
+[ext_resource type="Script" path="res://Scenes/Stages/Tartarus/circle_tartarus.gd" id="1_b57tp"]
+[ext_resource type="Texture2D" uid="uid://bx22fbl8i0jkk" path="res://Graphics/BG/purple_bg.png" id="1_e3kik"]
+[ext_resource type="PackedScene" uid="uid://ra5chhkow4we" path="res://Scenes/Enemies/built_enemies/Test_Dummy/Test_Dummy.tscn" id="2_fwb8x"]
+[ext_resource type="PackedScene" uid="uid://c2g552k52ef3f" path="res://Scenes/Stages/misc/stage_progress_indicator/stage_progression_indicator.tscn" id="3_crobo"]
+
+[node name="CircleTartarus" type="Control" node_paths=PackedStringArray("stage_progression_bar")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b57tp")
+stage_progression_bar = NodePath("MC_Stage_Progression")
+stage_type_list = Array[int]([0, 0, 0, 0, 0])
+enemy_list = Array[PackedScene]([ExtResource("2_fwb8x"), ExtResource("2_fwb8x"), ExtResource("2_fwb8x"), ExtResource("2_fwb8x"), ExtResource("2_fwb8x")])
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_e3kik")
+
+[node name="MC_Stage_Progression" parent="." instance=ExtResource("3_crobo")]
+layout_mode = 1

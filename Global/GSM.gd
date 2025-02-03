@@ -1,0 +1,61 @@
+### GSM - Global Screen Manager
+extends Control
+
+signal splash_screens_finished
+
+
+# Save/Load Resource
+var GLOBAL_SAVE: SaveLoad = SaveLoad.new()
+
+
+
+
+@export_subgroup("Gameplay")
+# Stores the current over-arching scene that is in control 
+@export var GLOBAL_SCENE_NODE:Control
+# Node where all Playable Characters will be spawned
+@export var GLOBAL_PLAYER_NODE:Node2D
+# Node to store bottom HUD cards
+@export var GLOBAL_BOT_PLAYER_HUD:HBoxContainer
+# Node where server will spawn Enemies
+@export var GLOBAL_ENEMIES_NODE:Node2D
+# Node where server will spawn all projectiles
+@export var GLOBAL_PROJECTILES_NODE:Node2D
+# Node to store all lighting
+@export var GLOBAL_LIGHTING_NODE:Node2D
+
+
+# Audio related nodes
+@export_subgroup("Audio")
+@export var GLOBAL_SFX_STREAM:AudioStreamPlayer
+@export var GLOBAL_MUSIC_STREAM:AudioStreamPlayer
+
+
+@export_subgroup("Multiplayer")
+# Multiplayer Handler
+@export var GLOBAL_MULTIPLAYER_HANDLER:MPHandler
+
+func _ready() -> void:
+	# Loads a save data is one exists
+	GLOBAL_SAVE = GLOBAL_SAVE.game_load()
+	
+	# Connects the signal for when splash screens are finished
+	splash_screens_finished.connect(_start_title)
+	
+
+func _start_title() -> void:
+	GLOBAL_SCENE_NODE.add_child( preload("res://Scenes/Menues/Title_Screen/Title_Screen.tscn").instantiate() )
+
+
+
+
+
+# On close notification. Makes sure game closes properly
+func _notification(what: int) -> void:
+	if(what == NOTIFICATION_WM_CLOSE_REQUEST):
+		print("closing...")
+		GSM.GLOBAL_SAVE.game_save()
+		
+		GSM.GLOBAL_MULTIPLAYER_HANDLER.delete_prt_mapping()
+		
+		get_tree().quit()

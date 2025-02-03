@@ -1,0 +1,152 @@
+[gd_scene load_steps=13 format=3 uid="uid://t5ehi5cnu8pw"]
+
+[ext_resource type="Script" path="res://Global/GSM.gd" id="1_r3r28"]
+[ext_resource type="Script" path="res://Global/support_scripts/multiplayer_handler.gd" id="2_al58x"]
+[ext_resource type="Script" path="res://Global/support_scripts/global_players_node.gd" id="3_0rhik"]
+[ext_resource type="Script" path="res://Global/support_scripts/utilities.gd" id="3_bvox7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ja2ms"]
+size = Vector2(10, 560)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_12xl5"]
+size = Vector2(10, 560)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ge2p5"]
+size = Vector2(500, 560)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ft2v"]
+size = Vector2(500, 560)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aftuy"]
+size = Vector2(840, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ywhx"]
+size = Vector2(840, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k454d"]
+size = Vector2(840, 500)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c5kyo"]
+size = Vector2(840, 500)
+
+[node name="GSM" type="Control" node_paths=PackedStringArray("GLOBAL_SCENE_NODE", "GLOBAL_PLAYER_NODE", "GLOBAL_BOT_PLAYER_HUD", "GLOBAL_ENEMIES_NODE", "GLOBAL_PROJECTILES_NODE", "GLOBAL_LIGHTING_NODE", "GLOBAL_SFX_STREAM", "GLOBAL_MUSIC_STREAM", "GLOBAL_MULTIPLAYER_HANDLER")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r3r28")
+GLOBAL_SCENE_NODE = NodePath("GLOBAL_SCENE_NODE")
+GLOBAL_PLAYER_NODE = NodePath("GLOBAL_PLAYERS_NODE")
+GLOBAL_BOT_PLAYER_HUD = NodePath("MC_players_hud/HB_players_hud")
+GLOBAL_ENEMIES_NODE = NodePath("GLOBAL_ENEMIES_NODE")
+GLOBAL_PROJECTILES_NODE = NodePath("GLOBAL_PROJECTILE_NODE")
+GLOBAL_LIGHTING_NODE = NodePath("GLOBAL_LIGHTING_NODE")
+GLOBAL_SFX_STREAM = NodePath("Utilities/GLOBAL_SFX_STREAM")
+GLOBAL_MUSIC_STREAM = NodePath("Utilities/GLOBAL_MUSIC_STREAM")
+GLOBAL_MULTIPLAYER_HANDLER = NodePath("Multiplayer_Handler")
+
+[node name="Multiplayer_Handler" type="Node" parent="."]
+script = ExtResource("2_al58x")
+
+[node name="GLOBAL_SCENE_NODE" type="Control" parent="."]
+light_mask = 2
+visibility_layer = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MC_players_hud" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HB_players_hud" type="HBoxContainer" parent="MC_players_hud"]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="GLOBAL_PLAYERS_NODE" type="Node2D" parent="."]
+script = ExtResource("3_0rhik")
+
+[node name="GLOBAL_ENEMIES_NODE" type="Node2D" parent="."]
+
+[node name="GLOBAL_PROJECTILE_NODE" type="Node2D" parent="."]
+
+[node name="GLOBAL_LIGHTING_NODE" type="Node2D" parent="."]
+
+[node name="EnemySpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Scenes/Enemies/enemy_systems/enemy_hud/EnemyHUD.tscn", "res://Scenes/Enemies/built_enemies/Test_Dummy/Test_Dummy.tscn")
+spawn_path = NodePath("../GLOBAL_ENEMIES_NODE")
+
+[node name="ProjectileSpawner" type="MultiplayerSpawner" parent="."]
+spawn_path = NodePath("../GLOBAL_PROJECTILE_NODE")
+
+[node name="Utilities" type="Node" parent="."]
+script = ExtResource("3_bvox7")
+
+[node name="GLOBAL_WALL_WARN" type="Area2D" parent="Utilities"]
+collision_layer = 0
+collision_mask = 8192
+
+[node name="Left" type="CollisionShape2D" parent="Utilities/GLOBAL_WALL_WARN"]
+position = Vector2(5, 180)
+shape = SubResource("RectangleShape2D_ja2ms")
+
+[node name="Right" type="CollisionShape2D" parent="Utilities/GLOBAL_WALL_WARN"]
+position = Vector2(635, 180)
+shape = SubResource("RectangleShape2D_12xl5")
+
+[node name="GLOBAL_WALL_BORDERS" type="StaticBody2D" parent="Utilities"]
+collision_mask = 0
+
+[node name="Border_Left" type="CollisionShape2D" parent="Utilities/GLOBAL_WALL_BORDERS"]
+position = Vector2(-250, 180)
+shape = SubResource("RectangleShape2D_ge2p5")
+
+[node name="Border_Right" type="CollisionShape2D" parent="Utilities/GLOBAL_WALL_BORDERS"]
+position = Vector2(890, 180)
+shape = SubResource("RectangleShape2D_6ft2v")
+
+[node name="GLOBAL_FLOOR_WARN" type="Area2D" parent="Utilities"]
+collision_layer = 0
+collision_mask = 8192
+
+[node name="Top" type="CollisionShape2D" parent="Utilities/GLOBAL_FLOOR_WARN"]
+position = Vector2(320, 5)
+shape = SubResource("RectangleShape2D_aftuy")
+
+[node name="Bottom" type="CollisionShape2D" parent="Utilities/GLOBAL_FLOOR_WARN"]
+position = Vector2(320, 355)
+shape = SubResource("RectangleShape2D_2ywhx")
+
+[node name="GLOBAL_FLOOR_BORDERS" type="StaticBody2D" parent="Utilities"]
+collision_mask = 0
+
+[node name="Border_Top" type="CollisionShape2D" parent="Utilities/GLOBAL_FLOOR_BORDERS"]
+position = Vector2(320, -250)
+shape = SubResource("RectangleShape2D_k454d")
+
+[node name="Border_Bottom" type="CollisionShape2D" parent="Utilities/GLOBAL_FLOOR_BORDERS"]
+position = Vector2(320, 610)
+shape = SubResource("RectangleShape2D_c5kyo")
+
+[node name="GLOBAL_SFX_STREAM" type="AudioStreamPlayer" parent="Utilities"]
+
+[node name="GLOBAL_MUSIC_STREAM" type="AudioStreamPlayer" parent="Utilities"]
+
+[connection signal="child_entered_tree" from="GLOBAL_PLAYERS_NODE" to="GLOBAL_PLAYERS_NODE" method="_on_child_entered_tree"]
+[connection signal="child_exiting_tree" from="GLOBAL_PLAYERS_NODE" to="GLOBAL_PLAYERS_NODE" method="_on_child_exiting_tree"]
+[connection signal="body_entered" from="Utilities/GLOBAL_WALL_WARN" to="Utilities" method="_on_global_wall_warn_body_entered"]
+[connection signal="body_entered" from="Utilities/GLOBAL_FLOOR_WARN" to="Utilities" method="_on_global_floor_warn_body_entered"]

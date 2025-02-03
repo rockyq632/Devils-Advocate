@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2g552k52ef3f"]
+
+[ext_resource type="Script" path="res://Scenes/Stages/misc/stage_progress_indicator/stage_progression_indicator.gd" id="1_d5vya"]
+[ext_resource type="Texture2D" uid="uid://56ltfpkao7n8" path="res://Graphics/UI/Stage_Progression_bar/Level_Progress_1x.png" id="2_nngfe"]
+[ext_resource type="Texture2D" uid="uid://chtk0rkehsy4q" path="res://Graphics/UI/Stage_Progression_bar/level_on_marker.png" id="3_0khd5"]
+
+[node name="MC_Stage_Progression" type="MarginContainer" node_paths=PackedStringArray("ind_array")]
+custom_minimum_size = Vector2(0, 10)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -68.0
+offset_right = 68.0
+offset_bottom = 10.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 1
+script = ExtResource("1_d5vya")
+ind_array = [NodePath("MC_Indicators/HB_Indicators/S1_IND"), NodePath("MC_Indicators/HB_Indicators/S2_IND"), NodePath("MC_Indicators/HB_Indicators/S3_IND"), NodePath("MC_Indicators/HB_Indicators/S4_IND"), NodePath("MC_Indicators/HB_Indicators/S5_IND")]
+
+[node name="num_stages_bg" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("2_nngfe")
+
+[node name="MC_Indicators" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_top = 2
+
+[node name="HB_Indicators" type="HBoxContainer" parent="MC_Indicators"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 28
+
+[node name="S1_IND" type="TextureRect" parent="MC_Indicators/HB_Indicators"]
+layout_mode = 2
+texture = ExtResource("3_0khd5")
+
+[node name="S2_IND" type="TextureRect" parent="MC_Indicators/HB_Indicators"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+texture = ExtResource("3_0khd5")
+
+[node name="S3_IND" type="TextureRect" parent="MC_Indicators/HB_Indicators"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+texture = ExtResource("3_0khd5")
+
+[node name="S4_IND" type="TextureRect" parent="MC_Indicators/HB_Indicators"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+texture = ExtResource("3_0khd5")
+
+[node name="S5_IND" type="TextureRect" parent="MC_Indicators/HB_Indicators"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+texture = ExtResource("3_0khd5")

@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://ilaqpxhwx3hk"]
+
+[ext_resource type="PackedScene" uid="uid://0a8wvuoxfqbq" path="res://Scenes/Enemies/enemy_systems/enemy_hud/health_bar/health_bar.tscn" id="1_6mixu"]
+[ext_resource type="Script" path="res://Scenes/Enemies/enemy_systems/enemy_hud/enemy_hud.gd" id="1_jgvje"]
+
+[node name="EnemyHud" type="Control"]
+light_mask = 2
+visibility_layer = 2
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+mouse_filter = 1
+script = ExtResource("1_jgvje")
+
+[node name="MC_Health_Bar" parent="." instance=ExtResource("1_6mixu")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = -250.0
+offset_right = 250.0
+offset_bottom = 40.0
+grow_horizontal = 1
+
+[node name="Enemy" type="Node2D" parent="."]

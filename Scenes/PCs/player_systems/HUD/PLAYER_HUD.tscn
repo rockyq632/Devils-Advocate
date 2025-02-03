@@ -1,0 +1,115 @@
+[gd_scene load_steps=5 format=3 uid="uid://b41djb2tgjrtj"]
+
+[ext_resource type="Script" path="res://Scenes/PCs/player_systems/HUD/player_hud.gd" id="1_mxgpn"]
+[ext_resource type="PackedScene" uid="uid://sn6lqsbsdy0g" path="res://Scenes/PCs/player_systems/HUD/health_heart.tscn" id="2_1qrxq"]
+[ext_resource type="PackedScene" uid="uid://0dejidk8eh4c" path="res://Scenes/PCs/player_systems/HUD/cd_frame.tscn" id="3_vnohx"]
+[ext_resource type="Texture2D" uid="uid://dyf5s4t0sisab" path="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Inversion_Dive_1x.png" id="4_cs6rm"]
+
+[node name="Player" type="Control"]
+light_mask = 2
+visibility_layer = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 60.0
+offset_bottom = 60.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("1_mxgpn")
+
+[node name="MC_Player_HUD" type="MarginContainer" parent="."]
+light_mask = 2
+visibility_layer = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="VB_Player_HUD" type="VBoxContainer" parent="MC_Player_HUD"]
+light_mask = 2
+visibility_layer = 2
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="VF_Hearts" type="VFlowContainer" parent="MC_Player_HUD/VB_Player_HUD"]
+unique_name_in_owner = true
+light_mask = 2
+visibility_layer = 2
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 0
+alignment = 1
+reverse_fill = true
+
+[node name="HealthHeart" parent="MC_Player_HUD/VB_Player_HUD/VF_Hearts" instance=ExtResource("2_1qrxq")]
+layout_mode = 2
+
+[node name="HealthHeart2" parent="MC_Player_HUD/VB_Player_HUD/VF_Hearts" instance=ExtResource("2_1qrxq")]
+layout_mode = 2
+
+[node name="HealthHeart3" parent="MC_Player_HUD/VB_Player_HUD/VF_Hearts" instance=ExtResource("2_1qrxq")]
+layout_mode = 2
+
+[node name="HealthHeart4" parent="MC_Player_HUD/VB_Player_HUD/VF_Hearts" instance=ExtResource("2_1qrxq")]
+layout_mode = 2
+
+[node name="HealthHeart5" parent="MC_Player_HUD/VB_Player_HUD/VF_Hearts" instance=ExtResource("2_1qrxq")]
+layout_mode = 2
+
+[node name="HealthHeart6" parent="MC_Player_HUD/VB_Player_HUD/VF_Hearts" instance=ExtResource("2_1qrxq")]
+layout_mode = 2
+
+[node name="HealthHeart7" parent="MC_Player_HUD/VB_Player_HUD/VF_Hearts" instance=ExtResource("2_1qrxq")]
+layout_mode = 2
+
+[node name="HealthHeart8" parent="MC_Player_HUD/VB_Player_HUD/VF_Hearts" instance=ExtResource("2_1qrxq")]
+layout_mode = 2
+
+[node name="HealthHeart9" parent="MC_Player_HUD/VB_Player_HUD/VF_Hearts" instance=ExtResource("2_1qrxq")]
+layout_mode = 2
+
+[node name="HealthHeart10" parent="MC_Player_HUD/VB_Player_HUD/VF_Hearts" instance=ExtResource("2_1qrxq")]
+layout_mode = 2
+
+[node name="MC_Cooldowns" type="MarginContainer" parent="MC_Player_HUD/VB_Player_HUD"]
+light_mask = 2
+visibility_layer = 2
+layout_mode = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="HB_Cooldowns" type="HBoxContainer" parent="MC_Player_HUD/VB_Player_HUD/MC_Cooldowns"]
+light_mask = 2
+visibility_layer = 2
+custom_minimum_size = Vector2(18, 8)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 1
+
+[node name="CD1" parent="MC_Player_HUD/VB_Player_HUD/MC_Cooldowns/HB_Cooldowns" instance=ExtResource("3_vnohx")]
+unique_name_in_owner = true
+layout_mode = 2
+ab_icon = ExtResource("4_cs6rm")
+
+[node name="CD2" parent="MC_Player_HUD/VB_Player_HUD/MC_Cooldowns/HB_Cooldowns" instance=ExtResource("3_vnohx")]
+unique_name_in_owner = true
+layout_mode = 2
+ab_icon = ExtResource("4_cs6rm")
+
+[node name="CD3" parent="MC_Player_HUD/VB_Player_HUD/MC_Cooldowns/HB_Cooldowns" instance=ExtResource("3_vnohx")]
+unique_name_in_owner = true
+layout_mode = 2
+ab_icon = ExtResource("4_cs6rm")
+
+[node name="CD4" parent="MC_Player_HUD/VB_Player_HUD/MC_Cooldowns/HB_Cooldowns" instance=ExtResource("3_vnohx")]
+unique_name_in_owner = true
+layout_mode = 2
+ab_icon = ExtResource("4_cs6rm")

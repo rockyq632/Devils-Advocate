@@ -1,0 +1,271 @@
+[gd_scene load_steps=2 format=3 uid="uid://du5ynd4qj2p4p"]
+
+[ext_resource type="Script" path="res://Scenes/Menues/Settings_Menu/settings.gd" id="1_ssrnr"]
+
+[node name="Settings" type="Control"]
+custom_minimum_size = Vector2(780, 520)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ssrnr")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MC_Main" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VB" type="VBoxContainer" parent="MC_Main"]
+layout_mode = 2
+
+[node name="MC_Title" type="MarginContainer" parent="MC_Main/VB"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="CenterContainer" type="CenterContainer" parent="MC_Main/VB/MC_Title"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MC_Main/VB/MC_Title/CenterContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center]SETTINGS"
+fit_content = true
+autowrap_mode = 0
+
+[node name="MC_Gameplay_BTN" type="MarginContainer" parent="MC_Main/VB"]
+layout_mode = 2
+
+[node name="CC" type="CenterContainer" parent="MC_Main/VB/MC_Gameplay_BTN"]
+layout_mode = 2
+
+[node name="gameplay_btn" type="Button" parent="MC_Main/VB/MC_Gameplay_BTN/CC"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+text = "GAMEPLAY"
+
+[node name="MC_Audio_BTN" type="MarginContainer" parent="MC_Main/VB"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="CC" type="CenterContainer" parent="MC_Main/VB/MC_Audio_BTN"]
+layout_mode = 2
+
+[node name="audio_btn" type="Button" parent="MC_Main/VB/MC_Audio_BTN/CC"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+text = "AUDIO"
+
+[node name="MC_Close_BTN" type="MarginContainer" parent="MC_Main/VB"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="CC" type="CenterContainer" parent="MC_Main/VB/MC_Close_BTN"]
+layout_mode = 2
+
+[node name="close_btn" type="Button" parent="MC_Main/VB/MC_Close_BTN/CC"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+text = "CLOSE"
+
+[node name="MC_Gameplay" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VB" type="VBoxContainer" parent="MC_Gameplay"]
+layout_mode = 2
+
+[node name="MC_title" type="MarginContainer" parent="MC_Gameplay/VB"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="CC" type="CenterContainer" parent="MC_Gameplay/VB/MC_title"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MC_Gameplay/VB/MC_title/CC"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+text = "GAMEPLAY SETTINGS"
+fit_content = true
+autowrap_mode = 0
+
+[node name="MC_PHUD" type="MarginContainer" parent="MC_Gameplay/VB"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 5
+
+[node name="HB" type="HBoxContainer" parent="MC_Gameplay/VB/MC_PHUD"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="RTL_PHUD" type="RichTextLabel" parent="MC_Gameplay/VB/MC_PHUD/HB"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[right]Player HUD Opacity "
+fit_content = true
+
+[node name="MC" type="MarginContainer" parent="MC_Gameplay/VB/MC_PHUD/HB"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="HS_PHUD" type="HSlider" parent="MC_Gameplay/VB/MC_PHUD/HB/MC"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HS_PHUD_val" type="RichTextLabel" parent="MC_Gameplay/VB/MC_PHUD/HB"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[left]0%"
+fit_content = true
+
+[node name="MC_Bat_HUD" type="MarginContainer" parent="MC_Gameplay/VB"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 5
+
+[node name="HB" type="HBoxContainer" parent="MC_Gameplay/VB/MC_Bat_HUD"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="RTL_BHUD" type="RichTextLabel" parent="MC_Gameplay/VB/MC_Bat_HUD/HB"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[right]Battle HUD Opacity"
+fit_content = true
+
+[node name="MC" type="MarginContainer" parent="MC_Gameplay/VB/MC_Bat_HUD/HB"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="HS_BHUD" type="HSlider" parent="MC_Gameplay/VB/MC_Bat_HUD/HB/MC"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HS_BHUD_val" type="RichTextLabel" parent="MC_Gameplay/VB/MC_Bat_HUD/HB"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[left]0%"
+fit_content = true
+
+[node name="MC_close_buttons" type="MarginContainer" parent="MC_Gameplay/VB"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="HB" type="HBoxContainer" parent="MC_Gameplay/VB/MC_close_buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 20
+
+[node name="apply_btn" type="Button" parent="MC_Gameplay/VB/MC_close_buttons/HB"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "APPLY"
+
+[node name="close_btn" type="Button" parent="MC_Gameplay/VB/MC_close_buttons/HB"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "CLOSE"
+
+[node name="MC_Audio" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VB" type="VBoxContainer" parent="MC_Audio"]
+layout_mode = 2
+
+[node name="MC_title" type="MarginContainer" parent="MC_Audio/VB"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="CC" type="CenterContainer" parent="MC_Audio/VB/MC_title"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MC_Audio/VB/MC_title/CC"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center]AUDIO SETTINGS"
+fit_content = true
+autowrap_mode = 0
+
+[node name="MC_close_buttons" type="MarginContainer" parent="MC_Audio/VB"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="HB" type="HBoxContainer" parent="MC_Audio/VB/MC_close_buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 20
+
+[node name="apply_btn" type="Button" parent="MC_Audio/VB/MC_close_buttons/HB"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "APPLY"
+
+[node name="close_btn" type="Button" parent="MC_Audio/VB/MC_close_buttons/HB"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "CLOSE"
+
+[connection signal="visibility_changed" from="." to="." method="_on_menu_visibility_changed"]
+[connection signal="pressed" from="MC_Main/VB/MC_Gameplay_BTN/CC/gameplay_btn" to="." method="_on_gameplay_btn_pressed"]
+[connection signal="pressed" from="MC_Main/VB/MC_Audio_BTN/CC/audio_btn" to="." method="_on_audio_btn_pressed"]
+[connection signal="pressed" from="MC_Main/VB/MC_Close_BTN/CC/close_btn" to="." method="_on_close_btn_pressed"]
+[connection signal="value_changed" from="MC_Gameplay/VB/MC_PHUD/HB/MC/HS_PHUD" to="." method="_on_phud_value_changed"]
+[connection signal="value_changed" from="MC_Gameplay/VB/MC_Bat_HUD/HB/MC/HS_BHUD" to="." method="_on_bhud_value_changed"]
+[connection signal="pressed" from="MC_Gameplay/VB/MC_close_buttons/HB/apply_btn" to="." method="_on_apply_btn_pressed"]
+[connection signal="pressed" from="MC_Gameplay/VB/MC_close_buttons/HB/close_btn" to="." method="_on_submenu_close_btn_pressed"]
+[connection signal="pressed" from="MC_Audio/VB/MC_close_buttons/HB/apply_btn" to="." method="_on_apply_btn_pressed"]
+[connection signal="pressed" from="MC_Audio/VB/MC_close_buttons/HB/close_btn" to="." method="_on_submenu_close_btn_pressed"]

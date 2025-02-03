@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="SaveLoad" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://Global_Scripts/Resources/SAVE_LOAD.gd" id="1_5uvi7"]
+[ext_resource type="Script" path="res://Global/resources/save_load.gd" id="1_buglt"]
 
 [resource]
-script = ExtResource("1_5uvi7")
-save_num = 874
-plot_list = {
-1000: false,
-1001: false,
-1002: false,
-1003: false,
-1004: false
-}
+script = ExtResource("1_buglt")
+save_num = 1136
+plot_list = {}
+win_size_setting = Vector2(1280, 720)
+phud_setting = 0.8
+bhud_setting = 0.8
+master_vol_setting = 80.0
+music_vol_setting = 80.0
+sfx_vol_setting = 80.0
