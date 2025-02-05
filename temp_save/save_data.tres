@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_buglt")
-save_num = 1141
+save_num = 1143
 plot_list = {}
 win_size_setting = Vector2(1280, 720)
 phud_setting = 0.8

@@ -61,13 +61,14 @@ func _physics_process(_delta: float) -> void:
 
 
 func _buff_entering_tree(_par:Node) -> void:
-	print("buff entered tree") # TODO this is where buff whould be applied
+	#print("buff entered tree") # TODO this is where buff whould be applied
 	apply_effect_to_pc(get_parent().get_parent())
 
 
 
 func _buff_exiting_tree() -> void:
-	print("buff exited tree")
+	#print("buff exited tree")
+	pass
 	#remove_buff.call() #TODO This is where we should be removing the buff effect
 
 

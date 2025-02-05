@@ -25,9 +25,12 @@ func set_text(new_text:String) -> void:
 	$TEMP_TEXT.text = "[center]%s" % new_text
 
 
+
 # Called when health has changed
 func _health_changed() -> void:
 	rpc("update_health_ticks")
+
+
 
 @rpc("call_local","any_peer")
 func update_health_ticks() -> void:
@@ -57,6 +60,7 @@ func update_health_ticks() -> void:
 			heart_check[-1-i].remove_armor()
 
 
+
 @rpc("call_local","any_peer")
 func refresh_num_health_ticks() -> void:
 	# Remove hearts from the Flow container
@@ -69,6 +73,16 @@ func refresh_num_health_ticks() -> void:
 
 
 
+@rpc("any_peer")
+func _update_buff_icons() -> void:
+	for i:Node in %HB_Buffs.get_children():
+		i.queue_free()
+	
+	# TODO update the buff icons on the other peers
+	#for i:int in pc.buff_list_keys:
+		#%HB_Buffs.add_child(load(BUF_REF.buffs[i]).instantiate().icon)
+
+
 
 func _add_buff_icon(new_buff:Buff) -> void:
 	var temp:TextureRect = TextureRect.new()
@@ -78,9 +92,13 @@ func _add_buff_icon(new_buff:Buff) -> void:
 	temp.size = Vector2(8,8)
 	temp.name = new_buff.buff_name
 	%HB_Buffs.add_child( temp )
-	
+	rpc("_update_buff_icons")
+
+
 
 func _remove_buff_icon(old_buff:Buff) -> void:
 	for i:Node in %HB_Buffs.get_children():
 		if(i.name == old_buff.buff_name):
 			%HB_Buffs.remove_child( i )
+	
+	rpc("_update_buff_icons")
