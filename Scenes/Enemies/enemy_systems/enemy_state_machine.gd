@@ -1,6 +1,7 @@
 class_name EnemyStateMachine
 extends Node
 
+signal state_changed
 
 @export var curr_state:EnemyState
 
@@ -22,4 +23,7 @@ func change_state(new_state:EnemyState) -> void:
 		curr_state._exit_state()
 	new_state._enter_state()
 	curr_state = new_state
+	
+	# Emit state changed signal
+	state_changed.emit(new_state)
 	

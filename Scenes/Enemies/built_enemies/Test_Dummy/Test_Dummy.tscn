@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://ra5chhkow4we"]
+[gd_scene load_steps=12 format=3 uid="uid://ra5chhkow4we"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/built_enemies/Test_Dummy/test_dummy.gd" id="1_tgpqs"]
 [ext_resource type="Texture2D" uid="uid://ri26k61wdbrx" path="res://Graphics/Enemies/Test_Dummy_4x.png" id="2_2m2km"]
+[ext_resource type="Script" path="res://Scenes/Enemies/reusable_states/idle_state.gd" id="3_7yfhc"]
 [ext_resource type="Script" path="res://Scenes/Enemies/enemy_systems/enemy_state_machine.gd" id="3_l4h8o"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_h1rpf"]
@@ -23,6 +24,9 @@ properties/4/replication_mode = 2
 properties/5/path = NodePath("Sprite2D:rotation")
 properties/5/spawn = true
 properties/5/replication_mode = 2
+properties/6/path = NodePath("Sprite2D:frame")
+properties/6/spawn = true
+properties/6/replication_mode = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jao7q"]
 radius = 40.0
@@ -111,11 +115,42 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_g061j"]
+resource_name = "IDLE"
+length = 0.1
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3skt5"]
 _data = {
 "DAMAGED": SubResource("Animation_2gd4k"),
 "DEATH": SubResource("Animation_0n5gm"),
+"IDLE": SubResource("Animation_g061j"),
 "RESET": SubResource("Animation_ktaro")
 }
 
@@ -142,5 +177,10 @@ libraries = {
 "": SubResource("AnimationLibrary_3skt5")
 }
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("curr_state")]
 script = ExtResource("3_l4h8o")
+curr_state = NodePath("IDLE")
+
+[node name="IDLE" type="Node" parent="StateMachine" node_paths=PackedStringArray("anim_player")]
+script = ExtResource("3_7yfhc")
+anim_player = NodePath("../../AnimationPlayer")
