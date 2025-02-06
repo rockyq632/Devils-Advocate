@@ -4,6 +4,9 @@ extends Control
 signal splash_screens_finished
 
 
+
+
+
 # Save/Load Resource
 var GLOBAL_SAVE: SaveLoad = SaveLoad.new()
 
@@ -34,6 +37,26 @@ var GLOBAL_SAVE: SaveLoad = SaveLoad.new()
 @export_subgroup("Multiplayer")
 # Multiplayer Handler
 @export var GLOBAL_MULTIPLAYER_HANDLER:MPHandler
+
+
+
+var screen_size:Vector2 = Vector2(640,360)
+var points:Dictionary = {
+	'CENTER' 	: Vector2(320,180),
+	
+	'N' 		: Vector2(320,0),
+	'NE' 		: Vector2(640,0),
+	'NW' 		: Vector2(0,0),
+	
+	'S'			: Vector2(320,360),
+	'SE'		: Vector2(640,360),
+	'SW'		: Vector2(0,360),
+	
+	'E'			: Vector2(640,180),
+	'W'			: Vector2(0,180)
+}
+
+
 
 func _ready() -> void:
 	# Loads a save data is one exists

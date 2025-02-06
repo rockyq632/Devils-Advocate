@@ -8,10 +8,10 @@ func _ready() -> void:
 	multiplayer.peer_connected.connect( _new_peer_connected_d )
 	
 	# Set the default moveset
-	moveset[0] = AB_REF.dict[ENM.AB_KEY.POLE_SPIN_KICK]
-	moveset[1] = AB_REF.dict[ENM.AB_KEY.POLE_INVERSION_STRIKE]
-	moveset[2] = AB_REF.dict[ENM.AB_KEY.POLE_INVERSION_DIVE]
-	moveset[3] = AB_REF.dict[ENM.AB_KEY.POLE_PIROUETTE]
+	moveset[0] = AB_REF.dict[AB_REF.KEY.POLE_SPIN_KICK]
+	moveset[1] = AB_REF.dict[AB_REF.KEY.POLE_INVERSION_STRIKE]
+	moveset[2] = AB_REF.dict[AB_REF.KEY.POLE_INVERSION_DIVE]
+	moveset[3] = AB_REF.dict[AB_REF.KEY.POLE_PIROUETTE]
 
 '''
 func _process(_delta: float) -> void:

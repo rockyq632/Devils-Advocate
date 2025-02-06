@@ -68,10 +68,10 @@ var moveset_inputs:Array[bool] = [false,false,false,false]
 # contains ability cooldown timers
 var moveset_timers:Array[Timer] = [Timer.new(), Timer.new(), Timer.new(), Timer.new()]
 # contains the moveset abilities for actions
-var moveset:Array[PC_Ability] = [AB_REF.dict[ENM.AB_KEY.RESET],
-								 AB_REF.dict[ENM.AB_KEY.RESET],
-								 AB_REF.dict[ENM.AB_KEY.RESET],
-								 AB_REF.dict[ENM.AB_KEY.RESET]]
+var moveset:Array[PC_Ability] = [AB_REF.dict[AB_REF.KEY.RESET],
+								 AB_REF.dict[AB_REF.KEY.RESET],
+								 AB_REF.dict[AB_REF.KEY.RESET],
+								 AB_REF.dict[AB_REF.KEY.RESET]]
 # Contains the index of the current action being used (-1 meaning no move is being used
 var curr_action:int = -1
 
@@ -126,6 +126,8 @@ func _ready() -> void:
 	armor_frames_timer.name = "Armor_Frame_Timer"
 	armor_frames_timer.timeout.connect(_armor_frames_finished)
 	add_child(armor_frames_timer)
+	
+	move_to_front()
 
 
 func _process(_delta: float) -> void:
@@ -351,15 +353,15 @@ func add_buff(new_buff:Buff) -> bool:
 		buffs_debuffs_node.add_child(new_buff)
 		
 		buff_gained.emit(new_buff)
-	
-	
+
+
 	else:
 		return false
 	return true
 
 
 # Removes buffs from the player accesible lists
-func remove_buff(buf_key:ENM.BUF_KEY) -> bool:
+func remove_buff(buf_key:BUF_REF.KEY) -> bool:
 	if( not buff_dict[buf_key] ):
 		return false
 	
@@ -369,7 +371,7 @@ func remove_buff(buf_key:ENM.BUF_KEY) -> bool:
 	buff_list_keys.erase(buf_key)
 	
 	return true
-	
+
 
 # Forces all buffs to be cleared over network
 @rpc("any_peer")
@@ -395,7 +397,7 @@ func add_item(new_item:Item) -> bool:
 	return true
 
 
-func remove_item(item_key:ENM.ITM_KEY) -> bool:
+func remove_item(item_key:ITEM_REF.KEY) -> bool:
 	var does_itm_exist:bool = item_dict.erase(item_key)
 	if( does_itm_exist ):
 		item_list_keys.erase(item_key)

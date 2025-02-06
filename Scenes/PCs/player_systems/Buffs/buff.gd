@@ -4,7 +4,7 @@ extends Node
 signal buff_started
 signal buff_ended
 
-@export var key:ENM.BUF_KEY = ENM.BUF_KEY.NONE
+@export var key:BUF_REF.KEY = BUF_REF.KEY.NONE
 @export var buff_name:String = "*INSERT BUFF NAME*"
 
 # Time that buff is effective

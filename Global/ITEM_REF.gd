@@ -1,5 +1,11 @@
 extends Node
 
+enum KEY {
+	NONE,
+	
+	TEST_ITEM
+}
+
 @onready var dict:Dictionary = {
-	ENM.ITM_KEY.TEST_ITEM : "res://Scenes/Items/built_items/test_item/test_item.tscn"
+	KEY.TEST_ITEM : "res://Scenes/Items/built_items/test_item/test_item.tscn"
 }

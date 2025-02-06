@@ -87,7 +87,7 @@ script = ExtResource("3_0rhik")
 [node name="GLOBAL_LIGHTING_NODE" type="Node2D" parent="."]
 
 [node name="EnemySpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://Scenes/Enemies/enemy_systems/enemy_hud/EnemyHUD.tscn", "res://Scenes/Enemies/built_enemies/Test_Dummy/Test_Dummy.tscn")
+_spawnable_scenes = PackedStringArray("res://Scenes/Enemies/enemy_systems/enemy_hud/EnemyHUD.tscn", "res://Scenes/Enemies/built_enemies/Test_Dummy/Test_Dummy.tscn", "res://Scenes/Enemies/built_enemies/Test_Enemy/TestEnemy.tscn")
 spawn_path = NodePath("../GLOBAL_ENEMIES_NODE")
 
 [node name="ProjectileSpawner" type="MultiplayerSpawner" parent="."]

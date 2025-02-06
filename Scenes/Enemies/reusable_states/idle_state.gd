@@ -1,7 +1,7 @@
 extends EnemyState
 
-@export var anim_player:AnimationPlayer
 @export var enm_body:Enemy
+@export var anim_player:AnimationPlayer
 
 
 func _ready() -> void:
@@ -19,6 +19,7 @@ func _physics_process(_delta: float) -> void:
 
 func enter_state() -> void:
 	anim_player.animation_changed.connect(_anim_changed)
+	anim_player.play("IDLE")
 	return
 	
 

@@ -5,7 +5,7 @@ signal item_received
 #signal item_effect_triggered
 
 # Key used to identify the item
-@export var key:ENM.ITM_KEY = ENM.ITM_KEY.NONE
+@export var key:ITEM_REF.KEY = ITEM_REF.KEY.NONE
 @export var item_name:String = "*INSERT ITEM NAME HERE*"
 
 # Image representation of item

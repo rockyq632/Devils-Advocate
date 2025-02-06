@@ -9,15 +9,17 @@ signal state_finished
 var _enter_func:Callable
 var _exit_func:Callable
 
+var state_entered:bool = false
 
 func _ready() -> void:
-	set_physics_process(false)
+	set_physics_process(true)
 
 # called when a state started
 func _enter_state() -> void:
 	if(_enter_func):
 		_enter_func.call()
 	state_started.emit()
+	state_entered = true
 
 # called when state is exited
 func _exit_state() -> void:
@@ -28,3 +30,4 @@ func _exit_state() -> void:
 # called when state is full finished
 func _state_finished() -> void:
 	state_finished.emit()
+	_exit_state()

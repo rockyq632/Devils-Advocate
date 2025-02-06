@@ -27,6 +27,7 @@ ENM="*res://Global/ENM.gd"
 BUF_REF="*res://Global/BUF_REF.gd"
 ITEM_REF="*res://Global/ITEM_REF.gd"
 AB_REF="*res://Global/AB_REF.gd"
+SHADER_REF="*res://Global/SHADER_REF.gd"
 
 [debug]
 

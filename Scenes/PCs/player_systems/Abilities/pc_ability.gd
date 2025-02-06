@@ -10,7 +10,7 @@ var ab_character : ENM.PC
 # ID number, used when loading the abilities from CSV file
 var ab_id : int
 # Enum key, also used as the key for AB_REF
-var ab_key : ENM.AB_KEY
+var ab_key : int
 # Name should be the same as the animation key
 var ab_name : String
 # Cooldown time
@@ -27,11 +27,11 @@ var ab_anim_speed_scale : float = 1.0
 
 # Stores Buff information for the abilities
 var apply_buff_on_use : bool = true
-var ab_buff_key : ENM.BUF_KEY
+var ab_buff_key : int
 var ab_buff_time : float = 3.0
 
 # Stores Debuff information for the abilities
-var ab_debuff_key : ENM.BUF_KEY
+var ab_debuff_key : int
 var ab_debuff_time : float = 3.0
 
 
@@ -50,7 +50,7 @@ var is_ready : bool = true
 
 # Override of _init, creates the initial ability. 
 # The rest of the vars are set on CSV ability list load in AB_REF
-func _init( id:int, pc:ENM.PC, key:ENM.AB_KEY ) -> void:
+func _init( id:int, pc:ENM.PC, key:int ) -> void:
 	ab_id = id
 	ab_character = pc
 	ab_key = key

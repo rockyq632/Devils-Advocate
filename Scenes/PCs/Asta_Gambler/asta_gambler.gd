@@ -8,10 +8,10 @@ func _ready() -> void:
 	multiplayer.peer_connected.connect( _new_peer_connected_g )
 	
 	# Set the default moveset
-	moveset[0] = AB_REF.dict[ENM.AB_KEY.CARD_DRAW_AND_STORE]
-	moveset[1] = AB_REF.dict[ENM.AB_KEY.CARD_REVEAL]
-	moveset[2] = AB_REF.dict[ENM.AB_KEY.CARD_JACKPOT]
-	moveset[3] = AB_REF.dict[ENM.AB_KEY.CARD_CHEAT]
+	moveset[0] = AB_REF.dict[AB_REF.KEY.CARD_DRAW_AND_STORE]
+	moveset[1] = AB_REF.dict[AB_REF.KEY.CARD_REVEAL]
+	moveset[2] = AB_REF.dict[AB_REF.KEY.CARD_JACKPOT]
+	moveset[3] = AB_REF.dict[AB_REF.KEY.CARD_CHEAT]
 
 
 

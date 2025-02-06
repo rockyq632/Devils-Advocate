@@ -1,18 +1,35 @@
 extends Node
 
+enum KEY {
+	RESET,
+	
+	# DANCER ABILITIES
+	POLE_SPIN_KICK, 
+	POLE_INVERSION_STRIKE, 
+	POLE_INVERSION_DIVE,
+	POLE_PIROUETTE,
+	
+	# GAMBLER ABILITIES
+	CARD_DRAW_AND_STORE,
+	CARD_REVEAL,
+	CARD_JACKPOT,
+	CARD_CHEAT
+}
+
+
 
 @onready var dict:Dictionary = {
-	ENM.AB_KEY.RESET : PC_Ability.new(999, ENM.PC.ANY, ENM.AB_KEY.RESET),
+	KEY.RESET : PC_Ability.new(999, ENM.PC.ANY, KEY.RESET),
 	
-	ENM.AB_KEY.POLE_SPIN_KICK : PC_Ability.new(500, ENM.PC.DANCER, ENM.AB_KEY.POLE_SPIN_KICK),
-	ENM.AB_KEY.POLE_INVERSION_STRIKE : PC_Ability.new(501, ENM.PC.DANCER, ENM.AB_KEY.POLE_INVERSION_STRIKE),
-	ENM.AB_KEY.POLE_INVERSION_DIVE : PC_Ability.new(502, ENM.PC.DANCER, ENM.AB_KEY.POLE_INVERSION_DIVE),
-	ENM.AB_KEY.POLE_PIROUETTE : PC_Ability.new(503, ENM.PC.DANCER, ENM.AB_KEY.POLE_PIROUETTE),
+	KEY.POLE_SPIN_KICK : PC_Ability.new(500, ENM.PC.DANCER, KEY.POLE_SPIN_KICK),
+	KEY.POLE_INVERSION_STRIKE : PC_Ability.new(501, ENM.PC.DANCER, KEY.POLE_INVERSION_STRIKE),
+	KEY.POLE_INVERSION_DIVE : PC_Ability.new(502, ENM.PC.DANCER, KEY.POLE_INVERSION_DIVE),
+	KEY.POLE_PIROUETTE : PC_Ability.new(503, ENM.PC.DANCER, KEY.POLE_PIROUETTE),
 	
-	ENM.AB_KEY.CARD_DRAW_AND_STORE : PC_Ability.new(504, ENM.PC.GAMBLER, ENM.AB_KEY.CARD_DRAW_AND_STORE),
-	ENM.AB_KEY.CARD_REVEAL : PC_Ability.new(505, ENM.PC.GAMBLER, ENM.AB_KEY.CARD_REVEAL),
-	ENM.AB_KEY.CARD_JACKPOT : PC_Ability.new(506, ENM.PC.GAMBLER, ENM.AB_KEY.CARD_JACKPOT),
-	ENM.AB_KEY.CARD_CHEAT : PC_Ability.new(507, ENM.PC.GAMBLER, ENM.AB_KEY.CARD_CHEAT)
+	KEY.CARD_DRAW_AND_STORE : PC_Ability.new(504, ENM.PC.GAMBLER, KEY.CARD_DRAW_AND_STORE),
+	KEY.CARD_REVEAL : PC_Ability.new(505, ENM.PC.GAMBLER, KEY.CARD_REVEAL),
+	KEY.CARD_JACKPOT : PC_Ability.new(506, ENM.PC.GAMBLER, KEY.CARD_JACKPOT),
+	KEY.CARD_CHEAT : PC_Ability.new(507, ENM.PC.GAMBLER, KEY.CARD_CHEAT)
 }
 
 func _ready() -> void:
@@ -22,7 +39,7 @@ func _ready() -> void:
 	while ( not file.eof_reached() ):
 		var ab_line:PackedStringArray = file.get_csv_line(",")
 		#ID number
-		for i:ENM.AB_KEY in dict:
+		for i:KEY in dict:
 			# Find the right item, then load in all of the ability data
 			if (dict[i].ab_id == int(ab_line[0])):
 				dict[i].ab_name = ab_line[1]
@@ -41,20 +58,7 @@ func _ready() -> void:
 	file.close()
 	
 	# Set buffs & debuffs
-	dict[ENM.AB_KEY.POLE_SPIN_KICK].ab_buff_key = ENM.BUF_KEY.GREEDY
-	dict[ENM.AB_KEY.POLE_INVERSION_STRIKE].ab_buff_key = ENM.BUF_KEY.BUFF_BUFF
+	dict[KEY.POLE_SPIN_KICK].ab_buff_key = BUF_REF.KEY.GREEDY
+	dict[KEY.POLE_INVERSION_STRIKE].ab_buff_key = BUF_REF.KEY.BUFF_BUFF
 	
 	# Pre-load all of the ability icon textures TODO (WOULD BE BETTER FOR LOAD TIMES)
-	'''
-	dict[ENM.AB_KEY.RESET].ab_icon_texture = preload("res://Graphics/Characters/ASTA_ASTROLOGIAN/Ability_Icons/ICON_Card_Draw_1x.png")
-
-	dict[ENM.AB_KEY.POLE_SPIN_KICK].ab_icon_texture = preload("res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Spin_Kick_1x.png")
-	dict[ENM.AB_KEY.POLE_INVERSION_STRIKE].ab_icon_texture = preload("res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Inversion_Strike_1x.png")
-	dict[ENM.AB_KEY.POLE_INVERSION_DIVE].ab_icon_texture = preload("res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Inversion_Dive_1x.png")
-	dict[ENM.AB_KEY.POLE_PIROUETTE].ab_icon_texture = preload("res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Pirouette_1x.png")
-	
-	dict[ENM.AB_KEY.CARD_DRAW_AND_STORE].ab_icon_texture = preload("res://Graphics/Characters/ASTA_ASTROLOGIAN/Ability_Icons/ICON_Card_Draw_1x.png")
-	dict[ENM.AB_KEY.CARD_REVEAL].ab_icon_texture = preload("res://Graphics/Characters/ASTA_ASTROLOGIAN/Ability_Icons/ICON_Card_Draw_1x.png")
-	dict[ENM.AB_KEY.CARD_JACKPOT].ab_icon_texture = preload("res://Graphics/Characters/ASTA_ASTROLOGIAN/Ability_Icons/ICON_Card_Draw_1x.png")
-	dict[ENM.AB_KEY.CARD_CHEAT].ab_icon_texture = preload("res://Graphics/Characters/ASTA_ASTROLOGIAN/Ability_Icons/ICON_Card_Draw_1x.png")
-	'''

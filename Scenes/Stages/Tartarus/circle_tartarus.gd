@@ -4,8 +4,8 @@ func _ready() -> void:
 	super._ready()
 
 
-
 var is_added:bool = false
+
 
 func _process(delta: float) -> void:
 	super._process(delta)
