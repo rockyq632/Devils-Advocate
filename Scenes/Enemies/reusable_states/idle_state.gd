@@ -1,8 +1,5 @@
 extends EnemyState
 
-@export var enm_body:Enemy
-@export var anim_player:AnimationPlayer
-
 
 func _ready() -> void:
 	# Set enter/exit functions
@@ -21,14 +18,11 @@ func enter_state() -> void:
 	anim_player.animation_changed.connect(_anim_changed)
 	anim_player.play("IDLE")
 	return
-	
 
 
 func exit_state() -> void:
-	anim_player.animation_finished.disconnect(_return_to_idle_anim)
+	#anim_player.animation_finished.disconnect(_return_to_idle_anim)
 	return
-
-
 
 
 

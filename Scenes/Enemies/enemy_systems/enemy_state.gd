@@ -5,6 +5,9 @@ signal state_started
 signal state_finished
 #signal state_blocked
 
+@export var enm_body:Enemy
+@export var anim_player:AnimationPlayer
+@export var anim_name:String = "RESET"
 
 var _enter_func:Callable
 var _exit_func:Callable

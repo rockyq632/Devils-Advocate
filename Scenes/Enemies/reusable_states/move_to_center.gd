@@ -1,8 +1,5 @@
 extends EnemyState
 
-@export var enm_body:Enemy
-@export var anim_player:AnimationPlayer
-@export var anim_name:String = "RESET"
 
 
 # Called when the node enters the scene tree for the first time.

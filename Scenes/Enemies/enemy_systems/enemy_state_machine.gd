@@ -3,6 +3,10 @@ extends Node
 
 signal state_changed
 
+
+@export var state_list:Array[EnemyState]
+
+@export var enm_body:Enemy
 @export var curr_state:EnemyState
 @export var idle_state:EnemyState
 
@@ -44,6 +48,7 @@ func change_state(new_state:EnemyState) -> void:
 	state_changed.emit(new_state)
 
 
+# Returns to the IDLE state
 func _return_to_idle() -> void:
 	curr_state.state_finished.disconnect(_return_to_idle)
 	change_state(idle_state)
