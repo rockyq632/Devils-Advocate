@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bfbmvd6snjdiv"]
+[gd_scene load_steps=16 format=3 uid="uid://bfbmvd6snjdiv"]
 
 [ext_resource type="Script" path="res://Scenes/PCs/Dani_Dancer/dani_dancer.gd" id="1_84d5s"]
 [ext_resource type="Texture2D" uid="uid://fb68i3mls3tn" path="res://Graphics/Characters/DANI_DANCER/Aseprite/Dani Dancer.png" id="2_b2342"]
@@ -29,8 +29,6 @@ properties/6/replication_mode = 1
 properties/7/path = NodePath(".:buff_list_keys")
 properties/7/spawn = true
 properties/7/replication_mode = 1
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ve8xt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ekm17"]
 radius = 3.0
@@ -367,7 +365,6 @@ items_node = NodePath("Items")
 replication_config = SubResource("SceneReplicationConfig_888x1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_ve8xt")
 position = Vector2(16, -16)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_b2342")
