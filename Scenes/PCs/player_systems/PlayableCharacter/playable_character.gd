@@ -95,6 +95,8 @@ var armor_frames_timer:Timer = Timer.new()
 
 
 func _ready() -> void:
+	z_as_relative = false
+	z_index = 999
 	# Connect animation player so actions can reset the animation lock
 	anim_player.animation_finished.connect(_action_animation_finished)
 	

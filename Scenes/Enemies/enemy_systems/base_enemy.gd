@@ -28,6 +28,8 @@ var dir:Vector2 = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	z_as_relative = false
+	z_index = 987
 	is_dead.connect(_just_died)
 
 

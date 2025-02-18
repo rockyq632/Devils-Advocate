@@ -4,6 +4,8 @@ extends Control
 @export var pc:PlayableCharacter
 
 func _ready() -> void:
+	z_as_relative = false
+	z_index = 998
 	opacity_settings_changed()
 
 # Runs on the physics process loop
