@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=3 uid="uid://cntivycv8p2r3"]
 
-[ext_resource type="Script" path="res://Scenes/Menues/Character_Select_Menu/character_select.gd" id="1_e3opu"]
+[ext_resource type="Script" uid="uid://08aapwskhgwc" path="res://Scenes/Menues/Character_Select_Menu/character_select.gd" id="1_e3opu"]
 [ext_resource type="Texture2D" uid="uid://ux5u7qhxxkau" path="res://Graphics/BG/Char_Select_BG_no-light_1x.png" id="2_jtyrk"]
 [ext_resource type="Texture2D" uid="uid://dsnhq44eyt30r" path="res://Graphics/BG/char_select_spotlight/left/char_sel_spotlight_1.png" id="3_vp6mv"]
 [ext_resource type="Texture2D" uid="uid://bbffpbjwawei" path="res://Graphics/Characters/DANI_DANCER/Character_Select/Dani_Select_30p_1x.png" id="5_l25qh"]
@@ -230,9 +230,9 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ynhk1"]
 _data = {
-"ON_CHARS_SELECTED": SubResource("Animation_r8b8h"),
-"ON_START": SubResource("Animation_inmic"),
-"RESET": SubResource("Animation_h1vv1")
+&"ON_CHARS_SELECTED": SubResource("Animation_r8b8h"),
+&"ON_START": SubResource("Animation_inmic"),
+&"RESET": SubResource("Animation_h1vv1")
 }
 
 [node name="Character_Select" type="Control"]

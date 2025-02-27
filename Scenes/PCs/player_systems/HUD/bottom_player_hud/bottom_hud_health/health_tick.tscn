@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://d1dpw4xtrtnof"]
 
-[ext_resource type="Script" path="res://Scenes/PCs/player_systems/HUD/bottom_player_hud/bottom_hud_health/health_tick.gd" id="1_jqlm2"]
+[ext_resource type="Script" uid="uid://dugx5mpo6j0ex" path="res://Scenes/PCs/player_systems/HUD/bottom_player_hud/bottom_hud_health/health_tick.gd" id="1_jqlm2"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_faqhw"]
 properties/0/path = NodePath(".:color")
@@ -107,11 +107,11 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ysnx7"]
 _data = {
-"ADD_ARMOR": SubResource("Animation_uopn3"),
-"DAMAGED": SubResource("Animation_ilrdq"),
-"HEALED": SubResource("Animation_w2thq"),
-"REMOVE_ARMOR": SubResource("Animation_f32ed"),
-"RESET": SubResource("Animation_0gl25")
+&"ADD_ARMOR": SubResource("Animation_uopn3"),
+&"DAMAGED": SubResource("Animation_ilrdq"),
+&"HEALED": SubResource("Animation_w2thq"),
+&"REMOVE_ARMOR": SubResource("Animation_f32ed"),
+&"RESET": SubResource("Animation_0gl25")
 }
 
 [node name="Health_tick" type="ColorRect"]

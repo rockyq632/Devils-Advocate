@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://sn6lqsbsdy0g"]
 
 [ext_resource type="Texture2D" uid="uid://dt388kk6umvgm" path="res://Graphics/UI/Hearts/16x16_Red_Hearts_1x/Heart_Break_1x.png" id="1_nwswj"]
-[ext_resource type="Script" path="res://Scenes/PCs/player_systems/HUD/health_heart.gd" id="1_vxg1y"]
+[ext_resource type="Script" uid="uid://dclnxt7k3hsak" path="res://Scenes/PCs/player_systems/HUD/health_heart.gd" id="1_vxg1y"]
 [ext_resource type="Texture2D" uid="uid://dv31j2yx3lhxn" path="res://Graphics/UI/Hearts/16x16_Armor_Hearts_1x/Armor_Break_1x.png" id="3_ei5wi"]
 [ext_resource type="Texture2D" uid="uid://creq2s5huyk8x" path="res://Graphics/UI/Hearts/16x16_Armor_Hearts_1x/Armor_Fill_1x.png" id="4_b0u2l"]
 [ext_resource type="Texture2D" uid="uid://syaf8sfwvgfg" path="res://Graphics/UI/Hearts/16x16_Red_Hearts_1x/Heart_Fill_1x.png" id="5_w6k28"]
@@ -355,11 +355,11 @@ tracks/8/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_57bdf"]
 _data = {
-"ADD_ARMOR": SubResource("Animation_ss36v"),
-"DAMAGED": SubResource("Animation_cf3vh"),
-"HEALED": SubResource("Animation_54o3v"),
-"REMOVE_ARMOR": SubResource("Animation_sqnxt"),
-"RESET": SubResource("Animation_n48wa")
+&"ADD_ARMOR": SubResource("Animation_ss36v"),
+&"DAMAGED": SubResource("Animation_cf3vh"),
+&"HEALED": SubResource("Animation_54o3v"),
+&"REMOVE_ARMOR": SubResource("Animation_sqnxt"),
+&"RESET": SubResource("Animation_n48wa")
 }
 
 [node name="HealthHeart" type="CenterContainer"]

@@ -1,9 +1,9 @@
 [gd_scene load_steps=13 format=3 uid="uid://t5ehi5cnu8pw"]
 
-[ext_resource type="Script" path="res://Global/GSM.gd" id="1_r3r28"]
-[ext_resource type="Script" path="res://Global/support_scripts/multiplayer_handler.gd" id="2_al58x"]
-[ext_resource type="Script" path="res://Global/support_scripts/global_players_node.gd" id="3_0rhik"]
-[ext_resource type="Script" path="res://Global/support_scripts/utilities.gd" id="3_bvox7"]
+[ext_resource type="Script" uid="uid://ckinvwne6cp7w" path="res://Global/GSM.gd" id="1_r3r28"]
+[ext_resource type="Script" uid="uid://dha5akaarpxd5" path="res://Global/support_scripts/multiplayer_handler.gd" id="2_al58x"]
+[ext_resource type="Script" uid="uid://dyu0vfodyqs8r" path="res://Global/support_scripts/global_players_node.gd" id="3_0rhik"]
+[ext_resource type="Script" uid="uid://dtskj505yirkx" path="res://Global/support_scripts/utilities.gd" id="3_bvox7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ja2ms"]
 size = Vector2(10, 560)
@@ -87,7 +87,7 @@ script = ExtResource("3_0rhik")
 [node name="GLOBAL_LIGHTING_NODE" type="Node2D" parent="."]
 
 [node name="EnemySpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://Scenes/Enemies/enemy_systems/enemy_hud/EnemyHUD.tscn", "res://Scenes/Enemies/built_enemies/Test_Dummy/Test_Dummy.tscn", "res://Scenes/Enemies/built_enemies/Test_Enemy/TestEnemy.tscn")
+_spawnable_scenes = PackedStringArray("uid://ilaqpxhwx3hk", "uid://ra5chhkow4we", "uid://dkshvgnra1tw")
 spawn_path = NodePath("../GLOBAL_ENEMIES_NODE")
 
 [node name="ProjectileSpawner" type="MultiplayerSpawner" parent="."]

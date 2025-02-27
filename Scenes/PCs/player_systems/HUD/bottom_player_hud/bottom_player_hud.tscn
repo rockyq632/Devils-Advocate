@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dahbp04i2mfmc"]
 
-[ext_resource type="Script" path="res://Scenes/PCs/player_systems/HUD/bottom_player_hud/bottom_player_hud.gd" id="1_5x73g"]
+[ext_resource type="Script" uid="uid://dxrw62b7bouqw" path="res://Scenes/PCs/player_systems/HUD/bottom_player_hud/bottom_player_hud.gd" id="1_5x73g"]
 [ext_resource type="PackedScene" uid="uid://d1dpw4xtrtnof" path="res://Scenes/PCs/player_systems/HUD/bottom_player_hud/bottom_hud_health/health_tick.tscn" id="2_qlula"]
 [ext_resource type="Texture2D" uid="uid://c8r55xwyskrjn" path="res://icon.svg" id="2_sdvld"]
 

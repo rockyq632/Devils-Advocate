@@ -1,9 +1,9 @@
 [gd_scene load_steps=13 format=3 uid="uid://ra5chhkow4we"]
 
-[ext_resource type="Script" path="res://Scenes/Enemies/built_enemies/Test_Dummy/test_dummy.gd" id="1_tgpqs"]
+[ext_resource type="Script" uid="uid://r0m7hvh2yafg" path="res://Scenes/Enemies/built_enemies/Test_Dummy/test_dummy.gd" id="1_tgpqs"]
 [ext_resource type="Texture2D" uid="uid://ri26k61wdbrx" path="res://Graphics/Enemies/Test_Dummy_4x.png" id="2_2m2km"]
-[ext_resource type="Script" path="res://Scenes/Enemies/reusable_states/idle_state.gd" id="3_7yfhc"]
-[ext_resource type="Script" path="res://Scenes/Enemies/enemy_systems/enemy_state_machine.gd" id="3_l4h8o"]
+[ext_resource type="Script" uid="uid://ciwyxf8yuo82g" path="res://Scenes/Enemies/reusable_states/idle_state.gd" id="3_7yfhc"]
+[ext_resource type="Script" uid="uid://cgnxjroswx5l1" path="res://Scenes/Enemies/enemy_systems/enemy_state_machine.gd" id="3_l4h8o"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_h1rpf"]
 properties/0/path = NodePath(".:position")
@@ -150,10 +150,10 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3skt5"]
 _data = {
-"DAMAGED": SubResource("Animation_2gd4k"),
-"DEATH": SubResource("Animation_0n5gm"),
-"IDLE": SubResource("Animation_g061j"),
-"RESET": SubResource("Animation_ktaro")
+&"DAMAGED": SubResource("Animation_2gd4k"),
+&"DEATH": SubResource("Animation_0n5gm"),
+&"IDLE": SubResource("Animation_g061j"),
+&"RESET": SubResource("Animation_ktaro")
 }
 
 [node name="TestDummy" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "anim_player", "state_machine")]

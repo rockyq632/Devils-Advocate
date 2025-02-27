@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://0a8wvuoxfqbq"]
 
-[ext_resource type="Script" path="res://Scenes/Enemies/enemy_systems/enemy_hud/health_bar/health_bar.gd" id="1_rftsg"]
+[ext_resource type="Script" uid="uid://cm8mijyku41a1" path="res://Scenes/Enemies/enemy_systems/enemy_hud/health_bar/health_bar.gd" id="1_rftsg"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_h61ro"]
 properties/0/path = NodePath("PB_Bot_Bar:value")

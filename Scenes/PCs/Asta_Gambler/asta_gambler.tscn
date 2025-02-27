@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://dthsjbr2th3i3"]
 
-[ext_resource type="Script" path="res://Scenes/PCs/Asta_Gambler/asta_gambler.gd" id="1_318fy"]
+[ext_resource type="Script" uid="uid://b37o4oc0lqtla" path="res://Scenes/PCs/Asta_Gambler/asta_gambler.gd" id="1_318fy"]
 [ext_resource type="Texture2D" uid="uid://dtymtw5ds3s3q" path="res://Graphics/Characters/ASTA_ASTROLOGIAN/Fly_Idle_4x.png" id="2_7k06w"]
-[ext_resource type="Script" path="res://Scenes/PCs/player_systems/hitbox.gd" id="3_1s5pg"]
+[ext_resource type="Script" uid="uid://bs2amxhtwowd2" path="res://Scenes/PCs/player_systems/hitbox.gd" id="3_1s5pg"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vhv7u"]
 properties/0/path = NodePath(".:position")
@@ -104,10 +104,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nyves"]
 _data = {
-"FLY_EAST": SubResource("Animation_3bs7o"),
-"FLY_IDLE": SubResource("Animation_5a0v7"),
-"FLY_WEST": SubResource("Animation_ymk7w"),
-"RESET": SubResource("Animation_jne6f")
+&"FLY_EAST": SubResource("Animation_3bs7o"),
+&"FLY_IDLE": SubResource("Animation_5a0v7"),
+&"FLY_WEST": SubResource("Animation_ymk7w"),
+&"RESET": SubResource("Animation_jne6f")
 }
 
 [node name="AstaGambler" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "anim_player", "hitbox", "hurtbox", "buffs_debuffs_node", "items_node")]

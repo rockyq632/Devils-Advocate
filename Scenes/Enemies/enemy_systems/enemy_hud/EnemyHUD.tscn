@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ilaqpxhwx3hk"]
 
 [ext_resource type="PackedScene" uid="uid://0a8wvuoxfqbq" path="res://Scenes/Enemies/enemy_systems/enemy_hud/health_bar/health_bar.tscn" id="1_6mixu"]
-[ext_resource type="Script" path="res://Scenes/Enemies/enemy_systems/enemy_hud/enemy_hud.gd" id="1_jgvje"]
+[ext_resource type="Script" uid="uid://3q05g5lmgxdc" path="res://Scenes/Enemies/enemy_systems/enemy_hud/enemy_hud.gd" id="1_jgvje"]
 
 [node name="EnemyHud" type="Control"]
 light_mask = 2

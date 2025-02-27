@@ -1,6 +1,6 @@
 [gd_scene load_steps=51 format=3 uid="uid://0dejidk8eh4c"]
 
-[ext_resource type="Script" path="res://Scenes/PCs/player_systems/HUD/cd_frame.gd" id="1_ejmnn"]
+[ext_resource type="Script" uid="uid://l2lod3c5j3od" path="res://Scenes/PCs/player_systems/HUD/cd_frame.gd" id="1_ejmnn"]
 [ext_resource type="Texture2D" uid="uid://t8k3v2qmoxic" path="res://Graphics/UI/CD_Overlay_SM_4x.png" id="1_uqpoh"]
 [ext_resource type="Texture2D" uid="uid://dyf5s4t0sisab" path="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Inversion_Dive_1x.png" id="2_bpeiw"]
 

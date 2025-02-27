@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b78wkbmjpsw7k"]
 
-[ext_resource type="Script" path="res://Scenes/PCs/player_systems/Buffs/built_debuffs/sloth/sloth.gd" id="1_dy2cq"]
+[ext_resource type="Script" uid="uid://cfiaitdtfruau" path="res://Scenes/PCs/player_systems/Buffs/built_debuffs/sloth/sloth.gd" id="1_dy2cq"]
 [ext_resource type="Texture2D" uid="uid://c8r55xwyskrjn" path="res://icon.svg" id="2_hgnb5"]
 
 [node name="Sloth" type="Node2D"]

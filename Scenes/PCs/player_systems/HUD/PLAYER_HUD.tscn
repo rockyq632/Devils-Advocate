@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b41djb2tgjrtj"]
 
-[ext_resource type="Script" path="res://Scenes/PCs/player_systems/HUD/player_hud.gd" id="1_mxgpn"]
+[ext_resource type="Script" uid="uid://r7q43dgruh6j" path="res://Scenes/PCs/player_systems/HUD/player_hud.gd" id="1_mxgpn"]
 [ext_resource type="PackedScene" uid="uid://sn6lqsbsdy0g" path="res://Scenes/PCs/player_systems/HUD/health_heart.tscn" id="2_1qrxq"]
 [ext_resource type="PackedScene" uid="uid://0dejidk8eh4c" path="res://Scenes/PCs/player_systems/HUD/cd_frame.tscn" id="3_vnohx"]
 [ext_resource type="Texture2D" uid="uid://dyf5s4t0sisab" path="res://Graphics/Characters/DANI_DANCER/Ability_Icons/ICON_Pole_Inversion_Dive_1x.png" id="4_cs6rm"]

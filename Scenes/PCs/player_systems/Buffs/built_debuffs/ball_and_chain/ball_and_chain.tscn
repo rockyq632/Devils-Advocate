@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://151irf31mnbs"]
 
-[ext_resource type="Script" path="res://Scenes/PCs/player_systems/Buffs/built_debuffs/ball_and_chain/ball_and_chain.gd" id="1_o8msb"]
+[ext_resource type="Script" uid="uid://cedmam4w4hahu" path="res://Scenes/PCs/player_systems/Buffs/built_debuffs/ball_and_chain/ball_and_chain.gd" id="1_o8msb"]
 [ext_resource type="Texture2D" uid="uid://c8r55xwyskrjn" path="res://icon.svg" id="2_nnr0x"]
 
 [sub_resource type="Animation" id="Animation_3bo75"]
@@ -37,8 +37,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8kw23"]
 _data = {
-"RESET": SubResource("Animation_3bo75"),
-"on_start": SubResource("Animation_uabwp")
+&"RESET": SubResource("Animation_3bo75"),
+&"on_start": SubResource("Animation_uabwp")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5uedl"]

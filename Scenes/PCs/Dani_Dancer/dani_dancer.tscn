@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://bfbmvd6snjdiv"]
 
-[ext_resource type="Script" path="res://Scenes/PCs/Dani_Dancer/dani_dancer.gd" id="1_84d5s"]
+[ext_resource type="Script" uid="uid://t64nr6pupx38" path="res://Scenes/PCs/Dani_Dancer/dani_dancer.gd" id="1_84d5s"]
 [ext_resource type="Texture2D" uid="uid://fb68i3mls3tn" path="res://Graphics/Characters/DANI_DANCER/Aseprite/Dani Dancer.png" id="2_b2342"]
-[ext_resource type="Script" path="res://Scenes/PCs/player_systems/hitbox.gd" id="3_gy1qg"]
+[ext_resource type="Script" uid="uid://bs2amxhtwowd2" path="res://Scenes/PCs/player_systems/hitbox.gd" id="3_gy1qg"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_888x1"]
 properties/0/path = NodePath(".:position")
@@ -342,14 +342,14 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yet81"]
 _data = {
-"FLY_EAST": SubResource("Animation_2w38t"),
-"FLY_IDLE": SubResource("Animation_hwchc"),
-"FLY_WEST": SubResource("Animation_8axn8"),
-"POLE_INVERSION_DIVE": SubResource("Animation_3dcqu"),
-"POLE_INVERSION_STRIKE": SubResource("Animation_sal2s"),
-"POLE_PIROUETTE": SubResource("Animation_qmwxt"),
-"POLE_SPIN_KICK": SubResource("Animation_vxw7x"),
-"RESET": SubResource("Animation_kgi53")
+&"FLY_EAST": SubResource("Animation_2w38t"),
+&"FLY_IDLE": SubResource("Animation_hwchc"),
+&"FLY_WEST": SubResource("Animation_8axn8"),
+&"POLE_INVERSION_DIVE": SubResource("Animation_3dcqu"),
+&"POLE_INVERSION_STRIKE": SubResource("Animation_sal2s"),
+&"POLE_PIROUETTE": SubResource("Animation_qmwxt"),
+&"POLE_SPIN_KICK": SubResource("Animation_vxw7x"),
+&"RESET": SubResource("Animation_kgi53")
 }
 
 [node name="DaniDancer" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "anim_player", "hitbox", "hurtbox", "buffs_debuffs_node", "items_node")]

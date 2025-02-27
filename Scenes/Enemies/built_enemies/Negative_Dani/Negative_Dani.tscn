@@ -1,10 +1,10 @@
 [gd_scene load_steps=14 format=3 uid="uid://dmqaiij73baok"]
 
-[ext_resource type="Script" path="res://Scenes/Enemies/built_enemies/Test_Dummy/test_dummy.gd" id="1_dg3ke"]
-[ext_resource type="Shader" path="res://Shaders/Negatives/negative_R.gdshader" id="2_sescr"]
-[ext_resource type="Script" path="res://Scenes/Enemies/enemy_systems/enemy_state_machine.gd" id="3_gef26"]
+[ext_resource type="Script" uid="uid://r0m7hvh2yafg" path="res://Scenes/Enemies/built_enemies/Test_Dummy/test_dummy.gd" id="1_dg3ke"]
+[ext_resource type="Shader" uid="uid://bu66cyf8dyb2f" path="res://Shaders/Negatives/negative_R.gdshader" id="2_sescr"]
+[ext_resource type="Script" uid="uid://cgnxjroswx5l1" path="res://Scenes/Enemies/enemy_systems/enemy_state_machine.gd" id="3_gef26"]
 [ext_resource type="Texture2D" uid="uid://fb68i3mls3tn" path="res://Graphics/Characters/DANI_DANCER/Aseprite/Dani Dancer.png" id="3_v0cts"]
-[ext_resource type="Script" path="res://Scenes/Enemies/reusable_states/idle_state.gd" id="4_pe1rh"]
+[ext_resource type="Script" uid="uid://ciwyxf8yuo82g" path="res://Scenes/Enemies/reusable_states/idle_state.gd" id="4_pe1rh"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_h1rpf"]
 properties/0/path = NodePath(".:position")
@@ -116,10 +116,10 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3skt5"]
 _data = {
-"DAMAGED": SubResource("Animation_2gd4k"),
-"DEATH": SubResource("Animation_0n5gm"),
-"IDLE": SubResource("Animation_g061j"),
-"RESET": SubResource("Animation_ktaro")
+&"DAMAGED": SubResource("Animation_2gd4k"),
+&"DEATH": SubResource("Animation_0n5gm"),
+&"IDLE": SubResource("Animation_g061j"),
+&"RESET": SubResource("Animation_ktaro")
 }
 
 [node name="NegaDani" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "anim_player", "state_machine")]
