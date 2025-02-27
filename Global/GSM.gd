@@ -41,7 +41,7 @@ var GLOBAL_SAVE: SaveLoad = SaveLoad.new()
 
 
 var screen_size:Vector2 = Vector2(640,360)
-var points:Dictionary = {
+var points:Dictionary[String,Vector2] = {
 	'CENTER' 	: Vector2(320,180),
 	
 	'N' 		: Vector2(320,0),

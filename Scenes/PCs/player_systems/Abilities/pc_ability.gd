@@ -93,6 +93,6 @@ func _ab_hit(pc:PlayableCharacter, _target:Enemy) -> float:
 	
 	if(ab_debuff_key):
 		# TODO Apply Debuffs
-		load(BUF_REF.buffs[ab_debuff_key].instantiate())
+		load(BUF_REF.buffs[ab_debuff_key]).instantiate()
 	
 	return ab_base_dmg

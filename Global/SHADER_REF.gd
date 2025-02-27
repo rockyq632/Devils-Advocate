@@ -26,7 +26,7 @@ enum KEY {
 
 
 
-@onready var dict:Dictionary = {
+@onready var dict:Dictionary[int,Shader] = {
 	KEY.NEG_R : preload("res://Shaders/Negatives/negative_R.gdshader"),
 	KEY.NEG_G : preload("res://Shaders/Negatives/negative_G.gdshader"),
 	KEY.NEG_B : preload("res://Shaders/Negatives/negative_B.gdshader"),

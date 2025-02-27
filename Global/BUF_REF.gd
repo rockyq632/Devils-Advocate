@@ -17,7 +17,7 @@ enum KEY {
 
 
 
-@onready var buffs:Dictionary = {
+@onready var buffs:Dictionary[int, String] = {
 	#BUFFS
 	KEY.BUFF_BUFF : "res://Scenes/PCs/player_systems/Buffs/built_buffs/buff_buff/buff_buff.tscn",
 	KEY.GREEDY : "res://Scenes/PCs/player_systems/Buffs/built_buffs/greedy/greedy.tscn",

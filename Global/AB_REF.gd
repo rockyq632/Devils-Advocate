@@ -18,7 +18,7 @@ enum KEY {
 
 
 
-@onready var dict:Dictionary = {
+@onready var dict:Dictionary[int, PC_Ability] = {
 	KEY.RESET : PC_Ability.new(999, ENM.PC.ANY, KEY.RESET),
 	
 	KEY.POLE_SPIN_KICK : PC_Ability.new(500, ENM.PC.DANCER, KEY.POLE_SPIN_KICK),
@@ -39,7 +39,7 @@ func _ready() -> void:
 	while ( not file.eof_reached() ):
 		var ab_line:PackedStringArray = file.get_csv_line(",")
 		#ID number
-		for i:KEY in dict:
+		for i:int in dict:
 			# Find the right item, then load in all of the ability data
 			if (dict[i].ab_id == int(ab_line[0])):
 				dict[i].ab_name = ab_line[1]

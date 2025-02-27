@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var players : Array[PlayableCharacter] = []
-@export var dict : Dictionary = {}
+@export var dict : Dictionary[String,PlayableCharacter] = {}
 
 
 # When a player character enter

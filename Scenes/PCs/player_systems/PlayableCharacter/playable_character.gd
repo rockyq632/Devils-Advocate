@@ -84,14 +84,14 @@ var armor_frames_timer:Timer = Timer.new()
 @export_group("Monitor Only")
 @export_subgroup("BUFFS")
 # TODO implement the dictionary for buffs 
-@export var buff_dict:Dictionary = {}
+@export var buff_dict:Dictionary[int, Buff] = {}
 # IMPORTANT updating the buff_list_keys is how buffs get networked
 @export var buff_list_keys:Array[int] = []
 #@export var buff_list:Array[Buff] = []
 
 
 @export_subgroup("ITEMS")
-@export var item_dict:Dictionary = {}
+@export var item_dict:Dictionary[int,Item] = {}
 @export var item_list_keys:Array[int] = []
 
 

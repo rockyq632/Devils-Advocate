@@ -32,9 +32,12 @@ properties/6/replication_mode = 2
 properties/7/path = NodePath("Sprite2D:modulate")
 properties/7/spawn = true
 properties/7/replication_mode = 2
-properties/8/path = NodePath("Hurtbox1/CP_ARC_ATK:disabled")
+properties/8/path = NodePath("A2D_ARC_ATK/CP_ARC_ATK:disabled")
 properties/8/spawn = true
 properties/8/replication_mode = 2
+properties/9/path = NodePath("A2D_ARC_ATK/CP_ARC_ATK:polygon")
+properties/9/spawn = true
+properties/9/replication_mode = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uo7ix"]
 radius = 35.0

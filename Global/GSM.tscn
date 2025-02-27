@@ -87,8 +87,9 @@ script = ExtResource("3_0rhik")
 [node name="GLOBAL_LIGHTING_NODE" type="Node2D" parent="."]
 
 [node name="EnemySpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("uid://ilaqpxhwx3hk", "uid://ra5chhkow4we", "uid://dkshvgnra1tw")
+_spawnable_scenes = PackedStringArray("uid://ilaqpxhwx3hk", "uid://ra5chhkow4we", "uid://dkshvgnra1tw", "uid://dmqaiij73baok")
 spawn_path = NodePath("../GLOBAL_ENEMIES_NODE")
+spawn_limit = 2
 
 [node name="ProjectileSpawner" type="MultiplayerSpawner" parent="."]
 spawn_path = NodePath("../GLOBAL_PROJECTILE_NODE")

@@ -3,7 +3,7 @@ extends Resource
 
 # Saved values for tracking progression
 @export var save_num:int = 0
-@export var plot_list:Dictionary = {}
+@export var plot_list:Dictionary[int,String] = {}
 
 
 # Saved settings for GCM
