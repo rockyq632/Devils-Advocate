@@ -17,6 +17,8 @@ const MAX_HEALTH:int = 10
 # Maximum possible movement speed
 const MAX_MOVE_SPEED:float = 1000.0
 
+const type : ENM.TARGET_TYPE = ENM.TARGET_TYPE.PLAYER
+
 # Current max health
 @export var max_health:int = 3
 # Current available health

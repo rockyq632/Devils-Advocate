@@ -5,6 +5,11 @@ signal health_changed
 signal is_dead
 signal is_fight_finished
 
+const MAX_HEALTH:float = 100000.0
+const MIN_MOVE_SPEED:float = 10.0
+const MAX_MOVE_SPEED:float = 1000.0
+const type : ENM.TARGET_TYPE = ENM.TARGET_TYPE.ENEMY
+
 
 @export_subgroup("Stats")
 @export var max_health:float = 100.0

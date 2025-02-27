@@ -26,10 +26,21 @@ func _ready() -> void:
 
 
 # Runs once per frame
+var d_sum:float = 0
 func _process(_delta: float) -> void:
 	# Only works if is host
 	if(not is_multiplayer_authority()):
 		return
+		
+	if( curr_state ):
+		if( not curr_state.state_entered ):
+			curr_state.state_finished.connect(_return_to_idle)
+			curr_state._enter_state()
+	
+	d_sum += _delta
+	if( d_sum > 0.5 ):
+		print(curr_state)
+		d_sum = 0.0
 
 
 
