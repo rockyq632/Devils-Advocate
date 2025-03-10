@@ -270,7 +270,6 @@ offset = Vector2(640, 360)
 
 [node name="Waiting_Area" type="Area2D" parent="."]
 visible = false
-collision_layer = 0
 
 [node name="CP_Waiting_Area" type="CollisionPolygon2D" parent="Waiting_Area"]
 polygon = PackedVector2Array(282, 0, 358, 0, 385, 271, 378, 278, 363, 286, 336, 291, 320, 292, 303, 291, 280, 287, 261, 278, 255, 271)
@@ -341,7 +340,7 @@ stretch_mode = 4
 
 [node name="LightAnimPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_ynhk1")
+&"": SubResource("AnimationLibrary_ynhk1")
 }
 
 [connection signal="pressed" from="MC_char_btns/VB/DANCER_BTN" to="." method="_on_dancer_btn_pressed"]

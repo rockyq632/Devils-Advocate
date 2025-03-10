@@ -353,6 +353,7 @@ _data = {
 }
 
 [node name="DaniDancer" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "anim_player", "hitbox", "hurtbox", "buffs_debuffs_node", "items_node")]
+collision_layer = 0
 script = ExtResource("1_84d5s")
 sprite = NodePath("Sprite2D")
 anim_player = NodePath("AnimationPlayer")
@@ -392,7 +393,7 @@ disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_yet81")
+&"": SubResource("AnimationLibrary_yet81")
 }
 
 [node name="Buffs_Debuffs" type="Node2D" parent="."]

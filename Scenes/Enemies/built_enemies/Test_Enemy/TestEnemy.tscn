@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dkshvgnra1tw"]
+[gd_scene load_steps=17 format=3 uid="uid://dkshvgnra1tw"]
 
 [ext_resource type="Script" uid="uid://bkged6a7iktqy" path="res://Scenes/Enemies/built_enemies/Test_Enemy/test_enemy.gd" id="1_xvuw4"]
 [ext_resource type="Texture2D" uid="uid://bs8a6nmwj2tha" path="res://Graphics/PLACEHOLDERS/PLACEHOLDER_ENEMY.png" id="2_unae8"]
@@ -85,7 +85,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AnimationPlayer/anim_debug_text:text")
+tracks/3/path = NodePath("Sprite2D/anim_debug_text:text")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -114,7 +114,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationPlayer/anim_debug_text:text")
+tracks/1/path = NodePath("Sprite2D/anim_debug_text:text")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -143,7 +143,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationPlayer/anim_debug_text:text")
+tracks/1/path = NodePath("Sprite2D/anim_debug_text:text")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -185,7 +185,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AnimationPlayer/anim_debug_text:text")
+tracks/2/path = NodePath("Sprite2D/anim_debug_text:text")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -214,7 +214,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationPlayer/anim_debug_text:text")
+tracks/1/path = NodePath("Sprite2D/anim_debug_text:text")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -278,7 +278,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("AnimationPlayer/anim_debug_text:text")
+tracks/4/path = NodePath("Sprite2D/anim_debug_text:text")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -286,6 +286,107 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": ["[center]RESET"]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("A2D_ROTATE_ATK/CP_ROTATE_ATK:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("A2D_ROTATE_ATK:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("A2D_ROTATE_ATK/CP_ROTATE_ATK:polygon")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(0, 32, 32, 0, 0, -32)]
+}
+
+[sub_resource type="Animation" id="Animation_tiwtk"]
+resource_name = "ROTATE_ATK"
+length = 6.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.54902, 0.54902, 1), Color(1, 1, 1, 1), Color(1, 0.54902, 0.54902, 1), Color(1, 1, 1, 1), Color(1, 0.54902, 0.54902, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("A2D_ROTATE_ATK:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 3, 4.5, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.5708, 3.14159, 4.71239, 6.28319]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("A2D_ROTATE_ATK/CP_ROTATE_ATK:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D/anim_debug_text:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["[center]ROTATE_ATK"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("A2D_ROTATE_ATK/CP_ROTATE_ATK:polygon")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [PackedVector2Array(0, 32, 32, 0, 0, -32, -192, -128, -192, 128), PackedVector2Array(0, 32, 32, 0, 0, -32)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x2kbs"]
@@ -295,7 +396,8 @@ _data = {
 &"DEATH": SubResource("Animation_fpiad"),
 &"IDLE": SubResource("Animation_yh23q"),
 &"MOVE_W": SubResource("Animation_66vfb"),
-&"RESET": SubResource("Animation_rywuk")
+&"RESET": SubResource("Animation_rywuk"),
+&"ROTATE_ATK": SubResource("Animation_tiwtk")
 }
 
 [node name="TestEnemy" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "anim_player", "state_machine")]
@@ -316,30 +418,55 @@ shape = SubResource("CircleShape2D_uo7ix")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_unae8")
 
+[node name="anim_debug_text" type="RichTextLabel" parent="Sprite2D"]
+offset_left = -44.0
+offset_top = 80.0
+offset_right = 41.0
+offset_bottom = 97.0
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center]RESET"
+fit_content = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_x2kbs")
 }
 
-[node name="anim_debug_text" type="RichTextLabel" parent="AnimationPlayer"]
-offset_left = -42.0
-offset_top = 38.0
-offset_right = 43.0
-offset_bottom = 55.0
-theme_override_font_sizes/normal_font_size = 10
-bbcode_enabled = true
-text = "[center]RESET"
-
 [node name="A2D_ARC_ATK" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="CP_ARC_ATK" type="CollisionPolygon2D" parent="A2D_ARC_ATK"]
 position = Vector2(37, 4)
 polygon = PackedVector2Array(-44, -17, -45, 10, -27, -8)
 disabled = true
 
+[node name="A2D_ROTATE_ATK" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CP_ROTATE_ATK" type="CollisionPolygon2D" parent="A2D_ROTATE_ATK"]
+polygon = PackedVector2Array(0, 32, 32, 0, 0, -32)
+disabled = true
+
+[node name="A2D_2x_ROTATE_ATK" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+
+[node name="CP_2x_ROTATE_ATK" type="CollisionPolygon2D" parent="A2D_2x_ROTATE_ATK"]
+polygon = PackedVector2Array(0, 32, 32, 0, 0, -32, -192, -128, -192, 128)
+disabled = true
+
+[node name="A2D_4x_ROTATE_ATK2" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+
+[node name="CP_4x_ROTATE_ATK" type="CollisionPolygon2D" parent="A2D_4x_ROTATE_ATK2"]
+polygon = PackedVector2Array(0, 32, 32, 0, 0, -32, -192, -128, -192, 128)
+disabled = true
+
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state_list", "enm_body", "curr_state", "idle_state")]
 script = ExtResource("3_b6ihi")
-state_list = [NodePath("IDLE"), NodePath("MOVE_TO_CENTER"), NodePath("ARC_ATK")]
+state_list = [NodePath("IDLE"), NodePath("MOVE_TO_CENTER"), NodePath("ARC_ATK"), NodePath("ROTATE_ATK")]
 enm_body = NodePath("..")
 curr_state = NodePath("MOVE_TO_CENTER")
 idle_state = NodePath("IDLE")
@@ -363,4 +490,14 @@ enm_body = NodePath("../..")
 anim_player = NodePath("../../AnimationPlayer")
 anim_name = "ARC_ATK"
 
-[connection signal="body_entered" from="A2D_ARC_ATK" to="." method="_on_arc_atk_body_entered"]
+[node name="ROTATE_ATK" type="Node" parent="StateMachine" node_paths=PackedStringArray("hurtbox_area", "enm_body", "anim_player")]
+script = ExtResource("6_rgc2i")
+hurtbox_area = NodePath("../../A2D_ROTATE_ATK")
+enm_body = NodePath("../..")
+anim_player = NodePath("../../AnimationPlayer")
+anim_name = "ROTATE_ATK"
+
+[connection signal="body_entered" from="A2D_ARC_ATK" to="." method="_on_atk_body_entered"]
+[connection signal="body_entered" from="A2D_ROTATE_ATK" to="." method="_on_atk_body_entered"]
+[connection signal="body_entered" from="A2D_2x_ROTATE_ATK" to="." method="_on_atk_body_entered"]
+[connection signal="body_entered" from="A2D_4x_ROTATE_ATK2" to="." method="_on_atk_body_entered"]

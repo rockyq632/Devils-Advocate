@@ -33,7 +33,7 @@ func _exit_state() -> void:
 	if(_exit_func):
 		_exit_func.call()
 	set_physics_process(false)
-	state_entered = false
+	#state_entered = false
 
 
 # called when state is full finished

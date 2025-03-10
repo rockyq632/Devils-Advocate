@@ -9,14 +9,13 @@ func _ready() -> void:
 	anim_player.animation_finished.connect(_attack_anim_finished)
 
 func _enter() -> void:
-	anim_player.play("ARC_ATK")
+	anim_player.play(anim_name)
 	
 
 func _exit() -> void:
 	return
-	#anim_player.animation_finished.disconnect(_attack_anim_finished)
 
 
 func _attack_anim_finished(_animation_name:String) -> void:
-	if(_animation_name == "ARC_ATK"):
+	if(_animation_name == anim_name):
 		_state_finished()
