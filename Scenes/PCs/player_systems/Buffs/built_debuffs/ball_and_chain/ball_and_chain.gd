@@ -1,5 +1,7 @@
 extends Buff
 
+const ID:int = 401
+
 @export var move_speed_reduction:float = 0.5
 
 

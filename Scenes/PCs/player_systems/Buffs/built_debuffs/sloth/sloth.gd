@@ -1,5 +1,6 @@
 extends Buff
 
+const ID:int = 404
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

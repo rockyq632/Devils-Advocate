@@ -1,5 +1,7 @@
 extends Buff
 
+const ID:int = 402
+
 @export var pull_speed:int = 25
 
 # Position to pull PC toward

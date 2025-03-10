@@ -59,6 +59,6 @@ func _ready() -> void:
 	
 	# Set buffs & debuffs
 	dict[KEY.POLE_SPIN_KICK].ab_buff_key = BUF_REF.KEY.GREEDY
-	dict[KEY.POLE_INVERSION_STRIKE].ab_buff_key = BUF_REF.KEY.BUFF_BUFF
+	dict[KEY.POLE_INVERSION_STRIKE].ab_buff_key = BUF_REF.KEY.GLUTTONOUS
 	
 	# Pre-load all of the ability icon textures TODO (WOULD BE BETTER FOR LOAD TIMES)

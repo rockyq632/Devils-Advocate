@@ -323,7 +323,7 @@ texture_hover = ExtResource("10_p4ih4")
 texture_focused = ExtResource("9_tem7a")
 stretch_mode = 4
 
-[node name="???_BTN" type="TextureButton" parent="MC_char_btns/VB"]
+[node name="SCIENTIST_BTN" type="TextureButton" parent="MC_char_btns/VB"]
 layout_mode = 2
 texture_normal = ExtResource("11_hygim")
 stretch_mode = 4

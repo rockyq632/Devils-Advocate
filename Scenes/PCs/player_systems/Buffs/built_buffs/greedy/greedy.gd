@@ -1,5 +1,7 @@
 extends Buff
 
+const ID:int = 302
+
 @export var gold_color:Color = Color(0.98, 0.95, 0.29)
 
 # Called when the node enters the scene tree for the first time.

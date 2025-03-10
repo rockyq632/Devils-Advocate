@@ -5,7 +5,7 @@ enum KEY {
 	NONE,
 	
 	# BUFFS TO USE BY PCs (Sort alphabetically)
-	BUFF_BUFF,
+	GLUTTONOUS,
 	GREEDY,
 	
 	# DEBUFFS TO USE AGAINST PCs (Sort alphabetically)
@@ -19,7 +19,7 @@ enum KEY {
 
 @onready var buffs:Dictionary[int, String] = {
 	#BUFFS
-	KEY.BUFF_BUFF : "res://Scenes/PCs/player_systems/Buffs/built_buffs/buff_buff/buff_buff.tscn",
+	KEY.GLUTTONOUS : "res://Scenes/PCs/player_systems/Buffs/built_buffs/gluttonous/gluttonous.tscn",
 	KEY.GREEDY : "res://Scenes/PCs/player_systems/Buffs/built_buffs/greedy/greedy.tscn",
 	
 	# DEBUFFS

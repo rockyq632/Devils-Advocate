@@ -1,5 +1,7 @@
 extends Buff
 
+const ID:int = 303
+
 var scale_dir:int = 1
 var min_scale:float = 0.25
 var max_scale:float = 2
@@ -7,7 +9,7 @@ var max_scale:float = 2
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Set name
-	name = "buff_buff"
+	name = "gluttonous"
 	
 	# Must set function to apply/remove debuff when the timer ends
 	apply_buff = _apply_buff

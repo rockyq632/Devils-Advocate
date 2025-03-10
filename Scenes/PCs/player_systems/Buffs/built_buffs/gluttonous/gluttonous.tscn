@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bwutolgkhfsk1"]
 
-[ext_resource type="Script" uid="uid://dgbqr6l583bm6" path="res://Scenes/PCs/player_systems/Buffs/built_buffs/buff_buff/buff_buff.gd" id="1_ryr34"]
+[ext_resource type="Script" uid="uid://dgbqr6l583bm6" path="res://Scenes/PCs/player_systems/Buffs/built_buffs/gluttonous/gluttonous.gd" id="1_ryr34"]
 [ext_resource type="Texture2D" uid="uid://c8r55xwyskrjn" path="res://icon.svg" id="2_ac6f4"]
 
 [node name="BuffBuff" type="Node2D"]
