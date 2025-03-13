@@ -64,7 +64,6 @@ func _process(_delta: float) -> void:
 # Called when the node enters the scene tree for the first time.
 func change_state(new_state_ind:int) -> void:
 	# Everything past here only runs on host
-	print(new_state_ind)
 	'''
 	if(not is_multiplayer_authority()):
 		return

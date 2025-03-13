@@ -61,7 +61,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("A2D_ARC_ATK/CP_ARC_ATK:polygon")
+tracks/1/path = NodePath("A2D_ATK/CP_ATK:polygon")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -73,7 +73,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("A2D_ARC_ATK/CP_ARC_ATK:disabled")
+tracks/2/path = NodePath("A2D_ATK/CP_ATK:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -254,7 +254,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("A2D_ARC_ATK/CP_ARC_ATK:polygon")
+tracks/2/path = NodePath("A2D_ATK/CP_ATK:polygon")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -266,7 +266,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("A2D_ARC_ATK/CP_ARC_ATK:disabled")
+tracks/3/path = NodePath("A2D_ATK/CP_ATK:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -290,43 +290,19 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("A2D_ROTATE_ATK/CP_ROTATE_ATK:disabled")
+tracks/5/path = NodePath("A2D_ATK/CP_ATK:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("A2D_ROTATE_ATK:rotation")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("A2D_ROTATE_ATK/CP_ROTATE_ATK:polygon")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [PackedVector2Array(0, 32, 32, 0, 0, -32)]
 }
 
 [sub_resource type="Animation" id="Animation_tiwtk"]
 resource_name = "ROTATE_ATK"
-length = 6.0
+length = 6.1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -343,50 +319,38 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("A2D_ROTATE_ATK:rotation")
+tracks/1/path = NodePath("A2D_ATK/CP_ATK:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.5, 3, 4.5, 6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 1.5708, 3.14159, 4.71239, 6.28319]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("A2D_ROTATE_ATK/CP_ROTATE_ATK:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0, 6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("A2D_ATK/CP_ATK:polygon")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 6.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [PackedVector2Array(-5.24537e-06, -30, -135, -50, -135, 50, 5.24537e-06, 30), PackedVector2Array(-44, -17, -45, 10, -27, -8)]
+}
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D/anim_debug_text:text")
+tracks/3/path = NodePath("A2D_ATK/CP_ATK:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["[center]ROTATE_ATK"]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("A2D_ROTATE_ATK/CP_ROTATE_ATK:polygon")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0, 6),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [PackedVector2Array(0, 32, 32, 0, 0, -32, -192, -128, -192, 128), PackedVector2Array(0, 32, 32, 0, 0, -32)]
+"update": 0,
+"values": [0.0, 6.28319]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x2kbs"]
@@ -433,35 +397,11 @@ libraries = {
 &"": SubResource("AnimationLibrary_x2kbs")
 }
 
-[node name="A2D_ARC_ATK" type="Area2D" parent="."]
+[node name="A2D_ATK" type="Area2D" parent="."]
 collision_layer = 0
 
-[node name="CP_ARC_ATK" type="CollisionPolygon2D" parent="A2D_ARC_ATK"]
-position = Vector2(37, 4)
+[node name="CP_ATK" type="CollisionPolygon2D" parent="A2D_ATK"]
 polygon = PackedVector2Array(-44, -17, -45, 10, -27, -8)
-disabled = true
-
-[node name="A2D_ROTATE_ATK" type="Area2D" parent="."]
-collision_layer = 0
-
-[node name="CP_ROTATE_ATK" type="CollisionPolygon2D" parent="A2D_ROTATE_ATK"]
-polygon = PackedVector2Array(0, 32, 32, 0, 0, -32)
-disabled = true
-
-[node name="A2D_2x_ROTATE_ATK" type="Area2D" parent="."]
-visible = false
-collision_layer = 0
-
-[node name="CP_2x_ROTATE_ATK" type="CollisionPolygon2D" parent="A2D_2x_ROTATE_ATK"]
-polygon = PackedVector2Array(0, 32, 32, 0, 0, -32, -192, -128, -192, 128)
-disabled = true
-
-[node name="A2D_4x_ROTATE_ATK2" type="Area2D" parent="."]
-visible = false
-collision_layer = 0
-
-[node name="CP_4x_ROTATE_ATK" type="CollisionPolygon2D" parent="A2D_4x_ROTATE_ATK2"]
-polygon = PackedVector2Array(0, 32, 32, 0, 0, -32, -192, -128, -192, 128)
 disabled = true
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state_list", "enm_body", "curr_state", "idle_state")]
@@ -485,19 +425,16 @@ anim_name = "MOVE_W"
 
 [node name="ARC_ATK" type="Node" parent="StateMachine" node_paths=PackedStringArray("hurtbox_area", "enm_body", "anim_player")]
 script = ExtResource("6_rgc2i")
-hurtbox_area = NodePath("../../A2D_ARC_ATK")
+hurtbox_area = NodePath("../../A2D_ATK")
 enm_body = NodePath("../..")
 anim_player = NodePath("../../AnimationPlayer")
 anim_name = "ARC_ATK"
 
 [node name="ROTATE_ATK" type="Node" parent="StateMachine" node_paths=PackedStringArray("hurtbox_area", "enm_body", "anim_player")]
 script = ExtResource("6_rgc2i")
-hurtbox_area = NodePath("../../A2D_ROTATE_ATK")
+hurtbox_area = NodePath("../../A2D_ATK")
 enm_body = NodePath("../..")
 anim_player = NodePath("../../AnimationPlayer")
 anim_name = "ROTATE_ATK"
 
-[connection signal="body_entered" from="A2D_ARC_ATK" to="." method="_on_atk_body_entered"]
-[connection signal="body_entered" from="A2D_ROTATE_ATK" to="." method="_on_atk_body_entered"]
-[connection signal="body_entered" from="A2D_2x_ROTATE_ATK" to="." method="_on_atk_body_entered"]
-[connection signal="body_entered" from="A2D_4x_ROTATE_ATK2" to="." method="_on_atk_body_entered"]
+[connection signal="body_entered" from="A2D_ATK" to="." method="_on_atk_body_entered"]
