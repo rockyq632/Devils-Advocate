@@ -32,12 +32,15 @@ properties/6/replication_mode = 2
 properties/7/path = NodePath("Sprite2D:modulate")
 properties/7/spawn = true
 properties/7/replication_mode = 2
-properties/8/path = NodePath("A2D_ARC_ATK/CP_ARC_ATK:disabled")
+properties/8/path = NodePath("A2D_ATK/CP_ATK:disabled")
 properties/8/spawn = true
 properties/8/replication_mode = 2
-properties/9/path = NodePath("A2D_ARC_ATK/CP_ARC_ATK:polygon")
+properties/9/path = NodePath("A2D_ATK/CP_ATK:polygon")
 properties/9/spawn = true
 properties/9/replication_mode = 2
+properties/10/path = NodePath("Sprite2D/anim_debug_text:text")
+properties/10/spawn = true
+properties/10/replication_mode = 1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uo7ix"]
 radius = 35.0
@@ -352,6 +355,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [0.0, 6.28319]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D/anim_debug_text:text")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["[center]ROTATE_ATK"]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x2kbs"]
 _data = {
@@ -404,12 +419,13 @@ collision_layer = 0
 polygon = PackedVector2Array(-44, -17, -45, 10, -27, -8)
 disabled = true
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state_list", "enm_body", "curr_state", "idle_state")]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("enm_body", "state_list", "idle_state", "curr_state")]
 script = ExtResource("3_b6ihi")
-state_list = [NodePath("IDLE"), NodePath("MOVE_TO_CENTER"), NodePath("ARC_ATK"), NodePath("ROTATE_ATK")]
 enm_body = NodePath("..")
-curr_state = NodePath("MOVE_TO_CENTER")
+state_list = [NodePath("IDLE"), NodePath("MOVE_TO_CENTER"), NodePath("IDLE"), NodePath("ARC_ATK"), NodePath("IDLE"), NodePath("ROTATE_ATK")]
+state_times = Array[float]([0.2, -1.0, 2.0, -1.0, 2.0, -1.0])
 idle_state = NodePath("IDLE")
+curr_state = NodePath("MOVE_TO_CENTER")
 
 [node name="IDLE" type="Node" parent="StateMachine" node_paths=PackedStringArray("enm_body", "anim_player")]
 script = ExtResource("3_w4vq6")
