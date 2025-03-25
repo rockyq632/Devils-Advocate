@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dkshvgnra1tw"]
+[gd_scene load_steps=16 format=3 uid="uid://dkshvgnra1tw"]
 
 [ext_resource type="Script" uid="uid://bkged6a7iktqy" path="res://Scenes/Enemies/built_enemies/Test_Enemy/test_enemy.gd" id="1_xvuw4"]
 [ext_resource type="Texture2D" uid="uid://bs8a6nmwj2tha" path="res://Graphics/PLACEHOLDERS/PLACEHOLDER_ENEMY.png" id="2_unae8"]
@@ -96,35 +96,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": ["[center]ARC_ATK"]
-}
-
-[sub_resource type="Animation" id="Animation_em52a"]
-resource_name = "DAMAGED"
-length = 0.1
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/anim_debug_text:text")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["[center]DAMAGED"]
 }
 
 [sub_resource type="Animation" id="Animation_fpiad"]
@@ -371,7 +342,6 @@ tracks/4/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x2kbs"]
 _data = {
 &"ARC_ATK": SubResource("Animation_715hl"),
-&"DAMAGED": SubResource("Animation_em52a"),
 &"DEATH": SubResource("Animation_fpiad"),
 &"IDLE": SubResource("Animation_yh23q"),
 &"MOVE_W": SubResource("Animation_66vfb"),
@@ -384,7 +354,7 @@ collision_layer = 256
 collision_mask = 0
 script = ExtResource("1_xvuw4")
 sprite = NodePath("Sprite2D")
-anim_player = NodePath("AnimationPlayer")
+anim_player = NodePath("StateAnimationPlayer")
 state_machine = NodePath("StateMachine")
 
 [node name="EnemySynchronizer" type="MultiplayerSynchronizer" parent="."]
@@ -407,7 +377,7 @@ bbcode_enabled = true
 text = "[center]RESET"
 fit_content = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="StateAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_x2kbs")
 }
@@ -430,27 +400,27 @@ curr_state = NodePath("MOVE_TO_CENTER")
 [node name="IDLE" type="Node" parent="StateMachine" node_paths=PackedStringArray("enm_body", "anim_player")]
 script = ExtResource("3_w4vq6")
 enm_body = NodePath("../..")
-anim_player = NodePath("../../AnimationPlayer")
+anim_player = NodePath("../../StateAnimationPlayer")
 anim_name = "IDLE"
 
 [node name="MOVE_TO_CENTER" type="Node" parent="StateMachine" node_paths=PackedStringArray("enm_body", "anim_player")]
 script = ExtResource("5_23fdc")
 enm_body = NodePath("../..")
-anim_player = NodePath("../../AnimationPlayer")
+anim_player = NodePath("../../StateAnimationPlayer")
 anim_name = "MOVE_W"
 
 [node name="ARC_ATK" type="Node" parent="StateMachine" node_paths=PackedStringArray("hurtbox_area", "enm_body", "anim_player")]
 script = ExtResource("6_rgc2i")
 hurtbox_area = NodePath("../../A2D_ATK")
 enm_body = NodePath("../..")
-anim_player = NodePath("../../AnimationPlayer")
+anim_player = NodePath("../../StateAnimationPlayer")
 anim_name = "ARC_ATK"
 
 [node name="ROTATE_ATK" type="Node" parent="StateMachine" node_paths=PackedStringArray("hurtbox_area", "enm_body", "anim_player")]
 script = ExtResource("6_rgc2i")
 hurtbox_area = NodePath("../../A2D_ATK")
 enm_body = NodePath("../..")
-anim_player = NodePath("../../AnimationPlayer")
+anim_player = NodePath("../../StateAnimationPlayer")
 anim_name = "ROTATE_ATK"
 
 [connection signal="body_entered" from="A2D_ATK" to="." method="_on_atk_body_entered"]

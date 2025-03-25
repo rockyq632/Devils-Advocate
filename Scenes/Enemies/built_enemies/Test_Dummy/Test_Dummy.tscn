@@ -177,13 +177,16 @@ texture = ExtResource("2_2m2km")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_3skt5")
+&"": SubResource("AnimationLibrary_3skt5")
 }
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("curr_state", "idle_state")]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("enm_body", "state_list", "idle_state", "curr_state")]
 script = ExtResource("3_l4h8o")
-curr_state = NodePath("IDLE")
+enm_body = NodePath("..")
+state_list = [NodePath("IDLE"), NodePath("IDLE")]
+state_times = Array[float]([0.5, -1.0])
 idle_state = NodePath("IDLE")
+curr_state = NodePath("IDLE")
 
 [node name="IDLE" type="Node" parent="StateMachine" node_paths=PackedStringArray("enm_body", "anim_player")]
 script = ExtResource("3_7yfhc")

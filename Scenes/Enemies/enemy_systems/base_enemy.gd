@@ -63,7 +63,8 @@ func _physics_process(_delta: float) -> void:
 func _take_damage( dmg:float=1.0 ) -> void:
 	curr_health -= dmg
 	health_changed.emit()
-	anim_player.play("DAMAGED")
+	if(anim_player.has_animation("DAMAGED")):
+		anim_player.play("DAMAGED")
 	
 
 # Communicates enemy damage from client to server

@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1sna7wu885tb"]
+
+[ext_resource type="Texture2D" uid="uid://5yrusg35ifqk" path="res://Graphics/Characters/ASTA_ASTROLOGIAN/Cards/SM_Cards_4X.png" id="1_01gs8"]
+[ext_resource type="Script" uid="uid://cs1kxr6556l33" path="res://Scenes/PCs/Asta_Gambler/gambler_cards/throwable_card.gd" id="1_vr2dw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_01gs8"]
+size = Vector2(12, 16)
+
+[node name="GamblerCard" type="Sprite2D"]
+texture = ExtResource("1_01gs8")
+centered = false
+hframes = 3
+script = ExtResource("1_vr2dw")
+card_type = 1
+
+[node name="Collision_Card" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 258
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision_Card"]
+position = Vector2(6, 8)
+shape = SubResource("RectangleShape2D_01gs8")
+
+[connection signal="area_entered" from="Collision_Card" to="." method="_on_collision_card_area_entered"]
+[connection signal="body_entered" from="Collision_Card" to="." method="_on_collision_card_body_entered"]

@@ -13,7 +13,7 @@ signal state_changed
 @export var state_list:Array[EnemyState]
 
 # List of times to stay in each state
-@export var state_times:Array[float] = [0.0]
+@export var state_times:Array[float] = [0.5]
 
 # Idle state used to return to whenever another state is finsished
 @export var idle_state:EnemyState
