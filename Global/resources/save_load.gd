@@ -1,6 +1,12 @@
 class_name SaveLoad
 extends Resource
 
+'''
+Notes:
+	- All values are exported to expose them to debuging
+'''
+
+
 # Saved values for tracking progression
 @export var save_num:int = 0
 @export var plot_list:Dictionary[int,String] = {}

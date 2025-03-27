@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bkged6a7iktqy" path="res://Scenes/Enemies/built_enemies/Test_Enemy/test_enemy.gd" id="1_xvuw4"]
 [ext_resource type="Texture2D" uid="uid://bs8a6nmwj2tha" path="res://Graphics/PLACEHOLDERS/PLACEHOLDER_ENEMY.png" id="2_unae8"]
-[ext_resource type="Script" uid="uid://jrff87gy1yhq" path="res://Scenes/Enemies/built_enemies/Test_Enemy/test_enemy_sm.gd" id="3_b6ihi"]
+[ext_resource type="Script" uid="uid://jrff87gy1yhq" path="res://Scenes/Enemies/built_enemies/Test_Enemy/test_enemy_state_m.gd" id="3_b6ihi"]
 [ext_resource type="Script" uid="uid://ciwyxf8yuo82g" path="res://Scenes/Enemies/reusable_states/idle_state.gd" id="3_w4vq6"]
 [ext_resource type="Script" uid="uid://cl2ey6h5g13am" path="res://Scenes/Enemies/reusable_states/move_to_center.gd" id="5_23fdc"]
 [ext_resource type="Script" uid="uid://dfupmatsbj4ai" path="res://Scenes/Enemies/reusable_states/arc_atk_state.gd" id="6_rgc2i"]
