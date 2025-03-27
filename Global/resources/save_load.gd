@@ -49,13 +49,21 @@ func game_load() -> SaveLoad:
 	if( FileAccess.file_exists("res://temp_save/save_data.tres") ):
 		loading = ResourceLoader.load("res://temp_save/save_data.tres")
 		
-		
-		# Load settings configuration
-		GCM.win_size = loading.win_size_setting
-		GCM.player_hud_opacity = loading.phud_setting
-		GCM.battle_hud_opacity = loading.bhud_setting
-		GCM.master_volume_pcnt = loading.master_vol_setting
-		GCM.music_volume_pcnt = loading.music_vol_setting
-		GCM.sfx_volume_pcnt = loading.sfx_vol_setting
+		# If loading failed due to curruption, the variable will be <null>
+		if(loading):
+			# Load settings configuration
+			GCM.win_size = loading.win_size_setting
+			GCM.player_hud_opacity = loading.phud_setting
+			GCM.battle_hud_opacity = loading.bhud_setting
+			GCM.master_volume_pcnt = loading.master_vol_setting
+			GCM.music_volume_pcnt = loading.music_vol_setting
+			GCM.sfx_volume_pcnt = loading.sfx_vol_setting
+		else:
+			printerr("Save file is currupt. Please delete.")
+	
+	else:
+		# If loading the save file doesn't exist, create save file
+		game_save()
+		game_load()
 	
 	return loading

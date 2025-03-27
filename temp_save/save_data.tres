@@ -1,14 +1,10 @@
 [gd_resource type="Resource" script_class="SaveLoad" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://Global/resources/save_load.gd" id="1_buglt"]
+[ext_resource type="Script" path="res://Global/resources/save_load.gd" id="1_v8ued"]
 
 [resource]
-script = ExtResource("1_buglt")
-<<<<<<< Updated upstream
-save_num = 1223
-=======
-save_num = 1216
->>>>>>> Stashed changes
+script = ExtResource("1_v8ued")
+save_num = 1225
 plot_list = Dictionary[int, String]({})
 win_size_setting = Vector2(1280, 720)
 phud_setting = 0.8
