@@ -4,7 +4,11 @@
 
 [resource]
 script = ExtResource("1_buglt")
+<<<<<<< Updated upstream
 save_num = 1223
+=======
+save_num = 1216
+>>>>>>> Stashed changes
 plot_list = Dictionary[int, String]({})
 win_size_setting = Vector2(1280, 720)
 phud_setting = 0.8
