@@ -396,5 +396,5 @@ vframes = 2
 
 [node name="AP_Heart" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_57bdf")
+&"": SubResource("AnimationLibrary_57bdf")
 }

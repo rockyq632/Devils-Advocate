@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_v8ued")
-save_num = 1241
+save_num = 1246
 plot_list = Dictionary[int, String]({})
 win_size_setting = Vector2(1795, 1010)
 phud_setting = 0.8

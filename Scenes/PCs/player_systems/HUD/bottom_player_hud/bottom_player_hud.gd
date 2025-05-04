@@ -72,7 +72,8 @@ func refresh_num_health_ticks() -> void:
 		%HB_Health.add_child( preload("res://Scenes/PCs/player_systems/HUD/bottom_player_hud/bottom_hud_health/health_tick.tscn").instantiate() )
 
 
-
+# Called to update what buffs are active on each player
+# Sent to all peers
 @rpc("any_peer")
 func _update_buff_icons() -> void:
 	for i:Node in %HB_Buffs.get_children():
