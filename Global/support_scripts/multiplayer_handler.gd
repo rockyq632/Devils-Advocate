@@ -87,6 +87,9 @@ func _client_connection_failed() -> void:
 ###
 func _become_singleplayer() -> void:
 	set_process(false)
+	
+	# Reset to player 1
+	GSM.ASSIGNED_PLAYER_ORDER_NUM = 1
 
 
 @rpc("any_peer")
@@ -102,6 +105,14 @@ func add_pc(peer_id:int, pc_scene_path:String) -> void:
 	temp.global_position.y = randi_range(200,500)
 	temp.set_multiplayer_authority(peer_id)
 	GSM.GLOBAL_PLAYER_NODE.add_child( temp )
+	
+	# Assign player numbers from the host
+	if( multiplayer.is_server() ):
+		rpc("assign_player_number", (GSM.GLOBAL_MULTIPLAYER_HANDLER.peer_ids.size()+1))
 
 func add_pc_to_all_peers(pc_scene_path:String) -> void:
 	rpc("add_pc", multiplayer.get_unique_id(), pc_scene_path)
+
+@rpc()
+func assign_player_number(pnum:int) -> void:
+	GSM.ASSIGNED_PLAYER_ORDER_NUM = pnum

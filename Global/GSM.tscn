@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://t5ehi5cnu8pw"]
+[gd_scene load_steps=17 format=3 uid="uid://t5ehi5cnu8pw"]
 
 [ext_resource type="Script" uid="uid://ckinvwne6cp7w" path="res://Global/GSM.gd" id="1_r3r28"]
 [ext_resource type="Script" uid="uid://dha5akaarpxd5" path="res://Global/support_scripts/multiplayer_handler.gd" id="2_al58x"]
@@ -28,6 +28,18 @@ size = Vector2(840, 500)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c5kyo"]
 size = Vector2(840, 500)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k4p2n"]
+size = Vector2(1000, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yoqmp"]
+size = Vector2(1000, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ggkco"]
+size = Vector2(50, 1000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8mlm2"]
+size = Vector2(50, 1000)
 
 [node name="GSM" type="Control" node_paths=PackedStringArray("GLOBAL_SCENE_NODE", "GLOBAL_PLAYER_NODE", "GLOBAL_BOT_PLAYER_HUD", "GLOBAL_ENEMIES_NODE", "GLOBAL_PROJECTILES_NODE", "GLOBAL_LIGHTING_NODE", "GLOBAL_SFX_STREAM", "GLOBAL_MUSIC_STREAM", "GLOBAL_MULTIPLAYER_HANDLER")]
 layout_mode = 3
@@ -110,6 +122,7 @@ position = Vector2(635, 180)
 shape = SubResource("RectangleShape2D_12xl5")
 
 [node name="GLOBAL_WALL_BORDERS" type="StaticBody2D" parent="Utilities"]
+collision_layer = 120
 collision_mask = 0
 
 [node name="Border_Left" type="CollisionShape2D" parent="Utilities/GLOBAL_WALL_BORDERS"]
@@ -133,6 +146,7 @@ position = Vector2(320, 355)
 shape = SubResource("RectangleShape2D_2ywhx")
 
 [node name="GLOBAL_FLOOR_BORDERS" type="StaticBody2D" parent="Utilities"]
+collision_layer = 120
 collision_mask = 0
 
 [node name="Border_Top" type="CollisionShape2D" parent="Utilities/GLOBAL_FLOOR_BORDERS"]
@@ -146,6 +160,47 @@ shape = SubResource("RectangleShape2D_c5kyo")
 [node name="GLOBAL_SFX_STREAM" type="AudioStreamPlayer" parent="Utilities"]
 
 [node name="GLOBAL_MUSIC_STREAM" type="AudioStreamPlayer" parent="Utilities"]
+
+[node name="Enemy_Mechanic_Utilities" type="Node" parent="."]
+
+[node name="P1_BOUNDS" type="Node2D" parent="Enemy_Mechanic_Utilities"]
+visible = false
+
+[node name="N_MOVE_BOUND" type="RigidBody2D" parent="Enemy_Mechanic_Utilities/P1_BOUNDS"]
+position = Vector2(320, -100)
+collision_layer = 8
+collision_mask = 8
+gravity_scale = 0.0
+
+[node name="SHAPE" type="CollisionShape2D" parent="Enemy_Mechanic_Utilities/P1_BOUNDS/N_MOVE_BOUND"]
+shape = SubResource("RectangleShape2D_k4p2n")
+
+[node name="S_MOVE_BOUND" type="RigidBody2D" parent="Enemy_Mechanic_Utilities/P1_BOUNDS"]
+position = Vector2(320, 460)
+collision_layer = 8
+collision_mask = 8
+gravity_scale = 0.0
+
+[node name="SHAPE" type="CollisionShape2D" parent="Enemy_Mechanic_Utilities/P1_BOUNDS/S_MOVE_BOUND"]
+shape = SubResource("RectangleShape2D_yoqmp")
+
+[node name="W_MOVE_BOUND" type="RigidBody2D" parent="Enemy_Mechanic_Utilities/P1_BOUNDS"]
+position = Vector2(-100, 180)
+collision_layer = 8
+collision_mask = 8
+gravity_scale = 0.0
+
+[node name="SHAPE" type="CollisionShape2D" parent="Enemy_Mechanic_Utilities/P1_BOUNDS/W_MOVE_BOUND"]
+shape = SubResource("RectangleShape2D_ggkco")
+
+[node name="E_MOVE_BOUND" type="RigidBody2D" parent="Enemy_Mechanic_Utilities/P1_BOUNDS"]
+position = Vector2(740, 180)
+collision_layer = 8
+collision_mask = 8
+gravity_scale = 0.0
+
+[node name="SHAPE" type="CollisionShape2D" parent="Enemy_Mechanic_Utilities/P1_BOUNDS/E_MOVE_BOUND"]
+shape = SubResource("RectangleShape2D_8mlm2")
 
 [connection signal="child_entered_tree" from="GLOBAL_PLAYERS_NODE" to="GLOBAL_PLAYERS_NODE" method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="GLOBAL_PLAYERS_NODE" to="GLOBAL_PLAYERS_NODE" method="_on_child_exiting_tree"]

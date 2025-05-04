@@ -26,6 +26,8 @@ var GLOBAL_SAVE: SaveLoad = SaveLoad.new()
 @export var GLOBAL_PROJECTILES_NODE:Node2D
 # Node to store all lighting
 @export var GLOBAL_LIGHTING_NODE:Node2D
+#Player number assigned to each player
+@export var ASSIGNED_PLAYER_ORDER_NUM: int = 1
 
 
 # Audio related nodes

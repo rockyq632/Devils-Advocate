@@ -17,7 +17,9 @@ const MAX_HEALTH:int = 10
 # Maximum possible movement speed
 const MAX_MOVE_SPEED:float = 1000.0
 
+# Designated target type
 const type : ENM.TARGET_TYPE = ENM.TARGET_TYPE.PLAYER
+
 
 # Current max health
 @export var max_health:int = 3
@@ -135,6 +137,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	
 	# Checks each input to see what action inputs have been entered
 	for i in range(0,4):
 		if(moveset_inputs[i]  and  not is_animation_playing):
@@ -143,6 +146,23 @@ func _process(_delta: float) -> void:
 	# If running on the controlling client
 	if(is_multiplayer_authority()):
 		process_inputs()
+		
+		# Check which player number you are (TODO put this somewhere else it only updates once
+		match GSM.ASSIGNED_PLAYER_ORDER_NUM:
+			1:
+				collision_layer = 8
+				collision_mask = 8
+			2:
+				collision_layer = 16
+				collision_mask = 16
+			3:
+				collision_layer = 32
+				collision_mask = 32
+			4:
+				collision_layer = 64
+				collision_mask = 64
+			_:
+				GSM.ASSIGNED_PLAYER_ORDER_NUM = 1
 	
 	# Animate the armor frames
 	if( armor_frames_timer.time_left  and  sprite.visible):
@@ -400,7 +420,7 @@ func add_item(new_item:Item) -> bool:
 		return false
 	return true
 
-
+# Deletes a specific item from player inventory
 func remove_item(item_key:ITEM_REF.KEY) -> bool:
 	var does_itm_exist:bool = item_dict.erase(item_key)
 	if( does_itm_exist ):
@@ -408,3 +428,9 @@ func remove_item(item_key:ITEM_REF.KEY) -> bool:
 	else:
 		return false
 	return true
+
+# Deletes all items from player inventory
+func remove_all_items() -> void:
+	item_dict = {}
+	item_list_keys = []
+	

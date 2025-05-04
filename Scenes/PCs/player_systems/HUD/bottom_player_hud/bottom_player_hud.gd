@@ -2,6 +2,7 @@ class_name BottomPlayerHUD
 extends Panel
 
 @export var pc:PlayableCharacter
+@export var anim_player:AnimationPlayer
 
 
 func _ready() -> void:
@@ -105,3 +106,19 @@ func _remove_buff_icon(old_buff:Buff) -> void:
 			%HB_Buffs.remove_child( i )
 	
 	rpc("_update_buff_icons")
+
+
+var body_entered_cnt:int = 0
+func _on_hide_collision_body_entered(_body: Node2D) -> void:
+	body_entered_cnt += 1
+	
+	# Only makes less visible when first body enters
+	if(body_entered_cnt == 1):
+		anim_player.play("FADE_OUT")
+
+func _on_hide_collision_body_exited(_body: Node2D) -> void:
+	body_entered_cnt -= 1
+	
+	# Only makes less visible when first body enters
+	if(body_entered_cnt <= 0):
+		anim_player.play("FADE_IN")

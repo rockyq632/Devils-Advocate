@@ -270,6 +270,8 @@ offset = Vector2(640, 360)
 
 [node name="Waiting_Area" type="Area2D" parent="."]
 visible = false
+collision_layer = 121
+collision_mask = 121
 
 [node name="CP_Waiting_Area" type="CollisionPolygon2D" parent="Waiting_Area"]
 polygon = PackedVector2Array(282, 0, 358, 0, 385, 271, 378, 278, 363, 286, 336, 291, 320, 292, 303, 291, 280, 287, 261, 278, 255, 271)

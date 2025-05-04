@@ -387,6 +387,7 @@ libraries = {
 
 [node name="A2D_ATK" type="Area2D" parent="."]
 collision_layer = 0
+collision_mask = 120
 
 [node name="CP_ATK" type="CollisionPolygon2D" parent="A2D_ATK"]
 polygon = PackedVector2Array(-44, -17, -45, 10, -27, -8)

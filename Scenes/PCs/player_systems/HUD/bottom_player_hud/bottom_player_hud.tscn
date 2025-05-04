@@ -1,14 +1,74 @@
-[gd_scene load_steps=4 format=3 uid="uid://dahbp04i2mfmc"]
+[gd_scene load_steps=9 format=3 uid="uid://dahbp04i2mfmc"]
 
 [ext_resource type="Script" uid="uid://dxrw62b7bouqw" path="res://Scenes/PCs/player_systems/HUD/bottom_player_hud/bottom_player_hud.gd" id="1_5x73g"]
 [ext_resource type="PackedScene" uid="uid://d1dpw4xtrtnof" path="res://Scenes/PCs/player_systems/HUD/bottom_player_hud/bottom_hud_health/health_tick.tscn" id="2_qlula"]
 [ext_resource type="Texture2D" uid="uid://c8r55xwyskrjn" path="res://icon.svg" id="2_sdvld"]
 
-[node name="Bottom_player_hud" type="Panel"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t3hfv"]
+size = Vector2(130, 60)
+
+[sub_resource type="Animation" id="Animation_t3hfv"]
+resource_name = "FADE_OUT"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.196078)]
+}
+
+[sub_resource type="Animation" id="Animation_m8hh3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qko6t"]
+resource_name = "FADE_IN"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.196078), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qko6t"]
+_data = {
+&"FADE_IN": SubResource("Animation_qko6t"),
+&"FADE_OUT": SubResource("Animation_t3hfv"),
+&"RESET": SubResource("Animation_m8hh3")
+}
+
+[node name="Bottom_player_hud" type="Panel" node_paths=PackedStringArray("anim_player")]
 custom_minimum_size = Vector2(100, 32)
 size_flags_horizontal = 6
 size_flags_vertical = 0
 script = ExtResource("1_5x73g")
+anim_player = NodePath("anim_player")
 
 [node name="MC_Buffs" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(0, 10)
@@ -88,3 +148,20 @@ bbcode_enabled = true
 text = "[center]PLAYER JOINING..."
 fit_content = true
 autowrap_mode = 0
+
+[node name="Hide_Collision" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 121
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hide_Collision"]
+position = Vector2(50, 15)
+shape = SubResource("RectangleShape2D_t3hfv")
+
+[node name="anim_player" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qko6t")
+}
+
+[connection signal="body_entered" from="Hide_Collision" to="." method="_on_hide_collision_body_entered"]
+[connection signal="body_exited" from="Hide_Collision" to="." method="_on_hide_collision_body_exited"]
