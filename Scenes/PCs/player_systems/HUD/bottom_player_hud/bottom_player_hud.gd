@@ -28,6 +28,8 @@ func set_text(new_text:String) -> void:
 
 # Called when health has changed
 func _health_changed() -> void:
+	# Delay added due to peer2peer comm delays (bug fix)
+	await get_tree().create_timer(0.01).timeout
 	rpc("update_health_ticks")
 
 
