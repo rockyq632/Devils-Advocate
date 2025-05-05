@@ -3,6 +3,7 @@ extends MarginContainer
 
 @export var ind_array:Array[TextureRect] = []
 @export var curr_stage_index:int = 0
+@export var anim_player:AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -58,3 +59,19 @@ func host_indicator_changed(new_stage_index:int) -> void:
 	
 	for i:int in range((curr_stage_index+1),ind_array.size()):
 		hide_indicator(i)
+
+
+var body_entered_cnt:int = 0
+func _on_hide_collision_body_entered(_body: Node2D) -> void:
+	body_entered_cnt += 1
+	
+	# Only makes less visible when first body enters
+	if(body_entered_cnt == 2):
+		anim_player.play("FADE_OUT")
+
+func _on_hide_collision_body_exited(_body: Node2D) -> void:
+	body_entered_cnt -= 1
+	
+	# Only makes less visible when first body enters
+	if(body_entered_cnt <= 1):
+		anim_player.play("FADE_IN")

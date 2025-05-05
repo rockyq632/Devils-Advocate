@@ -154,4 +154,5 @@ func _on_body_exited_waiting_area(body: Node2D) -> void:
 # load up the first stage
 func load_first_stage() -> void:
 	GSM.GLOBAL_SCENE_NODE.add_child(preload("res://Scenes/Stages/Tartarus/Circle_Tartarus.tscn").instantiate())
+	#await get_tree().create_timer(1).timeout
 	queue_free()

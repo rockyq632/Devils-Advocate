@@ -1,10 +1,68 @@
-[gd_scene load_steps=4 format=3 uid="uid://c2g552k52ef3f"]
+[gd_scene load_steps=9 format=3 uid="uid://c2g552k52ef3f"]
 
 [ext_resource type="Script" uid="uid://dxjlrqcahjx46" path="res://Scenes/Stages/misc/stage_progress_indicator/stage_progression_indicator.gd" id="1_d5vya"]
 [ext_resource type="Texture2D" uid="uid://56ltfpkao7n8" path="res://Graphics/UI/Stage_Progression_bar/Level_Progress_1x.png" id="2_nngfe"]
 [ext_resource type="Texture2D" uid="uid://chtk0rkehsy4q" path="res://Graphics/UI/Stage_Progression_bar/level_on_marker.png" id="3_0khd5"]
 
-[node name="MC_Stage_Progression" type="MarginContainer" node_paths=PackedStringArray("ind_array")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ia07n"]
+size = Vector2(180, 16)
+
+[sub_resource type="Animation" id="Animation_ia07n"]
+resource_name = "FADE_IN"
+length = 0.21
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.196078), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7jagr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0tu5l"]
+resource_name = "FADE_OUT"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.196078)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b1lc0"]
+_data = {
+&"FADE_IN": SubResource("Animation_ia07n"),
+&"FADE_OUT": SubResource("Animation_0tu5l"),
+&"RESET": SubResource("Animation_7jagr")
+}
+
+[node name="MC_Stage_Progression" type="MarginContainer" node_paths=PackedStringArray("ind_array", "anim_player")]
 custom_minimum_size = Vector2(0, 10)
 anchors_preset = 5
 anchor_left = 0.5
@@ -16,6 +74,7 @@ grow_horizontal = 2
 theme_override_constants/margin_top = 1
 script = ExtResource("1_d5vya")
 ind_array = [NodePath("MC_Indicators/HB_Indicators/S1_IND"), NodePath("MC_Indicators/HB_Indicators/S2_IND"), NodePath("MC_Indicators/HB_Indicators/S3_IND"), NodePath("MC_Indicators/HB_Indicators/S4_IND"), NodePath("MC_Indicators/HB_Indicators/S5_IND")]
+anim_player = NodePath("anim_player")
 
 [node name="num_stages_bg" type="TextureRect" parent="."]
 layout_mode = 2
@@ -56,3 +115,20 @@ texture = ExtResource("3_0khd5")
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 texture = ExtResource("3_0khd5")
+
+[node name="Hide_Collision" type="Area2D" parent="."]
+visible = false
+position = Vector2(68, 8)
+collision_layer = 0
+collision_mask = 120
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hide_Collision"]
+shape = SubResource("RectangleShape2D_ia07n")
+
+[node name="anim_player" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_b1lc0")
+}
+
+[connection signal="body_entered" from="Hide_Collision" to="." method="_on_hide_collision_body_entered"]
+[connection signal="body_exited" from="Hide_Collision" to="." method="_on_hide_collision_body_exited"]

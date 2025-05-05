@@ -8,6 +8,8 @@ extends MarginContainer
 @export var curr_hp : float = 100.0
 @export var max_hp : float = 100.0
 
+@export var anim_player: AnimationPlayer
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -40,3 +42,19 @@ func update_max_health( val:float=max_hp ) -> void:
 func reset_hp_bar() -> void:
 	top_bar.value = top_bar.max_value
 	bot_bar.value = bot_bar.max_value
+
+
+var body_entered_cnt:int = 0
+func _on_hide_collision_body_entered(_body: Node2D) -> void:
+	body_entered_cnt += 1
+	
+	# Only makes less visible when first body enters
+	if(body_entered_cnt == 1):
+		anim_player.play("FADE_OUT")
+
+func _on_hide_collision_body_exited(_body: Node2D) -> void:
+	body_entered_cnt -= 1
+	
+	# Only makes less visible when first body enters
+	if(body_entered_cnt <= 0):
+		anim_player.play("FADE_IN")

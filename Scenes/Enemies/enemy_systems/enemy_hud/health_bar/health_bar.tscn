@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://0a8wvuoxfqbq"]
+[gd_scene load_steps=11 format=3 uid="uid://0a8wvuoxfqbq"]
 
 [ext_resource type="Script" uid="uid://cm8mijyku41a1" path="res://Scenes/Enemies/enemy_systems/enemy_hud/health_bar/health_bar.gd" id="1_rftsg"]
 
@@ -25,7 +25,65 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jlylm"]
 bg_color = Color(0.698039, 0.0980392, 0.196078, 1)
 
-[node name="MC_Health_Bar" type="MarginContainer" node_paths=PackedStringArray("bot_bar", "top_bar")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wfmsp"]
+size = Vector2(560, 50)
+
+[sub_resource type="Animation" id="Animation_wfmsp"]
+resource_name = "FADE_IN"
+length = 0.21
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.196078), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qoa03"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2cwf3"]
+resource_name = "FADE_OUT"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.196078)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dnion"]
+_data = {
+&"FADE_IN": SubResource("Animation_wfmsp"),
+&"FADE_OUT": SubResource("Animation_2cwf3"),
+&"RESET": SubResource("Animation_qoa03")
+}
+
+[node name="MC_Health_Bar" type="MarginContainer" node_paths=PackedStringArray("bot_bar", "top_bar", "anim_player")]
 custom_minimum_size = Vector2(500, 40)
 anchors_preset = 5
 anchor_left = 0.5
@@ -35,6 +93,7 @@ theme_override_constants/margin_top = 20
 script = ExtResource("1_rftsg")
 bot_bar = NodePath("PB_Bot_Bar")
 top_bar = NodePath("PB_Top_Bar")
+anim_player = NodePath("anim_player")
 
 [node name="EnemyHealthbarSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_h61ro")
@@ -53,3 +112,20 @@ theme_override_styles/background = SubResource("StyleBoxFlat_bj6wa")
 theme_override_styles/fill = SubResource("StyleBoxFlat_jlylm")
 value = 100.0
 show_percentage = false
+
+[node name="Hide_Collision" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 120
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hide_Collision"]
+position = Vector2(250, 30)
+shape = SubResource("RectangleShape2D_wfmsp")
+
+[node name="anim_player" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_dnion")
+}
+
+[connection signal="body_entered" from="Hide_Collision" to="." method="_on_hide_collision_body_entered"]
+[connection signal="body_exited" from="Hide_Collision" to="." method="_on_hide_collision_body_exited"]
