@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bburppawvakkq"]
+
+[ext_resource type="Texture2D" uid="uid://pb8aoqsw33f0" path="res://Graphics/Items/Item_Placeholder_1x.png" id="1_tjehu"]
+[ext_resource type="Script" uid="uid://yay47n5am03w" path="res://Scenes/Menues/Open_Chest_Menu/item_button.gd" id="2_th241"]
+
+[node name="ItemButton" type="TextureButton"]
+light_mask = 2
+visibility_layer = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("1_tjehu")
+script = ExtResource("2_th241")

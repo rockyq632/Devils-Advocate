@@ -137,7 +137,6 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	
 	# Checks each input to see what action inputs have been entered
 	for i in range(0,4):
 		if(moveset_inputs[i]  and  not is_animation_playing):
@@ -163,7 +162,10 @@ func _process(_delta: float) -> void:
 				collision_mask = 64
 			_:
 				GSM.ASSIGNED_PLAYER_ORDER_NUM = 1
-	
+	else:
+		collision_layer = 1
+		collision_mask = 1
+		
 	# Animate the armor frames
 	if( armor_frames_timer.time_left  and  sprite.visible):
 		sprite.hide()
@@ -177,13 +179,18 @@ func _physics_process(_delta: float) -> void:
 		# If movement is locked, set input movement to zero
 		if( is_movement_locked ):
 			velocity = Vector2.ZERO
+		elif( GSM.DISABLE_PLAYER_MOVE_FLAG ):
+			# If movement is disabled by global effect, just ignore input velocity
+			pass
 		# Otherwise, allow movement input to influence velocity
 		else:
 			velocity = move_speed*move_dir
 		
 		# BUGFIX: Noticed a weird sliding when velocity was (0,0) and move_and_slide was called 
-		if( velocity != Vector2.ZERO ):
+		# BUGFIX: had to switch to move_and_collide to allow CharacterBody2D to be moved by other collisions
+		if( velocity != Vector2.ZERO  and  (not GSM.DISABLE_PLAYER_MOVE_FLAG)):
 			move_and_slide()
+		move_and_collide(Vector2.ZERO)
 		
 		# Velocity based animations
 		# If moving right
@@ -210,7 +217,7 @@ func _physics_process(_delta: float) -> void:
 # Triggers each attack based on the moveset index
 func action_triggered(act_ind:int) -> void:
 	# If move isn't ready, don't trigger
-	if( not moveset[act_ind].is_ready ):
+	if( (not moveset[act_ind].is_ready)  or  GSM.DISABLE_PLAYER_ACT_FLAG):
 		return
 	
 	

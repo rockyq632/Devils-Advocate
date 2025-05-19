@@ -1,9 +1,18 @@
-[gd_scene load_steps=17 format=3 uid="uid://t5ehi5cnu8pw"]
+[gd_scene load_steps=15 format=3 uid="uid://t5ehi5cnu8pw"]
 
 [ext_resource type="Script" uid="uid://ckinvwne6cp7w" path="res://Global/GSM.gd" id="1_r3r28"]
 [ext_resource type="Script" uid="uid://dha5akaarpxd5" path="res://Global/support_scripts/multiplayer_handler.gd" id="2_al58x"]
 [ext_resource type="Script" uid="uid://dyu0vfodyqs8r" path="res://Global/support_scripts/global_players_node.gd" id="3_0rhik"]
 [ext_resource type="Script" uid="uid://dtskj505yirkx" path="res://Global/support_scripts/utilities.gd" id="3_bvox7"]
+[ext_resource type="PackedScene" uid="uid://ynfu4p0qqc5e" path="res://Scenes/Enemies/enemy_systems/player_trap_bounds/player_trap_bounds.tscn" id="5_yoqmp"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_yoqmp"]
+properties/0/path = NodePath(".:DISABLE_PLAYER_MOVE_FLAG")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath(".:DISABLE_PLAYER_ACT_FLAG")
+properties/1/spawn = true
+properties/1/replication_mode = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ja2ms"]
 size = Vector2(10, 560)
@@ -29,18 +38,6 @@ size = Vector2(840, 500)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c5kyo"]
 size = Vector2(840, 500)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k4p2n"]
-size = Vector2(1000, 50)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yoqmp"]
-size = Vector2(1000, 50)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ggkco"]
-size = Vector2(50, 1000)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8mlm2"]
-size = Vector2(50, 1000)
-
 [node name="GSM" type="Control" node_paths=PackedStringArray("GLOBAL_SCENE_NODE", "GLOBAL_PLAYER_NODE", "GLOBAL_BOT_PLAYER_HUD", "GLOBAL_ENEMIES_NODE", "GLOBAL_PROJECTILES_NODE", "GLOBAL_LIGHTING_NODE", "GLOBAL_SFX_STREAM", "GLOBAL_MUSIC_STREAM", "GLOBAL_MULTIPLAYER_HANDLER")]
 layout_mode = 3
 anchors_preset = 15
@@ -58,6 +55,9 @@ GLOBAL_LIGHTING_NODE = NodePath("GLOBAL_LIGHTING_NODE")
 GLOBAL_SFX_STREAM = NodePath("Utilities/GLOBAL_SFX_STREAM")
 GLOBAL_MUSIC_STREAM = NodePath("Utilities/GLOBAL_MUSIC_STREAM")
 GLOBAL_MULTIPLAYER_HANDLER = NodePath("Multiplayer_Handler")
+
+[node name="GSM_SYNC" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_yoqmp")
 
 [node name="Multiplayer_Handler" type="Node" parent="."]
 script = ExtResource("2_al58x")
@@ -97,6 +97,10 @@ script = ExtResource("3_0rhik")
 [node name="GLOBAL_PROJECTILE_NODE" type="Node2D" parent="."]
 
 [node name="GLOBAL_LIGHTING_NODE" type="Node2D" parent="."]
+
+[node name="ChestSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://mjbekcltk67n")
+spawn_path = NodePath("../GLOBAL_ENEMIES_NODE")
 
 [node name="EnemySpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://ilaqpxhwx3hk", "uid://ra5chhkow4we", "uid://dkshvgnra1tw", "uid://dmqaiij73baok")
@@ -163,44 +167,19 @@ shape = SubResource("RectangleShape2D_c5kyo")
 
 [node name="Enemy_Mechanic_Utilities" type="Node" parent="."]
 
-[node name="P1_BOUNDS" type="Node2D" parent="Enemy_Mechanic_Utilities"]
-visible = false
-
-[node name="N_MOVE_BOUND" type="RigidBody2D" parent="Enemy_Mechanic_Utilities/P1_BOUNDS"]
-position = Vector2(320, -100)
-collision_layer = 8
-collision_mask = 8
-gravity_scale = 0.0
-
-[node name="SHAPE" type="CollisionShape2D" parent="Enemy_Mechanic_Utilities/P1_BOUNDS/N_MOVE_BOUND"]
-shape = SubResource("RectangleShape2D_k4p2n")
-
-[node name="S_MOVE_BOUND" type="RigidBody2D" parent="Enemy_Mechanic_Utilities/P1_BOUNDS"]
-position = Vector2(320, 460)
-collision_layer = 8
-collision_mask = 8
-gravity_scale = 0.0
-
-[node name="SHAPE" type="CollisionShape2D" parent="Enemy_Mechanic_Utilities/P1_BOUNDS/S_MOVE_BOUND"]
-shape = SubResource("RectangleShape2D_yoqmp")
-
-[node name="W_MOVE_BOUND" type="RigidBody2D" parent="Enemy_Mechanic_Utilities/P1_BOUNDS"]
-position = Vector2(-100, 180)
-collision_layer = 8
-collision_mask = 8
-gravity_scale = 0.0
-
-[node name="SHAPE" type="CollisionShape2D" parent="Enemy_Mechanic_Utilities/P1_BOUNDS/W_MOVE_BOUND"]
-shape = SubResource("RectangleShape2D_ggkco")
-
-[node name="E_MOVE_BOUND" type="RigidBody2D" parent="Enemy_Mechanic_Utilities/P1_BOUNDS"]
-position = Vector2(740, 180)
-collision_layer = 8
-collision_mask = 8
-gravity_scale = 0.0
-
-[node name="SHAPE" type="CollisionShape2D" parent="Enemy_Mechanic_Utilities/P1_BOUNDS/E_MOVE_BOUND"]
-shape = SubResource("RectangleShape2D_8mlm2")
+[node name="P1_BOUNDS" parent="Enemy_Mechanic_Utilities" node_paths=PackedStringArray("bounds", "bound_shapes") instance=ExtResource("5_yoqmp")]
+bounds = {
+"E": NodePath("E_MOVE_BOUND"),
+"N": NodePath("N_MOVE_BOUND"),
+"S": NodePath("S_MOVE_BOUND"),
+"W": NodePath("W_MOVE_BOUND")
+}
+bound_shapes = {
+"E": NodePath("E_MOVE_BOUND/SHAPE"),
+"N": NodePath("N_MOVE_BOUND/SHAPE"),
+"S": NodePath("S_MOVE_BOUND/SHAPE"),
+"W": NodePath("W_MOVE_BOUND/SHAPE")
+}
 
 [connection signal="child_entered_tree" from="GLOBAL_PLAYERS_NODE" to="GLOBAL_PLAYERS_NODE" method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="GLOBAL_PLAYERS_NODE" to="GLOBAL_PLAYERS_NODE" method="_on_child_exiting_tree"]

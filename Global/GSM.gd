@@ -40,6 +40,9 @@ var GLOBAL_SAVE: SaveLoad = SaveLoad.new()
 # Multiplayer Handler
 @export var GLOBAL_MULTIPLAYER_HANDLER:MPHandler
 
+@export_subgroup("READ ONLY")
+@export var DISABLE_PLAYER_MOVE_FLAG:bool = false
+@export var DISABLE_PLAYER_ACT_FLAG:bool = false
 
 
 var screen_size:Vector2 = Vector2(640,360)

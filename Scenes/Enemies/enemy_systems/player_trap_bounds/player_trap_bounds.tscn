@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://ynfu4p0qqc5e"]
+
+[ext_resource type="Script" uid="uid://ckwq5nn6hlsor" path="res://Scenes/Enemies/enemy_systems/player_trap_bounds/player_trap_bounds.gd" id="1_cquh2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k4p2n"]
+size = Vector2(1000, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yoqmp"]
+size = Vector2(1000, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ggkco"]
+size = Vector2(50, 1000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8mlm2"]
+size = Vector2(50, 1000)
+
+[node name="PLAYER_BOUNDS" type="Node2D" node_paths=PackedStringArray("bounds", "bound_shapes")]
+script = ExtResource("1_cquh2")
+bounds = {
+"E": NodePath("E_MOVE_BOUND"),
+"N": NodePath("N_MOVE_BOUND"),
+"S": NodePath("S_MOVE_BOUND"),
+"W": NodePath("W_MOVE_BOUND")
+}
+bound_shapes = {
+"E": NodePath("E_MOVE_BOUND/SHAPE"),
+"N": NodePath("N_MOVE_BOUND/SHAPE"),
+"S": NodePath("S_MOVE_BOUND/SHAPE"),
+"W": NodePath("W_MOVE_BOUND/SHAPE")
+}
+
+[node name="N_MOVE_BOUND" type="AnimatableBody2D" parent="."]
+position = Vector2(320, -25)
+collision_layer = 8
+collision_mask = 8
+
+[node name="SHAPE" type="CollisionShape2D" parent="N_MOVE_BOUND"]
+shape = SubResource("RectangleShape2D_k4p2n")
+
+[node name="S_MOVE_BOUND" type="AnimatableBody2D" parent="."]
+position = Vector2(320, 385)
+collision_layer = 8
+collision_mask = 8
+
+[node name="SHAPE" type="CollisionShape2D" parent="S_MOVE_BOUND"]
+shape = SubResource("RectangleShape2D_yoqmp")
+
+[node name="W_MOVE_BOUND" type="AnimatableBody2D" parent="."]
+position = Vector2(-25, 180)
+collision_layer = 8
+collision_mask = 8
+
+[node name="SHAPE" type="CollisionShape2D" parent="W_MOVE_BOUND"]
+shape = SubResource("RectangleShape2D_ggkco")
+
+[node name="E_MOVE_BOUND" type="AnimatableBody2D" parent="."]
+position = Vector2(665, 180)
+collision_layer = 8
+collision_mask = 8
+
+[node name="SHAPE" type="CollisionShape2D" parent="E_MOVE_BOUND"]
+shape = SubResource("RectangleShape2D_8mlm2")

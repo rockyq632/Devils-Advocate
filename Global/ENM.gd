@@ -19,5 +19,6 @@ enum TARGET_TYPE {
 enum STAGE_TYPE {
 	FIGHT,
 	PLOT,
+	CHEST,
 	SHOP
 }

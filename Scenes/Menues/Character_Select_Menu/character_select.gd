@@ -1,5 +1,10 @@
 extends Control
 
+@export_subgroup("READ ONLY")
+@export var num_players_in_waiting_area:int=0
+var num_clients:int=1
+var loading_first_stage:bool=false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$LightAnimPlayer.play("ON_START")
@@ -124,9 +129,6 @@ func _on_gambler_btn_pressed() -> void:
 ###
 ### 	WAITING AREA CODE
 ###
-var num_players_in_waiting_area:int=0
-var num_clients:int=1
-var loading_first_stage:bool=false
 
 # Counts players. When all players have entered waiting area
 func _on_body_entered_waiting_area(body: Node2D) -> void:
@@ -148,11 +150,11 @@ func _on_body_exited_waiting_area(body: Node2D) -> void:
 		return
 	if( "MAX_HEALTH" in body ):
 		num_clients = multiplayer.get_peers().size()+1
-		num_players_in_waiting_area = num_players_in_waiting_area-1#clampi(num_players_in_waiting_area-1, 0, num_clients)
+		num_players_in_waiting_area = num_players_in_waiting_area-1
 		%Waiting_Area_Text.text = "[center]%s/%s" %[num_players_in_waiting_area, num_clients]
 
 # load up the first stage
 func load_first_stage() -> void:
-	GSM.GLOBAL_SCENE_NODE.add_child(preload("res://Scenes/Stages/Tartarus/Circle_Tartarus.tscn").instantiate())
-	#await get_tree().create_timer(1).timeout
+	GSM.GLOBAL_SCENE_NODE.call_deferred("add_child",preload("res://Scenes/Stages/Limbo/Circle_Limbo.tscn").instantiate())
+	#GSM.GLOBAL_SCENE_NODE.add_child(preload("res://Scenes/Stages/Tartarus/Circle_Tartarus.tscn").instantiate())
 	queue_free()

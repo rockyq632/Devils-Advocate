@@ -1,0 +1,88 @@
+{"items": [
+
+{ 	"id": 500,
+	"name": "Test Item",
+	"itemset": "Test",
+	"item_type": "NONE",
+	"location_found": "NONE",
+	"cost_type": "NONE",
+	"cost_amount": "NONE",
+	"short_desc": "TEST ITEM ONLY",
+	"long_desc": "TEST ITEM ONLY. Does nothing",
+	"pos_effects": {"NONE":0},
+	"neg_effects": {"NONE":0},
+	"image_name": "Item_Placeholder_1x.png"
+},
+
+{	"id": 501,
+	"name": "Add Armor",
+	"itemset": "Test",
+	"item_type": "BUFF",
+	"location_found": "NONE",
+	"cost_type": "NONE",
+	"cost_amount": "NONE",
+	"short_desc": "TEST ITEM ONLY",
+	"long_desc": "TEST ITEM ONLY. Adds 1 armored heart.",
+	"pos_effects": {"ADD_FLAT_ARMOR":1},
+	"neg_effects": {"NONE":0},
+	"image_name": "Item_Placeholder_1x.png"
+},
+
+{	"id": 502,
+	"name": "Heal Health",
+	"itemset": "Test",
+	"item_type": "BUFF",
+	"location_found": "NONE",
+	"cost_type": "NONE",
+	"cost_amount": "NONE",
+	"short_desc": "TEST ITEM ONLY",
+	"long_desc": "TEST ITEM ONLY. Heals 1 heart.",
+	"pos_effects": {"ADD_FLAT_HEAL":1},
+	"neg_effects": {"NONE":0},
+	"image_name": "Item_Placeholder_1x.png"
+},
+
+{	"id": 503,
+	"name": "Add Max Health",
+	"itemset": "Test",
+	"item_type": "BUFF",
+	"location_found": "NONE",
+	"cost_type": "NONE",
+	"cost_amount": "NONE",
+	"short_desc": "TEST ITEM ONLY",
+	"long_desc": "TEST ITEM ONLY. Adds 1 max health.",
+	"pos_effects": {"ADD_FLAT_MHEALTH":1},
+	"neg_effects": {"NONE":0},
+	"image_name": "Item_Placeholder_1x.png"
+},
+
+{	"id": 504,
+	"name": "Add Attack",
+	"itemset": "Test",
+	"item_type": "BUFF",
+	"location_found": "NONE",
+	"cost_type": "NONE",
+	"cost_amount": "NONE",
+	"short_desc": "TEST ITEM ONLY",
+	"long_desc": "TEST ITEM ONLY. Adds 10% to attack.",
+	"pos_effects": {"ADD_PCNT_ATK":10},
+	"neg_effects": {"NONE":0},
+	"image_name": "Item_Placeholder_1x.png"
+},
+
+{	"id": 505,
+	"name": "Add Move Speed",
+	"itemset": "Test",
+	"item_type": "BUFF",
+	"location_found": "NONE",
+	"cost_type": "NONE",
+	"cost_amount": "NONE",
+	"short_desc": "TEST ITEM ONLY",
+	"long_desc": "TEST ITEM ONLY. Adds 50% to move speed.",
+	"pos_effects": {"ADD_PCNT_MSPD":10},
+	"neg_effects": {"NONE":0},
+	"image_name": "Item_Placeholder_1x.png"
+}
+
+
+]}

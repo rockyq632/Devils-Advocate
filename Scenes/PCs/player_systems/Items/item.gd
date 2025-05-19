@@ -4,21 +4,39 @@ extends Node
 signal item_received
 #signal item_effect_triggered
 
+@export_subgroup("Identify")
 # Key used to identify the item
 @export var key:ITEM_REF.KEY = ITEM_REF.KEY.NONE
+@export var id:int = 500
 @export var item_name:String = "*INSERT ITEM NAME HERE*"
+@export var itemset_name:String = "NONE"
+@export var item_type:String = "NONE"
 
 # Image representation of item
-@export var icon:Texture2D
+@export var icon:Texture2D = preload("res://Graphics/Items/Item_Placeholder_1x.png")
+
+# Costs
+@export var cost_type:String = "NONE"
+@export var cost_amount:int = 0
 
 # Description of the item
-@export var description:String
+@export var location_found:String = "NONE"
+@export var short_description:String = "NONE"
+@export var long_description:String = "NONE"
 
+
+
+@export_subgroup("Effects")
+# If the item has a triggered effect
+@export var is_item_triggerable:bool = false
+@export var positive_effects:Dictionary[String,float] = {"NONE":0}
+@export var negative_effects:Dictionary[String,float] = {"NONE":0}
+
+
+@export_subgroup("Gameplay")
 # Player character the item is equipped to
 @export var equipped_pc:PlayableCharacter
 
-# If the item has a triggered effect
-@export var is_item_triggerable:bool = false
 
 # Function to add item effect (set by child)
 var apply_item:Callable
