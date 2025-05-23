@@ -20,18 +20,21 @@ var cnt_coll:int = 0
 
 
 func _ready() -> void:
-	# Generate contents of chest
-	while(contents.size() != num_items):
-		var r:int = randi_range(500, 500+(ITEM_REF.items.size()-1))
-		
-		# if random item ID is in the list of excluded items, try again
-		if( r in excluded_items ):
-			continue
-		# Append item to the contents
-		else:
-			contents.append( ITEM_REF.items[r] )
-			contents_ids.append( r )
-			excluded_items.append( r )
+	if( not multiplayer.is_server() ):
+		await get_tree().create_timer(1).timeout
+	else:
+		# Generate contents of chest
+		while(contents.size() != num_items):
+			var r:int = randi_range(500, 500+(ITEM_REF.items.size()-1))
+			
+			# if random item ID is in the list of excluded items, try again
+			if( r in excluded_items ):
+				continue
+			# Append item to the contents
+			else:
+				contents.append( ITEM_REF.items[r] )
+				contents_ids.append( r )
+				excluded_items.append( r )
 	
 	# Make menu aware of items
 	chest_menu.create_menu(contents)
@@ -48,10 +51,14 @@ func _process(_delta: float) -> void:
 
 
 # Opens the chest
+@rpc("any_peer", "call_local")
 func open_chest() -> void:
-	#print("chest opened")
-	open_anim_player.play("SHOW_CHEST_MENU")
-	# TODO Open the chest for all players on first open
+	if( not multiplayer.is_server() ):
+		rpc_id(1, "open_chest")
+	else:
+		open_anim_player.play("SHOW_CHEST_MENU")
+		GSM.DISABLE_PLAYER_MOVE_FLAG = true
+		GSM.DISABLE_PLAYER_ACT_FLAG = true
 
 
 func _on_chest_interact_range_entered(_body: Node2D) -> void:
@@ -67,7 +74,13 @@ func _on_chest_interact_range_exited(_body: Node2D) -> void:
 # TODO handle how each player selects items
 func _on_item_selected(_id:int, _selection:Item) -> void:
 	open_anim_player.play("HIDE_CHEST_MENU")
+	
+	GSM.DISABLE_PLAYER_MOVE_FLAG =false
+	GSM.DISABLE_PLAYER_ACT_FLAG =false
 	chest_items_distributed.emit()
 func _on_item_skipped(_id:int) -> void:
 	open_anim_player.play("HIDE_CHEST_MENU")
+	
+	GSM.DISABLE_PLAYER_MOVE_FLAG =false
+	GSM.DISABLE_PLAYER_ACT_FLAG =false
 	chest_items_distributed.emit()

@@ -1,15 +1,6 @@
 extends Node
 
-enum KEY {
-	NONE,
-	
-	TEST_ITEM
-}
-
-@onready var dict:Dictionary[int,String] = {
-	KEY.TEST_ITEM : "res://Scenes/Items/built_items/test_item/test_item.tscn"
-}
-
+# List of all items referenced by ID
 @export var items:Dictionary[int, Item] = {}
 
 func _ready() -> void:

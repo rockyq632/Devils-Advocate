@@ -1,11 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://dgfy8w6a2pvyf"]
+[gd_scene load_steps=3 format=3 uid="uid://dgfy8w6a2pvyf"]
 
 [ext_resource type="Script" uid="uid://cpgvkhu5eoffe" path="res://Scenes/Menues/Open_Chest_Menu/open_chest_menu.gd" id="1_rjnpb"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_rjnpb"]
+properties/0/path = NodePath(".:item_id_list")
+properties/0/spawn = true
+properties/0/replication_mode = 2
 
 [node name="OpenChestMenu" type="MarginContainer" node_paths=PackedStringArray("ITEM_BTN_HBOX")]
 top_level = true
 light_mask = 2
 visibility_layer = 2
+z_index = 4060
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -17,6 +23,9 @@ theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 100
 script = ExtResource("1_rjnpb")
 ITEM_BTN_HBOX = NodePath("Panel/MarginContainer/ItemButtonHBox")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_rjnpb")
 
 [node name="Panel" type="Panel" parent="."]
 light_mask = 2
