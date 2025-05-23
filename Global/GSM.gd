@@ -13,6 +13,7 @@ var GLOBAL_SAVE: SaveLoad = SaveLoad.new()
 
 
 
+
 @export_subgroup("Gameplay")
 # Stores the current over-arching scene that is in control 
 @export var GLOBAL_SCENE_NODE:Control
@@ -41,6 +42,8 @@ var GLOBAL_SAVE: SaveLoad = SaveLoad.new()
 @export var GLOBAL_MULTIPLAYER_HANDLER:MPHandler
 
 @export_subgroup("READ ONLY")
+@export var TOTAL_CONNECTED_PLAYERS:int = 1
+@export var CLIENT_IDS:Array[int] = []
 @export var DISABLE_PLAYER_MOVE_FLAG:bool = false
 @export var DISABLE_PLAYER_ACT_FLAG:bool = false
 

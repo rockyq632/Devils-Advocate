@@ -2,7 +2,6 @@ extends Control
 
 @export_subgroup("READ ONLY")
 @export var num_players_in_waiting_area:int=0
-var num_clients:int=1
 var loading_first_stage:bool=false
 
 # Called when the node enters the scene tree for the first time.
@@ -16,7 +15,7 @@ func _ready() -> void:
 # Runs every frame
 func _process(_delta: float) -> void:
 	#When all characters are selected, open up the waiting area
-	num_clients = multiplayer.get_peers().size()+1
+	GSM.TOTAL_CONNECTED_PLAYERS = multiplayer.get_peers().size()+1
 	if( GSM.GLOBAL_PLAYER_NODE.get_child_count() >= (multiplayer.get_peers().size()+2) ):
 		$LightAnimPlayer.play("ON_CHARS_SELECTED")
 		set_process(false)
@@ -93,10 +92,6 @@ func add_client_bottom_hud(client_id:int) -> void:
 	if(not this_pc):
 		printerr("No pc found to add bottom HUD for")
 		return
-	'''
-	else:
-		print("PC FOUND FOR BOTTOM HUD: %s" % str(client_id))
-	'''
 	
 	# Check if bottom HUD already exists
 	for i:Node in GSM.GLOBAL_BOT_PLAYER_HUD.get_children():
@@ -135,12 +130,12 @@ func _on_body_entered_waiting_area(body: Node2D) -> void:
 	if(loading_first_stage):
 		return
 	if( "MAX_HEALTH" in body ):
-		num_clients = multiplayer.get_peers().size()+1
-		num_players_in_waiting_area = num_players_in_waiting_area+1#clampi(num_players_in_waiting_area+1, 0, num_clients)
-		%Waiting_Area_Text.text = "[center]%s/%s" %[num_players_in_waiting_area, num_clients]
+		GSM.TOTAL_CONNECTED_PLAYERS = multiplayer.get_peers().size()+1
+		num_players_in_waiting_area = num_players_in_waiting_area+1#clampi(num_players_in_waiting_area+1, 0, GSM.TOTAL_CONNECTED_PLAYERS)
+		%Waiting_Area_Text.text = "[center]%s/%s" %[num_players_in_waiting_area, GSM.TOTAL_CONNECTED_PLAYERS]
 		
 		# If everyone is in the waiting room
-		if(num_players_in_waiting_area >= num_clients):
+		if(num_players_in_waiting_area >= GSM.TOTAL_CONNECTED_PLAYERS):
 			loading_first_stage = true
 			load_first_stage()
 
@@ -149,12 +144,16 @@ func _on_body_exited_waiting_area(body: Node2D) -> void:
 	if(loading_first_stage):
 		return
 	if( "MAX_HEALTH" in body ):
-		num_clients = multiplayer.get_peers().size()+1
+		GSM.TOTAL_CONNECTED_PLAYERS = multiplayer.get_peers().size()+1
 		num_players_in_waiting_area = num_players_in_waiting_area-1
-		%Waiting_Area_Text.text = "[center]%s/%s" %[num_players_in_waiting_area, num_clients]
+		%Waiting_Area_Text.text = "[center]%s/%s" %[num_players_in_waiting_area, GSM.TOTAL_CONNECTED_PLAYERS]
 
 # load up the first stage
 func load_first_stage() -> void:
+	# Collect the list of client IDs
+	GSM.CLIENT_IDS.assign([0])
+	GSM.CLIENT_IDS[0] = multiplayer.get_unique_id()
+	GSM.CLIENT_IDS.append_array( multiplayer.get_peers() )
+	
 	GSM.GLOBAL_SCENE_NODE.call_deferred("add_child",preload("res://Scenes/Stages/Limbo/Circle_Limbo.tscn").instantiate())
-	#GSM.GLOBAL_SCENE_NODE.add_child(preload("res://Scenes/Stages/Tartarus/Circle_Tartarus.tscn").instantiate())
 	queue_free()

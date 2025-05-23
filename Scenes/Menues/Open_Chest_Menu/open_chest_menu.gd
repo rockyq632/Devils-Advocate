@@ -19,7 +19,7 @@ func _ready() -> void:
 	for i:Node in ITEM_BTN_HBOX.get_children():
 		ITEM_BTN_HBOX.remove_child(i)
 
-
+# Creates the chest menu buttons and arranges them
 func create_menu(item_contents:Array[Item]) -> void:
 	# Host menu creation
 	if( multiplayer.is_server() ):
@@ -54,8 +54,6 @@ func create_menu(item_contents:Array[Item]) -> void:
 			item_buttons.append( temp )
 			ITEM_BTN_HBOX.add_child( item_buttons[cnt] )
 			cnt += 1
-		
-		
 
 
 func _on_item_button_pressed(item_index:int) -> void:

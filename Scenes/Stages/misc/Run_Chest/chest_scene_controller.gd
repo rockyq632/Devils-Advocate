@@ -22,6 +22,7 @@ var cnt_coll:int = 0
 func _ready() -> void:
 	if( not multiplayer.is_server() ):
 		await get_tree().create_timer(1).timeout
+		pass
 	else:
 		# Generate contents of chest
 		while(contents.size() != num_items):
@@ -72,15 +73,28 @@ func _on_chest_interact_range_exited(_body: Node2D) -> void:
 
 
 # TODO handle how each player selects items
+var item_sel_cnt:int = 0
 func _on_item_selected(_id:int, _selection:Item) -> void:
 	open_anim_player.play("HIDE_CHEST_MENU")
-	
+	item_sel_cnt += 1
 	GSM.DISABLE_PLAYER_MOVE_FLAG =false
 	GSM.DISABLE_PLAYER_ACT_FLAG =false
-	chest_items_distributed.emit()
+	
+	rpc_id(1, "item_selected_by_peer")
+
 func _on_item_skipped(_id:int) -> void:
 	open_anim_player.play("HIDE_CHEST_MENU")
+	item_sel_cnt += 1
 	
 	GSM.DISABLE_PLAYER_MOVE_FLAG =false
 	GSM.DISABLE_PLAYER_ACT_FLAG =false
-	chest_items_distributed.emit()
+	
+	rpc_id(1, "item_selected_by_peer")
+
+
+@rpc("call_local", "any_peer")
+func item_selected_by_peer() -> void:
+	item_sel_cnt += 1
+	
+	if( item_sel_cnt >= GSM.TOTAL_CONNECTED_PLAYERS ):
+		chest_items_distributed.emit()
