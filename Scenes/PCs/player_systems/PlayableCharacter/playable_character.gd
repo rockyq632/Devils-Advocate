@@ -428,10 +428,10 @@ func add_item(new_item:Item) -> bool:
 	return true
 
 # Deletes a specific item from player inventory
-func remove_item(item_key:ITEM_REF.KEY) -> bool:
-	var does_itm_exist:bool = item_dict.erase(item_key)
+func remove_item(item_id:int) -> bool:
+	var does_itm_exist:bool = item_dict.erase(item_id)
 	if( does_itm_exist ):
-		item_list_keys.erase(item_key)
+		item_list_keys.erase(item_id)
 	else:
 		return false
 	return true

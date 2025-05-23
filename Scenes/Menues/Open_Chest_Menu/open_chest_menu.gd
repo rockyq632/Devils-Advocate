@@ -13,7 +13,7 @@ var item_buttons:Array[TextureButton] = []
 func _ready() -> void:
 	hide()
 	# Clear out all stand-in items
-	for i in ITEM_BTN_HBOX.get_children():
+	for i:Node in ITEM_BTN_HBOX.get_children():
 		ITEM_BTN_HBOX.remove_child(i)
 
 
@@ -21,8 +21,9 @@ func create_menu(item_contents:Array[Item]) -> void:
 	item_list.append_array(item_contents)
 	
 	var cnt:int = 0
-	for i in item_list:
-		var temp:ItemButton = ItemButton.new()
+	for i:Item in item_list:
+		var temp:ItemButton = preload("res://Scenes/Menues/Open_Chest_Menu/item_button.tscn").instantiate()
+		temp.set_item(i)
 		temp.set_texture(i.icon)
 		temp.pressed.connect( _on_item_button_pressed.bind(cnt) )
 		

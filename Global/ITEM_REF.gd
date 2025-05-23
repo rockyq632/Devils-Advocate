@@ -20,8 +20,6 @@ func _ready() -> void:
 	
 	# Generate all items
 	for i:Dictionary in file_data["items"]:
-		print(i)
-		print()
 		var temp_item:Item = Item.new()
 		temp_item.id = i["id"]
 		temp_item.item_name = i["name"]

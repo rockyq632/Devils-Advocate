@@ -6,7 +6,6 @@ signal item_received
 
 @export_subgroup("Identify")
 # Key used to identify the item
-@export var key:ITEM_REF.KEY = ITEM_REF.KEY.NONE
 @export var id:int = 500
 @export var item_name:String = "*INSERT ITEM NAME HERE*"
 @export var itemset_name:String = "NONE"

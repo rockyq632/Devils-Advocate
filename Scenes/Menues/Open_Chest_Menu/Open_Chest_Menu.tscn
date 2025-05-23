@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgfy8w6a2pvyf"]
+[gd_scene load_steps=2 format=3 uid="uid://dgfy8w6a2pvyf"]
 
 [ext_resource type="Script" uid="uid://cpgvkhu5eoffe" path="res://Scenes/Menues/Open_Chest_Menu/open_chest_menu.gd" id="1_rjnpb"]
-[ext_resource type="PackedScene" uid="uid://bburppawvakkq" path="res://Scenes/Menues/Open_Chest_Menu/item_button.tscn" id="2_wlg4g"]
 
 [node name="OpenChestMenu" type="MarginContainer" node_paths=PackedStringArray("ITEM_BTN_HBOX")]
 top_level = true
@@ -17,7 +16,7 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 100
 script = ExtResource("1_rjnpb")
-ITEM_BTN_HBOX = NodePath("Panel/MarginContainer/HBoxContainer")
+ITEM_BTN_HBOX = NodePath("Panel/MarginContainer/ItemButtonHBox")
 
 [node name="Panel" type="Panel" parent="."]
 light_mask = 2
@@ -38,15 +37,12 @@ theme_override_constants/margin_top = 86
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer"]
+[node name="ItemButtonHBox" type="HBoxContainer" parent="Panel/MarginContainer"]
 light_mask = 2
 visibility_layer = 2
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 10
-
-[node name="TextureButton" parent="Panel/MarginContainer/HBoxContainer" instance=ExtResource("2_wlg4g")]
-layout_mode = 2
 
 [node name="Button" type="Button" parent="Panel"]
 light_mask = 2

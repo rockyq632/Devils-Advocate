@@ -4,14 +4,14 @@ extends Control
 signal chest_items_distributed
 
 
-@export var excluded_items:Array[ITEM_REF.KEY] = [ITEM_REF.KEY.NONE]
+@export var excluded_items:Array[int] = []
 @export var num_items:int = 5
 
 @export_subgroup("UI")
-@export var anim_player:AnimationPlayer
+@export var open_anim_player:AnimationPlayer
 @export var chest_menu:ChestMenu
 
-@export_subgroup("READ ONLY")
+@export_subgroup("REMOTE READ ONLY")
 @export var contents:Array[Item] = []
 @export var contents_ids:Array[int] = []
 @export var is_chest_opened:bool = false
@@ -19,18 +19,19 @@ signal chest_items_distributed
 var cnt_coll:int = 0
 
 
-
-
 func _ready() -> void:
 	# Generate contents of chest
 	while(contents.size() != num_items):
-		var r:int = randi_range(0, (ITEM_REF.KEY.size()-1))
+		var r:int = randi_range(500, 500+(ITEM_REF.items.size()-1))
 		
+		# if random item ID is in the list of excluded items, try again
 		if( r in excluded_items ):
 			continue
+		# Append item to the contents
 		else:
-			contents.append( load(ITEM_REF.dict[r]).instantiate() )
+			contents.append( ITEM_REF.items[r] )
 			contents_ids.append( r )
+			excluded_items.append( r )
 	
 	# Make menu aware of items
 	chest_menu.create_menu(contents)
@@ -46,24 +47,27 @@ func _process(_delta: float) -> void:
 		is_chest_opened = true
 
 
+# Opens the chest
 func open_chest() -> void:
-	print("chest opened")
-	anim_player.play("SHOW_CHEST_MENU")
+	#print("chest opened")
+	open_anim_player.play("SHOW_CHEST_MENU")
+	# TODO Open the chest for all players on first open
 
 
 func _on_chest_interact_range_entered(_body: Node2D) -> void:
 	cnt_coll += 1
-	anim_player.play("SHOW_TOOLTIP")
-
+	open_anim_player.play("SHOW_TOOLTIP")
 func _on_chest_interact_range_exited(_body: Node2D) -> void:
 	cnt_coll -= 1
 	if(cnt_coll == 0):
-		anim_player.play("HIDE_TOOLTIP")
+		open_anim_player.play("HIDE_TOOLTIP")
 
 
+
+# TODO handle how each player selects items
 func _on_item_selected(_id:int, _selection:Item) -> void:
-	anim_player.play("HIDE_CHEST_MENU")
+	open_anim_player.play("HIDE_CHEST_MENU")
 	chest_items_distributed.emit()
 func _on_item_skipped(_id:int) -> void:
-	anim_player.play("HIDE_CHEST_MENU")
+	open_anim_player.play("HIDE_CHEST_MENU")
 	chest_items_distributed.emit()

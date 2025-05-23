@@ -200,7 +200,7 @@ _data = {
 &"SHOW_TOOLTIP": SubResource("Animation_dos6r")
 }
 
-[node name="CerberusChest" type="Control" node_paths=PackedStringArray("anim_player", "chest_menu")]
+[node name="CerberusChest" type="Control" node_paths=PackedStringArray("open_anim_player", "chest_menu")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -208,7 +208,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0muf7")
-anim_player = NodePath("AnimPlayer")
+open_anim_player = NodePath("OpenAnimPlayer")
 chest_menu = NodePath("OpenChestMenu")
 
 [node name="ChestSync" type="MultiplayerSynchronizer" parent="."]
@@ -252,7 +252,7 @@ text = "[center]interact"
 [node name="OpenChestMenu" parent="." instance=ExtResource("3_43h7d")]
 layout_mode = 1
 
-[node name="AnimPlayer" type="AnimationPlayer" parent="."]
+[node name="OpenAnimPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_wtowr")
 }
