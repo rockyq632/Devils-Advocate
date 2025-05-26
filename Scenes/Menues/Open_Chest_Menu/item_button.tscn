@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bburppawvakkq"]
+[gd_scene load_steps=4 format=3 uid="uid://bburppawvakkq"]
 
 [ext_resource type="Texture2D" uid="uid://pb8aoqsw33f0" path="res://Graphics/Items/Item_Placeholder_1x.png" id="1_tjehu"]
 [ext_resource type="Script" uid="uid://yay47n5am03w" path="res://Scenes/Menues/Open_Chest_Menu/item_button.gd" id="2_th241"]
+[ext_resource type="Texture2D" uid="uid://bqff6vow67xv6" path="res://Graphics/UI/white_ball_1x.png" id="3_d1ihu"]
 
-[node name="ItemButton" type="TextureButton" node_paths=PackedStringArray("short_desc_tooltip", "short_desc_lbl")]
+[node name="ItemButton" type="TextureButton" node_paths=PackedStringArray("selected_indicator", "short_desc_tooltip", "short_desc_lbl")]
 light_mask = 2
 visibility_layer = 2
 anchors_preset = 15
@@ -15,6 +16,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = ExtResource("1_tjehu")
 script = ExtResource("2_th241")
+selected_indicator = [NodePath("Selected_Indicator0"), NodePath("Selected_Indicator1"), NodePath("Selected_Indicator2"), NodePath("Selected_Indicator3")]
 short_desc_tooltip = NodePath("short_desc_tooltip")
 short_desc_lbl = NodePath("short_desc_tooltip/MarginContainer/short_desc_rtl")
 
@@ -50,6 +52,50 @@ theme_override_font_sizes/normal_font_size = 10
 bbcode_enabled = true
 text = "[left]TEXT NEEDED"
 fit_content = true
+
+[node name="Selected_Indicator0" type="TextureRect" parent="."]
+visible = false
+modulate = Color(0, 0.615686, 0, 1)
+layout_mode = 0
+offset_left = 24.0
+offset_top = -8.0
+offset_right = 40.0
+offset_bottom = 8.0
+texture = ExtResource("3_d1ihu")
+stretch_mode = 4
+
+[node name="Selected_Indicator1" type="TextureRect" parent="."]
+visible = false
+modulate = Color(0.639216, 0, 0, 1)
+layout_mode = 0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+texture = ExtResource("3_d1ihu")
+stretch_mode = 4
+
+[node name="Selected_Indicator2" type="TextureRect" parent="."]
+visible = false
+modulate = Color(0, 0.223529, 0.843137, 1)
+layout_mode = 0
+offset_left = -8.0
+offset_top = 24.0
+offset_right = 8.0
+offset_bottom = 40.0
+texture = ExtResource("3_d1ihu")
+stretch_mode = 4
+
+[node name="Selected_Indicator3" type="TextureRect" parent="."]
+visible = false
+modulate = Color(0.733333, 0.223529, 0.843137, 1)
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_d1ihu")
+stretch_mode = 4
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

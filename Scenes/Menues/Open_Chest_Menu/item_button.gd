@@ -1,6 +1,8 @@
 class_name ItemButton
 extends TextureButton
 
+@export var selected_indicator:Array[TextureRect]
+
 @export_subgroup("REMOTE READ ONLY")
 @export var short_desc_tooltip:Panel
 @export var short_desc_lbl:RichTextLabel
@@ -22,7 +24,17 @@ func set_item(nitem:Item) -> void:
 	short_desc_lbl.text = "[left]%s" % item.long_description
 
 
+func item_selected(ind_num:int) -> void:
+	rpc("indicate_selected", ind_num)
+@rpc("any_peer","call_local")
+func indicate_selected(ind_num:int) -> void:
+	selected_indicator[ind_num].show()
 
+func item_deselected(ind_num:int) -> void:
+	rpc("indicate_deselected", ind_num)
+@rpc("any_peer","call_local")
+func indicate_deselected(ind_num:int) -> void:
+	selected_indicator[ind_num].hide()
 
 
 func _on_mouse_entered() -> void:

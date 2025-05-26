@@ -43,8 +43,6 @@ const type : ENM.TARGET_TYPE = ENM.TARGET_TYPE.PLAYER
 @export var hurtbox:Area2D
 # Buffs & Debuffs tree
 @export var buffs_debuffs_node:Node
-# Items Node
-@export var items_node:Node
 
 
 # Move direction tracked via keyboard/controller input
@@ -93,6 +91,8 @@ var armor_frames_timer:Timer = Timer.new()
 
 
 @export_subgroup("ITEMS")
+# Items Node
+@export var items_node:Node
 @export var item_dict:Dictionary[int,Item] = {}
 @export var item_list_keys:Array[int] = []
 
@@ -171,7 +171,6 @@ func _process(_delta: float) -> void:
 		sprite.hide()
 	elif(armor_frames_timer.time_left):
 		sprite.show()
-
 
 
 func _physics_process(_delta: float) -> void:
@@ -291,13 +290,10 @@ func process_inputs() -> void:
 			moveset_inputs[3] = false
 
 
-
 # Needs to be overwritten with the proper path for each character
 func _new_peer_connected(path_str:String) -> void:
 	GSM.GLOBAL_MULTIPLAYER_HANDLER.add_pc_to_all_peers(path_str)
 	
-
-
 
 # Function called when a body enters the hurtbox area2d
 func _hurtbox_entered( body:Node2D ) -> void:
@@ -315,7 +311,6 @@ func _hurtbox_entered( body:Node2D ) -> void:
 	# If damage is coming from a client player
 	elif( "_take_damage_from_client" in body ):
 		body._take_damage_from_client( dmg )
-
 
 
 # Function called when body enters a hurtbox
@@ -347,7 +342,6 @@ func _take_damage( dmg:int=1 ) -> void:
 	armor_frames_timer.start()
 
 
-
 func _armor_frames_finished() -> void:
 	# Allow character to be hit again
 	hitbox.collision_layer = 2
@@ -358,11 +352,6 @@ func _armor_frames_finished() -> void:
 func _action_animation_finished(_anim_name:String) -> void:
 	is_animation_playing = false
 	curr_action = -1
-
-
-func network_remove_all_buffs(id:int) -> void:
-	#print(id)
-	rpc_id(id, "_force_remove_all_buffs")
 
 
 ###
@@ -384,12 +373,15 @@ func add_buff(new_buff:Buff) -> bool:
 		buffs_debuffs_node.add_child(new_buff)
 		
 		buff_gained.emit(new_buff)
-
-
+		
 	else:
 		return false
 	return true
 
+
+func network_remove_all_buffs(id:int) -> void:
+	#print(id)
+	rpc_id(id, "_force_remove_all_buffs")
 
 # Removes buffs from the player accesible lists
 func remove_buff(buf_key:BUF_REF.KEY) -> bool:
@@ -402,7 +394,6 @@ func remove_buff(buf_key:BUF_REF.KEY) -> bool:
 	buff_list_keys.erase(buf_key)
 	
 	return true
-
 
 # Forces all buffs to be cleared over network
 @rpc("any_peer")
@@ -418,9 +409,9 @@ func _force_remove_all_buffs() -> void:
 ###		ITEMS
 ###
 func add_item(new_item:Item) -> bool:
-	if( not item_dict.get(new_item.key) ):
-		item_dict[new_item.key] = new_item
-		item_list_keys.append(new_item.key)
+	if( not item_dict.get(new_item.id) ):
+		item_dict[new_item.id] = new_item
+		item_list_keys.append(new_item.id)
 		new_item.name = new_item.item_name
 		items_node.add_child(new_item)
 	else:
@@ -440,4 +431,10 @@ func remove_item(item_id:int) -> bool:
 func remove_all_items() -> void:
 	item_dict = {}
 	item_list_keys = []
+
+@rpc("any_peer", "call_local")
+func _force_remove_all_items() -> void:
+	item_dict = {}
+	item_list_keys = []
+	
 	

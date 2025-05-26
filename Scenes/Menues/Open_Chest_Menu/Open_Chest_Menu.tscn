@@ -53,7 +53,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 10
 
-[node name="Button" type="Button" parent="Panel"]
+[node name="SkipBTN" type="Button" parent="Panel"]
 light_mask = 2
 visibility_layer = 2
 layout_mode = 1
@@ -68,4 +68,4 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "SKIP ITEM"
 
-[connection signal="pressed" from="Panel/Button" to="." method="_on_skip_btn_pressed"]
+[connection signal="pressed" from="Panel/SkipBTN" to="." method="_on_skip_btn_pressed"]

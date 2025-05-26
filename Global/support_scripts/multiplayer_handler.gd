@@ -108,7 +108,7 @@ func add_pc(peer_id:int, pc_scene_path:String) -> void:
 	
 	# Assign player numbers from the host
 	if( multiplayer.is_server() ):
-		rpc("assign_player_number", (GSM.GLOBAL_MULTIPLAYER_HANDLER.peer_ids.size()+1))
+		rpc_id(peer_id, "assign_player_number", (GSM.GLOBAL_MULTIPLAYER_HANDLER.peer_ids.size()+1))
 
 func add_pc_to_all_peers(pc_scene_path:String) -> void:
 	rpc("add_pc", multiplayer.get_unique_id(), pc_scene_path)

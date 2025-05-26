@@ -27,8 +27,6 @@ var GLOBAL_SAVE: SaveLoad = SaveLoad.new()
 @export var GLOBAL_PROJECTILES_NODE:Node2D
 # Node to store all lighting
 @export var GLOBAL_LIGHTING_NODE:Node2D
-#Player number assigned to each player
-@export var ASSIGNED_PLAYER_ORDER_NUM: int = 1
 
 
 # Audio related nodes
@@ -44,6 +42,9 @@ var GLOBAL_SAVE: SaveLoad = SaveLoad.new()
 @export_subgroup("READ ONLY")
 @export var TOTAL_CONNECTED_PLAYERS:int = 1
 @export var CLIENT_IDS:Array[int] = []
+@export var CLIENT_PLAYABLE_CHARACTER:PlayableCharacter
+#Player number assigned to each player
+@export var ASSIGNED_PLAYER_ORDER_NUM: int = 1
 @export var DISABLE_PLAYER_MOVE_FLAG:bool = false
 @export var DISABLE_PLAYER_ACT_FLAG:bool = false
 

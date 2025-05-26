@@ -60,6 +60,7 @@ func add_character(new_pc:PlayableCharacter, path_to_pc:String) -> void:
 	GSM.GLOBAL_PLAYER_NODE.add_child( new_pc )
 	GSM.GLOBAL_PLAYER_NODE.add_child( player_UI )
 	player_UI.set_pc( new_pc )
+	GSM.CLIENT_PLAYABLE_CHARACTER = new_pc
 	
 	# Adding PC to all peers
 	GSM.GLOBAL_MULTIPLAYER_HANDLER.add_pc_to_all_peers( path_to_pc )

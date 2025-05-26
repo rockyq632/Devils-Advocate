@@ -26,6 +26,7 @@ func create_menu(item_contents:Array[Item]) -> void:
 		item_list.append_array(item_contents)
 		
 		var cnt:int = 0
+		# Creates the menu based on the item list
 		for i:Item in item_list:
 			#Append IDs to list used for multiplayer chest generator
 			item_id_list.append(i.id)
@@ -41,6 +42,7 @@ func create_menu(item_contents:Array[Item]) -> void:
 	# Client menu creation
 	else:
 		var cnt:int = 0
+		# Creates the menu based on the synced item id list 
 		for i:int in item_id_list:
 			#Append IDs to list used for multiplayer chest generator
 			var new_item:Item = ITEM_REF.items[i]
@@ -57,7 +59,7 @@ func create_menu(item_contents:Array[Item]) -> void:
 
 
 func _on_item_button_pressed(item_index:int) -> void:
-	item_selected.emit(multiplayer.get_unique_id(), item_list[item_index])
+	item_selected.emit(multiplayer.get_unique_id(), item_index)
 
 func _on_skip_btn_pressed() -> void:
 	item_skipped.emit(multiplayer.get_unique_id())

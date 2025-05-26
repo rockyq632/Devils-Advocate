@@ -37,16 +37,9 @@ signal item_received
 @export var equipped_pc:PlayableCharacter
 
 
-# Function to add item effect (set by child)
-var apply_item:Callable
-
-# Function to remove item effect (set by child)
-var remove_item:Callable
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	child_entered_tree.connect(_item_entering_tree)
+	tree_entered.connect(_item_entering_tree)
 	tree_exiting.connect(_item_exiting_tree)
 
 
@@ -65,10 +58,17 @@ func _item_entering_tree() -> void:
 	item_received.emit()
 	
 	# Apply the item effect to the PC
-	apply_item.call()
+	apply_item_effect()
 
 
 # Called when item leave the scene tree
 # Makes sure the effect is removed from the quipped player
 func _item_exiting_tree() -> void:
-	remove_item.call()
+	remove_item_effect()
+
+func apply_item_effect() -> void:
+	print("%s applied to %s" % [item_name, GSM.CLIENT_IDS[0]])
+	pass #TODO
+
+func remove_item_effect() -> void:
+	pass #TODO
