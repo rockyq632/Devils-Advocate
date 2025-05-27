@@ -3,6 +3,8 @@ extends ColorRect
 @export var is_damaged:bool = false
 @export var is_armored:bool = false
 
+func _ready() -> void:
+	name = "HealthTick"
 
 # Damages the health tick
 func damaged() -> void:

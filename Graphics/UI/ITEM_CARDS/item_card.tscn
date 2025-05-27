@@ -1,0 +1,94 @@
+[gd_scene load_steps=3 format=3 uid="uid://exmqh5sf70yn"]
+
+[ext_resource type="Script" uid="uid://txepurje67m6" path="res://Graphics/UI/ITEM_CARDS/item_card.gd" id="1_hghjs"]
+[ext_resource type="Texture2D" uid="uid://pb8aoqsw33f0" path="res://Graphics/Items/Item_Placeholder_1x.png" id="2_j0riv"]
+
+[node name="ItemCard" type="Panel"]
+light_mask = 2
+visibility_layer = 2
+z_index = 4090
+custom_minimum_size = Vector2(200, 200)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+script = ExtResource("1_hghjs")
+
+[node name="Init_MC" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VB" type="VBoxContainer" parent="Init_MC"]
+layout_mode = 2
+
+[node name="MC_Icon" type="MarginContainer" parent="Init_MC/VB"]
+layout_mode = 2
+
+[node name="HB_Icon" type="HBoxContainer" parent="Init_MC/VB/MC_Icon"]
+layout_mode = 2
+
+[node name="ItemIcon" type="TextureRect" parent="Init_MC/VB/MC_Icon/HB_Icon"]
+light_mask = 2
+visibility_layer = 2
+layout_mode = 2
+texture = ExtResource("2_j0riv")
+stretch_mode = 4
+
+[node name="MC_Item_Name" type="MarginContainer" parent="Init_MC/VB/MC_Icon/HB_Icon"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_constants/margin_top = 3
+
+[node name="ItemName" type="RichTextLabel" parent="Init_MC/VB/MC_Icon/HB_Icon/MC_Item_Name"]
+light_mask = 2
+visibility_layer = 2
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "text"
+fit_content = true
+
+[node name="LongDesc" type="RichTextLabel" parent="Init_MC/VB"]
+light_mask = 2
+visibility_layer = 2
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 1
+bbcode_enabled = true
+text = "Text"
+fit_content = true
+
+[node name="MC_Costs" type="MarginContainer" parent="Init_MC/VB"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="HB_Costs" type="HBoxContainer" parent="Init_MC/VB/MC_Costs"]
+layout_mode = 2
+
+[node name="CostIcon" type="TextureRect" parent="Init_MC/VB/MC_Costs/HB_Costs"]
+light_mask = 2
+visibility_layer = 2
+layout_mode = 2
+size_flags_horizontal = 10
+texture = ExtResource("2_j0riv")
+expand_mode = 2
+
+[node name="CostAmt" type="RichTextLabel" parent="Init_MC/VB/MC_Costs/HB_Costs"]
+light_mask = 2
+visibility_layer = 2
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "0"
+fit_content = true

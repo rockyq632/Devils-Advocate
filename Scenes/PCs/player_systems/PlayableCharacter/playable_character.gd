@@ -5,6 +5,7 @@ signal just_died
 signal buff_gained
 signal buff_lost
 signal health_changed
+signal stats_changed
 signal atk1_used
 signal atk2_used
 signal atk3_used
@@ -21,16 +22,6 @@ const MAX_MOVE_SPEED:float = 1000.0
 const type : ENM.TARGET_TYPE = ENM.TARGET_TYPE.PLAYER
 
 
-# Current max health
-@export var max_health:int = 3
-# Current available health
-@export var curr_health:int = 3
-# Current available armor
-@export var curr_armor:int = 0
-# Current available move speed
-@export var move_speed:int = 200
-# Length of time in seconds to give armor frames after being hit
-@export var armor_frame_time:float = 0.6
 
 
 # Sprite
@@ -96,24 +87,40 @@ var armor_frames_timer:Timer = Timer.new()
 @export var item_dict:Dictionary[int,Item] = {}
 @export var item_list_keys:Array[int] = []
 
+@export_subgroup("STATS")
+# Current max health
+@export var max_health:int = 3
+# Current available health
+@export var curr_health:int = 3
+# Current available armor
+@export var curr_armor:int = 0
+# Current available move speed
+@export var move_speed:int = 200
+# Length of time in seconds to give armor frames after being hit
+@export var armor_frame_time:float = 0.6
+# Attack bonuses
+@export var flat_atk_bonus:float = 0.0
+@export var pcnt_atk_bonus:float = 0.0
+# Move Speed bonuses
+@export var flat_mspd_bonus:float = 0.0
+@export var pcnt_mspd_bonus:float = 0.0
+# Specific action buffs
+@export var flat_act_atk_bonus:Array[float] = [0.0, 0.0, 0.0, 0.0]
+@export var pcnt_act_atk_bonus:Array[float] = [0.0, 0.0, 0.0, 0.0]
 
 
 func _ready() -> void:
 	z_as_relative = false
 	z_index = 999
+	
+	# Connect Item Node signal to trigger when items enter/exit the tree
+	items_node.child_entered_tree.connect(_new_item_added)
+	
 	# Connect animation player so actions can reset the animation lock
 	anim_player.animation_finished.connect(_action_animation_finished)
 	
 	# Connect hurtbox body entered signal
 	hurtbox.body_entered.connect(_hurtbox_entered)
-	
-	# Emits signal one time to avoid warnings (Stupid, but it works for now)
-	is_cooldown_locked = true
-	atk1_used.emit()
-	atk2_used.emit()
-	atk3_used.emit()
-	def_used.emit()
-	is_cooldown_locked = false
 	
 	# Setup all of the rules for the cooldown timers
 	var cnt:int = 1
@@ -134,6 +141,7 @@ func _ready() -> void:
 	add_child(armor_frames_timer)
 	
 	move_to_front()
+	stats_changed.emit()
 
 
 func _process(_delta: float) -> void:
@@ -184,6 +192,8 @@ func _physics_process(_delta: float) -> void:
 		# Otherwise, allow movement input to influence velocity
 		else:
 			velocity = move_speed*move_dir
+			velocity = velocity+Vector2(flat_mspd_bonus,flat_mspd_bonus)
+			velocity = velocity+(pcnt_mspd_bonus*velocity)
 		
 		# BUGFIX: Noticed a weird sliding when velocity was (0,0) and move_and_slide was called 
 		# BUGFIX: had to switch to move_and_collide to allow CharacterBody2D to be moved by other collisions
@@ -221,21 +231,22 @@ func action_triggered(act_ind:int) -> void:
 	
 	
 	# Check which move is triggered
-	if( act_ind == 0 ):
-		atk1_used.emit()
-		moveset[act_ind]._ab_used(self)
-	elif( act_ind == 1 ):
-		atk2_used.emit()
-		moveset[act_ind]._ab_used(self)
-	elif( act_ind == 2 ):
-		atk3_used.emit()
-		moveset[act_ind]._ab_used(self)
-	elif( act_ind == 3 ):
-		def_used.emit()
-		moveset[act_ind]._ab_used(self)
-	else:
-		printerr("error in dani_dancer.gd -> action_triggered(): act_ind out of bounds")
-		return
+	match act_ind:
+		0:
+			atk1_used.emit()
+			moveset[act_ind]._ab_used(self)
+		1:
+			atk2_used.emit()
+			moveset[act_ind]._ab_used(self)
+		2:
+			atk3_used.emit()
+			moveset[act_ind]._ab_used(self)
+		3:
+			def_used.emit()
+			moveset[act_ind]._ab_used(self)
+		_:
+			printerr("error in playable_character.gd -> action_triggered(): act_ind out of bounds")
+			return
 	
 	# Set move to not ready
 	moveset[act_ind].is_ready = false
@@ -357,10 +368,8 @@ func _action_animation_finished(_anim_name:String) -> void:
 ###
 ### 	BUFFS
 ###
-
 # Adds buffs to the player accesible lists
 func add_buff(new_buff:Buff) -> bool:
-	
 	if( not buff_dict.get(new_buff.key) ):
 		# Add to dictionary
 		buff_dict[new_buff.key] = new_buff
@@ -408,6 +417,10 @@ func _force_remove_all_buffs() -> void:
 ###
 ###		ITEMS
 ###
+func _new_item_added(nItem:Node) -> void:
+	var nnItem:Item = nItem
+	nnItem._item_entering_tree()
+
 func add_item(new_item:Item) -> bool:
 	if( not item_dict.get(new_item.id) ):
 		item_dict[new_item.id] = new_item
@@ -420,8 +433,9 @@ func add_item(new_item:Item) -> bool:
 
 # Deletes a specific item from player inventory
 func remove_item(item_id:int) -> bool:
-	var does_itm_exist:bool = item_dict.erase(item_id)
-	if( does_itm_exist ):
+	if(item_id in item_dict.keys()):
+		item_dict[item_id]._item_exiting_tree()
+		item_dict.erase(item_id)
 		item_list_keys.erase(item_id)
 	else:
 		return false
@@ -431,10 +445,14 @@ func remove_item(item_id:int) -> bool:
 func remove_all_items() -> void:
 	item_dict = {}
 	item_list_keys = []
+	for i:Item in items_node.get_children():
+		i._item_exiting_tree()
+		items_node.remove_child(i)
 
 @rpc("any_peer", "call_local")
 func _force_remove_all_items() -> void:
 	item_dict = {}
 	item_list_keys = []
-	
-	
+	for i:Item in items_node.get_children():
+		i._item_exiting_tree()
+		items_node.remove_child(i)

@@ -39,8 +39,10 @@ signal item_received
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	tree_entered.connect(_item_entering_tree)
-	tree_exiting.connect(_item_exiting_tree)
+	# TODO Couldn't figure out why this didn't work, so handled by playable_character script
+	#tree_entered.connect(_item_entering_tree)
+	#tree_exiting.connect(_item_exiting_tree)
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -68,7 +70,42 @@ func _item_exiting_tree() -> void:
 
 func apply_item_effect() -> void:
 	print("%s applied to %s" % [item_name, GSM.CLIENT_IDS[0]])
-	pass #TODO
+	
+	for i:String in positive_effects.keys():
+		match i:
+			"ADD_FLAT_ARMOR":
+				equipped_pc.curr_armor += int(positive_effects["ADD_FLAT_ARMOR"])
+				equipped_pc.health_changed.emit()
+			"ADD_FLAT_HEAL":
+				if(equipped_pc.curr_health < equipped_pc.max_health):
+					equipped_pc.curr_health += int(positive_effects["ADD_FLAT_HEAL"])
+					equipped_pc.health_changed.emit()
+			"ADD_FLAT_MHEALTH":
+				equipped_pc.max_health += int(positive_effects["ADD_FLAT_MHEALTH"])
+				equipped_pc.health_changed.emit()
+			"ADD_FLAT_ATK":
+				equipped_pc.flat_atk_bonus +=  positive_effects["ADD_FLAT_ATK"]
+				equipped_pc.stats_changed.emit()
+			"ADD_PCNT_ATK":
+				equipped_pc.pcnt_atk_bonus +=  positive_effects["ADD_PCNT_ATK"]/100.0
+				equipped_pc.stats_changed.emit()
+			"ADD_FLAT_MSPD":
+				equipped_pc.flat_mspd_bonus +=  positive_effects["ADD_FLAT_MSPD"]
+				equipped_pc.stats_changed.emit()
+			"ADD_PCNT_MSPD":
+				equipped_pc.pcnt_mspd_bonus +=  positive_effects["ADD_PCNT_MSPD"]/100.0
+				equipped_pc.stats_changed.emit()
+			_:
+				pass
+	
+	for i:String in negative_effects.keys():
+		pass #TODO
 
 func remove_item_effect() -> void:
-	pass #TODO
+	print("%s removed from %s" % [item_name, GSM.CLIENT_IDS[0]])
+	
+	for i:String in positive_effects.keys():
+		pass
+	
+	for i:String in negative_effects.keys():
+		pass

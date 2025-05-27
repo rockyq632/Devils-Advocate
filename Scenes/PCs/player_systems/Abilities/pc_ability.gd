@@ -95,4 +95,10 @@ func _ab_hit(pc:PlayableCharacter, _target:Enemy) -> float:
 		# TODO Apply Debuffs
 		load(BUF_REF.buffs[ab_debuff_key]).instantiate()
 	
-	return ab_base_dmg
+	# Adds global damage pc bonuses
+	var calc_dmg:float = ab_base_dmg+(ab_base_dmg*pc.pcnt_atk_bonus)+pc.flat_atk_bonus
+	# Adds action specific pc bonuses
+	#calc_dmg += (ab_base_dmg*pc.pcnt_act_atk_bonus[0])+pc.flat_act_atk_bonus[0]
+	
+	# Return the calculated damage
+	return calc_dmg

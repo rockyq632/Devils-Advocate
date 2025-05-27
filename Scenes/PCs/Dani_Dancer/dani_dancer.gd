@@ -13,15 +13,6 @@ func _ready() -> void:
 	moveset[2] = AB_REF.dict[AB_REF.KEY.POLE_INVERSION_DIVE]
 	moveset[3] = AB_REF.dict[AB_REF.KEY.POLE_PIROUETTE]
 
-'''
-func _process(_delta: float) -> void:
-	super._process(_delta)
-
-
-func _physics_process(_delta: float) -> void:
-	super._physics_process(_delta)
-'''
-
 
 # Sets the file path of the character from the peer that was connected
 func _new_peer_connected_d(_peer_id:int) -> void:
