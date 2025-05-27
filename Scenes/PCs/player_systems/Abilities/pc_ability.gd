@@ -42,6 +42,8 @@ var ab_icon_texture : Texture2D
 var ab_short_desc : String = "Ability Short Desc"
 # Long description that describes the technical details of the ability. Also used in UI desctiptions
 var ab_long_desc : String = "Ability Long Description"
+# Which slot this move uses (of the 4 inputs: [0,1,2,3])
+var ab_slot_num : int = 0 #TODO set this up in the ability list
 
 
 # If ability is off cooldown
@@ -98,7 +100,7 @@ func _ab_hit(pc:PlayableCharacter, _target:Enemy) -> float:
 	# Adds global damage pc bonuses
 	var calc_dmg:float = ab_base_dmg+(ab_base_dmg*pc.pcnt_atk_bonus)+pc.flat_atk_bonus
 	# Adds action specific pc bonuses
-	#calc_dmg += (ab_base_dmg*pc.pcnt_act_atk_bonus[0])+pc.flat_act_atk_bonus[0]
+	calc_dmg += (ab_base_dmg*pc.pcnt_act_atk_bonus[ab_slot_num])+pc.flat_act_atk_bonus[ab_slot_num]
 	
 	# Return the calculated damage
 	return calc_dmg

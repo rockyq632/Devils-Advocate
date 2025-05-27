@@ -31,7 +31,7 @@ func create_menu(item_contents:Array[Item]) -> void:
 			#Append IDs to list used for multiplayer chest generator
 			item_id_list.append(i.id)
 			
-			var temp:ItemButton = preload("res://Scenes/Menues/Open_Chest_Menu/item_button.tscn").instantiate()
+			var temp:ItemButton = preload("res://Scenes/Items/item_button.tscn").instantiate()
 			temp.set_item(i)
 			temp.set_texture(i.icon)
 			temp.pressed.connect( _on_item_button_pressed.bind(cnt) )
@@ -48,7 +48,7 @@ func create_menu(item_contents:Array[Item]) -> void:
 			var new_item:Item = ITEM_REF.items[i]
 			item_list.append(new_item)
 			
-			var temp:ItemButton = preload("res://Scenes/Menues/Open_Chest_Menu/item_button.tscn").instantiate()
+			var temp:ItemButton = preload("res://Scenes/Items/item_button.tscn").instantiate()
 			temp.set_item(new_item)
 			temp.set_texture(new_item.icon)
 			temp.pressed.connect( _on_item_button_pressed.bind(cnt) )
