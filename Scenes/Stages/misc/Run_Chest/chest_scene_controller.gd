@@ -83,6 +83,10 @@ func _on_item_skipped(_id:int) -> void:
 	rpc_id(1, "item_skipped_by_peer", GSM.ASSIGNED_PLAYER_ORDER_NUM, multiplayer.get_unique_id())
 
 
+
+###
+### Functions called when each client selects/skips an item from the chest
+###
 # Called to inform the host which item was selected by which client
 @rpc("call_local", "any_peer")
 func item_selected_by_peer(pnum:int, pid:int, item_index:int) -> void:
@@ -116,7 +120,13 @@ func item_skipped_by_peer(pnum:int, pid:int) -> void:
 	# If everyone has picked an item, close menu and distribute items
 	if( item_sel_cnt >= GSM.TOTAL_CONNECTED_PLAYERS ):
 		rpc("close_chest_menu")
-		
+
+
+
+###
+### Called when all items are selected
+### Server distributes items here
+###
 @rpc("call_local")
 func close_chest_menu() -> void:
 	# Hide the chest menu
@@ -127,15 +137,25 @@ func close_chest_menu() -> void:
 		for i:int in clients_that_selected.keys():
 			# Make sure item wasn't skipped
 			if(clients_that_selected[i]):
-				rpc_id(i, "chest_item_received",clients_that_selected[i].item.id)
-		
+				rpc_id(i, "chest_item_received", clients_that_selected[i].item.id)
+			# If item was skipped
+			else:
+				rpc_id(i, "chest_item_skipped")
 	
 	# Allow the players to move and act again
-	GSM.DISABLE_PLAYER_MOVE_FLAG =false
-	GSM.DISABLE_PLAYER_ACT_FLAG =false
+	GSM.DISABLE_PLAYER_MOVE_FLAG = false
+	GSM.DISABLE_PLAYER_ACT_FLAG = false
 
+
+###
+### Functions called by server to distribute items after selection is made
+###
 @rpc("call_local")
 func chest_item_received(item_id:int) -> void:
 	GSM.CLIENT_PLAYABLE_CHARACTER.add_item(ITEM_REF.items[item_id])
+	chest_items_distributed.emit()
+
+@rpc("call_local")
+func chest_item_skipped() -> void:
 	chest_items_distributed.emit()
 	

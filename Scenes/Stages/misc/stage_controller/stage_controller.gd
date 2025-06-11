@@ -19,15 +19,9 @@ func _ready() -> void:
 			start_chest_scene(0)
 
 
-func _process(_delta: float) -> void:
-	pass
-
-func _physics_process(_delta: float) -> void:
-	pass
-
-'''
-	Starts the fight scene stored at the specifed index
-'''
+###
+###	Starts the fight scene stored at the specifed index
+###
 func start_fight_scene(index:int) -> void:
 	if(multiplayer.is_server()):
 		await get_tree().create_timer(0.1).timeout
@@ -47,22 +41,43 @@ func _end_fight_scene() -> void:
 		
 		if((stage_progression_bar.curr_stage_index+1) < stage_type_list.size()):
 			stage_progression_bar.increment_indicator()
-			start_fight_scene(stage_progression_bar.curr_stage_index)
+			
+			if(stage_type_list[stage_progression_bar.curr_stage_index] == ENM.STAGE_TYPE.FIGHT):
+				start_fight_scene(stage_progression_bar.curr_stage_index)
+			elif(stage_type_list[stage_progression_bar.curr_stage_index] == ENM.STAGE_TYPE.SHOP):
+				start_shop_scene(stage_progression_bar.curr_stage_index)
+			elif(stage_type_list[stage_progression_bar.curr_stage_index] == ENM.STAGE_TYPE.CHEST):
+				start_chest_scene(stage_progression_bar.curr_stage_index)
 
-'''
-	Starts the shop scene stored at the specifed index
-'''
-func start_shop_scene(_index:int) -> void:
+###
+###	Starts the shop scene stored at the specifed index
+###
+func start_shop_scene(index:int) -> void:
 	if(multiplayer.is_server()):
 		await get_tree().create_timer(0.1).timeout
-		#stage_list[index]
+		var temp:ShopScene = stage_list[index].instantiate()
+		temp.time_to_leave_shop.connect(_end_shop_scene)
+		GSM.GLOBAL_ENEMIES_NODE.add_child( temp )
+
+func _end_shop_scene() -> void:
+	if(multiplayer.is_server()):
+		for i:Node in GSM.GLOBAL_ENEMIES_NODE.get_children():
+			i.queue_free()
 		
-		#GSM.GLOBAL_ENEMIES_NODE.add_child(enemy_hud)
+		if((stage_progression_bar.curr_stage_index+1) < stage_type_list.size()):
+			stage_progression_bar.increment_indicator()
+			
+			if(stage_type_list[stage_progression_bar.curr_stage_index] == ENM.STAGE_TYPE.FIGHT):
+				start_fight_scene(stage_progression_bar.curr_stage_index)
+			elif(stage_type_list[stage_progression_bar.curr_stage_index] == ENM.STAGE_TYPE.SHOP):
+				start_shop_scene(stage_progression_bar.curr_stage_index)
+			elif(stage_type_list[stage_progression_bar.curr_stage_index] == ENM.STAGE_TYPE.CHEST):
+				start_chest_scene(stage_progression_bar.curr_stage_index)
+	
 
-
-'''
-	Starts the chest scene at the specified index
-'''
+###
+###	Starts the chest scene at the specified index
+###
 func start_chest_scene(index:int) -> void:
 	if(multiplayer.is_server()):
 		await get_tree().create_timer(0.1).timeout
@@ -77,4 +92,10 @@ func _end_chest_scene() -> void:
 		
 		if((stage_progression_bar.curr_stage_index+1) < stage_type_list.size()):
 			stage_progression_bar.increment_indicator()
-			start_fight_scene(stage_progression_bar.curr_stage_index)
+			
+			if(stage_type_list[stage_progression_bar.curr_stage_index] == ENM.STAGE_TYPE.FIGHT):
+				start_fight_scene(stage_progression_bar.curr_stage_index)
+			elif(stage_type_list[stage_progression_bar.curr_stage_index] == ENM.STAGE_TYPE.SHOP):
+				start_shop_scene(stage_progression_bar.curr_stage_index)
+			elif(stage_type_list[stage_progression_bar.curr_stage_index] == ENM.STAGE_TYPE.CHEST):
+				start_chest_scene(stage_progression_bar.curr_stage_index)

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dt1f43ri7w8om" path="res://Scenes/Menues/Open_Shop_Menu/open_shop_menu.gd" id="1_ibni4"]
 
-[node name="OpenShopMenu" type="MarginContainer"]
+[node name="OpenShopMenu" type="MarginContainer" node_paths=PackedStringArray("ITEM_BTN_HBOX")]
 top_level = true
 light_mask = 2
 visibility_layer = 2
@@ -17,13 +17,14 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 100
 script = ExtResource("1_ibni4")
+ITEM_BTN_HBOX = NodePath("MenuPanel/MarginContainer/ItemButtonHBox")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="MenuPanel" type="Panel" parent="."]
 light_mask = 2
 visibility_layer = 2
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="MenuPanel"]
 light_mask = 2
 visibility_layer = 2
 layout_mode = 1
@@ -37,14 +38,14 @@ theme_override_constants/margin_top = 86
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
-[node name="ItemButtonHBox" type="HBoxContainer" parent="Panel/MarginContainer"]
+[node name="ItemButtonHBox" type="HBoxContainer" parent="MenuPanel/MarginContainer"]
 light_mask = 2
 visibility_layer = 2
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 10
 
-[node name="SkipBTN" type="Button" parent="Panel"]
+[node name="CloseBTN" type="Button" parent="MenuPanel"]
 light_mask = 2
 visibility_layer = 2
 layout_mode = 1
@@ -57,6 +58,6 @@ offset_left = -8.0
 offset_top = -8.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "SKIP ITEM"
+text = "CLOSE SHOP"
 
-[connection signal="pressed" from="Panel/SkipBTN" to="." method="_on_skip_btn_pressed"]
+[connection signal="pressed" from="MenuPanel/CloseBTN" to="." method="_on_close_btn_pressed"]

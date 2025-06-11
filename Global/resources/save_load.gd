@@ -65,7 +65,7 @@ func game_load() -> SaveLoad:
 			GCM.music_volume_pcnt = loading.music_vol_setting
 			GCM.sfx_volume_pcnt = loading.sfx_vol_setting
 		else:
-			printerr("Save file is currupt. Please delete.")
+			printerr("Save file is corrupt. Please delete.")
 	
 	else:
 		# If loading the save file doesn't exist, create save file

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dim16tpn80620"]
+[gd_scene load_steps=7 format=3 uid="uid://dim16tpn80620"]
 
 [ext_resource type="Script" uid="uid://77dcxqd14rvw" path="res://Scenes/Stages/Limbo/circle_limbo.gd" id="1_b57tp"]
 [ext_resource type="Texture2D" uid="uid://bx22fbl8i0jkk" path="res://Graphics/BG/purple_bg.png" id="1_e3kik"]
 [ext_resource type="PackedScene" uid="uid://dkshvgnra1tw" path="res://Scenes/Enemies/built_enemies/Test_Enemy/TestEnemy.tscn" id="2_75tqa"]
 [ext_resource type="PackedScene" uid="uid://mjbekcltk67n" path="res://Scenes/Stages/Limbo/built_chests/Cerberus_Chest.tscn" id="2_loh3a"]
 [ext_resource type="PackedScene" uid="uid://c2g552k52ef3f" path="res://Scenes/Stages/misc/stage_progress_indicator/stage_progression_indicator.tscn" id="3_crobo"]
+[ext_resource type="PackedScene" uid="uid://ovw65lfgsg3o" path="res://Scenes/Stages/Limbo/built_shops/Limbo_Shop.tscn" id="3_mvxvi"]
 
 [node name="CircleLimbo" type="Control" node_paths=PackedStringArray("stage_progression_bar")]
 layout_mode = 3
@@ -15,8 +16,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_b57tp")
 stage_progression_bar = NodePath("MC_Stage_Progression")
-stage_type_list = Array[int]([2, 0, 0, 0, 0, 2])
-stage_list = Array[PackedScene]([ExtResource("2_loh3a"), ExtResource("2_75tqa"), ExtResource("2_75tqa"), ExtResource("2_75tqa"), ExtResource("2_75tqa"), null])
+stage_type_list = Array[int]([2, 3, 0, 0, 0])
+stage_list = Array[PackedScene]([ExtResource("2_loh3a"), ExtResource("3_mvxvi"), ExtResource("2_75tqa"), ExtResource("2_75tqa"), ExtResource("2_75tqa")])
 
 [node name="BG" type="TextureRect" parent="."]
 layout_mode = 1

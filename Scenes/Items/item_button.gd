@@ -7,6 +7,7 @@ extends TextureButton
 @export var short_desc_tooltip:Panel
 @export var short_desc_lbl:RichTextLabel
 @export var item:Item
+@export var cost_enabled:bool = false
 
 func _ready() -> void:
 	#short_desc_tooltip = $short_desc_tooltip

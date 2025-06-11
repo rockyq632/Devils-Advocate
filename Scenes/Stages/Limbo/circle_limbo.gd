@@ -5,11 +5,3 @@ func _ready() -> void:
 
 
 var is_added:bool = false
-
-
-func _process(delta: float) -> void:
-	super._process(delta)
-
-
-func _physics_process(delta: float) -> void:
-	super._physics_process(delta)
