@@ -8,6 +8,7 @@ signal item_button_pressed
 @export_subgroup("REMOTE READ ONLY")
 @export var short_desc_tooltip:Panel
 @export var short_desc_lbl:RichTextLabel
+@export var name_lbl:RichTextLabel
 @export var cost_texture:TextureRect
 @export var cost_lbl:RichTextLabel
 @export var item:Item
@@ -32,6 +33,8 @@ func set_texture(n_texture:Texture2D) -> void:
 func set_item(nitem:Item) -> void:
 	item = nitem
 	short_desc_lbl.text = "[left]%s" % item.long_description
+	name_lbl.text = "[left]%s" % item.item_name
+	cost_lbl.text = str(item.cost_amount)
 
 # Item selected by a player
 func item_selected(ind_num:int) -> void:
@@ -65,8 +68,8 @@ func set_cost_enabled(new_en:bool=true) -> void:
 
 func _on_mouse_entered() -> void:
 	# Set tooltip panel to the correct size
-	short_desc_tooltip.custom_minimum_size.x = short_desc_lbl.size.x+10
-	short_desc_tooltip.custom_minimum_size.y = short_desc_lbl.size.y+10
+	short_desc_tooltip.custom_minimum_size.x = max(short_desc_lbl.size.x, name_lbl.size.x)+10.0
+	short_desc_tooltip.custom_minimum_size.y = short_desc_lbl.size.y+name_lbl.size.y+%cost.size.y+10.0
 	
 	short_desc_tooltip.show()
 

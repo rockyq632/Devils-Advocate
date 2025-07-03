@@ -22,6 +22,11 @@ signal item_received
 @export var location_found:String = "NONE"
 @export var short_description:String = "NONE"
 @export var long_description:String = "NONE"
+@export var lore_text:String = "NONE"
+
+# Other information
+@export var conditional:String
+
 
 
 

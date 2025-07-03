@@ -21,6 +21,8 @@ func _ready() -> void:
 		temp_item.cost_amount = i["cost_amount"]
 		temp_item.short_description = i["short_desc"]
 		temp_item.long_description = i["long_desc"]
+		temp_item.lore_text = i["lore_text"]
+		temp_item.conditional = i["conditional"]
 		
 		temp_item.positive_effects.assign(i["pos_effects"])
 		temp_item.negative_effects.assign(i["neg_effects"])
@@ -31,15 +33,30 @@ func _ready() -> void:
 
 
 # Chooses a random item out of the dictionary
-func _choose_random_item(consider_exclusions:bool = true, non_global_exclusion_list:Array[int] = []) -> Item:
+func _choose_random_item(consider_exclusions:bool = true, 
+						non_global_exclusion_list:Array[int] = [], 
+						source:String="ANY",
+						location:String="ANY") -> Item:
 	var all_keys:Array[int] = items.keys()
 	var index:int = randi_range(0, all_keys.size()-1)
 	
+	# Check exclusions
 	if(consider_exclusions):
 		if(all_keys[index] in GSM.items_banned  or  all_keys[index] in GSM.items_used):
-			return _choose_random_item(true, non_global_exclusion_list)
+			non_global_exclusion_list.append(index)
+			return _choose_random_item(consider_exclusions, non_global_exclusion_list, source, location)
 		if(all_keys[index] in non_global_exclusion_list):
-			return _choose_random_item(true, non_global_exclusion_list)
-	
+			non_global_exclusion_list.append(index)
+			return _choose_random_item(consider_exclusions, non_global_exclusion_list, source, location)
+			
+		# Check source matches
+		if(not source in items[index].conditional):
+			non_global_exclusion_list.append(index)
+			return _choose_random_item(consider_exclusions, non_global_exclusion_list, source, location)
+		
+		# Check loaction matches
+		if( not location in items[index].location_found ):
+			non_global_exclusion_list.append(index)
+			return _choose_random_item(consider_exclusions, non_global_exclusion_list, source, location)
 	
 	return items[all_keys[index]]

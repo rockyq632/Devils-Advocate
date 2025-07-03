@@ -1,88 +1,405 @@
-{"items": [
-
-{ 	"id": 500,
-	"name": "Test Item",
-	"itemset": "Test",
-	"item_type": "NONE",
-	"location_found": "NONE",
-	"cost_type": "NONE",
-	"cost_amount": 0,
-	"short_desc": "TEST ITEM ONLY",
-	"long_desc": "TEST ITEM ONLY. Does nothing",
-	"pos_effects": {"NONE":0},
-	"neg_effects": {"NONE":0},
-	"image_name": "Item_Placeholder_1x.png"
-},
-
-{	"id": 501,
-	"name": "Add Armor",
-	"itemset": "Test",
-	"item_type": "BUFF",
-	"location_found": "NONE",
-	"cost_type": "GOLD",
-	"cost_amount": 1,
-	"short_desc": "TEST ITEM ONLY",
-	"long_desc": "TEST ITEM ONLY. Adds 1 armored heart.",
-	"pos_effects": {"ADD_FLAT_ARMOR":1},
-	"neg_effects": {"NONE":0},
-	"image_name": "Item_Placeholder_1x.png"
-},
-
-{	"id": 502,
-	"name": "Heal Health",
-	"itemset": "Test",
-	"item_type": "BUFF",
-	"location_found": "NONE",
-	"cost_type": "GOLD",
-	"cost_amount": 1,
-	"short_desc": "TEST ITEM ONLY",
-	"long_desc": "TEST ITEM ONLY. Heals 1 heart.",
-	"pos_effects": {"ADD_FLAT_HEAL":1},
-	"neg_effects": {"NONE":0},
-	"image_name": "Item_Placeholder_1x.png"
-},
-
-{	"id": 503,
-	"name": "Add Max Health",
-	"itemset": "Test",
-	"item_type": "BUFF",
-	"location_found": "NONE",
-	"cost_type": "GOLD",
-	"cost_amount": 1,
-	"short_desc": "TEST ITEM ONLY",
-	"long_desc": "TEST ITEM ONLY. Adds 1 max health.",
-	"pos_effects": {"ADD_FLAT_MHEALTH":1},
-	"neg_effects": {"NONE":0},
-	"image_name": "Item_Placeholder_1x.png"
-},
-
-{	"id": 504,
-	"name": "Add Attack",
-	"itemset": "Test",
-	"item_type": "BUFF",
-	"location_found": "NONE",
-	"cost_type": "HEALTH",
-	"cost_amount": 1,
-	"short_desc": "TEST ITEM ONLY",
-	"long_desc": "TEST ITEM ONLY. Adds 10% to attack.",
-	"pos_effects": {"ADD_PCNT_ATK":10},
-	"neg_effects": {"NONE":0},
-	"image_name": "Item_Placeholder_1x.png"
-},
-
-{	"id": 505,
-	"name": "Add Move Speed",
-	"itemset": "Test",
-	"item_type": "BUFF",
-	"location_found": "NONE",
-	"cost_type": "HEALTH",
-	"cost_amount": 1,
-	"short_desc": "TEST ITEM ONLY",
-	"long_desc": "TEST ITEM ONLY. Adds 50% to move speed.",
-	"pos_effects": {"ADD_PCNT_MSPD":10},
-	"neg_effects": {"NONE":0},
-	"image_name": "Item_Placeholder_1x.png"
+{
+	"items": [
+		{
+			"conditional": "UNFINISHED, UNLOCKABLE, ENEMY",
+			"cost_amount": 0.0,
+			"cost_type": "NONE",
+			"id": "510",
+			"image_name": "Item_Placeholder_1x.png",
+			"item_type": "PLOT",
+			"itemset": "Fate",
+			"location_found": "ANY",
+			"long_desc": "",
+			"lore_text": "",
+			"name": "Chain of Events",
+			"neg_effects": {
+				"NONE": 0.0
+			},
+			"pos_effects": {
+				"NONE": 0.0
+			},
+			"short_desc": ""
+		},
+		{
+			"conditional": "UNFINISHED, UNLOCKABLE, ENEMY",
+			"cost_amount": 0.0,
+			"cost_type": "NONE",
+			"id": "511",
+			"image_name": "Item_Placeholder_1x.png",
+			"item_type": "PLOT",
+			"itemset": "Fate",
+			"location_found": "ANY",
+			"long_desc": "When DEFENSIVE is used, a shroud of gloom is produced.",
+			"lore_text": "",
+			"name": "Doomy Gloom",
+			"neg_effects": {
+				"NONE": 0.0
+			},
+			"pos_effects": {
+				"NONE": 0.0
+			},
+			"short_desc": "When DEFENSIVE is used, a shroud of gloom is produced."
+		},
+		{
+			"conditional": "STORE, CHEST",
+			"cost_amount": 10.0,
+			"cost_type": "GOLD",
+			"id": "515",
+			"image_name": "Item_Placeholder_1x.png",
+			"item_type": "BUFF",
+			"itemset": "Greed",
+			"location_found": "ANY",
+			"long_desc": "Coin Projectile thrown every 5 seconds. Deals 10 damage if it hits. Costs 1 gold each fight.",
+			"lore_text": "A coin once thrown in a well. An empty wish. Now the Obol wishes to prove its value to you.",
+			"name": "Obol",
+			"neg_effects": {
+				"UNIQUE": 1.0
+			},
+			"pos_effects": {
+				" PRJ_DMG_AMT": 10.0,
+				"PRJ_DMG_TIME": 5.0
+			},
+			"short_desc": "Coin Projectile thrown every 5 seconds. Deals 10 damage if it hits"
+		},
+		{
+			"conditional": "STORE, CHEST",
+			"cost_amount": 5.0,
+			"cost_type": "GOLD",
+			"id": "520",
+			"image_name": "Item_Placeholder_1x.png",
+			"item_type": "BUFF/DEBUFF",
+			"itemset": "Garbage",
+			"location_found": "ANY",
+			"long_desc": "",
+			"lore_text": "A horn broken in two. You feel as if the pieces wish to be rejoined.",
+			"name": "Broken Demon Horn",
+			"neg_effects": {
+				"NONE": 0.0
+			},
+			"pos_effects": {
+				"NONE": 0.0
+			},
+			"short_desc": ""
+		},
+		{
+			"conditional": "STORE, CHEST",
+			"cost_amount": 5.0,
+			"cost_type": "GOLD",
+			"id": "521",
+			"image_name": "Item_Placeholder_1x.png",
+			"item_type": "BUFF/DEBUFF",
+			"itemset": "Garbage",
+			"location_found": "ANY",
+			"long_desc": "",
+			"lore_text": "A burnt, heart-shaped box of chocolates. You feel as if the pieces wish to be rejoined.",
+			"name": "Empty Chocolate Box",
+			"neg_effects": {
+				"NONE": 0.0
+			},
+			"pos_effects": {
+				"NONE": 0.0
+			},
+			"short_desc": ""
+		},
+		{
+			"conditional": "STORE, CHEST",
+			"cost_amount": 1.0,
+			"cost_type": "GOLD",
+			"id": "522",
+			"image_name": "Item_Placeholder_1x.png",
+			"item_type": "BUFF/DEBUFF",
+			"itemset": "Garbage",
+			"location_found": "ANY",
+			"long_desc": "",
+			"lore_text": "The remnants of what was once a fine piece of art. You feel as if the pieces wish to be rejoined.",
+			"name": "Shattered Glass Shards",
+			"neg_effects": {
+				"DEAL_DMG_TRG": 1.0
+			},
+			"pos_effects": {
+				"NONE": 0.0
+			},
+			"short_desc": ""
+		},
+		{
+			"conditional": "CHEST",
+			"cost_amount": 1.0,
+			"cost_type": "GOLD",
+			"id": "530",
+			"image_name": "Item_Placeholder_1x.png",
+			"item_type": "BUFF",
+			"itemset": "Engineering",
+			"location_found": "ANY",
+			"long_desc": "",
+			"lore_text": "An adhesive made to fix any break or damage. Although, it can't repair a broken person.",
+			"name": "Superb Glue",
+			"neg_effects": {
+				"NONE": 0.0
+			},
+			"pos_effects": {
+				"UNIQUE": 1.0
+			},
+			"short_desc": ""
+		},
+		{
+			"conditional": "CHEST",
+			"cost_amount": 1.0,
+			"cost_type": "GOLD",
+			"id": "531",
+			"image_name": "Item_Placeholder_1x.png",
+			"item_type": "BUFF",
+			"itemset": "Sweets",
+			"location_found": "ANY",
+			"long_desc": "",
+			"lore_text": "",
+			"name": "Well-tempered Chocolates",
+			"neg_effects": {
+				"NONE": 0.0
+			},
+			"pos_effects": {
+				"UNIQUE": 1.0
+			},
+			"short_desc": ""
+		},
+		{
+			"conditional": "CHEST",
+			"cost_amount": 1.0,
+			"cost_type": "GOLD",
+			"id": "532",
+			"image_name": "Item_Placeholder_1x.png",
+			"item_type": "BUFF",
+			"itemset": "Engineering",
+			"location_found": "ANY",
+			"long_desc": "",
+			"lore_text": "",
+			"name": "Oxy-acetylene Torch",
+			"neg_effects": {
+				"NONE": 0.0
+			},
+			"pos_effects": {
+				"NONE": 0.0
+			},
+			"short_desc": ""
+		},
+		{
+			"conditional": "NONE",
+			"cost_amount": 0.0,
+			"cost_type": "NONE",
+			"id": "540",
+			"image_name": "Item_Placeholder_1x.png",
+			"item_type": "BUFF",
+			"itemset": "Repaired",
+			"location_found": "NONE",
+			"long_desc": "",
+			"lore_text": "Whole again, the Unholy Demon Horn gives off an aura of demonic power.",
+			"name": "Un-whole-y Demon Horn",
+			"neg_effects": {
+				"NONE": 0.0
+			},
+			"pos_effects": {
+				"NONE": 0.0
+			},
+			"short_desc": ""
+		},
+		{
+			"conditional": "NONE",
+			"cost_amount": 0.0,
+			"cost_type": "NONE",
+			"id": "541",
+			"image_name": "Item_Placeholder_1x.png",
+			"item_type": "BUFF",
+			"itemset": "Repaired",
+			"location_found": "NONE",
+			"long_desc": "",
+			"lore_text": "Whole again, the Heart-shaped Box of Chocolates gives off a wholesome warmth.",
+			"name": "Heart-shaped Box of Chocolates",
+			"neg_effects": {
+				"NONE": 0.0
+			},
+			"pos_effects": {
+				"NONE": 0.0
+			},
+			"short_desc": ""
+		},
+		{
+			"conditional": "NONE",
+			"cost_amount": 0.0,
+			"cost_type": "NONE",
+			"id": "542",
+			"image_name": "Item_Placeholder_1x.png",
+			"item_type": "BUFF",
+			"itemset": "Repaired",
+			"location_found": "NONE",
+			"long_desc": "",
+			"lore_text": "Whole again, the Strange Glass Bird gives off a strange sound.",
+			"name": "Strange Glass Bird",
+			"neg_effects": {
+				"NONE": 0.0
+			},
+			"pos_effects": {
+				"NONE": 0.0
+			},
+			"short_desc": ""
+		},
+		{
+			"conditional": "CHEST",
+			"cost_amount": 1.0,
+			"cost_type": "GOLD",
+			"id": "550",
+			"image_name": "Item_Placeholder_1x.png",
+			"item_type": "BUFF",
+			"itemset": "Counterfeit",
+			"location_found": "ANY",
+			"long_desc": "",
+			"lore_text": "A mishapen ersatz coin created from inferior metals.",
+			"name": "Fake Obol",
+			"neg_effects": {
+				"NONE": 0.0
+			},
+			"pos_effects": {
+				"NONE": 0.0
+			},
+			"short_desc": ""
+		},
+		{
+			"conditional": "CHEST",
+			"cost_amount": 1.0,
+			"cost_type": "GOLD",
+			"id": "551",
+			"image_name": "Item_Placeholder_1x.png",
+			"item_type": "BUFF",
+			"itemset": "Counterfeit",
+			"location_found": "ANY",
+			"long_desc": "",
+			"lore_text": "",
+			"name": "Fool's Gold",
+			"neg_effects": {
+				"NONE": 0.0
+			},
+			"pos_effects": {
+				"NONE": 0.0
+			},
+			"short_desc": ""
+		},
+		{
+			"conditional": "STORE, CHEST",
+			"cost_amount": 0.0,
+			"cost_type": "NONE",
+			"id": "994",
+			"image_name": "Item_Placeholder_1x.png",
+			"item_type": "NONE",
+			"itemset": "TEST",
+			"location_found": "ANY",
+			"long_desc": "TEST ITEM ONLY. Does nothing",
+			"lore_text": "",
+			"name": "Test Item",
+			"neg_effects": {
+				"NONE": 0.0
+			},
+			"pos_effects": {
+				"NONE": 0.0
+			},
+			"short_desc": "Does nothing"
+		},
+		{
+			"conditional": "STORE, CHEST",
+			"cost_amount": 1.0,
+			"cost_type": "GOLD",
+			"id": "995",
+			"image_name": "Item_Placeholder_1x.png",
+			"item_type": "BUFF",
+			"itemset": "TEST",
+			"location_found": "ANY",
+			"long_desc": "TEST ITEM ONLY. Adds 1 armored heart",
+			"lore_text": "",
+			"name": "Add Armor",
+			"neg_effects": {
+				"NONE": 0.0
+			},
+			"pos_effects": {
+				"ADD_FLAT_ARMOR": 1.0
+			},
+			"short_desc": "Adds 1 armored heart"
+		},
+		{
+			"conditional": "STORE, CHEST",
+			"cost_amount": 1.0,
+			"cost_type": "GOLD",
+			"id": "996",
+			"image_name": "Item_Placeholder_1x.png",
+			"item_type": "BUFF",
+			"itemset": "TEST",
+			"location_found": "ANY",
+			"long_desc": "TEST ITEM ONLY. Heals for one heart",
+			"lore_text": "",
+			"name": "Add Health",
+			"neg_effects": {
+				"NONE": 0.0
+			},
+			"pos_effects": {
+				"ADD_FLAT_HEAL": 1.0
+			},
+			"short_desc": "Heals for one heart"
+		},
+		{
+			"conditional": "STORE, CHEST",
+			"cost_amount": 1.0,
+			"cost_type": "GOLD",
+			"id": "997",
+			"image_name": "Item_Placeholder_1x.png",
+			"item_type": "BUFF",
+			"itemset": "TEST",
+			"location_found": "ANY",
+			"long_desc": "TEST ITEM ONLY. Adds 1 max health",
+			"lore_text": "",
+			"name": "Add Max Health",
+			"neg_effects": {
+				"NONE": 0.0
+			},
+			"pos_effects": {
+				"ADD_FLAT_MHEALTH": 1.0
+			},
+			"short_desc": "Adds 1 max health"
+		},
+		{
+			"conditional": "STORE, CHEST",
+			"cost_amount": 1.0,
+			"cost_type": "HEALTH",
+			"id": "998",
+			"image_name": "Item_Placeholder_1x.png",
+			"item_type": "BUFF",
+			"itemset": "TEST",
+			"location_found": "ANY",
+			"long_desc": "TEST ITEM ONLY. Adds 10% to attack",
+			"lore_text": "",
+			"name": "Add Attack",
+			"neg_effects": {
+				"NONE": 0.0
+			},
+			"pos_effects": {
+				"ADD_PCNT_ATK": 10.0
+			},
+			"short_desc": "Adds 10% to attack"
+		},
+		{
+			"conditional": "STORE, CHEST",
+			"cost_amount": 1.0,
+			"cost_type": "HEALTH",
+			"id": "999",
+			"image_name": "Item_Placeholder_1x.png",
+			"item_type": "BUFF",
+			"itemset": "TEST",
+			"location_found": "ANY",
+			"long_desc": "TEST ITEM ONLY. Adds 50% move speed",
+			"lore_text": "",
+			"name": "Add Move Speed",
+			"neg_effects": {
+				"NONE": 0.0
+			},
+			"pos_effects": {
+				"ADD_PCNT_MSPD": 50.0
+			},
+			"short_desc": "Adds 50% move speed"
+		}
+	]
 }
-
-
-]}

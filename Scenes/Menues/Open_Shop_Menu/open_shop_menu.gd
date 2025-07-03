@@ -64,7 +64,7 @@ func create_menu(item_contents:Array[Item]) -> void:
 			cnt += 1
 
 
-func _on_item_button_pressed(item_index:int) -> void:
+func _on_item_button_pressed(_item_index:int) -> void:
 	pass 
 	# TODO Check if player has the funds, supply item and take funds
 
