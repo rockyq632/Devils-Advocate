@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ovw65lfgsg3o"]
+[gd_scene load_steps=6 format=3 uid="uid://ovw65lfgsg3o"]
 
 [ext_resource type="Script" uid="uid://bmw53ykoodcn7" path="res://Scenes/Stages/misc/Run_Shop/shop_scene_controller.gd" id="1_iutxx"]
 [ext_resource type="Texture2D" uid="uid://bich5npoilwho" path="res://Graphics/PLACEHOLDERS/PLACEHOLDER_CAPSULE.png" id="2_ypvxs"]
 [ext_resource type="PackedScene" uid="uid://dn18s2flsjiwc" path="res://Scenes/Menues/Open_Shop_Menu/Open_Shop_Menu.tscn" id="3_bpoch"]
+[ext_resource type="PackedScene" uid="uid://c214wpsyib7nq" path="res://Scenes/Stages/misc/Waiting_Room/waiting_room.tscn" id="4_0a8fp"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_bpoch"]
 
@@ -24,9 +25,8 @@ position = Vector2(320, 180)
 texture = ExtResource("2_ypvxs")
 
 [node name="OpenShopMenu" parent="." instance=ExtResource("3_bpoch")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
+layout_mode = 1
+
+[node name="WaitingRoom" parent="." instance=ExtResource("4_0a8fp")]
+
+[connection signal="waiting_complete" from="WaitingRoom" to="." method="_exit_shop_scene"]

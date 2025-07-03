@@ -14,7 +14,7 @@ var GLOBAL_SAVE: SaveLoad = SaveLoad.new()
 
 
 
-@export_subgroup("Gameplay")
+@export_subgroup("Scene Setup")
 # Stores the current over-arching scene that is in control 
 @export var GLOBAL_SCENE_NODE:Control
 # Node where all Playable Characters will be spawned
@@ -27,6 +27,9 @@ var GLOBAL_SAVE: SaveLoad = SaveLoad.new()
 @export var GLOBAL_PROJECTILES_NODE:Node2D
 # Node to store all lighting
 @export var GLOBAL_LIGHTING_NODE:Node2D
+
+@export_subgroup("Gameplay")
+@export var run_seed:String = "AAAAAAAA"
 
 
 # Audio related nodes
@@ -48,6 +51,10 @@ var GLOBAL_SAVE: SaveLoad = SaveLoad.new()
 @export var DISABLE_PLAYER_MOVE_FLAG:bool = false
 @export var DISABLE_PLAYER_ACT_FLAG:bool = false
 
+
+@export_subgroup("DEBUG SHOPS & CHESTS")
+@export var items_used:Array[int] = [] #TODO Use this to track items used
+@export var items_banned:Array[int] = [] #TODO Used this to track items banned
 
 var screen_size:Vector2 = Vector2(640,360)
 var points:Dictionary[String,Vector2] = {
@@ -79,6 +86,16 @@ func _start_title() -> void:
 	GLOBAL_SCENE_NODE.add_child( preload("res://Scenes/Menues/Title_Screen/Title_Screen.tscn").instantiate() )
 
 
+# Called  to randomize run seed at the beginning of the run
+func randomize_seed() -> void:
+	var valid_seed_chars:String = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	
+	run_seed = ""
+	for i in range(0,8):
+		var rand_char:String = valid_seed_chars[randi_range(0,valid_seed_chars.length())]
+		run_seed = "%s%s"%[run_seed,rand_char]
+	
+	print("Seed: %s"%run_seed)
 
 
 

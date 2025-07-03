@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0eml6truqcq8"]
+
+[ext_resource type="Script" uid="uid://js6gv84bo6hy" path="res://Tool Scripts/Update_Item_List/update_item_list.gd" id="1_4m8mp"]
+
+[node name="UpdateItemList" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4m8mp")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "This scene is not a part of the game. It's a tool script to update the item list from a spreedsheet to the JSON file"

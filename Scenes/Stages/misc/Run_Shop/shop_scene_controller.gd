@@ -19,16 +19,11 @@ func _ready() -> void:
 	GSM.DISABLE_PLAYER_ACT_FLAG = true
 	
 	while(item_list.size() != num_items):
-		var r:int = randi_range(500, 500+(ITEM_REF.items.size()-1))
+		var item_to_add:Item = ITEM_REF._choose_random_item(true, excluded_items)
 		
-		# if random item ID is in the list of excluded items, try again
-		if( r in excluded_items ):
-			continue
-		# Append item to the contents
-		else:
-			item_list.append( ITEM_REF.items[r] )
-			item_ids.append( r )
-			excluded_items.append( r )
+		item_list.append( item_to_add )
+		item_ids.append( item_to_add.id )
+		excluded_items.append( item_to_add.id )
 	
 	shop_menu.create_menu(item_list)
 
@@ -44,4 +39,7 @@ func open_shop_menu() -> void:
 func close_shop_menu() -> void:
 	shop_menu.hide()
 	is_shop_opened = false
+	
+
+func _exit_shop_scene() -> void:
 	time_to_leave_shop.emit()

@@ -28,16 +28,11 @@ func _ready() -> void:
 	else:
 		# Generate contents of chest
 		while(contents.size() != num_items):
-			var r:int = randi_range(500, 500+(ITEM_REF.items.size()-1))
+			var item_to_add:Item = ITEM_REF._choose_random_item(true, excluded_items)
 			
-			# if random item ID is in the list of excluded items, try again
-			if( r in excluded_items ):
-				continue
-			# Append item to the contents
-			else:
-				contents.append( ITEM_REF.items[r] )
-				contents_ids.append( r )
-				excluded_items.append( r )
+			contents.append( item_to_add )
+			contents_ids.append( item_to_add.id )
+			excluded_items.append( item_to_add.id )
 	
 	# Make menu aware of items
 	chest_menu.create_menu(contents)

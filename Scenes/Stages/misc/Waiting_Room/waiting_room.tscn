@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c214wpsyib7nq"]
+
+[ext_resource type="Script" uid="uid://b5pd50dubsbhx" path="res://Scenes/Stages/misc/Waiting_Room/waiting_room.gd" id="1_2gcih"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bpoch"]
+size = Vector2(90, 355)
+
+[node name="WaitingRoom" type="Area2D"]
+collision_layer = 121
+collision_mask = 121
+script = ExtResource("1_2gcih")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(590, 180)
+shape = SubResource("RectangleShape2D_bpoch")
+
+[connection signal="body_entered" from="." to="." method="_waiting_room_entered"]
+[connection signal="body_exited" from="." to="." method="_waiting_room_exited"]

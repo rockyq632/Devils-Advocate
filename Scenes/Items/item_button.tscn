@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bburppawvakkq"]
+[gd_scene load_steps=5 format=3 uid="uid://bburppawvakkq"]
 
 [ext_resource type="Texture2D" uid="uid://pb8aoqsw33f0" path="res://Graphics/Items/Item_Placeholder_1x.png" id="1_ym26m"]
 [ext_resource type="Script" uid="uid://yay47n5am03w" path="res://Scenes/Items/item_button.gd" id="2_3bnb1"]
+[ext_resource type="Texture2D" uid="uid://cr0e42oxfuwwp" path="res://Graphics/Icons/Godot_Icon.svg" id="3_3bnb1"]
 [ext_resource type="Texture2D" uid="uid://bqff6vow67xv6" path="res://Graphics/UI/white_ball_1x.png" id="3_lijgm"]
 
-[node name="ItemButton" type="TextureButton" node_paths=PackedStringArray("selected_indicator", "short_desc_tooltip", "short_desc_lbl")]
+[node name="ItemButton" type="TextureButton" node_paths=PackedStringArray("selected_indicator", "short_desc_tooltip", "short_desc_lbl", "cost_texture", "cost_lbl")]
 light_mask = 2
 visibility_layer = 2
 anchors_preset = 15
@@ -18,10 +19,11 @@ texture_normal = ExtResource("1_ym26m")
 script = ExtResource("2_3bnb1")
 selected_indicator = [NodePath("Selected_Indicator0"), NodePath("Selected_Indicator1"), NodePath("Selected_Indicator2"), NodePath("Selected_Indicator3")]
 short_desc_tooltip = NodePath("short_desc_tooltip")
-short_desc_lbl = NodePath("short_desc_tooltip/MarginContainer/short_desc_rtl")
+short_desc_lbl = NodePath("short_desc_tooltip/MarginContainer/VB/short_desc_rtl")
+cost_texture = NodePath("short_desc_tooltip/MarginContainer/VB/cost/cost_tb")
+cost_lbl = NodePath("short_desc_tooltip/MarginContainer/VB/cost/cost_rtl")
 
 [node name="short_desc_tooltip" type="Panel" parent="."]
-visible = false
 z_index = 4096
 z_as_relative = false
 custom_minimum_size = Vector2(150, 0)
@@ -42,7 +44,11 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="short_desc_rtl" type="RichTextLabel" parent="short_desc_tooltip/MarginContainer"]
+[node name="VB" type="VBoxContainer" parent="short_desc_tooltip/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="short_desc_rtl" type="RichTextLabel" parent="short_desc_tooltip/MarginContainer/VB"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -52,6 +58,29 @@ theme_override_font_sizes/normal_font_size = 10
 bbcode_enabled = true
 text = "[left]TEXT NEEDED"
 fit_content = true
+
+[node name="cost" type="HBoxContainer" parent="short_desc_tooltip/MarginContainer/VB"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="cost_tb" type="TextureRect" parent="short_desc_tooltip/MarginContainer/VB/cost"]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_3bnb1")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="cost_rtl" type="RichTextLabel" parent="short_desc_tooltip/MarginContainer/VB/cost"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_font_sizes/normal_font_size = 12
+text = "25"
+fit_content = true
+autowrap_mode = 0
 
 [node name="Selected_Indicator0" type="TextureRect" parent="."]
 visible = false

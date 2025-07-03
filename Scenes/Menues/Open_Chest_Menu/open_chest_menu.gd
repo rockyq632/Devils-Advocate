@@ -14,7 +14,9 @@ var item_buttons:Array[TextureButton] = []
 
 
 func _ready() -> void:
+	# Hide the chest menu
 	hide()
+	
 	# Clear out all stand-in items
 	for i:Node in ITEM_BTN_HBOX.get_children():
 		ITEM_BTN_HBOX.remove_child(i)

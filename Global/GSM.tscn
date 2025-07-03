@@ -102,6 +102,10 @@ script = ExtResource("3_0rhik")
 _spawnable_scenes = PackedStringArray("uid://mjbekcltk67n")
 spawn_path = NodePath("../GLOBAL_ENEMIES_NODE")
 
+[node name="ShopSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://ovw65lfgsg3o")
+spawn_path = NodePath("../GLOBAL_ENEMIES_NODE")
+
 [node name="EnemySpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://ilaqpxhwx3hk", "uid://ra5chhkow4we", "uid://dkshvgnra1tw", "uid://dmqaiij73baok")
 spawn_path = NodePath("../GLOBAL_ENEMIES_NODE")

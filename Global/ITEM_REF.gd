@@ -28,4 +28,18 @@ func _ready() -> void:
 		
 		
 		items[int(i["id"])] = temp_item
-		
+
+
+# Chooses a random item out of the dictionary
+func _choose_random_item(consider_exclusions:bool = true, non_global_exclusion_list:Array[int] = []) -> Item:
+	var all_keys:Array[int] = items.keys()
+	var index:int = randi_range(0, all_keys.size()-1)
+	
+	if(consider_exclusions):
+		if(all_keys[index] in GSM.items_banned  or  all_keys[index] in GSM.items_used):
+			return _choose_random_item(true, non_global_exclusion_list)
+		if(all_keys[index] in non_global_exclusion_list):
+			return _choose_random_item(true, non_global_exclusion_list)
+	
+	
+	return items[all_keys[index]]

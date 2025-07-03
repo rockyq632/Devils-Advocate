@@ -1,8 +1,8 @@
 class_name ShopMenu
 extends MarginContainer
 
-signal item_selected
 
+@export var POTION_BTN_HBOX:HBoxContainer
 @export var ITEM_BTN_HBOX:HBoxContainer
 
 @export_subgroup("READ ONLY")
@@ -13,8 +13,13 @@ var item_buttons:Array[TextureButton] = []
 
 
 func _ready() -> void:
+	# Hide the shop menu
 	hide()
+	
 	# Clear out all stand-in items
+	for i:Node in POTION_BTN_HBOX.get_children():
+		POTION_BTN_HBOX.remove_child(i)
+	
 	for i:Node in ITEM_BTN_HBOX.get_children():
 		ITEM_BTN_HBOX.remove_child(i)
 
@@ -34,6 +39,8 @@ func create_menu(item_contents:Array[Item]) -> void:
 			temp.set_item(i)
 			temp.set_texture(i.icon)
 			temp.pressed.connect( _on_item_button_pressed.bind(cnt) )
+			temp.set_cost_enabled(true)
+			temp.network_enabled = false
 			
 			item_buttons.append( temp )
 			ITEM_BTN_HBOX.add_child( item_buttons[cnt] )
@@ -58,7 +65,8 @@ func create_menu(item_contents:Array[Item]) -> void:
 
 
 func _on_item_button_pressed(item_index:int) -> void:
-	item_selected.emit(multiplayer.get_unique_id(), item_index)
+	pass 
+	# TODO Check if player has the funds, supply item and take funds
 
 
 func _on_close_btn_pressed() -> void:

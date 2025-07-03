@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dn18s2flsjiwc"]
+[gd_scene load_steps=3 format=3 uid="uid://dn18s2flsjiwc"]
 
 [ext_resource type="Script" uid="uid://dt1f43ri7w8om" path="res://Scenes/Menues/Open_Shop_Menu/open_shop_menu.gd" id="1_ibni4"]
+[ext_resource type="Texture2D" uid="uid://pb8aoqsw33f0" path="res://Graphics/Items/Item_Placeholder_1x.png" id="2_aadq5"]
 
-[node name="OpenShopMenu" type="MarginContainer" node_paths=PackedStringArray("ITEM_BTN_HBOX")]
+[node name="OpenShopMenu" type="MarginContainer" node_paths=PackedStringArray("POTION_BTN_HBOX", "ITEM_BTN_HBOX")]
 top_level = true
 light_mask = 2
 visibility_layer = 2
@@ -17,7 +18,8 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 100
 script = ExtResource("1_ibni4")
-ITEM_BTN_HBOX = NodePath("MenuPanel/MarginContainer/ItemButtonHBox")
+POTION_BTN_HBOX = NodePath("MenuPanel/MarginContainer/VBoxContainer/PotionsHBox")
+ITEM_BTN_HBOX = NodePath("MenuPanel/MarginContainer/VBoxContainer/ItemButtonHBox")
 
 [node name="MenuPanel" type="Panel" parent="."]
 light_mask = 2
@@ -34,16 +36,35 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 86
+theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
-[node name="ItemButtonHBox" type="HBoxContainer" parent="MenuPanel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="PotionsHBox" type="HBoxContainer" parent="MenuPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TextureButton" type="TextureButton" parent="MenuPanel/MarginContainer/VBoxContainer/PotionsHBox"]
+layout_mode = 2
+texture_normal = ExtResource("2_aadq5")
+
+[node name="ItemButtonHBox" type="HBoxContainer" parent="MenuPanel/MarginContainer/VBoxContainer"]
 light_mask = 2
 visibility_layer = 2
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 10
+
+[node name="TextureButton" type="TextureButton" parent="MenuPanel/MarginContainer/VBoxContainer/ItemButtonHBox"]
+layout_mode = 2
+texture_normal = ExtResource("2_aadq5")
+
+[node name="TextureButton2" type="TextureButton" parent="MenuPanel/MarginContainer/VBoxContainer/ItemButtonHBox"]
+layout_mode = 2
+texture_normal = ExtResource("2_aadq5")
 
 [node name="CloseBTN" type="Button" parent="MenuPanel"]
 light_mask = 2
