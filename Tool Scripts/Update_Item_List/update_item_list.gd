@@ -66,6 +66,9 @@ func _process(_delta: float) -> void:
 		else:
 			item["image_name"] = values[15]
 		
+		# Check if item is labeled as unfinished
+		if("UNFINISHED" in item["conditional"]):
+			continue
 		
 		item_dict["items"].append(item)
 	

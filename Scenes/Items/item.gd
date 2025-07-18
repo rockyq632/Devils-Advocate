@@ -78,6 +78,36 @@ func apply_item_effect() -> void:
 	
 	for i:String in positive_effects.keys():
 		match i:
+			"ADD_FLAT_ATK":
+				equipped_pc.flat_atk_bonus +=  positive_effects["ADD_FLAT_ATK"]
+				equipped_pc.stats_changed.emit()
+			"ADD_PCNT_ATK":
+				equipped_pc.pcnt_atk_bonus +=  positive_effects["ADD_PCNT_ATK"]/100.0
+				equipped_pc.stats_changed.emit()
+			"MUL_FLAT_ATK":
+				pass #TODO
+				#equipped_pc.stats_changed.emit()
+			"MUL_PCNT_ATK":
+				pass #TODO
+				#equipped_pc.stats_changed.emit()
+			"ADD_FLAT_ASPD":
+				pass #TODO
+				#equipped_pc.stats_changed.emit()
+			"ADD_PCNT_ASPD":
+				pass #TODO
+				#equipped_pc.stats_changed.emit()
+			"ADD_FLAT_MSPD":
+				equipped_pc.flat_mspd_bonus +=  positive_effects["ADD_FLAT_MSPD"]
+				equipped_pc.stats_changed.emit()
+			"ADD_PCNT_MSPD":
+				equipped_pc.pcnt_mspd_bonus +=  positive_effects["ADD_PCNT_MSPD"]/100.0
+				equipped_pc.stats_changed.emit()
+			"MUL_FLAT_MSPD":
+				pass #TODO
+				#equipped_pc.stats_changed.emit()
+			"MUL_PCNT_MSPD":
+				pass #TODO
+				#equipped_pc.stats_changed.emit()
 			"ADD_FLAT_ARMOR":
 				equipped_pc.curr_armor += int(positive_effects["ADD_FLAT_ARMOR"])
 				equipped_pc.health_changed.emit()
@@ -88,18 +118,9 @@ func apply_item_effect() -> void:
 			"ADD_FLAT_MHEALTH":
 				equipped_pc.max_health += int(positive_effects["ADD_FLAT_MHEALTH"])
 				equipped_pc.health_changed.emit()
-			"ADD_FLAT_ATK":
-				equipped_pc.flat_atk_bonus +=  positive_effects["ADD_FLAT_ATK"]
-				equipped_pc.stats_changed.emit()
-			"ADD_PCNT_ATK":
-				equipped_pc.pcnt_atk_bonus +=  positive_effects["ADD_PCNT_ATK"]/100.0
-				equipped_pc.stats_changed.emit()
-			"ADD_FLAT_MSPD":
-				equipped_pc.flat_mspd_bonus +=  positive_effects["ADD_FLAT_MSPD"]
-				equipped_pc.stats_changed.emit()
-			"ADD_PCNT_MSPD":
-				equipped_pc.pcnt_mspd_bonus +=  positive_effects["ADD_PCNT_MSPD"]/100.0
-				equipped_pc.stats_changed.emit()
+			"UNIQUE":
+				pass #TODO
+				#equipped_pc.stats_changed.emit()
 			_:
 				pass
 	

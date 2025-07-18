@@ -35,13 +35,18 @@ func _ready() -> void:
 # Chooses a random item out of the dictionary
 func _choose_random_item(consider_exclusions:bool = true, 
 						non_global_exclusion_list:Array[int] = [], 
-						source:String="ANY",
+						source:String="CHEST",
 						location:String="ANY") -> Item:
 	var all_keys:Array[int] = items.keys()
 	var index:int = randi_range(0, all_keys.size()-1)
 	
 	# Check exclusions
 	if(consider_exclusions):
+		# To prevent infinite recursion, if not enough items are included in the filter, choose one without filters
+		if(non_global_exclusion_list.size() >= all_keys.size() ):
+			return _choose_random_item(false)
+			
+		# Check if random item is excluded
 		if(all_keys[index] in GSM.items_banned  or  all_keys[index] in GSM.items_used):
 			non_global_exclusion_list.append(index)
 			return _choose_random_item(consider_exclusions, non_global_exclusion_list, source, location)
@@ -50,12 +55,12 @@ func _choose_random_item(consider_exclusions:bool = true,
 			return _choose_random_item(consider_exclusions, non_global_exclusion_list, source, location)
 			
 		# Check source matches
-		if(not source in items[index].conditional):
+		if(not source in items[all_keys[index]].conditional):
 			non_global_exclusion_list.append(index)
 			return _choose_random_item(consider_exclusions, non_global_exclusion_list, source, location)
 		
-		# Check loaction matches
-		if( not location in items[index].location_found ):
+		# Check location matches
+		if( not location in items[all_keys[index]].location_found ):
 			non_global_exclusion_list.append(index)
 			return _choose_random_item(consider_exclusions, non_global_exclusion_list, source, location)
 	

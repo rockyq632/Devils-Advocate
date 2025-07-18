@@ -94,6 +94,8 @@ var armor_frames_timer:Timer = Timer.new()
 @export var curr_health:int = 3
 # Current available armor
 @export var curr_armor:int = 0
+# Current available gold
+@export var curr_gold:int = 10
 # Current available move speed
 @export var move_speed:int = 200
 # Length of time in seconds to give armor frames after being hit

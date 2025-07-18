@@ -20,6 +20,9 @@ func set_pc(new_pc:PlayableCharacter) -> void:
 	pc.health_changed.connect(_health_changed)
 	pc.buff_gained.connect(_add_buff_icon)
 	pc.buff_lost.connect(_remove_buff_icon)
+	
+	rpc("update_health_ticks")
+	rpc("update_coins")
 
 
 func set_text(new_text:String) -> void:
@@ -37,6 +40,7 @@ func _health_changed() -> void:
 
 @rpc("call_local","any_peer")
 func update_health_ticks() -> void:
+	# If no pc is connected, don't edit this
 	if( not pc ):
 		return
 	
@@ -62,6 +66,14 @@ func update_health_ticks() -> void:
 		elif( pc.curr_armor < pc.max_health-i  and  heart_check[-1-i].is_armored ):
 			heart_check[-1-i].remove_armor()
 
+
+@rpc("call_local","any_peer")
+func update_coins() -> void:
+	# If no pc is connected, don't edit this
+	if( not pc ):
+		return
+		
+	%Coin_Amt_Text.text = str(pc.curr_gold)
 
 
 @rpc("call_local","any_peer")

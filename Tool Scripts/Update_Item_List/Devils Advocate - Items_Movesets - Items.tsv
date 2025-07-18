@@ -14,14 +14,14 @@ ID	Name	Itemset	Type	Conditional	Location	Cost Type	Cost Amt	Short Description	L
 512		Fate														
 513		Fate														
 514		Fate														
-515	Obol	Greed	BUFF	STORE, CHEST	ANY	GOLD	10	Coin Projectile thrown every 5 seconds. Deals 10 damage if it hits	Coin Projectile thrown every 5 seconds. Deals 10 damage if it hits. Costs 1 gold each fight.	A coin once thrown in a well. An empty wish. Now the Obol wishes to prove its value to you.	PRJ_DMG_TIME, PRJ_DMG_AMT	5,10	UNIQUE	1		
+515	Obol	Greed	BUFF	STORE, CHEST, UNFINISHED	ANY	GOLD	10	Coin Projectile thrown every 5 seconds. Deals 10 damage if it hits	Coin Projectile thrown every 5 seconds. Deals 10 damage if it hits. Costs 1 gold each fight.	A coin once thrown in a well. An empty wish. Now the Obol wishes to prove its value to you.	PRJ_DMG_TIME, PRJ_DMG_AMT	5,10	NONE	0		
 516																
 517																
 518																
 519																
-520	Broken Demon Horn	Garbage	BUFF/DEBUFF	STORE, CHEST	ANY	GOLD	5			A horn broken in two. You feel as if the pieces wish to be rejoined.	NONE	0	NONE	0		Items in the "Garbage" set have the potential to become valuable and transform into a different item under certain conditions
-521	Empty Chocolate Box	Garbage	BUFF/DEBUFF	STORE, CHEST	ANY	GOLD	5			A burnt, heart-shaped box of chocolates. You feel as if the pieces wish to be rejoined.	NONE	0	NONE	0		
-522	Shattered Glass Shards	Garbage	BUFF/DEBUFF	STORE, CHEST	ANY	GOLD	1			The remnants of what was once a fine piece of art. You feel as if the pieces wish to be rejoined.	NONE	0	DEAL_DMG_TRG	1		
+520	Broken Demon Horn	Garbage	BUFF/DEBUFF	STORE, CHEST, UNFINISHED	ANY	GOLD	5			A horn broken in two. You feel as if the pieces wish to be rejoined.	NONE	0	NONE	0		Items in the "Garbage" set have the potential to become valuable and transform into a different item under certain conditions
+521	Empty Chocolate Box	Garbage	BUFF/DEBUFF	STORE, CHEST, UNFINISHED	ANY	GOLD	5			A burnt, heart-shaped box of chocolates. You feel as if the pieces wish to be rejoined.	NONE	0	NONE	0		
+522	Shattered Glass Shards	Garbage	BUFF/DEBUFF	STORE, CHEST	ANY	GOLD	1	-1 HP, +5 attack	Gather with caution, shards are sharp. -1 HP, +5 attack	The remnants of what was once a fine piece of art. You feel as if the pieces wish to be rejoined.	ADD_FLAT_ATK, ADD_FLAT_HEAL	5,-1	NONE	0		
 523		Garbage														
 524		Garbage														
 525		Garbage														
@@ -29,9 +29,9 @@ ID	Name	Itemset	Type	Conditional	Location	Cost Type	Cost Amt	Short Description	L
 527		Garbage														
 528		Garbage														
 529		Garbage														
-530	Superb Glue	Engineering	BUFF	CHEST	ANY	GOLD	1			An adhesive made to fix any break or damage. Although, it can't repair a broken person.	UNIQUE	1	NONE	0		Item will repair the Broken Demon Horn
-531	Well-tempered Chocolates	Sweets	BUFF	CHEST	ANY	GOLD	1				UNIQUE	1	NONE	0		Item will fill the Empty Chocolate Box
-532	Oxy-acetylene Torch	Engineering	BUFF	CHEST	ANY	GOLD	1				NONE	0	NONE	0		Item will repair the Shattered Glass Shards
+530	Superb Glue	Engineering	BUFF	CHEST, UNFINISHED	ANY	GOLD	1			An adhesive made to fix any break or damage. Although, it can't repair a broken person.	UNIQUE	1	NONE	0		Item will repair the Broken Demon Horn
+531	Well-tempered Chocolates	Sweets	BUFF	CHEST, UNFINISHED	ANY	GOLD	1				UNIQUE	1	NONE	0		Item will fill the Empty Chocolate Box
+532	Oxy-acetylene Torch	Engineering	BUFF	CHEST, UNFINISHED	ANY	GOLD	1				NONE	0	NONE	0		Item will repair the Shattered Glass Shards
 533																
 534																
 535																
@@ -39,9 +39,9 @@ ID	Name	Itemset	Type	Conditional	Location	Cost Type	Cost Amt	Short Description	L
 537																
 538																
 539																
-540	Un-whole-y Demon Horn	Repaired	BUFF	NONE	NONE	NONE	0			Whole again, the Unholy Demon Horn gives off an aura of demonic power.	NONE	0	NONE	0		This is the repaired version of Broken Demon Horn
-541	Heart-shaped Box of Chocolates	Repaired	BUFF	NONE	NONE	NONE	0			Whole again, the Heart-shaped Box of Chocolates gives off a wholesome warmth.	NONE	0	NONE	0		This is the repaired version of the Empty Chocolate Box
-542	Strange Glass Bird	Repaired	BUFF	NONE	NONE	NONE	0			Whole again, the Strange Glass Bird gives off a strange sound.	NONE	0	NONE	0		This is the repaired version of the Shattered Glass Shards
+540	Un-whole-y Demon Horn	Repaired	BUFF	UNFINISHED	NONE	NONE	0			Whole again, the Unholy Demon Horn gives off an aura of demonic power.	NONE	0	NONE	0		This is the repaired version of Broken Demon Horn
+541	Heart-shaped Box of Chocolates	Repaired	BUFF	UNFINISHED	NONE	NONE	0			Whole again, the Heart-shaped Box of Chocolates gives off a wholesome warmth.	NONE	0	NONE	0		This is the repaired version of the Empty Chocolate Box
+542	Strange Glass Bird	Repaired	BUFF	UNFINISHED	NONE	NONE	0			Whole again, the Strange Glass Bird gives off a strange sound.	NONE	0	NONE	0		This is the repaired version of the Shattered Glass Shards
 543		Repaired														
 544		Repaired														
 545		Repaired														
@@ -49,8 +49,8 @@ ID	Name	Itemset	Type	Conditional	Location	Cost Type	Cost Amt	Short Description	L
 547		Repaired														
 548		Repaired														
 549		Repaired														
-550	Fake Obol	Counterfeit	BUFF	CHEST	ANY	GOLD	1			A mishapen ersatz coin created from inferior metals.	NONE	0	NONE	0		
-551	Fool's Gold	Counterfeit	BUFF	CHEST	ANY	GOLD	1				NONE	0	NONE	0		
+550	Fake Obol	Counterfeit	BUFF	CHEST, UNFINISHED	ANY	GOLD	1			A mishapen ersatz coin created from inferior metals.	NONE	0	NONE	0		
+551	Fool's Gold	Counterfeit	BUFF	CHEST, UNFINISHED	ANY	GOLD	1				NONE	0	NONE	0		
 552																
 553																
 554																

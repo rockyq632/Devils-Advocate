@@ -28,7 +28,7 @@ func _ready() -> void:
 	else:
 		# Generate contents of chest
 		while(contents.size() != num_items):
-			var item_to_add:Item = ITEM_REF._choose_random_item(true, excluded_items)
+			var item_to_add:Item = ITEM_REF._choose_random_item(true, excluded_items, "CHEST")
 			
 			contents.append( item_to_add )
 			contents_ids.append( item_to_add.id )
@@ -136,6 +136,8 @@ func close_chest_menu() -> void:
 			# If item was skipped
 			else:
 				rpc_id(i, "chest_item_skipped")
+	
+	GSM.items_used.append_array(contents_ids)
 	
 	# Allow the players to move and act again
 	GSM.DISABLE_PLAYER_MOVE_FLAG = false

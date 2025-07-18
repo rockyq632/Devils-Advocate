@@ -77,10 +77,10 @@ func add_character(new_pc:PlayableCharacter, path_to_pc:String) -> void:
 	
 	# Create and add player bottom HUD
 	var player_bhud:BottomPlayerHUD = preload("res://Scenes/PCs/player_systems/HUD/bottom_player_hud/bottom_player_hud.tscn").instantiate()
-	player_bhud.set_pc( new_pc )
-	new_pc.bot_hud = player_bhud
 	GSM.GLOBAL_BOT_PLAYER_HUD.add_child( player_bhud )
 	rpc("add_client_bottom_hud", multiplayer.get_unique_id())
+	player_bhud.set_pc( new_pc )
+	new_pc.bot_hud = player_bhud
 	
 	
 	
