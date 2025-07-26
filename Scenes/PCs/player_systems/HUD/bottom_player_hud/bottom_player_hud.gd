@@ -9,6 +9,10 @@ func _ready() -> void:
 	# Clear out temporary items
 	for i:Node in %HB_Buffs.get_children():
 		i.queue_free()
+	
+	# Updates the health ticks and coins on spawn
+	tree_entered.connect(update_health_ticks)
+	tree_entered.connect(update_coins)
 
 
 
@@ -21,8 +25,8 @@ func set_pc(new_pc:PlayableCharacter) -> void:
 	pc.buff_gained.connect(_add_buff_icon)
 	pc.buff_lost.connect(_remove_buff_icon)
 	
-	rpc("update_health_ticks")
-	rpc("update_coins")
+	#rpc("update_health_ticks")
+	#rpc("update_coins")
 
 
 func set_text(new_text:String) -> void:

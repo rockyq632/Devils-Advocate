@@ -9,7 +9,7 @@ func _ready() -> void:
 	$LightAnimPlayer.play("ON_START")
 	$Waiting_Area.body_entered.connect(_on_body_entered_waiting_area)
 	$Waiting_Area.body_exited.connect(_on_body_exited_waiting_area)
-	
+	%MC_char_preselect_menu.hide()
 	
 
 # Runs every frame
@@ -54,7 +54,6 @@ func add_character(new_pc:PlayableCharacter, path_to_pc:String) -> void:
 	new_pc.global_position.x = 320
 	new_pc.global_position.y = 260
 	new_pc.set_multiplayer_authority( multiplayer.get_unique_id() )
-	#new_pc.is_movement_locked = true
 	
 	# PC must be added to tree before setting the UI to that character
 	GSM.GLOBAL_PLAYER_NODE.add_child( new_pc )
@@ -110,22 +109,11 @@ func add_client_bottom_hud(client_id:int) -> void:
 
 
 
-# Called when the DANCER button is selected
-func _on_dancer_btn_pressed() -> void:
-	var dancer_to_pass:PlayableCharacter = preload("res://Scenes/PCs/Dani_Dancer/dani_dancer.tscn").instantiate()
-	add_character(dancer_to_pass, "res://Scenes/PCs/Dani_Dancer/dani_dancer.tscn")
-	
-
-# Called when the GAMBLER button is selected
-func _on_gambler_btn_pressed() -> void:
-	var dancer_to_pass:PlayableCharacter = preload("res://Scenes/PCs/Asta_Gambler/asta_gambler.tscn").instantiate()
-	add_character(dancer_to_pass, "res://Scenes/PCs/Asta_Gambler/asta_gambler.tscn")
 
 
 ###
 ### 	WAITING AREA CODE
 ###
-
 # Counts players. When all players have entered waiting area
 func _on_body_entered_waiting_area(body: Node2D) -> void:
 	if(loading_first_stage):
@@ -158,3 +146,29 @@ func load_first_stage() -> void:
 	
 	GSM.GLOBAL_SCENE_NODE.call_deferred("add_child",preload("res://Scenes/Stages/Limbo/Circle_Limbo.tscn").instantiate())
 	queue_free()
+
+
+# Called when the DANCER button is selected
+func _on_dancer_btn_pressed() -> void:
+	var dancer_to_pass:PlayableCharacter = preload("res://Scenes/PCs/Dani_Dancer/dani_dancer.tscn").instantiate()
+	add_character(dancer_to_pass, "res://Scenes/PCs/Dani_Dancer/dani_dancer.tscn")
+	%MC_char_btns.hide()
+	%MC_char_preselect_menu.hide()
+
+# Called when DANCER button focus entered
+func _on_dancer_btn_focus_entered() -> void:
+	%MC_char_preselect_menu.set_pc(preload("res://Scenes/PCs/Dani_Dancer/dani_dancer.tscn").instantiate())
+	%MC_char_preselect_menu.show()
+
+# Called when DANCER button focus exited
+func _on_dancer_btn_focus_exited() -> void:
+	pass
+
+
+
+# Called when the GAMBLER button is selected
+func _on_gambler_btn_pressed() -> void:
+	var gambler_to_pass:PlayableCharacter = preload("res://Scenes/PCs/Asta_Gambler/asta_gambler.tscn").instantiate()
+	add_character(gambler_to_pass, "res://Scenes/PCs/Asta_Gambler/asta_gambler.tscn")
+	%MC_char_btns.hide()
+	%MC_char_preselect_menu.hide()

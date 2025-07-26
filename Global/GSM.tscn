@@ -114,10 +114,6 @@ spawn_limit = 2
 [node name="ProjectileSpawner" type="MultiplayerSpawner" parent="."]
 spawn_path = NodePath("../GLOBAL_PROJECTILE_NODE")
 
-[node name="PlayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("uid://bfbmvd6snjdiv")
-spawn_path = NodePath("../GLOBAL_PLAYERS_NODE")
-
 [node name="Utilities" type="Node" parent="."]
 script = ExtResource("3_bvox7")
 
