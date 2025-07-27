@@ -24,9 +24,6 @@ func set_pc(new_pc:PlayableCharacter) -> void:
 	pc.health_changed.connect(_health_changed)
 	pc.buff_gained.connect(_add_buff_icon)
 	pc.buff_lost.connect(_remove_buff_icon)
-	
-	#rpc("update_health_ticks")
-	#rpc("update_coins")
 
 
 func set_text(new_text:String) -> void:

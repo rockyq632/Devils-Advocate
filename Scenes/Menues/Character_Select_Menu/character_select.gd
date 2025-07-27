@@ -16,8 +16,11 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	#When all characters are selected, open up the waiting area
 	GSM.TOTAL_CONNECTED_PLAYERS = multiplayer.get_peers().size()+1
-	if( GSM.GLOBAL_PLAYER_NODE.get_child_count() >= (multiplayer.get_peers().size()+2) ):
+	if( GSM.GLOBAL_PLAYER_NODE.get_child_count() >= (multiplayer.get_peers().size()+2) and not $Waiting_Area.visible):
 		$LightAnimPlayer.play("ON_CHARS_SELECTED")
+	
+	if($Waiting_Area.visible):
+		%Waiting_Area_Text.text = "[center]%s/%s" %[num_players_in_waiting_area, GSM.TOTAL_CONNECTED_PLAYERS]
 		set_process(false)
 
 
@@ -34,12 +37,12 @@ func add_character(new_pc:PlayableCharacter, path_to_pc:String) -> void:
 	# Check if character for specific player id already exists
 	for i:Node in GSM.GLOBAL_PLAYER_NODE.get_children():
 		# Remove HUD if it exists
-		if( "Player" in i.name ):
+		if( "Player" == i.name ):
 			GSM.GLOBAL_PLAYER_NODE.remove_child(i)
 			i.queue_free()
 		
 		# Remove PC if it exists
-		if( str( multiplayer.get_unique_id() )  in  i.name ):
+		if( str( multiplayer.get_unique_id() )  ==  i.name ):
 			GSM.GLOBAL_PLAYER_NODE.remove_child(i)
 			i.queue_free()
 			rpc("remove_character", str( multiplayer.get_unique_id() ) )
@@ -69,7 +72,7 @@ func add_character(new_pc:PlayableCharacter, path_to_pc:String) -> void:
 	# Check the bottom player hud for nodes to remove
 	for i:Node in GSM.GLOBAL_BOT_PLAYER_HUD.get_children():
 		# Remove bottom HUD if it exists
-		if( str( multiplayer.get_unique_id() )  in  i.name ):
+		if( str( multiplayer.get_unique_id() )  ==  i.name ):
 			GSM.GLOBAL_BOT_PLAYER_HUD.remove_child(i)
 			i.queue_free()
 			rpc("remove_character", str( multiplayer.get_unique_id() ) )
@@ -96,7 +99,7 @@ func add_client_bottom_hud(client_id:int) -> void:
 	# Check if bottom HUD already exists
 	for i:Node in GSM.GLOBAL_BOT_PLAYER_HUD.get_children():
 		# Remove bottom HUD if it exists
-		if( str( client_id )  in  i.name ):
+		if( str( client_id )  ==  i.name ):
 			GSM.GLOBAL_BOT_PLAYER_HUD.remove_child(i)
 			i.queue_free()
 			rpc("remove_character", str( multiplayer.get_unique_id() ) )
@@ -157,7 +160,9 @@ func _on_dancer_btn_pressed() -> void:
 
 # Called when DANCER button focus entered
 func _on_dancer_btn_focus_entered() -> void:
-	%MC_char_preselect_menu.set_pc(preload("res://Scenes/PCs/Dani_Dancer/dani_dancer.tscn").instantiate())
+	var dani_to_pass:PlayableCharacter = preload("res://Scenes/PCs/Dani_Dancer/dani_dancer.tscn").instantiate()
+	dani_to_pass.set_moveset()
+	%MC_char_preselect_menu.set_pc(dani_to_pass)
 	%MC_char_preselect_menu.show()
 
 # Called when DANCER button focus exited
@@ -166,9 +171,20 @@ func _on_dancer_btn_focus_exited() -> void:
 
 
 
-# Called when the GAMBLER button is selected
+# Called when the GAMBLER button is pressed
 func _on_gambler_btn_pressed() -> void:
 	var gambler_to_pass:PlayableCharacter = preload("res://Scenes/PCs/Asta_Gambler/asta_gambler.tscn").instantiate()
 	add_character(gambler_to_pass, "res://Scenes/PCs/Asta_Gambler/asta_gambler.tscn")
 	%MC_char_btns.hide()
 	%MC_char_preselect_menu.hide()
+
+# Called when GAMBLER button focus entered
+func _on_gambler_btn_focus_entered() -> void:
+	var gamb_to_pass:PlayableCharacter = preload("res://Scenes/PCs/Asta_Gambler/asta_gambler.tscn").instantiate()
+	gamb_to_pass.set_moveset()
+	%MC_char_preselect_menu.set_pc(gamb_to_pass)
+	%MC_char_preselect_menu.show()
+
+# Called when GAMBLER button focus exited
+func _on_gambler_btn_focus_exited() -> void:
+	pass

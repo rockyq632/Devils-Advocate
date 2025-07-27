@@ -361,6 +361,8 @@ anim_player = NodePath("AnimationPlayer")
 hitbox = NodePath("Hitbox")
 hurtbox = NodePath("Hurtbox")
 buffs_debuffs_node = NodePath("Buffs_Debuffs")
+pc_name = "Dani"
+pc_moveset_name = "Dancer"
 items_node = NodePath("Items")
 
 [node name="PlayerSynchronizer" type="MultiplayerSynchronizer" parent="."]

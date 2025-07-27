@@ -1,10 +1,11 @@
-[gd_scene load_steps=29 format=3 uid="uid://cntivycv8p2r3"]
+[gd_scene load_steps=30 format=3 uid="uid://cntivycv8p2r3"]
 
 [ext_resource type="Script" uid="uid://08aapwskhgwc" path="res://Scenes/Menues/Character_Select_Menu/character_select.gd" id="1_e3opu"]
 [ext_resource type="Texture2D" uid="uid://ux5u7qhxxkau" path="res://Graphics/BG/Char_Select_BG_no-light_1x.png" id="2_jtyrk"]
 [ext_resource type="Texture2D" uid="uid://dsnhq44eyt30r" path="res://Graphics/BG/char_select_spotlight/left/char_sel_spotlight_1.png" id="3_vp6mv"]
 [ext_resource type="Texture2D" uid="uid://c8r55xwyskrjn" path="res://icon.svg" id="5_cms1j"]
 [ext_resource type="Texture2D" uid="uid://bbffpbjwawei" path="res://Graphics/Characters/DANI_DANCER/Character_Select/Dani_Select_30p_1x.png" id="5_l25qh"]
+[ext_resource type="Theme" uid="uid://dyxtiyvtjphqc" path="res://Themes/Text_Theme.tres" id="5_xh4x3"]
 [ext_resource type="Texture2D" uid="uid://bm2a2wwt2q6ub" path="res://Graphics/Characters/DANI_DANCER/Character_Select/Dani_Select_90p_1x.png" id="6_uh1yy"]
 [ext_resource type="Texture2D" uid="uid://b61f7t680gvk7" path="res://Graphics/Characters/DANI_DANCER/Character_Select/Dani_Select_60p_1x.png" id="7_phuv7"]
 [ext_resource type="Texture2D" uid="uid://cm3vh07ehyy6i" path="res://Graphics/Characters/ASTA_ASTROLOGIAN/Character_Select/Asta_Select_30p_1x.png" id="8_vctuq"]
@@ -281,6 +282,7 @@ disabled = true
 
 [node name="Waiting_Area_Text" type="RichTextLabel" parent="Waiting_Area"]
 unique_name_in_owner = true
+light_mask = 2
 custom_minimum_size = Vector2(50, 30)
 anchors_preset = 5
 anchor_left = 0.5
@@ -293,39 +295,63 @@ size_flags_horizontal = 4
 bbcode_enabled = true
 text = "[center]0/1"
 
-[node name="MC_char_preselect_menu" type="MarginContainer" parent="."]
+[node name="MC_char_preselect_menu" type="MarginContainer" parent="." node_paths=PackedStringArray("NAME_RTL", "AB1_TR", "AB1_RTL", "AB2_TR", "AB2_RTL", "AB3_TR", "AB3_RTL", "AB4_TR", "AB4_RTL")]
 unique_name_in_owner = true
+light_mask = 2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 360
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 20
 script = ExtResource("11_bbb1r")
+NAME_RTL = NodePath("VB/name_panel/MarginContainer/name_rtl")
+AB1_TR = NodePath("VB/details_panel/vb_ability_details/panel_ab1/HB/AB1_TR")
+AB1_RTL = NodePath("VB/details_panel/vb_ability_details/panel_ab1/HB/AB1_RTL")
+AB2_TR = NodePath("VB/details_panel/vb_ability_details/panel_ab2/HBoxContainer/AB2_TR")
+AB2_RTL = NodePath("VB/details_panel/vb_ability_details/panel_ab2/HBoxContainer/AB2_RTL")
+AB3_TR = NodePath("VB/details_panel/vb_ability_details/panel_ab3/HBoxContainer/AB3_TR")
+AB3_RTL = NodePath("VB/details_panel/vb_ability_details/panel_ab3/HBoxContainer/AB3_RTL")
+AB4_TR = NodePath("VB/details_panel/vb_ability_details/panel_ab4/HBoxContainer/AB4_TR")
+AB4_RTL = NodePath("VB/details_panel/vb_ability_details/panel_ab4/HBoxContainer/AB4_RTL")
 
 [node name="VB" type="VBoxContainer" parent="MC_char_preselect_menu"]
 layout_mode = 2
 
 [node name="name_panel" type="Panel" parent="MC_char_preselect_menu/VB"]
+light_mask = 2
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MC_char_preselect_menu/VB/name_panel"]
+[node name="MarginContainer" type="MarginContainer" parent="MC_char_preselect_menu/VB/name_panel"]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="name_rtl" type="RichTextLabel" parent="MC_char_preselect_menu/VB/name_panel/MarginContainer"]
+light_mask = 2
+layout_mode = 2
+theme = ExtResource("5_xh4x3")
+theme_override_font_sizes/bold_italics_font_size = 18
+theme_override_font_sizes/italics_font_size = 18
+theme_override_font_sizes/mono_font_size = 18
+theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/bold_font_size = 18
 text = "Name"
 fit_content = true
 
 [node name="details_panel" type="Panel" parent="MC_char_preselect_menu/VB"]
+light_mask = 2
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -338,10 +364,11 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="panel_ab1" type="Panel" parent="MC_char_preselect_menu/VB/details_panel/vb_ability_details"]
+light_mask = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MC_char_preselect_menu/VB/details_panel/vb_ability_details/panel_ab1"]
+[node name="HB" type="HBoxContainer" parent="MC_char_preselect_menu/VB/details_panel/vb_ability_details/panel_ab1"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -349,17 +376,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="MC_char_preselect_menu/VB/details_panel/vb_ability_details/panel_ab1/HBoxContainer"]
+[node name="AB1_TR" type="TextureRect" parent="MC_char_preselect_menu/VB/details_panel/vb_ability_details/panel_ab1/HB"]
+light_mask = 2
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("5_cms1j")
 expand_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MC_char_preselect_menu/VB/details_panel/vb_ability_details/panel_ab1/HBoxContainer"]
+[node name="AB1_RTL" type="RichTextLabel" parent="MC_char_preselect_menu/VB/details_panel/vb_ability_details/panel_ab1/HB"]
+light_mask = 2
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("5_xh4x3")
+bbcode_enabled = true
+scroll_active = false
 
 [node name="panel_ab2" type="Panel" parent="MC_char_preselect_menu/VB/details_panel/vb_ability_details"]
+light_mask = 2
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -371,17 +404,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="MC_char_preselect_menu/VB/details_panel/vb_ability_details/panel_ab2/HBoxContainer"]
+[node name="AB2_TR" type="TextureRect" parent="MC_char_preselect_menu/VB/details_panel/vb_ability_details/panel_ab2/HBoxContainer"]
+light_mask = 2
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("5_cms1j")
 expand_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MC_char_preselect_menu/VB/details_panel/vb_ability_details/panel_ab2/HBoxContainer"]
+[node name="AB2_RTL" type="RichTextLabel" parent="MC_char_preselect_menu/VB/details_panel/vb_ability_details/panel_ab2/HBoxContainer"]
+light_mask = 2
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("5_xh4x3")
+bbcode_enabled = true
+scroll_active = false
 
 [node name="panel_ab3" type="Panel" parent="MC_char_preselect_menu/VB/details_panel/vb_ability_details"]
+light_mask = 2
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -393,17 +432,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="MC_char_preselect_menu/VB/details_panel/vb_ability_details/panel_ab3/HBoxContainer"]
+[node name="AB3_TR" type="TextureRect" parent="MC_char_preselect_menu/VB/details_panel/vb_ability_details/panel_ab3/HBoxContainer"]
+light_mask = 2
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("5_cms1j")
 expand_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MC_char_preselect_menu/VB/details_panel/vb_ability_details/panel_ab3/HBoxContainer"]
+[node name="AB3_RTL" type="RichTextLabel" parent="MC_char_preselect_menu/VB/details_panel/vb_ability_details/panel_ab3/HBoxContainer"]
+light_mask = 2
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("5_xh4x3")
+bbcode_enabled = true
+scroll_active = false
 
 [node name="panel_ab4" type="Panel" parent="MC_char_preselect_menu/VB/details_panel/vb_ability_details"]
+light_mask = 2
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -415,15 +460,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="MC_char_preselect_menu/VB/details_panel/vb_ability_details/panel_ab4/HBoxContainer"]
+[node name="AB4_TR" type="TextureRect" parent="MC_char_preselect_menu/VB/details_panel/vb_ability_details/panel_ab4/HBoxContainer"]
+light_mask = 2
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("5_cms1j")
 expand_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MC_char_preselect_menu/VB/details_panel/vb_ability_details/panel_ab4/HBoxContainer"]
+[node name="AB4_RTL" type="RichTextLabel" parent="MC_char_preselect_menu/VB/details_panel/vb_ability_details/panel_ab4/HBoxContainer"]
+light_mask = 2
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("5_xh4x3")
+bbcode_enabled = true
+scroll_active = false
 
 [node name="MC_char_btns" type="MarginContainer" parent="."]
 unique_name_in_owner = true
@@ -445,6 +495,7 @@ size_flags_vertical = 4
 theme_override_constants/separation = 10
 
 [node name="DANCER_BTN" type="TextureButton" parent="MC_char_btns/VB"]
+light_mask = 2
 layout_mode = 2
 texture_normal = ExtResource("5_l25qh")
 texture_pressed = ExtResource("6_uh1yy")
@@ -453,6 +504,7 @@ texture_focused = ExtResource("6_uh1yy")
 stretch_mode = 4
 
 [node name="GAMBLER_BTN" type="TextureButton" parent="MC_char_btns/VB"]
+light_mask = 2
 layout_mode = 2
 texture_normal = ExtResource("8_vctuq")
 texture_pressed = ExtResource("9_tem7a")
@@ -461,16 +513,19 @@ texture_focused = ExtResource("9_tem7a")
 stretch_mode = 4
 
 [node name="SCIENTIST_BTN" type="TextureButton" parent="MC_char_btns/VB"]
+light_mask = 2
 layout_mode = 2
 texture_normal = ExtResource("11_hygim")
 stretch_mode = 4
 
 [node name="???_BTN2" type="TextureButton" parent="MC_char_btns/VB"]
+light_mask = 2
 layout_mode = 2
 texture_normal = ExtResource("11_hygim")
 stretch_mode = 4
 
 [node name="???_BTN3" type="TextureButton" parent="MC_char_btns/VB"]
+light_mask = 2
 layout_mode = 2
 texture_normal = ExtResource("11_hygim")
 stretch_mode = 4
@@ -480,8 +535,8 @@ libraries = {
 &"": SubResource("AnimationLibrary_ynhk1")
 }
 
-[connection signal="focus_exited" from="MC_char_btns/VB/DANCER_BTN" to="." method="_on_dancer_btn_focus_exited"]
 [connection signal="mouse_entered" from="MC_char_btns/VB/DANCER_BTN" to="." method="_on_dancer_btn_focus_entered"]
 [connection signal="mouse_exited" from="MC_char_btns/VB/DANCER_BTN" to="." method="_on_dancer_btn_focus_exited"]
 [connection signal="pressed" from="MC_char_btns/VB/DANCER_BTN" to="." method="_on_dancer_btn_pressed"]
+[connection signal="mouse_entered" from="MC_char_btns/VB/GAMBLER_BTN" to="." method="_on_gambler_btn_focus_entered"]
 [connection signal="pressed" from="MC_char_btns/VB/GAMBLER_BTN" to="." method="_on_gambler_btn_pressed"]

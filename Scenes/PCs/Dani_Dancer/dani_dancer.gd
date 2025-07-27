@@ -18,3 +18,11 @@ func _ready() -> void:
 func _new_peer_connected_d(_peer_id:int) -> void:
 	#print(self.scene_file_path)
 	_new_peer_connected(self.scene_file_path)
+
+# TODO will be used to set different movesets
+func set_moveset() -> void:
+	# Set the default moveset
+	moveset[0] = AB_REF.dict[AB_REF.KEY.POLE_SPIN_KICK]
+	moveset[1] = AB_REF.dict[AB_REF.KEY.POLE_INVERSION_STRIKE]
+	moveset[2] = AB_REF.dict[AB_REF.KEY.POLE_INVERSION_DIVE]
+	moveset[3] = AB_REF.dict[AB_REF.KEY.POLE_PIROUETTE]

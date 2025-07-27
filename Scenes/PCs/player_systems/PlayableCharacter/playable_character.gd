@@ -71,6 +71,11 @@ var curr_action:int = -1
 # Protection timer after taking a hit
 var armor_frames_timer:Timer = Timer.new()
 
+
+@export_group("Static Information")
+@export var pc_name:String = "Name"
+@export var pc_moveset_name:String = "Name"
+
 # list of buffs and debuffs
 @export_group("Monitor Only")
 @export_subgroup("BUFFS")
@@ -109,6 +114,7 @@ var armor_frames_timer:Timer = Timer.new()
 # Specific action buffs
 @export var flat_act_atk_bonus:Array[float] = [0.0, 0.0, 0.0, 0.0]
 @export var pcnt_act_atk_bonus:Array[float] = [0.0, 0.0, 0.0, 0.0]
+
 
 
 func _ready() -> void:
