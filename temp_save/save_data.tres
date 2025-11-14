@@ -4,11 +4,7 @@
 
 [resource]
 script = ExtResource("1_v8ued")
-save_num = 1431
-plot_list = Dictionary[int, String]({})
+save_num = 1432
 win_size_setting = Vector2(640, 360)
 phud_setting = 0.8
 bhud_setting = 0.8
-master_vol_setting = 80.0
-music_vol_setting = 80.0
-sfx_vol_setting = 80.0

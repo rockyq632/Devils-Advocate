@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvrhg5nq2et1i"]
+
+[ext_resource type="Script" uid="uid://by2uotqh4idit" path="res://Scenes/Items/built_unique_items/test_projectile_item/test_projectile_item.gd" id="1_4ma56"]
+[ext_resource type="Texture2D" uid="uid://c8r55xwyskrjn" path="res://icon.svg" id="2_lmmxp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lmmxp"]
+size = Vector2(120, 120)
+
+[node name="TestProjectileItem" type="Node" node_paths=PackedStringArray("sprite", "anim_player")]
+script = ExtResource("1_4ma56")
+sprite = NodePath("sprite")
+anim_player = NodePath("anim_player")
+interval_time = null
+id = null
+item_name = null
+itemset_name = null
+item_type = null
+icon = null
+cost_type = null
+cost_amount = null
+location_found = null
+short_description = null
+long_description = null
+lore_text = null
+conditional = null
+is_item_triggerable = null
+positive_effects = null
+negative_effects = null
+metadata/_custom_type_script = "uid://dpthmoaotqybr"
+
+[node name="sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_lmmxp")
+
+[node name="collision_area" type="Area2D" parent="sprite"]
+collision_layer = 4096
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sprite/collision_area"]
+position = Vector2(7.15256e-06, 7.15256e-06)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_lmmxp")
+
+[node name="anim_player" type="AnimationPlayer" parent="."]
